@@ -1,5 +1,9 @@
 package model.states;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import models.spell.Player;
 import view.KCInput;
 
 import com.badlogic.gdx.Gdx;
@@ -17,6 +21,7 @@ import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
 
 import control.GameStateManager;
+import control.KCInputProcessor;
 
 public class StandardMode extends GameState {
 	
@@ -32,51 +37,31 @@ public class StandardMode extends GameState {
 	
 	private int PPM = models.KCVars.PPM; //Adjusting pixerls per meter, otherwise forces will look unnatural
 	
+	private Player player;
+	private Player player2;
+	public static List<Player> players;
+	
 
 	public StandardMode(GameStateManager gsm){
 		super(gsm);
-		
+		players = new ArrayList<Player>();
 		/*
 		 * Below needs a clean-up
 		 */
 		
-		
+		Gdx.input.setInputProcessor(new KCInputProcessor());
 		world = gsm.getControl().getWorld();
 		b2dr = new Box2DDebugRenderer();
 		
-		// Define body
+		//Create player - TEST
+		player = new Player(Keys.UP, Keys.DOWN, Keys.RIGHT, Keys.LEFT, 300f, 400f);
+		players.add(player);
 		
-		BodyDef bdef = new BodyDef();
-		bdef.position.set(300f / PPM, 50f / PPM);
-		bdef.type = BodyType.StaticBody;
+		player2 = new Player(Keys.W, Keys.S, Keys.D, Keys.A, 100f, 200f);
+		players.add(player2);
 		
-		body = world.createBody(bdef);
+		players.add(new Player(Keys.Y, Keys.H, Keys.J, Keys.G, 300f, 200f));
 		
-		//Shape of fixture
-		PolygonShape shape = new PolygonShape();
-		shape.setAsBox(100f / PPM, 10f / PPM);
-		
-		
-		//Define fixture
-		
-		FixtureDef fdef = new FixtureDef();
-		fdef.shape = shape;
-		
-		body.createFixture(fdef);
-		
-		
-		//Create dynamic ball
-		bdef.position.set(300f / PPM, 400f / PPM);		
-		bdef.type = BodyType.DynamicBody;
-		body = world.createBody(bdef);
-
-		
-		CircleShape cshape = new CircleShape();
-		cshape.setRadius(10f / PPM);
-		
-		fdef.shape = cshape;
-		body.setLinearDamping(1f);
-		body.createFixture(fdef);
 		
 		
 		b2dCam = gsm.getControl().getb2dCam();
@@ -104,47 +89,28 @@ public class StandardMode extends GameState {
 	@Override
 	public void handleInput() {
 		
-		
-		
-///*
-// * Temporary test for inputs
-// * 
-// * Problem: Input does not record when two buttons are pressed at the same time. Need own processor
-// * 
-		if(Gdx.input.isKeyPressed(Keys.UP) && !Gdx.input.isKeyPressed(Keys.RIGHT)){
-			body.applyForceToCenter(0, 1, true);
-			System.out.println("up up up");
-		}else if(Gdx.input.isKeyPressed(Keys.LEFT) && !Gdx.input.isKeyPressed(Keys.UP)){
-			body.applyForceToCenter(-1, 0, true);
-			System.out.println("left");
-		}else if(Gdx.input.isKeyPressed(Keys.RIGHT) && !Gdx.input.isKeyPressed(Keys.DOWN)){
-			body.applyForceToCenter(1, 0, true);
-			System.out.println("right");
-		}else if(Gdx.input.isKeyPressed(Keys.DOWN) && !Gdx.input.isKeyPressed(Keys.LEFT)){
-			body.applyForceToCenter(0, -1, true);
-			System.out.println("down");
-		}else if(Gdx.input.isKeyPressed(Keys.DOWN) && Gdx.input.isKeyPressed(Keys.RIGHT)){
-			body.applyForceToCenter(1, -1, true);
-			System.out.println("down right");
-		}else if(Gdx.input.isKeyPressed(Keys.DOWN) && Gdx.input.isKeyPressed(Keys.LEFT)){
-			body.applyForceToCenter(-1, -1, true);
-			System.out.println("down left");
-		}else if(Gdx.input.isKeyPressed(Keys.UP) && Gdx.input.isKeyPressed(Keys.RIGHT)){
-			body.applyForceToCenter(1, 1, true);
-			System.out.println("up right");
-		}else if(Gdx.input.isKeyPressed(Keys.UP) && Gdx.input.isKeyPressed(Keys.LEFT)){
-			body.applyForceToCenter(-1, 1, true);
-			System.out.println("up left");
-		}
-//*/
+	
+		for(Player p : players){
+			if(p.isGettingInput){
+				if(p.goUp){
+					p.body.applyForceToCenter(0, 1, true);
+				}
+				if(p.goRight){
+					p.body.applyForceToCenter(1, 0, true);
+				}
+				if(p.goLeft){
+					p.body.applyForceToCenter(-1, 0, true);
+				}
+				if(p.goDown){
+					p.body.applyForceToCenter(0, -1, true);
+				}
+			}
+		}		
 	}
 
 	@Override
 	public void update(float dt) {
 		handleInput();
-		
-		
-		
 		world.step(dt, 6, 2);
 	}
 

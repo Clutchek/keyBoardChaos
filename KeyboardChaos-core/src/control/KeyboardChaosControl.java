@@ -17,15 +17,15 @@ public class KeyboardChaosControl implements ApplicationListener {
 	//Texture img;
 	
 	public static OrthographicCamera worldCam, hudCam, b2dCam; 
-	private World world;
+	public static World world;
 	private KeyboardChaosView view;
 	private KeyboardChaosModel model;
 	private BodyDef bdef;
 	private float PPM = KCVars.PPM;
 	private Body body;
-	private GameStateManager gsm;
-	private static float STEP = models.KCVars.TIME_STEP;
-	private float timeCheck;
+	public GameStateManager gsm;
+	public static float STEP = models.KCVars.TIME_STEP;
+	public float timeCheck;
 	
 	@Override
 	public void create() {
@@ -35,8 +35,6 @@ public class KeyboardChaosControl implements ApplicationListener {
 		
 		
 		batch = new SpriteBatch();
-		view = new view.KeyboardChaosView(this);
-		model = new models.KeyboardChaosModel(this);
 		
 		//Create world camera, set it to it's correct size and move it so it's looking at the actual game.
 		worldCam = new OrthographicCamera(KCVars.GAME_WIDTH, KCVars.GAME_HEIGHT);
@@ -48,7 +46,9 @@ public class KeyboardChaosControl implements ApplicationListener {
 
 		world = new World(models.KCVars.GRAVITY, true);
 
-		gsm = new GameStateManager(this);	
+		gsm = new GameStateManager(this);
+		view = new view.KeyboardChaosView(this);
+		model = new models.KeyboardChaosModel(this);
 
 		
 	}
@@ -63,12 +63,7 @@ public class KeyboardChaosControl implements ApplicationListener {
 	
 
 	public void render () {
-		timeCheck += Gdx.graphics.getDeltaTime();
-		while(timeCheck>= STEP){
-			timeCheck -= STEP;
-			gsm.update(STEP);
-			gsm.render();
-		}
+		view.render();
 	}
 	
 	public void handleInput(){

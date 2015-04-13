@@ -26,10 +26,11 @@ public class KeyboardChaosView {
 	public void render () {
 		
 		
-		Gdx.gl.glClearColor(0, 0, 0, 1);
-		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		sb.begin();
-		b2dr.render(control.getWorld(), control.getb2dCam().combined);
-		sb.end();
+		control.timeCheck += Gdx.graphics.getDeltaTime();
+		while(control.timeCheck>= control.STEP){
+			control.timeCheck -= control.STEP;
+			control.gsm.update(control.STEP);
+			control.gsm.render();
+		}
 	}
 }

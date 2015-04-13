@@ -6,12 +6,14 @@ import com.badlogic.gdx.Input.Keys;
 
 public class KCInput {
 	
-	public static final int GO_UP = 0;
-	public static final int GO_DOWN = 1;
-	public static final int GO_LEFT = 2;
-	public static final int GO_RIGHT = 3;
+	public static boolean goUp = false;
+	public static boolean goDown = false;
+	public static boolean goLeft = false;
+	public static boolean goRight = false;
 	
-	public static boolean doIt = false;
+
+	
+
 	
 	private static HashMap<Integer, String> keysHM = new HashMap<Integer, String>();
 	
@@ -25,14 +27,25 @@ public class KCInput {
 		keysHM.put(key, playerName);
 	}
 	
+	public static void setUp(boolean boo){
+		goUp = boo;
+	}
+	
+	public static void setDown(boolean boo){
+		goDown = boo;
+	}
+	
+	public static void setRight(boolean boo){
+		goRight = boo;
+	}
+	
+	public static void setLeft(boolean boo){
+		goLeft = boo;
+	}
+	
 	
 	/*
-	 * Slutade med att:
-	 * 
-	 * Börja bygga metoder för att reagera på input från användare, avgöra vilken spelare inputen gäller, och sedan vidta passande åtgärder.
-	 * 
-	 * Gissningsvis behövs det en metod som kollar input varje update, och de gånger som hashmappen innehåller keyn som används, ska denna 
-	 * returnera true och starta hela kedjan av anrop.
+	 * Possibly a useless class, but stays for now
 	 * 
 	 * 
 	 */
