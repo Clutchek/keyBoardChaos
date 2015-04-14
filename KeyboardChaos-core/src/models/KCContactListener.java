@@ -3,6 +3,7 @@ package models;
 import com.badlogic.gdx.physics.box2d.Contact;
 import com.badlogic.gdx.physics.box2d.ContactImpulse;
 import com.badlogic.gdx.physics.box2d.ContactListener;
+import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.Manifold;
 
 public class KCContactListener implements ContactListener {
@@ -15,13 +16,30 @@ public class KCContactListener implements ContactListener {
 	
 	@Override
 	public void beginContact(Contact contact) {
-		// TODO Auto-generated method stub
+		Fixture fa = contact.getFixtureA();
+		Fixture fb = contact.getFixtureB();
+		
+		if((fa.getUserData().equals("lava") || fb.getUserData().equals("lava"))
+			&&
+			(fa.getUserData().equals("player") || fb.getUserData().equals("player"))){
+			KCVars.playerIsInLava = true;
+		}
+		
+		
+		System.out.println("Boop");
 		
 	}
 
 	@Override
 	public void endContact(Contact contact) {
-		// TODO Auto-generated method stub
+		Fixture fa = contact.getFixtureA();
+		Fixture fb = contact.getFixtureB();
+		
+		if((fa.getUserData().equals("lava") || fb.getUserData().equals("lava"))
+			&&
+			(fa.getUserData().equals("player") || fb.getUserData().equals("player"))){
+			KCVars.playerIsInLava = false;
+		}
 		
 	}
 

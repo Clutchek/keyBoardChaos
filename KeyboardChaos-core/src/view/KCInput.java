@@ -2,7 +2,6 @@ package view;
 
 import java.util.HashMap;
 
-import com.badlogic.gdx.Input.Keys;
 
 public class KCInput {
 	

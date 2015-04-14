@@ -1,9 +1,6 @@
 package control;
 
 import models.spell.Player;
-import view.KCInput;
-
-import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.InputAdapter;
 
 /*
@@ -21,7 +18,6 @@ public class KCInputProcessor extends InputAdapter{
 		for(Player p : model.states.StandardMode.players){
 			if(keycode == p.moveUp){
 				p.setUp(true);
-				System.out.println(KCInput.goUp);
 			}else if(keycode == p.moveDown){
 				p.setDown(true);
 			}else if(keycode == p.moveRight){
@@ -40,7 +36,6 @@ public class KCInputProcessor extends InputAdapter{
 		for(Player p : model.states.StandardMode.players){
 			if(keycode == p.moveUp){
 				p.setUp(false);
-				System.out.println(KCInput.goUp);
 			}else if(keycode == p.moveDown){
 				p.setDown(false);
 			}else if(keycode == p.moveRight){

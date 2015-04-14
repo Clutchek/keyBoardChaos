@@ -2,11 +2,11 @@ package models.spell;
 
 import models.player.Spell;
 
-import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
 import com.badlogic.gdx.physics.box2d.CircleShape;
+import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 
 public class Player {
@@ -39,14 +39,17 @@ public class Player {
 		bdef.position.set(x / models.KCVars.PPM, y / models.KCVars.PPM);		
 		bdef.type = BodyType.DynamicBody;
 		body = control.KeyboardChaosControl.world.createBody(bdef);
-
 		
 		CircleShape cshape = new CircleShape();
 		cshape.setRadius(10f / models.KCVars.PPM);
 		
 		fdef.shape = cshape;
+		body.setUserData("player");
+		fdef.filter.categoryBits = models.KCVars.BIT_PLAYER;
+		fdef.filter.maskBits = models.KCVars.BIT_PLAYER | models.KCVars.BIT_SPELL | models.KCVars.BIT_OBSTACLE | models.KCVars.BIT_LAVA;
 		body.setLinearDamping(1f);
-		body.createFixture(fdef);
+		Fixture f = body.createFixture(fdef);
+		f.setUserData("player");
 	}
 	
 	

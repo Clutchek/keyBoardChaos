@@ -10,15 +10,15 @@ import control.KeyboardChaosControl;
 public class KeyboardChaosView {
 
 	private KeyboardChaosControl control;
-	private SpriteBatch sb;
-	private Box2DDebugRenderer b2dr;
+//	private SpriteBatch sb;
+//	private Box2DDebugRenderer b2dr;
 	
 	public KeyboardChaosView(KeyboardChaosControl control){
 		
 		this.control = control;
-		this.sb = this.control.getSpriteBatch();
+//		this.sb = this.control.getSpriteBatch();
 		
-		this.b2dr = new Box2DDebugRenderer();
+//		this.b2dr = new Box2DDebugRenderer();
 		
 	}
 	

@@ -1,15 +1,16 @@
 package control;
 
 import models.KCVars;
-import models.KeyboardChaosModel;
+//import models.KeyboardChaosModel;
 import view.KeyboardChaosView;
 
 import com.badlogic.gdx.ApplicationListener;
-import com.badlogic.gdx.Gdx;
+//import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+//import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.physics.box2d.Body;
-import com.badlogic.gdx.physics.box2d.BodyDef;
+//import com.badlogic.gdx.physics.box2d.Body;
+//import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.World;
 
 public class KeyboardChaosControl implements ApplicationListener {
@@ -19,10 +20,10 @@ public class KeyboardChaosControl implements ApplicationListener {
 	public static OrthographicCamera worldCam, hudCam, b2dCam; 
 	public static World world;
 	private KeyboardChaosView view;
-	private KeyboardChaosModel model;
-	private BodyDef bdef;
-	private float PPM = KCVars.PPM;
-	private Body body;
+	//private KeyboardChaosModel model;
+	//private BodyDef bdef;
+//	private float PPM = KCVars.PPM;
+	//private Body body;
 	public GameStateManager gsm;
 	public static float STEP = models.KCVars.TIME_STEP;
 	public float timeCheck;
@@ -31,7 +32,6 @@ public class KeyboardChaosControl implements ApplicationListener {
 	public void create() {
 		
 //		Gdx.input.setInputProcessor(new KCInputProcessor());
-		
 		
 		
 		batch = new SpriteBatch();
@@ -45,10 +45,11 @@ public class KeyboardChaosControl implements ApplicationListener {
 		b2dCam = new OrthographicCamera();
 
 		world = new World(models.KCVars.GRAVITY, true);
+		world.setContactListener(new models.KCContactListener());
 
 		gsm = new GameStateManager(this);
 		view = new view.KeyboardChaosView(this);
-		model = new models.KeyboardChaosModel(this);
+		//model = new models.KeyboardChaosModel(this);
 
 		
 	}
