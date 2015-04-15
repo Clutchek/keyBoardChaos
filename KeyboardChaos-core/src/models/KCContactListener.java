@@ -18,8 +18,14 @@ public class KCContactListener implements ContactListener {
 	public void beginContact(Contact contact) {
 		Fixture fa = contact.getFixtureA();
 		Fixture fb = contact.getFixtureB();
+//		System.out.println(fa.getUserData().toString());
+//		System.out.println(fb.getUserData().toString());
+		if(fa == null && fb == null){
+			System.out.println("fa är null");
+		}else if(fb == null){
+			System.out.println("fb är null");
 		
-		if((fa.getUserData().equals("lava") || fb.getUserData().equals("lava"))
+		}else if((fa.getUserData().equals("lava") || fb.getUserData().equals("lava"))
 			&&
 			(fa.getUserData().equals("player") || fb.getUserData().equals("player"))){
 			KCVars.playerIsInLava = true;

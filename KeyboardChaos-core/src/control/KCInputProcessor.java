@@ -1,6 +1,7 @@
 package control;
 
-import models.spell.Player;
+import models.player.Player;
+
 import com.badlogic.gdx.InputAdapter;
 
 /*

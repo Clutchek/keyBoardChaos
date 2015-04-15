@@ -3,21 +3,17 @@ package model.states;
 import java.util.ArrayList;
 import java.util.List;
 
-import models.spell.Player;
+import models.player.Player;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
-
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
-
-
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
-
 import com.badlogic.gdx.physics.box2d.World;
 
 import control.GameStateManager;
@@ -57,9 +53,11 @@ public class StandardMode extends GameState {
 		
 		//Create player - TEST
 		player = new Player(Keys.UP, Keys.DOWN, Keys.RIGHT, Keys.LEFT, 300f, 400f);
+		player.setFirstSpell(new models.spell.Spell(1 , 1, player));
 		players.add(player);
 		
 		player2 = new Player(Keys.W, Keys.S, Keys.D, Keys.A, 100f, 200f);
+		
 		players.add(player2);
 		
 		players.add(new Player(Keys.Y, Keys.H, Keys.J, Keys.G, 300f, 200f));
@@ -86,6 +84,10 @@ public class StandardMode extends GameState {
 	public void handleInput() {
 		if(models.KCVars.playerIsInLava){
 			System.out.println("LAVA IT BURN OMG");
+		}
+		
+		if(Gdx.input.isKeyJustPressed(Keys.SPACE)){
+			players.get(0).getSpell().shoot();
 		}
 	
 		for(Player p : players){
