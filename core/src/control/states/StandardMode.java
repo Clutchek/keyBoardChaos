@@ -53,7 +53,7 @@ public class StandardMode extends GameState {
 		}
 		
 		if(Gdx.input.isKeyJustPressed(Keys.SPACE)){
-			players.get(0).getSpell().shoot();
+			players.get(0).getSpell().castSpell();
 		}
 	
 		for(Player p : players){
