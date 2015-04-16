@@ -16,7 +16,7 @@ public class KCInputProcessor extends InputAdapter{
 	@Override
 	public boolean keyDown(int keycode) {
 		
-		for(Player p : model.states.StandardMode.players){
+		for(Player p : control.states.StandardMode.getPlayerList()){
 			if(keycode == p.moveUp){
 				p.setUp(true);
 			}else if(keycode == p.moveDown){
@@ -34,7 +34,7 @@ public class KCInputProcessor extends InputAdapter{
 	@Override
 	public boolean keyUp(int keycode) {
 		
-		for(Player p : model.states.StandardMode.players){
+		for(Player p : control.states.StandardMode.getPlayerList()){
 			if(keycode == p.moveUp){
 				p.setUp(false);
 			}else if(keycode == p.moveDown){

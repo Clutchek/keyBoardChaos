@@ -38,7 +38,7 @@ public class Player {
 		
 		bdef.position.set(x / models.KCVars.PPM, y / models.KCVars.PPM);		
 		bdef.type = BodyType.DynamicBody;
-		body = control.KeyboardChaosControl.world.createBody(bdef);
+		body = control.KeyboardChaosControl.getWorld().createBody(bdef);
 		
 		CircleShape cshape = new CircleShape();
 		cshape.setRadius(10f / models.KCVars.PPM);

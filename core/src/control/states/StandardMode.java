@@ -1,4 +1,4 @@
-package model.states;
+package control.states;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +31,7 @@ public class StandardMode extends GameState {
 	
 	private int PPM = models.KCVars.PPM; //Adjusting pixels per meter, otherwise forces will look unnatural
 
-	public static List<Player> players;
+	private static List<Player> players;
 	
 	private TiledMap tileMap;
 	private OrthogonalTiledMapRenderer mapRenderer;
@@ -40,43 +40,11 @@ public class StandardMode extends GameState {
 	public StandardMode(GameStateManager gsm){
 		super(gsm);
 		players = gsm.getControl().getModel().getPlayerList();
-		
-		/*
-		 * Below needs a clean-up
-		 */
-		
-		Gdx.input.setInputProcessor(new KCInputProcessor());
 		world = gsm.getControl().getWorld();
-		b2dr = new Box2DDebugRenderer();
-		
-		//Create player - TEST
-//		player = new Player(Keys.UP, Keys.DOWN, Keys.RIGHT, Keys.LEFT, 300f, 400f);
-//		player.setFirstSpell(new models.spell.Spell(1 , 1, player));
-//		players.add(player);
-//		
-//		player2 = new Player(Keys.W, Keys.S, Keys.D, Keys.A, 100f, 200f);
-//		
-//		players.add(player2);
-//		
-//		players.add(new Player(Keys.Y, Keys.H, Keys.J, Keys.G, 300f, 200f));
-		
-		
-		
-		b2dCam = gsm.getControl().getb2dCam();
-		b2dCam.setToOrtho(false, models.KCVars.GAME_WIDTH / PPM, models.KCVars.GAME_HEIGHT / PPM);
-
-
-		
-		
-		//Map stuff
-		
-		tileMap = new TmxMapLoader().load("assets/maps/betatest.tmx");
-		control.MapBodyManager mbm = new control.MapBodyManager(world, PPM, null, 0);
-		mbm.createPhysics(tileMap, "lavahurts");
-		mapRenderer = new OrthogonalTiledMapRenderer(tileMap);
 
 		
 	}
+
 	
 	@Override
 	public void handleInput() {
@@ -114,19 +82,20 @@ public class StandardMode extends GameState {
 
 	@Override
 	public void render() {
-		
-		Gdx.gl20.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		mapRenderer.setView(worldCam);
-		mapRenderer.render();
-		b2dr.render(world, b2dCam.combined);
-//		sb.setProjectionMatrix(worldCam.combined);
-//		sb.begin();
-//		font.draw(sb, "Standard Mode", 50, 50);
-//		sb.end();
+	
+		//Just a stub, nothing will happen here since, might be an unnecessary inheritance
 	}
 
 	@Override
 	public void dispose() {
-	
+		//Just a stub, nothing will happen here since, might be an unnecessary inheritance
 	}
+	
+	/**
+	 * Returns a list of players in the world
+	 * 
+	 * @return Players that's currently in the world
+	 */
+	public static List<Player> getPlayerList(){ return players;}
+	
 }

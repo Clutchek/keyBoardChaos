@@ -6,10 +6,15 @@ import models.KeyboardChaosModel;
 import view.KeyboardChaosView;
 
 import com.badlogic.gdx.ApplicationListener;
+import com.badlogic.gdx.Gdx;
 //import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 //import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.maps.tiled.TiledMap;
+import com.badlogic.gdx.maps.tiled.TmxMapLoader;
+import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 //import com.badlogic.gdx.physics.box2d.Body;
 //import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.World;
@@ -18,24 +23,28 @@ public class KeyboardChaosControl implements ApplicationListener {
 	SpriteBatch batch;
 	//Texture img;
 	
-	public static OrthographicCamera worldCam, hudCam, b2dCam; 
-	public static World world;
+	private static OrthographicCamera worldCam, hudCam, b2dCam; 
+	private static World world;
 	private KeyboardChaosView view;
 	private KeyboardChaosModel model;
-	//private BodyDef bdef;
-//	private float PPM = KCVars.PPM;
-	//private Body body;
-	public GameStateManager gsm;
-	public static float STEP = models.KCVars.TIME_STEP;
-	public float timeCheck;
+	
+	private float PPM = KCVars.PPM;
+	
+	private GameStateManager gsm;
+	
+	private TiledMap tileMap;
+	private OrthogonalTiledMapRenderer mapRenderer;
+	private Box2DDebugRenderer b2dr;
 	
 	@Override
 	public void create() {
-		
-//		Gdx.input.setInputProcessor(new KCInputProcessor());
-		
-		
+				
 		batch = new SpriteBatch();
+		view = new view.KeyboardChaosView(this);
+		model = new models.KeyboardChaosModel(this);
+		
+		//Set our own input processor
+		Gdx.input.setInputProcessor(new KCInputProcessor());
 		
 		//Create world camera, set it to it's correct size and move it so it's looking at the actual game.
 		worldCam = new OrthographicCamera(KCVars.GAME_WIDTH, KCVars.GAME_HEIGHT);
@@ -44,26 +53,38 @@ public class KeyboardChaosControl implements ApplicationListener {
 		
 		//Create Box2D camera
 		b2dCam = new OrthographicCamera();
-
-		model = new models.KeyboardChaosModel(this);
+		b2dCam.setToOrtho(false, models.KCVars.GAME_WIDTH / PPM, models.KCVars.GAME_HEIGHT / PPM);
 		
+		b2dr = new Box2DDebugRenderer();
+
 		world = model.getWorld();
 		world.setContactListener(new models.KCContactListener());
+		
+		//Map stuff
+		tileMap = new TmxMapLoader().load("assets/maps/betatest.tmx");
+		control.MapBodyManager mbm = new control.MapBodyManager(world, PPM, null, 0);
+		mbm.createPhysics(tileMap, "lavahurts");
+		mapRenderer = new OrthogonalTiledMapRenderer(tileMap);
+		
 
+		model.createSomePlayers();
+		
 		gsm = new GameStateManager(this);
-		view = new view.KeyboardChaosView(this);
+		
 
 		
 	}
 	
 	//Getters
-	
+	public GameStateManager getGSM(){ return this.gsm;}
+	public OrthogonalTiledMapRenderer getMapRenderer(){ return mapRenderer;}
 	public SpriteBatch getSpriteBatch(){ return batch;}
 	public OrthographicCamera getWorldCam(){ return worldCam;}
 	public OrthographicCamera getb2dCam(){ return b2dCam;}
 	public OrthographicCamera getHudCam(){ return hudCam;}
-	public World getWorld(){ return world;}
+	public static World getWorld(){ return world;}
 	public KeyboardChaosModel getModel(){ return this.model;}
+	public Box2DDebugRenderer getB2dr(){ return this.b2dr;}
 	
 
 	public void render () {

@@ -61,7 +61,7 @@ public class Spell {
 		v = new Vector2(x,y);
 		
 		bdef.position.set(v);
-		world = control.KeyboardChaosControl.world;
+		world = control.KeyboardChaosControl.getWorld();
 		body = world.createBody(bdef);
 		body.setUserData("spell");
 		
