@@ -21,12 +21,13 @@ public class Spell {
 	protected World world;
 	protected Player originPlayer;
 	protected Fixture fixture;
-	
+	protected float PPM;
 	
 	public Spell(int damage, int projectileSpeed, Player originPlayer){
 		this.damage = damage;
 		this.projectileSpeed = projectileSpeed;
 		this.originPlayer = originPlayer;
+		this.PPM = models.KCVars.PPM;
 		
 	}
 	
@@ -56,7 +57,7 @@ public class Spell {
 		float y = v.y;
 		
 		x+=20f / 100f;
-		y+=20f / 100f ;
+		y+=20f / 100f;
 		
 		v = new Vector2(x,y);
 		

@@ -2,8 +2,7 @@ package control;
 
 import java.util.Stack;
 
-import model.states.GameState;
-//import model.states.StandardMode;
+import control.states.GameState;
 
 public class GameStateManager {
 
@@ -34,7 +33,7 @@ public class GameStateManager {
 	}
 	
 	private GameState getState(int state){
-		if(state == STANDARD_MODE) return new model.states.StandardMode(this);
+		if(state == STANDARD_MODE) return new control.states.StandardMode(this);
 		return null;
 	}
 	
