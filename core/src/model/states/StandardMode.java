@@ -30,9 +30,7 @@ public class StandardMode extends GameState {
 	private OrthographicCamera b2dCam;
 	
 	private int PPM = models.KCVars.PPM; //Adjusting pixels per meter, otherwise forces will look unnatural
-	
-	private Player player;
-	private Player player2;
+
 	public static List<Player> players;
 	
 	private TiledMap tileMap;
@@ -41,7 +39,7 @@ public class StandardMode extends GameState {
 
 	public StandardMode(GameStateManager gsm){
 		super(gsm);
-		players = new ArrayList<Player>();
+		players = gsm.getControl().getModel().getPlayerList();
 		
 		/*
 		 * Below needs a clean-up
@@ -52,15 +50,15 @@ public class StandardMode extends GameState {
 		b2dr = new Box2DDebugRenderer();
 		
 		//Create player - TEST
-		player = new Player(Keys.UP, Keys.DOWN, Keys.RIGHT, Keys.LEFT, 300f, 400f);
-		player.setFirstSpell(new models.spell.Spell(1 , 1, player));
-		players.add(player);
-		
-		player2 = new Player(Keys.W, Keys.S, Keys.D, Keys.A, 100f, 200f);
-		
-		players.add(player2);
-		
-		players.add(new Player(Keys.Y, Keys.H, Keys.J, Keys.G, 300f, 200f));
+//		player = new Player(Keys.UP, Keys.DOWN, Keys.RIGHT, Keys.LEFT, 300f, 400f);
+//		player.setFirstSpell(new models.spell.Spell(1 , 1, player));
+//		players.add(player);
+//		
+//		player2 = new Player(Keys.W, Keys.S, Keys.D, Keys.A, 100f, 200f);
+//		
+//		players.add(player2);
+//		
+//		players.add(new Player(Keys.Y, Keys.H, Keys.J, Keys.G, 300f, 200f));
 		
 		
 		

@@ -29,8 +29,12 @@ public class KCContactListener implements ContactListener {
 			&&
 			(fa.getUserData().equals("player") || fb.getUserData().equals("player"))){
 			KCVars.playerIsInLava = true;
+		}else if((fa.getUserData().equals("spell") || fb.getUserData().equals("spell"))
+				&&
+				(fa.getUserData().equals("player") || fb.getUserData().equals("player"))){
+			System.out.println("Hit!");	
+			
 		}
-		
 		
 		System.out.println("Boop");
 		

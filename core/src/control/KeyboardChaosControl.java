@@ -1,6 +1,7 @@
 package control;
 
 import models.KCVars;
+import models.KeyboardChaosModel;
 //import models.KeyboardChaosModel;
 import view.KeyboardChaosView;
 
@@ -20,7 +21,7 @@ public class KeyboardChaosControl implements ApplicationListener {
 	public static OrthographicCamera worldCam, hudCam, b2dCam; 
 	public static World world;
 	private KeyboardChaosView view;
-	//private KeyboardChaosModel model;
+	private KeyboardChaosModel model;
 	//private BodyDef bdef;
 //	private float PPM = KCVars.PPM;
 	//private Body body;
@@ -44,12 +45,13 @@ public class KeyboardChaosControl implements ApplicationListener {
 		//Create Box2D camera
 		b2dCam = new OrthographicCamera();
 
-		world = new World(models.KCVars.GRAVITY, true);
+		model = new models.KeyboardChaosModel(this);
+		
+		world = model.getWorld();
 		world.setContactListener(new models.KCContactListener());
 
 		gsm = new GameStateManager(this);
 		view = new view.KeyboardChaosView(this);
-		//model = new models.KeyboardChaosModel(this);
 
 		
 	}
@@ -61,6 +63,7 @@ public class KeyboardChaosControl implements ApplicationListener {
 	public OrthographicCamera getb2dCam(){ return b2dCam;}
 	public OrthographicCamera getHudCam(){ return hudCam;}
 	public World getWorld(){ return world;}
+	public KeyboardChaosModel getModel(){ return this.model;}
 	
 
 	public void render () {
