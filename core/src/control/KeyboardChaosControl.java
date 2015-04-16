@@ -58,7 +58,7 @@ public class KeyboardChaosControl implements ApplicationListener {
 		b2dr = new Box2DDebugRenderer();
 
 		world = model.getWorld();
-		world.setContactListener(new models.KCContactListener());
+		world.setContactListener(new control.KCContactListener());
 		
 		//Map stuff
 		tileMap = new TmxMapLoader().load("assets/maps/betatest.tmx");

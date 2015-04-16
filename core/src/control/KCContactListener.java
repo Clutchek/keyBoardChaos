@@ -1,4 +1,6 @@
-package models;
+package control;
+
+import models.KCVars;
 
 import com.badlogic.gdx.physics.box2d.Contact;
 import com.badlogic.gdx.physics.box2d.ContactImpulse;
@@ -18,25 +20,20 @@ public class KCContactListener implements ContactListener {
 	public void beginContact(Contact contact) {
 		Fixture fa = contact.getFixtureA();
 		Fixture fb = contact.getFixtureB();
-//		System.out.println(fa.getUserData().toString());
-//		System.out.println(fb.getUserData().toString());
-		if(fa == null && fb == null){
-			System.out.println("fa är null");
-		}else if(fb == null){
-			System.out.println("fb är null");
-		
-		}else if((fa.getUserData().equals("lava") || fb.getUserData().equals("lava"))
-			&&
-			(fa.getUserData().equals("player") || fb.getUserData().equals("player"))){
-			KCVars.playerIsInLava = true;
-		}else if((fa.getUserData().equals("spell") || fb.getUserData().equals("spell"))
+		if(fa.getUserData() != null && fb.getUserData() != null){
+			if((fa.getUserData().equals("lava") || fb.getUserData().equals("lava"))
 				&&
 				(fa.getUserData().equals("player") || fb.getUserData().equals("player"))){
-			System.out.println("Hit!");	
+				KCVars.playerIsInLava = true;
+			}else if((fa.getUserData().equals("spell") || fb.getUserData().equals("spell"))
+					&&
+					(fa.getUserData().equals("player") || fb.getUserData().equals("player"))){
+				System.out.println("Hit!");	
+				
+			}
 			
+			System.out.println("Boop");
 		}
-		
-		System.out.println("Boop");
 		
 	}
 
