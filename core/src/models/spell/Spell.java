@@ -1,5 +1,8 @@
 package models.spell;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 import models.player.Player;
 
 import com.badlogic.gdx.math.Vector2;
@@ -21,12 +24,22 @@ public class Spell {
 	protected World world;
 	protected Player originPlayer;
 	protected Fixture fixture;
+	private Timer timer;
 	
 	
 	public Spell(int damage, int projectileSpeed, Player originPlayer){
 		this.damage = damage;
 		this.projectileSpeed = projectileSpeed;
 		this.originPlayer = originPlayer;
+		timer = new Timer();
+		TimerTask task = new TimerTask(){
+			public void run(){
+				dispose();
+			}
+		};
+		timer.schedule(task, 2000);
+		
+		
 		
 	}
 	
