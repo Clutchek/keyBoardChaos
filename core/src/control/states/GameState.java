@@ -8,12 +8,12 @@ import control.KeyboardChaosControl;
 
 public abstract class GameState {
 	
-	protected GameStateManager gsm;
-	protected KeyboardChaosControl kcc;
+	private GameStateManager gsm;
+	private KeyboardChaosControl kcc;
 	
-	protected SpriteBatch sb;
-	protected OrthographicCamera worldCam;
-	protected OrthographicCamera hudCam;
+	private SpriteBatch sb;
+	private OrthographicCamera worldCam;
+	private OrthographicCamera hudCam;
 	
 	protected GameState(GameStateManager gsm){
 		this.gsm = gsm;

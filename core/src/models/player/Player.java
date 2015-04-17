@@ -11,14 +11,14 @@ import com.badlogic.gdx.physics.box2d.FixtureDef;
 
 public class Player {
 	
-	protected int healthPoints;
-	protected int speed; // This needs to be a force in newtons, by itself or made to a force through methods
-	public int moveUp, moveDown, moveLeft, moveRight;
-	public boolean goUp, goDown, goRight, goLeft;
-	public BodyDef bdef;
-	public FixtureDef fdef;
-	public Body body;
-	public boolean isGettingInput;
+	private int healthPoints;
+	private int speed; // This needs to be a force in newtons, by itself or made to a force through methods
+	private int moveUp, moveDown, moveLeft, moveRight;
+	private boolean goUp, goDown, goRight, goLeft;
+	private BodyDef bdef;
+	private FixtureDef fdef;
+	private Body body;
+	private boolean isGettingInput;
 	
 	
 	public Player(int up, int down, int right, int left, float x, float y){
@@ -58,7 +58,7 @@ public class Player {
 	}
 	
 	
-	protected Spell spell1, spell2;
+	private Spell spell1, spell2;
 	
 	public void setFirstSpell(Spell spell){
 		spell1 = spell;

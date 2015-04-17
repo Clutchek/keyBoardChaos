@@ -16,14 +16,14 @@ import com.badlogic.gdx.physics.box2d.World;
 
 public class FireballFixture {
 	
-	protected int damage, projectileSpeed;
+	private int damage, projectileSpeed;
 	
-	protected FixtureDef fdef;
-	protected BodyDef bdef;
-	protected Body body;
-	protected World world;
-	protected Player originPlayer;
-	protected Fixture fixture;
+	private FixtureDef fdef;
+	private BodyDef bdef;
+	private Body body;
+	private World world;
+	private Player originPlayer;
+	private Fixture fixture;
 	private Timer timer;
 	private TimerTask task;
 	
@@ -45,12 +45,8 @@ public class FireballFixture {
 		
 	}
 	
-	protected void setDamage(int dmg){
-		this.damage = dmg;
-	}
-	
-	protected void increaseDamage(){
-		
+	public int getDamage(){
+		return damage;
 	}
 	
 	public void shoot(){
@@ -65,6 +61,7 @@ public class FireballFixture {
 //			this.body.destroyFixture(fixture);		// *** CAUSES ERROR *** //
 //		}											// ******************** //
 		System.out.println("trolololol");
+
 	}
 	
 	protected void createFixture(){

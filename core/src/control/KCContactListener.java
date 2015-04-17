@@ -41,7 +41,7 @@ public class KCContactListener implements ContactListener {
 	public void endContact(Contact contact) {
 		Fixture fa = contact.getFixtureA();
 		Fixture fb = contact.getFixtureB();
-		
+
 		if(fa.getUserData() != null && fb.getUserData() != null){
 			if((fa.getUserData().equals("lava") || fb.getUserData().equals("lava"))
 				&&
@@ -51,7 +51,7 @@ public class KCContactListener implements ContactListener {
 					&&
 					(fa.getUserData().equals("player") || fb.getUserData().equals("player"))){
 				System.out.println("Hit!");	
-				
+
 			}
 		}
 		
