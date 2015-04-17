@@ -28,15 +28,20 @@ public class Player {
 		moveDown = down;
 		moveLeft = left;
 		moveRight = right;
-		isGettingInput = goUp || goDown || goLeft || goRight;
-		
+
 		
 		bdef = new BodyDef();
 		fdef = new FixtureDef();
 		
+		setPlayerPos(x, y);
 		
+		createPlayerInWorld();
 		
-		bdef.position.set(x / models.KCVars.PPM, y / models.KCVars.PPM);		
+
+	}
+	
+	private void createPlayerInWorld(){
+	
 		bdef.type = BodyType.DynamicBody;
 		body = control.KeyboardChaosControl.getWorld().createBody(bdef);
 		
@@ -51,8 +56,6 @@ public class Player {
 		Fixture f = body.createFixture(fdef);
 		f.setUserData("player");
 	}
-	
-	
 	
 	
 	protected Spell spell1, spell2;
@@ -78,7 +81,7 @@ public class Player {
 	}
 	
 	public void setPlayerPos(float x, float y){
-		
+		this.bdef.position.set(x / models.KCVars.PPM, y / models.KCVars.PPM);
 	}
 	
 	public void setUp(boolean boo){
@@ -103,6 +106,12 @@ public class Player {
 	
 	private void setInputStatus(){
 		this.isGettingInput = goUp || goDown || goLeft || goRight;
+	}
+	
+	private void setLatestDirection(){
+		if(goUp && goLeft){
+			System.out.println("");
+		}
 	}
 	
 	

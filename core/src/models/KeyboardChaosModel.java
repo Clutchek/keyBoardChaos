@@ -39,6 +39,10 @@ public class KeyboardChaosModel {
 		players.add(new Player(Keys.Y, Keys.H, Keys.J, Keys.G, 300f, 200f));
 	}
 	
+	public void test(){
+		
+	}
+	
 	
 	
 	

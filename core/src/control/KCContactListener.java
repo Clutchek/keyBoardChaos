@@ -42,10 +42,17 @@ public class KCContactListener implements ContactListener {
 		Fixture fa = contact.getFixtureA();
 		Fixture fb = contact.getFixtureB();
 		
-		if((fa.getUserData().equals("lava") || fb.getUserData().equals("lava"))
-			&&
-			(fa.getUserData().equals("player") || fb.getUserData().equals("player"))){
-			KCVars.playerIsInLava = false;
+		if(fa.getUserData() != null && fb.getUserData() != null){
+			if((fa.getUserData().equals("lava") || fb.getUserData().equals("lava"))
+				&&
+				(fa.getUserData().equals("player") || fb.getUserData().equals("player"))){
+				KCVars.playerIsInLava = false;
+			}else if((fa.getUserData().equals("spell") || fb.getUserData().equals("spell"))
+					&&
+					(fa.getUserData().equals("player") || fb.getUserData().equals("player"))){
+				System.out.println("Hit!");	
+				
+			}
 		}
 		
 	}

@@ -1,5 +1,10 @@
 package control;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
+
 import models.KCVars;
 import models.KeyboardChaosModel;
 //import models.KeyboardChaosModel;
@@ -14,7 +19,9 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
+import com.badlogic.gdx.physics.box2d.Fixture;
 //import com.badlogic.gdx.physics.box2d.Body;
 //import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.World;
@@ -27,6 +34,7 @@ public class KeyboardChaosControl implements ApplicationListener {
 	private static World world;
 	private KeyboardChaosView view;
 	private KeyboardChaosModel model;
+	private ConcurrentHashMap<Body, Fixture> fixturesToDestroy;
 	
 	private float PPM = KCVars.PPM;
 	
@@ -42,6 +50,9 @@ public class KeyboardChaosControl implements ApplicationListener {
 		batch = new SpriteBatch();
 		view = new view.KeyboardChaosView(this);
 		model = new models.KeyboardChaosModel(this);
+		
+		//List of fixtures that needs to be destroyed
+		fixturesToDestroy = models.KCVars.fixturesToDestroy;
 		
 		//Set our own input processor
 		Gdx.input.setInputProcessor(new KCInputProcessor());
@@ -96,14 +107,25 @@ public class KeyboardChaosControl implements ApplicationListener {
 	}
 
 	public void update(float dt){
-
+		
 	}
 
 	public void dispose() {	
 		
 	}	
 	
+	public synchronized void destroyThisFixtureLater(Body b, Fixture f){
+		fixturesToDestroy.put(b, f);
+	}
 	
+	public synchronized void destroyFixtures(){
+		if(!fixturesToDestroy.isEmpty()){
+			for(Body b : fixturesToDestroy.keySet()){
+				b.destroyFixture(fixturesToDestroy.get(b));
+				fixturesToDestroy.remove(b);
+			}
+		}
+	}
 	
 	public void resize(int width, int height) {}
 	public void pause() {}

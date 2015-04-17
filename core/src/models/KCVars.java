@@ -1,6 +1,11 @@
 package models;
 
+import java.util.HashMap;
+import java.util.concurrent.ConcurrentHashMap;
+
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.physics.box2d.Body;
+import com.badlogic.gdx.physics.box2d.Fixture;
 
 public class KCVars {
 	
@@ -16,6 +21,7 @@ public class KCVars {
 	public static final short BIT_SPELL = 4;
 	public static final short BIT_OBSTACLE = 8;
 	public static final short BIT_LAVA = 16;
+	public static final short BIT_INVISIBLE_WALL = 32;
 	
 	//Updates per second
 	public static final float TIME_STEP = 1 / 60f;
@@ -33,5 +39,10 @@ public class KCVars {
 	//Test
 	
 	public static boolean playerIsInLava = false;
+	
+	
+	//List of fixtures to destroy
+	public static ConcurrentHashMap<Body, Fixture> fixturesToDestroy = new ConcurrentHashMap<Body, Fixture>();
+	
 	
 }

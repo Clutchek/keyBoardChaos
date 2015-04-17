@@ -78,6 +78,7 @@ public class StandardMode extends GameState {
 	public void update(float dt) {
 		handleInput();
 		world.step(dt, 6, 2);
+		gsm.getControl().destroyFixtures();
 	}
 
 	@Override

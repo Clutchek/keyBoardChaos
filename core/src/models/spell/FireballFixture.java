@@ -36,7 +36,7 @@ public class FireballFixture {
 		shoot();
 		task = new TimerTask(){
 			public void run(){
-				dispose();
+				models.KCVars.fixturesToDestroy.put(body, fixture);
 			}
 		};
 		timer.schedule(task, 2000);
@@ -58,8 +58,13 @@ public class FireballFixture {
 		applyForce(new Vector2(1,1)); //This needs to get a vector that says in which direction the player is facing
 	}
 	
+
+	
 	protected void dispose(){
-		this.body.destroyFixture(fixture);
+//		if(fixture != null){						// ******************** //
+//			this.body.destroyFixture(fixture);		// *** CAUSES ERROR *** //
+//		}											// ******************** //
+		System.out.println("trolololol");
 	}
 	
 	protected void createFixture(){
