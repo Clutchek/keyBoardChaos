@@ -3,6 +3,7 @@ package control.states;
 import java.util.ArrayList;
 import java.util.List;
 
+import models.KCVars.Direction;
 import models.player.Player;
 
 import com.badlogic.gdx.Gdx;
@@ -35,12 +36,14 @@ public class StandardMode extends GameState {
 	
 	private TiledMap tileMap;
 	private OrthogonalTiledMapRenderer mapRenderer;
+	private GameStateManager gsm;
 	
 
 	public StandardMode(GameStateManager gsm){
 		super(gsm);
-		players = gsm.getControl().getModel().getPlayerList();
-		world = gsm.getControl().getWorld();
+		this.gsm = super.getGameStageManager();
+		players = this.gsm.getControl().getModel().getPlayerList();
+		world = this.gsm.getControl().getWorld();
 
 		
 	}
@@ -57,18 +60,18 @@ public class StandardMode extends GameState {
 		}
 	
 		for(Player p : players){
-			if(p.isGettingInput){
-				if(p.goUp){
-					p.body.applyForceToCenter(0, 1, true);
+			if(p.isGettingInput()){
+				if(p.isMovingUp()){
+					p.getBody().applyForceToCenter(0, 1, true);
 				}
-				if(p.goRight){
-					p.body.applyForceToCenter(1, 0, true);
+				if(p.isMovingRight()){
+					p.getBody().applyForceToCenter(1, 0, true);
 				}
-				if(p.goLeft){
-					p.body.applyForceToCenter(-1, 0, true);
+				if(p.isMovingLeft()){
+					p.getBody().applyForceToCenter(-1, 0, true);
 				}
-				if(p.goDown){
-					p.body.applyForceToCenter(0, -1, true);
+				if(p.isMovingDown()){
+					p.getBody().applyForceToCenter(0, -1, true);
 				}
 			}
 		}		

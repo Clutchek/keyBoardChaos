@@ -68,7 +68,7 @@ public class FireballFixture {
 		bdef = new BodyDef();
 		bdef.type = BodyType.DynamicBody;
 		
-		Vector2 v = originPlayer.body.getPosition();
+		Vector2 v = originPlayer.getBody().getPosition();
 		float x = v.x;
 		float y = v.y;
 		

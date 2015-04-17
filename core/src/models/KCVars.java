@@ -9,6 +9,11 @@ import com.badlogic.gdx.physics.box2d.Fixture;
 
 public class KCVars {
 	
+	// Enum describing a direction
+	public static enum Direction {
+	    UP, DOWN, RIGHT, LEFT, UPPERRIGHT, UPPERLEFT, LOWERRIGHT, LOWERLEFT,  NAN
+	}
+	
 	// Main window width and height
 	public static final int GAME_WIDTH = 1440, GAME_HEIGHT = 960;
 	

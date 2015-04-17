@@ -24,6 +24,10 @@ public abstract class GameState {
 		
 	}
 	
+	public GameStateManager getGameStageManager(){
+		return gsm;
+	}
+	
 	public abstract void handleInput();
 	public abstract void update(float dt);
 	public abstract void render();

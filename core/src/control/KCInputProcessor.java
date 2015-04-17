@@ -17,13 +17,13 @@ public class KCInputProcessor extends InputAdapter{
 	public boolean keyDown(int keycode) {
 		
 		for(Player p : control.states.StandardMode.getPlayerList()){
-			if(keycode == p.moveUp){
+			if(keycode == p.getUpKey()){
 				p.setUp(true);
-			}else if(keycode == p.moveDown){
+			}else if(keycode == p.getDownKey()){
 				p.setDown(true);
-			}else if(keycode == p.moveRight){
+			}else if(keycode == p.getRightKey()){
 				p.setRight(true);
-			}else if(keycode == p.moveLeft){
+			}else if(keycode == p.getLeftKey()){
 				p.setLeft(true);
 			}
 		}
@@ -35,13 +35,13 @@ public class KCInputProcessor extends InputAdapter{
 	public boolean keyUp(int keycode) {
 		
 		for(Player p : control.states.StandardMode.getPlayerList()){
-			if(keycode == p.moveUp){
+			if(keycode == p.getUpKey()){
 				p.setUp(false);
-			}else if(keycode == p.moveDown){
+			}else if(keycode == p.getDownKey()){
 				p.setDown(false);
-			}else if(keycode == p.moveRight){
+			}else if(keycode == p.getRightKey()){
 				p.setRight(false);
-			}else if(keycode == p.moveLeft){
+			}else if(keycode == p.getLeftKey()){
 				p.setLeft(false);
 			}
 		}
