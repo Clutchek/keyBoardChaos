@@ -3,6 +3,7 @@ package models.player;
 import models.KCVars.Direction;
 import models.spell.Spell;
 
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
@@ -21,6 +22,7 @@ public class Player {
 	private Body body;
 	private boolean isGettingInput;
 	private Direction playerDirection;
+	private Vector2 direction;
 	
 	
 	public Player(int up, int down, int right, int left, float x, float y){
@@ -153,12 +155,30 @@ public class Player {
 		return playerDirection;
 	}
 	
+	public Vector2 getVector(){
+		return direction;
+	}
+	
 	private void setInputStatus(){
-		if(isMovingUp() || isMovingDown() || isMovingRight() || isMovingLeft()){
-			isGettingInput = true;
-		}else{
-			isGettingInput = false;
+		isGettingInput = isMovingUp() || isMovingDown() || isMovingRight() || isMovingLeft();
+		
+		if(isGettingInput()){
+			direction = new Vector2(0,0);
+			
+			if(isMovingUp()){
+				direction.y = 1;
+				}
+			if(isMovingRight()){
+				direction.x = 1;
+				}
+			if(isMovingLeft()){
+				direction.x = -1;
+			}
+			if(isMovingDown()){
+				direction.y = -1;
+			}
 		}
+
 	}
 	
 	/*private void setLatestDirection(){

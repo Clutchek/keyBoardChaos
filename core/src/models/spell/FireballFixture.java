@@ -22,7 +22,7 @@ public class FireballFixture {
 	private BodyDef bdef;
 	private Body body;
 	private World world;
-	private Player originPlayer;
+	private Player player;
 	private Fixture fixture;
 	private Timer timer;
 	private TimerTask task;
@@ -31,7 +31,7 @@ public class FireballFixture {
 	public FireballFixture(int damage, int projectileSpeed, Player originPlayer){
 		this.damage = damage;
 		this.projectileSpeed = projectileSpeed;
-		this.originPlayer = originPlayer;
+		this.player = originPlayer;
 		timer = new Timer();
 		shoot();
 		task = new TimerTask(){
@@ -50,8 +50,12 @@ public class FireballFixture {
 	}
 	
 	public void shoot(){
-		createFixture();
-		applyForce(new Vector2(1,1)); //This needs to get a vector that says in which direction the player is facing
+		if(player.getVector() != null){
+			createFixture();
+			//p.body.applyForceToCenter(direction, true);
+			//applyForce(new Vector2(1,1)); //This needs to get a vector that says in which direction the player is facing
+			applyForce(player.getVector());
+		}
 	}
 	
 
@@ -68,7 +72,7 @@ public class FireballFixture {
 		bdef = new BodyDef();
 		bdef.type = BodyType.DynamicBody;
 		
-		Vector2 v = originPlayer.getBody().getPosition();
+		Vector2 v = player.getBody().getPosition();
 		float x = v.x;
 		float y = v.y;
 		
