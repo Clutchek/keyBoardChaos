@@ -117,21 +117,33 @@ public class Player {
 	public void setUp(boolean b){
 		movingUp = b;
 		setInputStatus();
+		if(b){
+			updateDirection();
+		}
 	}
 	
 	public void setDown(boolean b){
 		movingDown = b;
 		setInputStatus();
+		if(b){
+			updateDirection();
+		}
 	}
 	
 	public void setRight(boolean b){
 		movingRight = b;
 		setInputStatus();
+		if(b){
+			updateDirection();
+		}
 	}
 	
 	public void setLeft(boolean b){
 		movingLeft = b;
 		setInputStatus();
+		if(b){
+			updateDirection();
+		}
 	}
 	
 	public boolean isGettingInput(){
@@ -161,7 +173,10 @@ public class Player {
 	
 	private void setInputStatus(){
 		isGettingInput = isMovingUp() || isMovingDown() || isMovingRight() || isMovingLeft();
-		
+
+	}
+	
+	private void updateDirection(){
 		if(isGettingInput()){
 			direction = new Vector2(0,0);
 			
@@ -178,7 +193,6 @@ public class Player {
 				direction.y = -1;
 			}
 		}
-
 	}
 	
 	/*private void setLatestDirection(){
