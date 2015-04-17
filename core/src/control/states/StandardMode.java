@@ -61,7 +61,7 @@ public class StandardMode extends GameState {
 	
 		for(Player p : players){
 			if(p.isGettingInput()){
-				if(p.isMovingUp()){
+				/*if(p.isMovingUp()){
 					p.getBody().applyForceToCenter(0, 1, true);
 				}
 				if(p.isMovingRight()){
@@ -72,7 +72,8 @@ public class StandardMode extends GameState {
 				}
 				if(p.isMovingDown()){
 					p.getBody().applyForceToCenter(0, -1, true);
-				}
+				}*/
+				p.getBody().applyForceToCenter(p.getVector(), true);
 			}
 		}		
 	}
