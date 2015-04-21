@@ -200,6 +200,12 @@ public class Player {
 		isGettingInput = isMovingUp() || isMovingDown() || isMovingRight() || isMovingLeft();
 
 		if(isGettingInput()){
+			updateDirection();
+		}
+	}
+	
+	private void updateDirection(){
+		if(isGettingInput()){
 			direction = new Vector2(0,0);
 			
 			if(isMovingUp()){
@@ -215,25 +221,6 @@ public class Player {
 				direction.y = -1;
 			}
 		}
-	}
-	
-	private void updateDirection(){
-		/*if(isGettingInput()){
-			direction = new Vector2(0,0);
-			
-			if(isMovingUp()){
-				direction.y = 1;
-				}
-			if(isMovingRight()){
-				direction.x = 1;
-				}
-			if(isMovingLeft()){
-				direction.x = -1;
-			}
-			if(isMovingDown()){
-				direction.y = -1;
-			}
-		}*/
 	}
 	
 	/*private void setLatestDirection(){
