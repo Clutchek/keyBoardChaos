@@ -15,7 +15,7 @@ public class Player {
 	
 	private int healthPoints;
 	private int speed; // This needs to be a force in newtons, by itself or made to a force through methods
-	private int moveUpKey, moveDownKey, moveLeftKey, moveRightKey;
+	private int moveUpKey, moveDownKey, moveLeftKey, moveRightKey, firstSpellKey, secondSpellKey;
 	private boolean movingRight, movingLeft, movingUp, movingDown;
 	private BodyDef bdef;
 	private FixtureDef fdef;
@@ -23,15 +23,20 @@ public class Player {
 	private boolean isGettingInput;
 	private Direction playerDirection;
 	private Vector2 direction;
+	private int radius;
 	
 	
-	public Player(int up, int down, int right, int left, float x, float y){
+	public Player(int up, int down, int right, int left, int firstSpellKey, int secondSpellKey, float x, float y){
 		healthPoints = 100;
 		speed = 1;
 		moveUpKey = up;
 		moveDownKey = down;
 		moveLeftKey = left;
 		moveRightKey = right;
+		this.firstSpellKey = firstSpellKey;
+		this.secondSpellKey = secondSpellKey;
+		
+		radius = 5;
 		
 		playerDirection = Direction.NAN;
 		movingRight = false;
@@ -78,8 +83,20 @@ public class Player {
 		spell1 = spell;
 	}
 	
-	public Spell getSpell(){
+	public Spell getFirstSpell(){
 		return spell1;
+	}
+	
+	public Spell getSecondSpell(){
+		return spell2;
+	}
+	
+	public int getFirstSpellKey(){
+		return this.firstSpellKey;
+	}
+	
+	public int getSecondSpellKey(){
+		return this.secondSpellKey;
 	}
 	
 	protected void setSecondsSpell(Spell spell){
@@ -144,6 +161,10 @@ public class Player {
 		if(b){
 			updateDirection();
 		}
+	}
+	
+	public int getBodyRadius(){
+		return radius;
 	}
 	
 	public boolean isGettingInput(){

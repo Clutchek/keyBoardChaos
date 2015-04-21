@@ -23,21 +23,14 @@ public class KCContactListener implements ContactListener {
 	public void beginContact(Contact contact) {
 		Fixture fa = contact.getFixtureA();
 		Fixture fb = contact.getFixtureB();
-		if(fa.getUserData() != null && fb.getUserData() != null){
-			System.out.println("fa: " + fa.getUserData().toString());
-			System.out.println("fb: " + fb.getUserData().toString());
-			if(){
-				KCVars.playerIsInLava = true;
-			}else if((fa.getUserData().equals("spell") || fb.getUserData().equals("spell"))
-					&&
-					(fa.getUserData().equals("player") || fb.getUserData().equals("player"))){
-				System.out.println("Hit!");	
-				
-			}
-			
-			System.out.println("Boop");
-		}
 		
+		if(fa.getUserData() != null && fb.getUserData() != null){
+			if(isPlayerSpellCollision(fa, fb)){
+				System.out.println("Hit!");		
+			}else if(isPlayerLavaCollision(fa, fb)){
+				System.out.println("Lava!");
+			}
+		}
 	}
 
 	@Override
@@ -46,15 +39,10 @@ public class KCContactListener implements ContactListener {
 		Fixture fb = contact.getFixtureB();
 
 		if(fa.getUserData() != null && fb.getUserData() != null){
-			if((fa.getUserData().equals("lava") || fb.getUserData().equals("lava"))
-				&&
-				(fa.getUserData().equals("player") || fb.getUserData().equals("player"))){
-				KCVars.playerIsInLava = false;
-			}else if((fa.getUserData().equals("spell") || fb.getUserData().equals("spell"))
-					&&
-					(fa.getUserData().equals("player") || fb.getUserData().equals("player"))){
-				System.out.println("Hit!");	
-
+			if(isPlayerSpellCollision(fa, fb)){
+				System.out.println("Hit ended");
+			}else if(isPlayerLavaCollision(fa, fb)){
+				System.out.println("No more lava");
 			}
 		}
 		
@@ -70,13 +58,6 @@ public class KCContactListener implements ContactListener {
 	public void postSolve(Contact contact, ContactImpulse impulse) {
 		// TODO Auto-generated method stub
 		
-	}
-
-	public static KCInput getInstance(){
-		if(kc == null){
-			kc = new KCInput();
-		}
-		return kc;
 	}
 	
 	private boolean isPlayerSpellCollision(Fixture fa, Fixture fb){
