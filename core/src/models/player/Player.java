@@ -64,7 +64,7 @@ public class Player {
 		fdef.filter.maskBits = models.KCVars.MASK_PLAYER;
 		body.setLinearDamping(.5f);
 		Fixture f = body.createFixture(fdef);
-		f.setUserData("player");
+		f.setUserData(this);
 	}
 	
 	

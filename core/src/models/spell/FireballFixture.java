@@ -94,9 +94,9 @@ public class FireballFixture {
 		
 		shape.setRadius(3f / 100f);
 		fdef.shape = shape;
-//		body.setUserData("spell");
+
 		fixture = body.createFixture(fdef);
-		fixture.setUserData("spell");
+		fixture.setUserData(this);
 	}
 	
 	protected void applyForce(Vector2 vector){

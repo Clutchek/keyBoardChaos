@@ -16,6 +16,9 @@ public class KCContactListener implements ContactListener {
 	 * action.
 	 */
 	
+	KCInput kc = KCInput.getInstance();
+	
+	
 	@Override
 	public void beginContact(Contact contact) {
 		Fixture fa = contact.getFixtureA();
@@ -23,9 +26,7 @@ public class KCContactListener implements ContactListener {
 		if(fa.getUserData() != null && fb.getUserData() != null){
 			System.out.println("fa: " + fa.getUserData().toString());
 			System.out.println("fb: " + fb.getUserData().toString());
-			if((fa.getUserData().equals("lava") || fb.getUserData().equals("lava"))
-				&&
-				(fa.getUserData().equals("player") || fb.getUserData().equals("player"))){
+			if(KCInput.){
 				KCVars.playerIsInLava = true;
 			}else if((fa.getUserData().equals("spell") || fb.getUserData().equals("spell"))
 					&&
