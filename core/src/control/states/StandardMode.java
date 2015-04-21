@@ -54,10 +54,6 @@ public class StandardMode extends GameState {
 		if(models.KCVars.playerIsInLava){
 			System.out.println("LAVA IT BURN OMG");
 		}
-		
-		if(Gdx.input.isKeyJustPressed(Keys.SPACE)){
-			players.get(0).getSpell().castSpell();
-		}
 	
 		for(Player p : players){
 			if(p.isGettingInput()){
@@ -74,6 +70,14 @@ public class StandardMode extends GameState {
 					p.getBody().applyForceToCenter(0, -1, true);
 				}*/
 				p.getBody().applyForceToCenter(p.getVector(), true);
+			}
+			
+			if(Gdx.input.isKeyJustPressed(p.getFirstSpellKey())){
+				p.getFirstSpell().castSpell();
+			}
+			
+			if(Gdx.input.isKeyJustPressed(p.getSecondSpellKey())){
+				p.getSecondSpell().castSpell();
 			}
 		}		
 	}

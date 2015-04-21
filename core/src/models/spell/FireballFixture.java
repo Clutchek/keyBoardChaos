@@ -3,6 +3,7 @@ package models.spell;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import models.KCVars;
 import models.player.Player;
 
 import com.badlogic.gdx.math.Vector2;
@@ -26,12 +27,14 @@ public class FireballFixture {
 	private Fixture fixture;
 	private Timer timer;
 	private TimerTask task;
+	private float fixtureRadius;
 	
 	
 	public FireballFixture(int damage, int projectileSpeed, Player originPlayer){
 		this.damage = damage;
 		this.projectileSpeed = projectileSpeed;
 		this.player = originPlayer;
+		this.fixtureRadius = 3f;
 		timer = new Timer();
 		shoot();
 		task = new TimerTask(){
@@ -72,16 +75,15 @@ public class FireballFixture {
 		bdef = new BodyDef();
 		bdef.type = BodyType.DynamicBody;
 		
-		Vector2 v = player.getBody().getPosition();
-		float x = v.x;
-		float y = v.y;
+		Vector2 playerPos = player.getBody().getPosition();
+		Vector2 distanceFromPlayer = new Vector2(player.getVector()).setLength(player.getBodyRadius() + this.fixtureRadius);
+		float x = playerPos.x;
+		float y = playerPos.y;
 		
-		x+=20f / 100f;
-		y+=20f / 100f ;
+		x+= distanceFromPlayer.x / KCVars.PPM;
+		y+= distanceFromPlayer.y / KCVars.PPM;
 		
-		v = new Vector2(x,y);
-		
-		bdef.position.set(v);
+		bdef.position.set(new Vector2(x, y));
 		world = control.KeyboardChaosControl.getWorld();
 		body = world.createBody(bdef);
 		
@@ -92,7 +94,7 @@ public class FireballFixture {
 		
 		CircleShape shape = new CircleShape();
 		
-		shape.setRadius(3f / 100f);
+		shape.setRadius(fixtureRadius / 100f);
 		fdef.shape = shape;
 
 		fixture = body.createFixture(fdef);
