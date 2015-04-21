@@ -205,21 +205,19 @@ public class Player {
 	}
 	
 	private void updateDirection(){
-		if(isGettingInput()){
-			direction = new Vector2(0,0);
-			
-			if(isMovingUp()){
-				direction.y = 1;
-				}
-			if(isMovingRight()){
-				direction.x = 1;
-				}
-			if(isMovingLeft()){
-				direction.x = -1;
+		direction = new Vector2(0,0);
+		
+		if(isMovingUp()){
+			direction.y = 1;
 			}
-			if(isMovingDown()){
-				direction.y = -1;
+		if(isMovingRight()){
+			direction.x = 1;
 			}
+		if(isMovingLeft()){
+			direction.x = -1;
+		}
+		if(isMovingDown()){
+			direction.y = -1;
 		}
 	}
 	
