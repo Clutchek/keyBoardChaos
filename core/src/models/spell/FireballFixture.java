@@ -86,16 +86,19 @@ public class FireballFixture {
 		bdef.position.set(new Vector2(x, y));
 		world = control.KeyboardChaosControl.getWorld();
 		body = world.createBody(bdef);
-		body.setUserData("spell");
 		
 		fdef = new FixtureDef();
+		
+		fdef.filter.categoryBits = models.KCVars.BIT_SPELL;
+		fdef.filter.maskBits = models.KCVars.MASK_SPELL;
 		
 		CircleShape shape = new CircleShape();
 		
 		shape.setRadius(fixtureRadius / 100f);
 		fdef.shape = shape;
-		fdef.isSensor = true;
+//		body.setUserData("spell");
 		fixture = body.createFixture(fdef);
+		fixture.setUserData("spell");
 	}
 	
 	protected void applyForce(Vector2 vector){
