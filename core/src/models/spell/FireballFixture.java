@@ -48,10 +48,16 @@ public class FireballFixture {
 		
 	}
 	
+	/**
+	 * @return damage dealt by this fireball
+	 */
 	public int getDamage(){
 		return damage;
 	}
 	
+	/**
+	 * Shoots a fireball
+	 */
 	public void shoot(){
 		if(player.getVector() != null){
 			createFixture();
@@ -71,6 +77,9 @@ public class FireballFixture {
 
 	}
 	
+	/**
+	 * Creates a fixture for the fireball
+	 */
 	protected void createFixture(){
 		bDef = new BodyDef();
 		bDef.type = BodyType.DynamicBody;
@@ -80,6 +89,7 @@ public class FireballFixture {
 		float x = playerPos.x;
 		float y = playerPos.y;
 		
+		// Set the fireball's initial position by adding a distance from the player's position
 		x+= distanceFromPlayer.x / KCVars.PPM;
 		y+= distanceFromPlayer.y / KCVars.PPM;
 		
@@ -101,6 +111,10 @@ public class FireballFixture {
 		fixture.setUserData(this);
 	}
 	
+	/**
+	 * Applies a force to the fireball
+	 * @param vector a vector of the force that is to be applied
+	 */
 	protected void applyForce(Vector2 vector){
 		float x = vector.x;
 		float y = vector.y;
