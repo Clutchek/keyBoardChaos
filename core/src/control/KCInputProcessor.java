@@ -1,8 +1,12 @@
 package control;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 import models.player.Player;
 
 import com.badlogic.gdx.InputAdapter;
+import com.badlogic.gdx.math.Vector2;
 
 /*
  * If, in the future, this for some reason needs to extend 
@@ -13,6 +17,8 @@ import com.badlogic.gdx.InputAdapter;
 
 public class KCInputProcessor extends InputAdapter{
 
+	Timer timer = new Timer();
+	
 	@Override
 	public boolean keyDown(int keycode) {
 		
@@ -34,7 +40,9 @@ public class KCInputProcessor extends InputAdapter{
 	@Override
 	public boolean keyUp(int keycode) {
 		
-		for(Player p : control.states.StandardMode.getPlayerList()){
+		for(final Player p : control.states.StandardMode.getPlayerList()){
+			final Vector2 oldDirection = p.getDirection();
+			
 			if(keycode == p.getUpKey()){
 				p.setUp(false);
 			}else if(keycode == p.getDownKey()){
@@ -43,6 +51,19 @@ public class KCInputProcessor extends InputAdapter{
 				p.setRight(false);
 			}else if(keycode == p.getLeftKey()){
 				p.setLeft(false);
+			}
+			
+			if (p.isGettingInput()) {
+				System.out.println(oldDirection);
+				timer.schedule(new TimerTask() {
+					  @Override
+					  public void run() {
+						  if (!p.isGettingInput()) {
+							  p.setDirection(oldDirection);
+							  System.out.println(oldDirection);
+						  }
+					  }
+				}, 50);
 			}
 		}
 		return true;

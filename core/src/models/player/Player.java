@@ -163,8 +163,12 @@ public class Player {
 		return movingLeft;
 	}
 	
-	public Direction getDirection(){
-		return playerDirection;
+	public Vector2 getDirection(){
+		return direction;
+	}
+	
+	public void setDirection(Vector2 direction) {
+		this.direction = direction;
 	}
 	
 	public Vector2 getVector(){
@@ -174,9 +178,6 @@ public class Player {
 	private void setInputStatus(){
 		isGettingInput = isMovingUp() || isMovingDown() || isMovingRight() || isMovingLeft();
 
-	}
-	
-	private void updateDirection(){
 		if(isGettingInput()){
 			direction = new Vector2(0,0);
 			
@@ -193,6 +194,25 @@ public class Player {
 				direction.y = -1;
 			}
 		}
+	}
+	
+	private void updateDirection(){
+		/*if(isGettingInput()){
+			direction = new Vector2(0,0);
+			
+			if(isMovingUp()){
+				direction.y = 1;
+				}
+			if(isMovingRight()){
+				direction.x = 1;
+				}
+			if(isMovingLeft()){
+				direction.x = -1;
+			}
+			if(isMovingDown()){
+				direction.y = -1;
+			}
+		}*/
 	}
 	
 	/*private void setLatestDirection(){
