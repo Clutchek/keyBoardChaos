@@ -54,7 +54,7 @@ public class KCInputProcessor extends InputAdapter{
 			}
 			
 			if (p.isGettingInput()) {
-				System.out.println(oldDirection);
+				//System.out.println(oldDirection);
 				timer.schedule(new TimerTask() {
 					  @Override
 					  public void run() {

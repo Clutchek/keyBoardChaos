@@ -61,7 +61,7 @@ public class Player {
 		fdef.shape = cshape;
 		body.setUserData("player");
 		fdef.filter.categoryBits = models.KCVars.BIT_PLAYER;
-		fdef.filter.maskBits = models.KCVars.BIT_PLAYER | models.KCVars.BIT_SPELL | models.KCVars.BIT_OBSTACLE | models.KCVars.BIT_LAVA;
+		fdef.filter.maskBits = models.KCVars.MASK_PLAYER;
 		body.setLinearDamping(.5f);
 		Fixture f = body.createFixture(fdef);
 		f.setUserData("player");

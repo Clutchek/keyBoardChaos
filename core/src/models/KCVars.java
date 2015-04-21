@@ -22,11 +22,17 @@ public class KCVars {
 	
 	//Bits used to decide which bodies that will collide with what
 	
-	public static final short BIT_PLAYER = 2;
-	public static final short BIT_SPELL = 4;
-	public static final short BIT_OBSTACLE = 8;
-	public static final short BIT_LAVA = 16;
-	public static final short BIT_INVISIBLE_WALL = 32;
+	public static final short BIT_PLAYER = 0x0001;
+	public static final short BIT_SPELL = 0x0002;
+	public static final short BIT_OBSTACLE = 0x0004;
+	public static final short BIT_LAVA = 0x0008;
+	public static final short BIT_INVISIBLE_WALL = 0x00016;
+	
+	public static final short MASK_PLAYER = BIT_SPELL | BIT_OBSTACLE | BIT_LAVA;
+	public static final short MASK_SPELL = BIT_PLAYER | BIT_OBSTACLE | BIT_INVISIBLE_WALL;
+	public static final short MASK_OBSTACLE = BIT_PLAYER | BIT_SPELL;
+	public static final short MASK_LAVA = BIT_PLAYER;
+	public static final short MASK_INVISIBLE_WALL = BIT_SPELL;
 	
 	//Updates per second
 	public static final float TIME_STEP = 1 / 60f;

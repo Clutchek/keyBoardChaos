@@ -21,6 +21,8 @@ public class KCContactListener implements ContactListener {
 		Fixture fa = contact.getFixtureA();
 		Fixture fb = contact.getFixtureB();
 		if(fa.getUserData() != null && fb.getUserData() != null){
+			System.out.println("fa: " + fa.getUserData().toString());
+			System.out.println("fb: " + fb.getUserData().toString());
 			if((fa.getUserData().equals("lava") || fb.getUserData().equals("lava"))
 				&&
 				(fa.getUserData().equals("player") || fb.getUserData().equals("player"))){
