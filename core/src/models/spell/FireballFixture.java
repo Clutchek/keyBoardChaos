@@ -19,8 +19,8 @@ public class FireballFixture {
 	
 	private int damage, projectileSpeed;
 	
-	private FixtureDef fdef;
-	private BodyDef bdef;
+	private FixtureDef fDef;
+	private BodyDef bDef;
 	private Body body;
 	private World world;
 	private Player player;
@@ -72,8 +72,8 @@ public class FireballFixture {
 	}
 	
 	protected void createFixture(){
-		bdef = new BodyDef();
-		bdef.type = BodyType.DynamicBody;
+		bDef = new BodyDef();
+		bDef.type = BodyType.DynamicBody;
 		
 		Vector2 playerPos = player.getBody().getPosition();
 		Vector2 distanceFromPlayer = new Vector2(player.getVector()).setLength(player.getBodyRadius() + this.fixtureRadius);
@@ -83,21 +83,21 @@ public class FireballFixture {
 		x+= distanceFromPlayer.x / KCVars.PPM;
 		y+= distanceFromPlayer.y / KCVars.PPM;
 		
-		bdef.position.set(new Vector2(x, y));
+		bDef.position.set(new Vector2(x, y));
 		world = control.KeyboardChaosControl.getWorld();
-		body = world.createBody(bdef);
+		body = world.createBody(bDef);
 		
-		fdef = new FixtureDef();
+		fDef = new FixtureDef();
 		
-		fdef.filter.categoryBits = models.KCVars.BIT_SPELL;
-		fdef.filter.maskBits = models.KCVars.MASK_SPELL;
+		fDef.filter.categoryBits = models.KCVars.BIT_SPELL;
+		fDef.filter.maskBits = models.KCVars.MASK_SPELL;
 		
 		CircleShape shape = new CircleShape();
 		
 		shape.setRadius(fixtureRadius / 100f);
-		fdef.shape = shape;
+		fDef.shape = shape;
 
-		fixture = body.createFixture(fdef);
+		fixture = body.createFixture(fDef);
 		fixture.setUserData(this);
 	}
 	

@@ -17,13 +17,13 @@ public class Player {
 	private int speed; // This needs to be a force in newtons, by itself or made to a force through methods
 	private int moveUpKey, moveDownKey, moveLeftKey, moveRightKey, firstSpellKey, secondSpellKey;
 	private boolean movingRight, movingLeft, movingUp, movingDown;
-	private BodyDef bdef;
-	private FixtureDef fdef;
+	private BodyDef bDef;
+	private FixtureDef fDef;
 	private Body body;
 	private boolean isGettingInput;
 	private Direction playerDirection;
 	private Vector2 direction;
-	private int radius;
+	private float radius;
 	
 	
 	public Player(int up, int down, int right, int left, int firstSpellKey, int secondSpellKey, float x, float y){
@@ -36,7 +36,7 @@ public class Player {
 		this.firstSpellKey = firstSpellKey;
 		this.secondSpellKey = secondSpellKey;
 		
-		radius = 5;
+		radius = 10f;
 		
 		playerDirection = Direction.NAN;
 		movingRight = false;
@@ -45,8 +45,8 @@ public class Player {
 		movingDown = false;
 
 		
-		bdef = new BodyDef();
-		fdef = new FixtureDef();
+		bDef = new BodyDef();
+		fDef = new FixtureDef();
 		
 		setPlayerPos(x, y);
 		
@@ -57,18 +57,18 @@ public class Player {
 	
 	private void createPlayerInWorld(){
 	
-		bdef.type = BodyType.DynamicBody;
-		body = control.KeyboardChaosControl.getWorld().createBody(bdef);
+		bDef.type = BodyType.DynamicBody;
+		body = control.KeyboardChaosControl.getWorld().createBody(bDef);
 		
 		CircleShape cshape = new CircleShape();
-		cshape.setRadius(10f / models.KCVars.PPM);
+		cshape.setRadius(radius / models.KCVars.PPM);
 		
-		fdef.shape = cshape;
+		fDef.shape = cshape;
 		body.setUserData("player");
-		fdef.filter.categoryBits = models.KCVars.BIT_PLAYER;
-		fdef.filter.maskBits = models.KCVars.MASK_PLAYER;
+		fDef.filter.categoryBits = models.KCVars.BIT_PLAYER;
+		fDef.filter.maskBits = models.KCVars.MASK_PLAYER;
 		body.setLinearDamping(.5f);
-		Fixture f = body.createFixture(fdef);
+		Fixture f = body.createFixture(fDef);
 		f.setUserData(this);
 	}
 	
@@ -128,7 +128,7 @@ public class Player {
 	}
 	
 	public void setPlayerPos(float x, float y){
-		this.bdef.position.set(x / models.KCVars.PPM, y / models.KCVars.PPM);
+		this.bDef.position.set(x / models.KCVars.PPM, y / models.KCVars.PPM);
 	}
 	
 	public void setUp(boolean b){
@@ -163,7 +163,7 @@ public class Player {
 		}
 	}
 	
-	public int getBodyRadius(){
+	public float getBodyRadius(){
 		return radius;
 	}
 	
