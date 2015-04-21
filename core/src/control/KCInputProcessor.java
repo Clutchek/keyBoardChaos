@@ -41,7 +41,7 @@ public class KCInputProcessor extends InputAdapter{
 	public boolean keyUp(int keycode) {
 		
 		for(final Player p : control.states.StandardMode.getPlayerList()){
-			final Vector2 oldDirection = p.getDirection();
+			final Vector2 oldDirection = p.getVector();
 			
 			if(keycode == p.getUpKey()){
 				p.setUp(false);
@@ -54,7 +54,6 @@ public class KCInputProcessor extends InputAdapter{
 			}
 			
 			if (p.isGettingInput()) {
-				System.out.println(oldDirection);
 				timer.schedule(new TimerTask() {
 					  @Override
 					  public void run() {

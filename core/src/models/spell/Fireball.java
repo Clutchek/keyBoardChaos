@@ -33,5 +33,4 @@ public class Fireball implements Spell{
 	public void castSpell(){
 		new FireballFixture( damage, projectileSpeed, originPlayer);
 	}
-
 }

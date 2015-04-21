@@ -15,23 +15,26 @@ public class Player {
 	
 	private int healthPoints;
 	private int speed; // This needs to be a force in newtons, by itself or made to a force through methods
-	private int moveUpKey, moveDownKey, moveLeftKey, moveRightKey;
+	private Spell spell1, spell2;
+	private int moveUpKey, moveDownKey, moveLeftKey, moveRightKey, firstSpellKey, secondSpellKey;
 	private boolean movingRight, movingLeft, movingUp, movingDown;
-	private BodyDef bdef;
-	private FixtureDef fdef;
+	private BodyDef bDef;
+	private FixtureDef fDef;
 	private Body body;
 	private boolean isGettingInput;
 	private Direction playerDirection;
 	private Vector2 direction;
+	private float fixtureRadius;
 	
-	
-	public Player(int up, int down, int right, int left, float x, float y){
+	public Player(int up, int down, int right, int left, int spell1, int spell2, float posX, float posY){
 		healthPoints = 100;
 		speed = 1;
 		moveUpKey = up;
 		moveDownKey = down;
 		moveLeftKey = left;
 		moveRightKey = right;
+		firstSpellKey = spell1;
+		secondSpellKey = spell2;
 		
 		playerDirection = Direction.NAN;
 		movingRight = false;
@@ -39,11 +42,12 @@ public class Player {
 		movingUp = false;
 		movingDown = false;
 
+		fixtureRadius = 10f;
 		
-		bdef = new BodyDef();
-		fdef = new FixtureDef();
+		bDef = new BodyDef();
+		fDef = new FixtureDef();
 		
-		setPlayerPos(x, y);
+		setPlayerPos(posX, posY);
 		
 		createPlayerInWorld();
 		
@@ -52,23 +56,20 @@ public class Player {
 	
 	private void createPlayerInWorld(){
 	
-		bdef.type = BodyType.DynamicBody;
-		body = control.KeyboardChaosControl.getWorld().createBody(bdef);
+		bDef.type = BodyType.DynamicBody;
+		body = control.KeyboardChaosControl.getWorld().createBody(bDef);
 		
 		CircleShape cshape = new CircleShape();
-		cshape.setRadius(10f / models.KCVars.PPM);
+		cshape.setRadius(fixtureRadius / models.KCVars.PPM);
 		
-		fdef.shape = cshape;
+		fDef.shape = cshape;
 		body.setUserData("player");
-		fdef.filter.categoryBits = models.KCVars.BIT_PLAYER;
-		fdef.filter.maskBits = models.KCVars.BIT_PLAYER | models.KCVars.BIT_SPELL | models.KCVars.BIT_OBSTACLE | models.KCVars.BIT_LAVA;
+		fDef.filter.categoryBits = models.KCVars.BIT_PLAYER;
+		fDef.filter.maskBits = models.KCVars.BIT_PLAYER | models.KCVars.BIT_SPELL | models.KCVars.BIT_OBSTACLE | models.KCVars.BIT_LAVA;
 		body.setLinearDamping(.5f);
-		Fixture f = body.createFixture(fdef);
+		Fixture f = body.createFixture(fDef);
 		f.setUserData("player");
 	}
-	
-	
-	private Spell spell1, spell2;
 	
 	public Body getBody(){
 		return body;
@@ -78,12 +79,24 @@ public class Player {
 		spell1 = spell;
 	}
 	
-	public Spell getSpell(){
+	public Spell getFirstSpell(){
 		return spell1;
 	}
 	
 	protected void setSecondsSpell(Spell spell){
 		spell2 = spell;
+	}
+	
+	public Spell getSecondSpell() {
+		return spell2;
+	}
+	
+	public int getFirstSpellKey() {
+		return firstSpellKey;
+	}
+	
+	public int getSecondSpellKey() {
+		return secondSpellKey;
 	}
 	
 	protected void incrementSpeed(){
@@ -110,8 +123,12 @@ public class Player {
 		return moveLeftKey;
 	}
 	
+	public float getBodyRadius() {
+		return fixtureRadius;
+	}
+	
 	public void setPlayerPos(float x, float y){
-		this.bdef.position.set(x / models.KCVars.PPM, y / models.KCVars.PPM);
+		this.bDef.position.set(x / models.KCVars.PPM, y / models.KCVars.PPM);
 	}
 	
 	public void setUp(boolean b){
@@ -163,8 +180,8 @@ public class Player {
 		return movingLeft;
 	}
 	
-	public Vector2 getDirection(){
-		return direction;
+	public Direction getDirection(){
+		return playerDirection;
 	}
 	
 	public void setDirection(Vector2 direction) {
