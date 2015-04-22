@@ -24,6 +24,9 @@ public class Player {
 	private Direction playerDirection;
 	private Vector2 direction;
 	private float radius;
+	private String playerName;
+	private Spell spell1, spell2;
+	private Fixture fixture;
 	
 	
 	public Player(int up, int down, int right, int left, int firstSpellKey, int secondSpellKey, float x, float y){
@@ -37,6 +40,8 @@ public class Player {
 		this.secondSpellKey = secondSpellKey;
 		
 		radius = 10f;
+		
+		playerName = "";
 		
 		playerDirection = Direction.NAN;
 		movingRight = false;
@@ -55,6 +60,20 @@ public class Player {
 
 	}
 	
+	public void takeDamage(int dmg){
+		System.out.println(getPlayerName() + ": I now have " + healthPoints + " hp");
+		healthPoints-=dmg;
+		if(healthPoints <= 0){
+			dispose();
+		}
+		System.out.println("Ouch");
+		System.out.println(getPlayerName() + ": I now have " + healthPoints + " hp");
+	}
+	
+	private void dispose(){
+		models.KCVars.fixturesToDestroy.put(this.body, this.fixture);
+	}
+	
 	private void createPlayerInWorld(){
 	
 		bDef.type = BodyType.DynamicBody;
@@ -68,12 +87,18 @@ public class Player {
 		fDef.filter.categoryBits = models.KCVars.BIT_PLAYER;
 		fDef.filter.maskBits = models.KCVars.MASK_PLAYER;
 		body.setLinearDamping(.5f);
-		Fixture f = body.createFixture(fDef);
-		f.setUserData(this);
+		fixture = body.createFixture(fDef);
+		fixture.setUserData(this);
 	}
 	
+	public void setPlayerName(String name){
+		playerName = name;
+	}
 	
-	private Spell spell1, spell2;
+	public String getPlayerName(){
+		return playerName;
+	}
+	
 	
 	public Body getBody(){
 		return body;
@@ -221,18 +246,5 @@ public class Player {
 		}
 	}
 	
-	/*private void setLatestDirection(){
-		if(goUp && goLeft){
-			System.out.println("");
-		}
-	}*/
-	
-	
-	
-	
-	
-	
-	
-
 	
 }

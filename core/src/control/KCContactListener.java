@@ -1,7 +1,7 @@
 package control;
 
-import models.KCVars;
 import models.player.Player;
+import models.spell.FireballFixture;
 import models.spell.Spell;
 
 import com.badlogic.gdx.physics.box2d.Contact;
@@ -21,31 +21,29 @@ public class KCContactListener implements ContactListener {
 	
 	@Override
 	public void beginContact(Contact contact) {
-		Fixture fa = contact.getFixtureA();
-		Fixture fb = contact.getFixtureB();
 		
-		if(fa.getUserData() != null && fb.getUserData() != null){
-			if(isPlayerSpellCollision(fa, fb)){
-				System.out.println("Hit!");		
-			}else if(isPlayerLavaCollision(fa, fb)){
-				System.out.println("Lava!");
-			}
+		if(isPlayerSpellCollision(contact)){
+			FireballFixture f = getFireballFixtureFromContact(contact);
+			f.dispose();
+			getPlayerFromContact(contact).takeDamage(f.getDamage());
+			
+
+		
+		}else if(isPlayerLavaCollision(contact)){
+			System.out.println("Lava!");
+		
 		}
+		
 	}
 
 	@Override
 	public void endContact(Contact contact) {
-		Fixture fa = contact.getFixtureA();
-		Fixture fb = contact.getFixtureB();
 
-		if(fa.getUserData() != null && fb.getUserData() != null){
-			if(isPlayerSpellCollision(fa, fb)){
-				System.out.println("Hit ended");
-			}else if(isPlayerLavaCollision(fa, fb)){
-				System.out.println("No more lava");
-			}
+		if(isPlayerSpellCollision(contact)){
+			System.out.println("Hit ended");
+		}else if(isPlayerLavaCollision(contact)){
+			System.out.println("No more lava");
 		}
-		
 	}
 
 	@Override
@@ -60,20 +58,21 @@ public class KCContactListener implements ContactListener {
 		
 	}
 	
-	private boolean isPlayerSpellCollision(Fixture fa, Fixture fb){
-		Object oa = fa.getUserData();
-		Object ob = fb.getUserData();
+	private boolean isPlayerSpellCollision(Contact contact){
+		Object oa = contact.getFixtureA().getUserData();
+		Object ob = contact.getFixtureB().getUserData();
 		
-		if((oa instanceof Player && ob instanceof Spell)
+		if((oa instanceof Player && ob instanceof FireballFixture)
 				||
-			(oa instanceof Spell && ob instanceof Player)){
+			(oa instanceof FireballFixture && ob instanceof Player)){
 			return true;
 		}else return false;
 	}
 	
-	private boolean isPlayerLavaCollision(Fixture fa, Fixture fb){
-		Object oa = fa.getUserData();
-		Object ob = fb.getUserData();
+	private boolean isPlayerLavaCollision(Contact contact){
+
+		Object oa = contact.getFixtureA().getUserData();
+		Object ob = contact.getFixtureB().getUserData();
 		
 		if(oa.equals("lava")){
 			return ob instanceof Player; 
@@ -81,9 +80,10 @@ public class KCContactListener implements ContactListener {
 			return oa instanceof Player;
 		}else return false;
 	}
-	private boolean isSpellWorldWallCollision(Fixture fa, Fixture fb){
-		Object oa = fa.getUserData();
-		Object ob = fb.getUserData();
+	
+	private boolean isSpellWorldWallCollision(Contact contact){
+		Object oa = contact.getFixtureA().getUserData();
+		Object ob = contact.getFixtureB().getUserData();
 		
 		if(oa.equals("world wall")){ //Unsure what this should be equals to, since it's not yet created
 			return ob instanceof Spell;
@@ -92,21 +92,30 @@ public class KCContactListener implements ContactListener {
 		}else return false;
 	}
 	
-	private boolean isSpellObstacleCollsion(Fixture fa, Fixture fb){
-		Object oa = fa.getUserData();
-		Object ob = fb.getUserData();
+	private boolean isSpellObstacleCollsion(Contact contact){
+		Object oa = contact.getFixtureA().getUserData();
+		Object ob = contact.getFixtureB().getUserData();
 		
 		if(oa.equals("obstacle")){ //Same goes here, this might end up as an object
-			return ob instanceof Spell;
+			return ob instanceof FireballFixture;
 		}else if(ob.equals("obstale")){
-			return oa instanceof Spell;
+			return oa instanceof FireballFixture;
 		}else return false;
 		
 		
 	}
 	
+	private FireballFixture getFireballFixtureFromContact(Contact c){
+		return c.getFixtureA().getUserData() instanceof FireballFixture ? 
+								(FireballFixture) c.getFixtureA().getUserData() : 
+								(FireballFixture) c.getFixtureB().getUserData();
+	}
 	
-	
+	private Player getPlayerFromContact(Contact c){
+		return c.getFixtureA().getUserData() instanceof Player ? 
+								(Player) c.getFixtureA().getUserData() : 
+								(Player) c.getFixtureB().getUserData();
+	}
 	
 	
 

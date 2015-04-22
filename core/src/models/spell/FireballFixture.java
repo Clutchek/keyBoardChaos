@@ -35,15 +35,15 @@ public class FireballFixture {
 		this.projectileSpeed = projectileSpeed;
 		this.player = originPlayer;
 		this.fixtureRadius = 3f;
-		timer = new Timer();
+//		timer = new Timer();
 		shoot();
-		task = new TimerTask(){
-			public void run(){
-				models.KCVars.fixturesToDestroy.put(body, fixture);
-			}
-		};
-		timer.schedule(task, 2000);
-		
+//		task = new TimerTask(){
+//			public void run(){
+//				models.KCVars.fixturesToDestroy.put(body, fixture);
+//			}
+//		};
+//		timer.schedule(task, 2000);
+//		
 		
 		
 	}
@@ -69,12 +69,8 @@ public class FireballFixture {
 	
 
 	
-	protected void dispose(){
-//		if(fixture != null){						// ******************** //
-//			this.body.destroyFixture(fixture);		// *** CAUSES ERROR *** //
-//		}											// ******************** //
-		System.out.println("trolololol");
-
+	public void dispose(){
+		models.KCVars.fixturesToDestroy.put(this.body, this.fixture);
 	}
 	
 	/**
@@ -85,7 +81,7 @@ public class FireballFixture {
 		bDef.type = BodyType.DynamicBody;
 		
 		Vector2 playerPos = player.getBody().getPosition();
-		Vector2 distanceFromPlayer = new Vector2(player.getVector()).setLength(player.getBodyRadius() + this.fixtureRadius);
+		Vector2 distanceFromPlayer = new Vector2(player.getVector()).setLength(player.getBodyRadius() + this.fixtureRadius + 5);
 		float x = playerPos.x;
 		float y = playerPos.y;
 		
@@ -126,5 +122,7 @@ public class FireballFixture {
 		
 		this.body.applyForceToCenter(v, true);
 	}
+	
+
 
 }

@@ -32,17 +32,19 @@ public class KeyboardChaosModel {
 	
 	public void createSomePlayers(){
 		players.add(new Player(Keys.UP, Keys.DOWN, Keys.RIGHT, Keys.LEFT, Keys.SPACE, Keys.UNKNOWN, 300f, 400f));	
-		players.get(0).setFirstSpell(new Fireball(1,1, players.get(0)));
+		players.get(0).setFirstSpell(new Fireball(50,1, players.get(0)));
+		players.get(0).setPlayerName("Player 1");
 
 		players.add(new Player(Keys.W, Keys.S, Keys.D, Keys.A, Keys.BACKSPACE, Keys.UNKNOWN, 100f, 200f));
-		players.get(1).setFirstSpell(new Fireball(1,1, players.get(1)));
+		players.get(1).setFirstSpell(new Fireball(50,1, players.get(1)));
+		players.get(1).setPlayerName("Player 2");
+		
 		
 		players.add(new Player(Keys.Y, Keys.H, Keys.J, Keys.G, Keys.UNKNOWN, Keys.UNKNOWN, 300f, 200f));
+		players.get(2).setPlayerName("Player 3");
 	}
 	
-	public void test(){
-		
-	}
+
 	
 	
 	
