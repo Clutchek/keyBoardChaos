@@ -79,10 +79,10 @@ public class KeyboardChaosControl implements ApplicationListener {
 		
 
 		model.createSomePlayers();
+		model.createWorldWall();
 		
 		gsm = new GameStateManager(this);
 		
-
 		
 	}
 	

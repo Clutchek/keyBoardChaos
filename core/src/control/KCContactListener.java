@@ -32,6 +32,8 @@ public class KCContactListener implements ContactListener {
 		}else if(isPlayerLavaCollision(contact)){
 			System.out.println("Lava!");
 		
+		} else if (isSpellWorldWallCollision(contact)) {
+			getFireballFixtureFromContact(contact).dispose();
 		}
 		
 	}
@@ -86,9 +88,9 @@ public class KCContactListener implements ContactListener {
 		Object ob = contact.getFixtureB().getUserData();
 		
 		if(oa.equals("world wall")){ //Unsure what this should be equals to, since it's not yet created
-			return ob instanceof Spell;
+			return ob instanceof FireballFixture; // Might add a class SpellFixture later on?
 		}else if(ob.equals("world wall")){
-			return oa instanceof Player;
+			return oa instanceof FireballFixture;
 		}else return false;
 	}
 	
@@ -98,7 +100,7 @@ public class KCContactListener implements ContactListener {
 		
 		if(oa.equals("obstacle")){ //Same goes here, this might end up as an object
 			return ob instanceof FireballFixture;
-		}else if(ob.equals("obstale")){
+		}else if(ob.equals("obstacle")){
 			return oa instanceof FireballFixture;
 		}else return false;
 		
