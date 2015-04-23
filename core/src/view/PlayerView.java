@@ -48,7 +48,7 @@ public class PlayerView implements Disposable{
 	 * Method used to 
 	 */
 	public void drawActors(){
-		
+		//spriteBatch.draw();
 	}
 
 	@Override
