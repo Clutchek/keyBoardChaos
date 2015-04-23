@@ -16,8 +16,11 @@ import com.badlogic.gdx.math.Vector2;
  */
 
 public class KCInputProcessor extends InputAdapter{
-
-	Timer timer = new Timer();
+	Timer timer;
+	
+	protected KCInputProcessor(){
+		timer = new Timer();
+	}
 	
 	@Override
 	public boolean keyDown(int keycode) {
