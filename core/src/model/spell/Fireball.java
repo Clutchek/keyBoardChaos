@@ -12,23 +12,23 @@ public class Fireball implements Spell{
 		
 	}
 	
-	
+	/**
+	 * Casts fireball spell
+	 */
 	
 	@Override
 	public void castSpell(){
-		//Used to create a fixture of the spell, which it can't do now since it's just model stuff... Major BS
 	}
 	
 	/**
-	 * @return The damage of the spell
+	 * @return The damage of the fireball
 	 */
 	public int getDamage(){
 		return this.damage;
 	}
 	
 	/**
-	 * 
-	 * @return The movement speed of the spell 
+	 * @return The movement speed of the fireball 
 	 */
 	public int getProjectileSpeed(){
 		return this.projectileSpeed;
