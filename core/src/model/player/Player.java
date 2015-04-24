@@ -1,5 +1,7 @@
 package model.player;
 
+import model.spell.Spell;
+
 public class Player {
 	
 	private int healthPoints;
@@ -10,7 +12,7 @@ public class Player {
 	
 	private Spell spell1, spell2;
 
-	private int moveUp, moveDown, moveRight, moveLeft, fireSpell1, fireSpell2;
+	private int moveUpKey, moveDownKey, moveRightKey, moveLeftKey, useSpell1Key, useSpell2Key;
 	
 	/*
 	 * Questions:
@@ -30,14 +32,11 @@ public class Player {
 	 * 
 	 * @param dmg the amount of damage the players health should decrease by
 	 */
-	
 	public void takeDamage(int dmg){
 		healthPoints -= dmg;
 	}
 	
-	/*
-	 * Setters and getters
-	 */
+	 //Setters and getters
 	
 	public int getHealthPoints() {
 		return healthPoints;
@@ -95,51 +94,67 @@ public class Player {
 		this.posY = posY;
 	}
 
-	public int getMoveUp() {
-		return moveUp;
+	public int getMoveUpKey() {
+		return moveUpKey;
 	}
 
-	public void setMoveUp(int moveUp) {
-		this.moveUp = moveUp;
+	public void setMoveUpKey(int moveUp) {
+		this.moveUpKey = moveUp;
 	}
 
-	public int getMoveDown() {
-		return moveDown;
+	public int getMoveDownKey() {
+		return moveDownKey;
 	}
 
-	public void setMoveDown(int moveDown) {
-		this.moveDown = moveDown;
+	public void setMoveDownKey(int moveDown) {
+		this.moveDownKey = moveDown;
 	}
 
-	public int getMoveRight() {
-		return moveRight;
+	public int getMoveRightKey() {
+		return moveRightKey;
 	}
 
-	public void setMoveRight(int moveRight) {
-		this.moveRight = moveRight;
+	public void setMoveRightKey(int moveRight) {
+		this.moveRightKey = moveRight;
 	}
 
-	public int getMoveLeft() {
-		return moveLeft;
+	public int getMoveLeftKey() {
+		return moveLeftKey;
 	}
 
-	public void setMoveLeft(int moveLeft) {
-		this.moveLeft = moveLeft;
+	public void setMoveLeftKey(int moveLeft) {
+		this.moveLeftKey = moveLeft;
 	}
 
-	public int getFireSpell1() {
-		return fireSpell1;
+	/**
+	 * 
+	 * @return
+	 */
+	public int getUseSpell1Key() {
+		return useSpell1Key;
 	}
 
-	public void setFireSpell1(int fireSpell1) {
-		this.fireSpell1 = fireSpell1;
+	/**
+	 * Set the key for the Player that 
+	 * @param fireSpell1
+	 */
+	public void setUseSpell1Key(int fireSpell1) {
+		this.useSpell1Key = fireSpell1;
 	}
 
-	public int getFireSpell2() {
-		return fireSpell2;
+	/**
+	 * 
+	 * @return the Key that responds letting the Player use his second Spell.
+	 */
+	public int getUseSpell2() {
+		return useSpell2Key;
 	}
-
-	public void setFireSpell2(int fireSpell2) {
-		this.fireSpell2 = fireSpell2;
+	
+	/**
+	 * 
+	 * @param fireSpell2 represents the Players second spell
+	 */
+	public void setFireSpell2Key(int fireSpell2) {
+		this.useSpell2Key = fireSpell2;
 	}
 }

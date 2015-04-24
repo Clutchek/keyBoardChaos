@@ -1,5 +1,7 @@
 package model.spell;
 
+import model.player.Player;
+
 public class SpellFactory {
 
 	
