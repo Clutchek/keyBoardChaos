@@ -1,6 +1,7 @@
 package model.spell;
 
 import model.player.Player;
+import model.spell.Fireball;
 
 public class SpellFactory {
 
@@ -17,5 +18,6 @@ public class SpellFactory {
 		if(spellName.equals("Fireball")){
 			return new Fireball(originPlayer);
 		}
+		return null;
 	}
 }
