@@ -28,7 +28,7 @@ public class KCVars {
 	public static final short BIT_LAVA = 0x0008;
 	public static final short BIT_INVISIBLE_WALL = 0x00016;
 	
-	public static final short MASK_PLAYER = BIT_SPELL | BIT_OBSTACLE | BIT_LAVA;
+	public static final short MASK_PLAYER = BIT_SPELL | BIT_OBSTACLE | BIT_LAVA | BIT_PLAYER;
 	public static final short MASK_SPELL = BIT_PLAYER | BIT_OBSTACLE | BIT_INVISIBLE_WALL;
 	public static final short MASK_OBSTACLE = BIT_PLAYER | BIT_SPELL;
 	public static final short MASK_LAVA = BIT_PLAYER;
