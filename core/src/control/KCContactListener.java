@@ -60,6 +60,11 @@ public class KCContactListener implements ContactListener {
 		
 	}
 	
+	/**
+	 * Check if a spell hit a player
+	 * @param contact the contact between two shapes
+	 * @return true if spell and player is in contact, false otherwise
+	 */
 	private boolean isPlayerSpellCollision(Contact contact){
 		Object oa = contact.getFixtureA().getUserData();
 		Object ob = contact.getFixtureB().getUserData();
@@ -71,6 +76,11 @@ public class KCContactListener implements ContactListener {
 		}else return false;
 	}
 	
+	/**
+	 * Checks if a player is in lava
+	 * @param contact the contact between two shapes
+	 * @return true if player is in contact with lava, false otherwise
+	 */
 	private boolean isPlayerLavaCollision(Contact contact){
 
 		Object oa = contact.getFixtureA().getUserData();
@@ -83,6 +93,11 @@ public class KCContactListener implements ContactListener {
 		}else return false;
 	}
 	
+	/**
+	 * Checks if a spell hits a world wall
+	 * @param contact the contact between two shapes
+	 * @return true if spell is in contact with wall, false otherwise
+	 */
 	private boolean isSpellWorldWallCollision(Contact contact){
 		Object oa = contact.getFixtureA().getUserData();
 		Object ob = contact.getFixtureB().getUserData();
@@ -94,6 +109,11 @@ public class KCContactListener implements ContactListener {
 		}else return false;
 	}
 	
+	/**
+	 * Checks if a spell hits an obstacle
+	 * @param contact the contact between two shapes
+	 * @return true if spell is in contact with obstacle, false otherwise
+	 */
 	private boolean isSpellObstacleCollsion(Contact contact){
 		Object oa = contact.getFixtureA().getUserData();
 		Object ob = contact.getFixtureB().getUserData();
@@ -107,12 +127,22 @@ public class KCContactListener implements ContactListener {
 		
 	}
 	
+	/**
+	 * Returns the FireballFixture object from a contact
+	 * @param c the contact between two shapes
+	 * @return the FireballFixture object that is in contact with another shape
+	 */
 	private FireballFixture getFireballFixtureFromContact(Contact c){
 		return c.getFixtureA().getUserData() instanceof FireballFixture ? 
 								(FireballFixture) c.getFixtureA().getUserData() : 
 								(FireballFixture) c.getFixtureB().getUserData();
 	}
 	
+	/**
+	 * Returns the Player object from a contact
+	 * @param c the contact between two shapes
+	 * @return the Player object that is in contact with another shape
+	 */
 	private Player getPlayerFromContact(Contact c){
 		return c.getFixtureA().getUserData() instanceof Player ? 
 								(Player) c.getFixtureA().getUserData() : 

@@ -60,6 +60,10 @@ public class Player {
 
 	}
 	
+	/**
+	 * Decreases the player's health by a certain amount
+	 * @param dmg the amount player's health is to decrease
+	 */
 	public void takeDamage(int dmg){
 		System.out.println(getPlayerName() + ": I now have " + healthPoints + " hp");
 		healthPoints-=dmg;
@@ -70,10 +74,16 @@ public class Player {
 		System.out.println(getPlayerName() + ": I now have " + healthPoints + " hp");
 	}
 	
+	/**
+	 * Destroys the fixture of this player
+	 */
 	private void dispose(){
 		models.KCVars.fixturesToDestroy.put(this.body, this.fixture);
 	}
 	
+	/**
+	 * Creates this player
+	 */
 	private void createPlayerInWorld(){
 	
 		bDef.type = BodyType.DynamicBody;
@@ -91,71 +101,125 @@ public class Player {
 		fixture.setUserData(this);
 	}
 	
+	/**
+	 * Sets the player's name
+	 * @param name name of this player
+	 */
 	public void setPlayerName(String name){
 		playerName = name;
 	}
 	
+	/**
+	 * @return name of this player
+	 */
 	public String getPlayerName(){
 		return playerName;
 	}
 	
-	
+	/**
+	 * @return body of this player
+	 */
 	public Body getBody(){
 		return body;
 	}
 	
+	/**
+	 * Sets the player's first spell
+	 * @param spell the spell that is to be assigned as first spell
+	 */
 	public void setFirstSpell(Spell spell){
 		spell1 = spell;
 	}
 	
+	/**
+	 * @return this player's first assigned spell
+	 */
 	public Spell getFirstSpell(){
 		return spell1;
 	}
 	
+	/**
+	 * Sets the player's second spell
+	 * @param spell the spell that is to be assigned as second spell
+	 */
+	public void setSecondSpell(Spell spell) {
+		spell2 = spell;
+	}
+	
+	/**
+	 * @return this player's second assigned spell
+	 */
 	public Spell getSecondSpell(){
 		return spell2;
 	}
 	
+	/**
+	 * @return this player's key binded to cast its first spell
+	 */
 	public int getFirstSpellKey(){
 		return this.firstSpellKey;
 	}
 	
+	/**
+	 * @return this player's key binded to cast its second spell
+	 */
 	public int getSecondSpellKey(){
 		return this.secondSpellKey;
 	}
 	
-	protected void setSecondsSpell(Spell spell){
-		spell2 = spell;
-	}
-	
+	/**
+	 * Increments the speed of this player
+	 */
 	protected void incrementSpeed(){
 		speed*=1.1;
 	}
 	
+	// TODO: Some gangstah method
 	protected void setKey(int action, int newKey){
 		
 	}
 	
+	/**
+	 * @return the key binded to move this player upwards
+	 */
 	public int getUpKey(){
 		return moveUpKey;
 	}
 	
+	/**
+	 * @return the key binded to move this player downwards
+	 */
 	public int getDownKey(){
 		return moveDownKey;
 	}
 	
+	/**
+	 * @return the key binded to move this player to the right
+	 */
 	public int getRightKey(){
 		return moveRightKey;
 	}
 	
+	/**
+	 * @return the key binded to move this player to the left
+	 */
 	public int getLeftKey(){
 		return moveLeftKey;
 	}
 	
+	/**
+	 * Sets the world position of this player
+	 * @param x the new x position
+	 * @param y the new y position
+	 */
 	public void setPlayerPos(float x, float y){
 		this.bDef.position.set(x / models.KCVars.PPM, y / models.KCVars.PPM);
 	}
 	
+	/**
+	 * Sets whether this player is moving upwards or not
+	 * @param b boolean describing if player should move upwards or not
+	 */
 	public void setUp(boolean b){
 		movingUp = b;
 		setInputStatus();
@@ -164,6 +228,10 @@ public class Player {
 		}
 	}
 	
+	/**
+	 * Sets whether this player is moving downwards or not
+	 * @param b boolean describing if player should move downwards or not
+	 */
 	public void setDown(boolean b){
 		movingDown = b;
 		setInputStatus();
@@ -172,6 +240,10 @@ public class Player {
 		}
 	}
 	
+	/**
+	 * Sets whether this player is moving to the right or not
+	 * @param b boolean describing if player should move to the right or not
+	 */
 	public void setRight(boolean b){
 		movingRight = b;
 		setInputStatus();
@@ -180,6 +252,10 @@ public class Player {
 		}
 	}
 	
+	/**
+	 * Sets whether this player is moving to the left or not
+	 * @param b boolean describing if player should move to the left or not
+	 */
 	public void setLeft(boolean b){
 		movingLeft = b;
 		setInputStatus();
@@ -188,39 +264,78 @@ public class Player {
 		}
 	}
 	
+	/**
+	 * @return the radius of this player's body
+	 */
 	public float getBodyRadius(){
 		return radius;
 	}
 	
+	/**
+	 * Tells whether this player is getting directional input or not
+	 * @return true if player is getting directional input, false otherwise
+	 */
 	public boolean isGettingInput(){
 		return isGettingInput;
 	}
 	
+	/**
+	 * Tells whether this player is moving upwards or not
+	 * @return true if player is moving upwards, false otherwise
+	 */
 	public boolean isMovingUp(){
 		return movingUp;
 	}
+	
+	/**
+	 * Tells whether this player is moving downwards or not
+	 * @return true if player is moving downwards, false otherwise
+	 */
 	public boolean isMovingDown(){
 		return movingDown;
 	}
+	
+	/**
+	 * Tells whether this player is moving to the right or not
+	 * @return true if player is moving to the right, false otherwise
+	 */
 	public boolean isMovingRight(){
 		return movingRight;
 	}
+	
+	/**
+	 * Tells whether this player is moving to the left or not
+	 * @return true if player is moving to the left, false otherwise
+	 */
 	public boolean isMovingLeft(){
 		return movingLeft;
 	}
 	
+	/**
+	 * @return the direction this player is facing
+	 */
 	public Vector2 getDirection(){
 		return direction;
 	}
 	
+	/**
+	 * Sets the direction this player is facing
+	 * @param direction the direction this player is to face
+	 */
 	public void setDirection(Vector2 direction) {
 		this.direction = direction;
 	}
 	
-	public Vector2 getVector(){
+	/**
+	 * @return the direction this player is facing
+	 */
+	public Vector2 getVector(){ //TODO: Should use getDirection instead?
 		return direction;
 	}
 	
+	/**
+	 * Sets the direction status of this player
+	 */
 	private void setInputStatus(){
 		isGettingInput = isMovingUp() || isMovingDown() || isMovingRight() || isMovingLeft();
 
