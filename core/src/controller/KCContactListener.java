@@ -1,4 +1,4 @@
-package old.control;
+package controller;
 
 import old.models.player.Player;
 import old.models.spell.FireballFixture;

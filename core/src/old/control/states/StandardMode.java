@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import old.control.GameStateManager;
-import old.control.KCInputProcessor;
 import old.models.KCVars.Direction;
 import old.models.player.Player;
 
@@ -18,6 +17,8 @@ import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
+
+import controller.KCInputProcessor;
 
 public class StandardMode extends GameState {
 	

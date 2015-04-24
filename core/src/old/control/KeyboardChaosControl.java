@@ -26,6 +26,8 @@ import com.badlogic.gdx.physics.box2d.Fixture;
 //import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.World;
 
+import controller.KCInputProcessor;
+
 public class KeyboardChaosControl implements ApplicationListener {
 	SpriteBatch batch;
 	//Texture img;
@@ -69,11 +71,11 @@ public class KeyboardChaosControl implements ApplicationListener {
 		b2dr = new Box2DDebugRenderer();
 
 		world = model.getWorld();
-		world.setContactListener(new old.control.KCContactListener());
+		world.setContactListener(new controller.KCContactListener());
 		
 		//Map stuff
 		tileMap = new TmxMapLoader().load("assets/maps/betatest.tmx");
-		old.control.MapBodyManager mbm = new old.control.MapBodyManager(world, PPM, null, 0);
+		controller.MapBodyManager mbm = new controller.MapBodyManager(world, PPM, null, 0);
 		mbm.createPhysics(tileMap, "lavahurts");
 		mapRenderer = new OrthogonalTiledMapRenderer(tileMap);
 		
