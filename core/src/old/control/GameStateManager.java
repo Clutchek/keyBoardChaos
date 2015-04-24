@@ -1,15 +1,15 @@
-package control;
+package old.control;
 
 import java.util.Stack;
 
-import control.states.GameState;
+import old.control.states.GameState;
 
 public class GameStateManager {
 
 	private KeyboardChaosControl kcc;
 	
 	private Stack<GameState> gameStates;
-	public static final int STANDARD_MODE = models.KCVars.STANDARD_MODE;
+	public static final int STANDARD_MODE = old.models.KCVars.STANDARD_MODE;
 	
 	public GameStateManager(KeyboardChaosControl kcc){
 		this.kcc = kcc;
@@ -33,7 +33,7 @@ public class GameStateManager {
 	}
 	
 	private GameState getState(int state){
-		if(state == STANDARD_MODE) return new control.states.StandardMode(this);
+		if(state == STANDARD_MODE) return new old.control.states.StandardMode(this);
 		return null;
 	}
 	

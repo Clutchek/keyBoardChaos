@@ -1,10 +1,10 @@
-package control.states;
+package old.control.states;
+
+import old.control.GameStateManager;
+import old.control.KeyboardChaosControl;
 
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-
-import control.GameStateManager;
-import control.KeyboardChaosControl;
 
 public abstract class GameState {
 	

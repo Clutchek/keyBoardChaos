@@ -1,10 +1,10 @@
-package models.spell;
+package old.models.spell;
 
 import java.util.Timer;
 import java.util.TimerTask;
 
-import models.KCVars;
-import models.player.Player;
+import old.models.KCVars;
+import old.models.player.Player;
 
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
@@ -70,7 +70,7 @@ public class FireballFixture {
 
 	
 	public void dispose(){
-		models.KCVars.fixturesToDestroy.put(this.body, this.fixture);
+		old.models.KCVars.fixturesToDestroy.put(this.body, this.fixture);
 	}
 	
 	/**
@@ -90,13 +90,13 @@ public class FireballFixture {
 		y+= distanceFromPlayer.y / KCVars.PPM;
 		
 		bDef.position.set(new Vector2(x, y));
-		world = control.KeyboardChaosControl.getWorld();
+		world = old.control.KeyboardChaosControl.getWorld();
 		body = world.createBody(bDef);
 		
 		fDef = new FixtureDef();
 		
-		fDef.filter.categoryBits = models.KCVars.BIT_SPELL;
-		fDef.filter.maskBits = models.KCVars.MASK_SPELL;
+		fDef.filter.categoryBits = old.models.KCVars.BIT_SPELL;
+		fDef.filter.maskBits = old.models.KCVars.MASK_SPELL;
 		
 		CircleShape shape = new CircleShape();
 		

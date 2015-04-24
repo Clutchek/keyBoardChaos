@@ -1,8 +1,10 @@
-package view;
+package old.view;
 
 import java.util.List;
-import models.KeyboardChaosModel;
-import models.player.Player;
+
+import old.models.KeyboardChaosModel;
+import old.models.player.Player;
+
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.Disposable;

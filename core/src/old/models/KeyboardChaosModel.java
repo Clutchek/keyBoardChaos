@@ -1,11 +1,12 @@
-package models;
+package old.models;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import models.player.Player;
-import models.spell.Spell;
-import models.spell.Fireball;
+import old.control.KeyboardChaosControl;
+import old.models.player.Player;
+import old.models.spell.Fireball;
+import old.models.spell.Spell;
 
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.math.Vector2;
@@ -16,8 +17,6 @@ import com.badlogic.gdx.physics.box2d.ChainShape;
 import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.World;
-
-import control.KeyboardChaosControl;
 
 
 public class KeyboardChaosModel {
@@ -31,7 +30,7 @@ public class KeyboardChaosModel {
 
 		this.kcc = kcc;
 		players = new ArrayList<Player>();
-		world = new World(models.KCVars.GRAVITY, true);
+		world = new World(old.models.KCVars.GRAVITY, true);
 	
 
 		

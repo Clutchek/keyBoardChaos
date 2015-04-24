@@ -1,6 +1,6 @@
-package models.spell;
+package old.models.spell;
 
-import models.player.Player;
+import old.models.player.Player;
 
 public class Fireball implements Spell{
 	

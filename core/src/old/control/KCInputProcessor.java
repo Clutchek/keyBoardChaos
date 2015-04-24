@@ -1,9 +1,9 @@
-package control;
+package old.control;
 
 import java.util.Timer;
 import java.util.TimerTask;
 
-import models.player.Player;
+import old.models.player.Player;
 
 import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.math.Vector2;
@@ -25,7 +25,7 @@ public class KCInputProcessor extends InputAdapter{
 	@Override
 	public boolean keyDown(int keycode) {
 		
-		for(Player p : control.states.StandardMode.getPlayerList()){
+		for(Player p : old.control.states.StandardMode.getPlayerList()){
 			if(keycode == p.getUpKey()){
 				p.setUp(true);
 			}else if(keycode == p.getDownKey()){
@@ -43,7 +43,7 @@ public class KCInputProcessor extends InputAdapter{
 	@Override
 	public boolean keyUp(int keycode) {
 		
-		for(final Player p : control.states.StandardMode.getPlayerList()){
+		for(final Player p : old.control.states.StandardMode.getPlayerList()){
 			final Vector2 oldDirection = p.getVector();
 			
 			if(keycode == p.getUpKey()){

@@ -1,11 +1,11 @@
-package view;
+package old.view;
+
+import old.control.KeyboardChaosControl;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
-
-import control.KeyboardChaosControl;
 
 public class KeyboardChaosView {
 
@@ -29,9 +29,9 @@ public class KeyboardChaosView {
 		 * delta time. Rinse and repeat
 		 */
 		timeCheck += Gdx.graphics.getDeltaTime();
-		while(timeCheck >= models.KCVars.TIME_STEP){
-			timeCheck -= models.KCVars.TIME_STEP;
-			control.getGSM().update(models.KCVars.TIME_STEP);
+		while(timeCheck >= old.models.KCVars.TIME_STEP){
+			timeCheck -= old.models.KCVars.TIME_STEP;
+			control.getGSM().update(old.models.KCVars.TIME_STEP);
 			
 		}
 		

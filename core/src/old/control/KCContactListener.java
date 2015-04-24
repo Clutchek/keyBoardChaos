@@ -1,8 +1,8 @@
-package control;
+package old.control;
 
-import models.player.Player;
-import models.spell.FireballFixture;
-import models.spell.Spell;
+import old.models.player.Player;
+import old.models.spell.FireballFixture;
+import old.models.spell.Spell;
 
 import com.badlogic.gdx.physics.box2d.Contact;
 import com.badlogic.gdx.physics.box2d.ContactImpulse;

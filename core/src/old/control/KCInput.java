@@ -1,7 +1,7 @@
-package control;
+package old.control;
 
-import models.player.Player;
-import models.spell.Spell;
+import old.models.player.Player;
+import old.models.spell.Spell;
 
 import com.badlogic.gdx.physics.box2d.Fixture;
 

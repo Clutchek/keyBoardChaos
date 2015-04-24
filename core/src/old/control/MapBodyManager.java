@@ -1,4 +1,4 @@
-package control;
+package old.control;
 
 import java.util.Iterator;
 
@@ -145,8 +145,8 @@ public class MapBodyManager {
 			
 			fixtureDef.shape = shape;
 			fixtureDef.isSensor = true;
-			fixtureDef.filter.categoryBits = models.KCVars.BIT_LAVA;
-			fixtureDef.filter.maskBits = models.KCVars.BIT_PLAYER;
+			fixtureDef.filter.categoryBits = old.models.KCVars.BIT_LAVA;
+			fixtureDef.filter.maskBits = old.models.KCVars.BIT_PLAYER;
 
 			Body body = world.createBody(bodyDef);
 			//body.setUserData("lava");

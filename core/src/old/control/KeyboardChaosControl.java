@@ -1,14 +1,14 @@
-package control;
+package old.control;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 
-import models.KCVars;
-import models.KeyboardChaosModel;
+import old.models.KCVars;
+import old.models.KeyboardChaosModel;
 //import models.KeyboardChaosModel;
-import view.KeyboardChaosView;
+import old.view.KeyboardChaosView;
 
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
@@ -48,11 +48,11 @@ public class KeyboardChaosControl implements ApplicationListener {
 	public void create() {
 				
 		batch = new SpriteBatch();
-		view = new view.KeyboardChaosView(this);
-		model = new models.KeyboardChaosModel(this);
+		view = new old.view.KeyboardChaosView(this);
+		model = new old.models.KeyboardChaosModel(this);
 		
 		//List of fixtures that needs to be destroyed
-		fixturesToDestroy = models.KCVars.fixturesToDestroy;
+		fixturesToDestroy = old.models.KCVars.fixturesToDestroy;
 		
 		//Set our own input processor
 		Gdx.input.setInputProcessor(new KCInputProcessor());
@@ -64,16 +64,16 @@ public class KeyboardChaosControl implements ApplicationListener {
 		
 		//Create Box2D camera
 		b2dCam = new OrthographicCamera();
-		b2dCam.setToOrtho(false, models.KCVars.GAME_WIDTH / PPM, models.KCVars.GAME_HEIGHT / PPM);
+		b2dCam.setToOrtho(false, old.models.KCVars.GAME_WIDTH / PPM, old.models.KCVars.GAME_HEIGHT / PPM);
 		
 		b2dr = new Box2DDebugRenderer();
 
 		world = model.getWorld();
-		world.setContactListener(new control.KCContactListener());
+		world.setContactListener(new old.control.KCContactListener());
 		
 		//Map stuff
 		tileMap = new TmxMapLoader().load("assets/maps/betatest.tmx");
-		control.MapBodyManager mbm = new control.MapBodyManager(world, PPM, null, 0);
+		old.control.MapBodyManager mbm = new old.control.MapBodyManager(world, PPM, null, 0);
 		mbm.createPhysics(tileMap, "lavahurts");
 		mapRenderer = new OrthogonalTiledMapRenderer(tileMap);
 		

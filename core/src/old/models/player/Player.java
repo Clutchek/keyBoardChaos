@@ -1,7 +1,7 @@
-package models.player;
+package old.models.player;
 
-import models.KCVars.Direction;
-import models.spell.Spell;
+import old.models.KCVars.Direction;
+import old.models.spell.Spell;
 
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
@@ -78,7 +78,7 @@ public class Player {
 	 * Destroys the fixture of this player
 	 */
 	private void dispose(){
-		models.KCVars.fixturesToDestroy.put(this.body, this.fixture);
+		old.models.KCVars.fixturesToDestroy.put(this.body, this.fixture);
 	}
 	
 	/**
@@ -87,15 +87,15 @@ public class Player {
 	private void createPlayerInWorld(){
 	
 		bDef.type = BodyType.DynamicBody;
-		body = control.KeyboardChaosControl.getWorld().createBody(bDef);
+		body = old.control.KeyboardChaosControl.getWorld().createBody(bDef);
 		
 		CircleShape cshape = new CircleShape();
-		cshape.setRadius(radius / models.KCVars.PPM);
+		cshape.setRadius(radius / old.models.KCVars.PPM);
 		
 		fDef.shape = cshape;
 		body.setUserData("player");
-		fDef.filter.categoryBits = models.KCVars.BIT_PLAYER;
-		fDef.filter.maskBits = models.KCVars.MASK_PLAYER;
+		fDef.filter.categoryBits = old.models.KCVars.BIT_PLAYER;
+		fDef.filter.maskBits = old.models.KCVars.MASK_PLAYER;
 		body.setLinearDamping(.5f);
 		fixture = body.createFixture(fDef);
 		fixture.setUserData(this);
@@ -213,7 +213,7 @@ public class Player {
 	 * @param y the new y position
 	 */
 	public void setPlayerPos(float x, float y){
-		this.bDef.position.set(x / models.KCVars.PPM, y / models.KCVars.PPM);
+		this.bDef.position.set(x / old.models.KCVars.PPM, y / old.models.KCVars.PPM);
 	}
 	
 	/**

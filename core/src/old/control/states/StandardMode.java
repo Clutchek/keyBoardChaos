@@ -1,10 +1,12 @@
-package control.states;
+package old.control.states;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import models.KCVars.Direction;
-import models.player.Player;
+import old.control.GameStateManager;
+import old.control.KCInputProcessor;
+import old.models.KCVars.Direction;
+import old.models.player.Player;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
@@ -17,9 +19,6 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 
-import control.GameStateManager;
-import control.KCInputProcessor;
-
 public class StandardMode extends GameState {
 	
 	
@@ -30,7 +29,7 @@ public class StandardMode extends GameState {
 	
 	private OrthographicCamera b2dCam;
 	
-	private int PPM = models.KCVars.PPM; //Adjusting pixels per meter, otherwise forces will look unnatural
+	private int PPM = old.models.KCVars.PPM; //Adjusting pixels per meter, otherwise forces will look unnatural
 
 	private static List<Player> players;
 	
@@ -51,7 +50,7 @@ public class StandardMode extends GameState {
 	
 	@Override
 	public void handleInput() {
-		if(models.KCVars.playerIsInLava){
+		if(old.models.KCVars.playerIsInLava){
 			System.out.println("LAVA IT BURN OMG");
 		}
 	

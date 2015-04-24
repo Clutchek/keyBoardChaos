@@ -1,4 +1,4 @@
-package models.spell;
+package old.models.spell;
 
 public class SpellFactory {
 
