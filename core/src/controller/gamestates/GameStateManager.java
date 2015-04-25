@@ -21,19 +21,16 @@ public class GameStateManager {
 	
 	//public void changeState...
 
-	@Override
 	public void update() {
 		currentState.update();
 		
 	}
 
-	@Override
 	public void handleInput() {
 		currentState.handleInput();
 		
 	}
-
-	@Override
+	
 	public void render() {
 		currentState.render();
 		
