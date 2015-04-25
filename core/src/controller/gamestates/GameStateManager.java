@@ -2,20 +2,20 @@ package controller.gamestates;
 
 import java.util.Stack;
 
-public class GameStateManager implements GameState{
+public class GameStateManager {
 	
 	/*private Stack<GameState> gameStates;
 	private static final int PLAY_STATE = KCConstants.PLAY_STATE;*/
 	
 	GameState uiState;
-	GameState roundState;
-	GameState keyBoardChaosState;
+	GameState battleState;
+	GameState roundOverState;
 	GameState currentState;
 	
 	public GameStateManager(){
 		uiState = new UIState();
-		roundState = new RoundState();
-		keyBoardChaosState = new KeyBoardChaosState();
+		battleState = new BattleState();
+		roundOverState = new RoundOverState();
 		currentState = uiState;
 	}
 	

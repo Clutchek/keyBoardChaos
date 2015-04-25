@@ -1,6 +1,6 @@
 package controller.gamestates;
 
-public class KeyBoardChaosState implements GameState {
+public class RoundOverState implements GameState {
 
 	@Override
 	public void update() {

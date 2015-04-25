@@ -5,11 +5,11 @@ import com.badlogic.gdx.InputAdapter;
 
 import controller.KCInputProcessor;
 
-public class RoundState implements GameState {
+public class BattleState implements GameState {
 
 	private InputAdapter inputProcessor;
 	
-	public RoundState() {
+	public BattleState() {
 		inputProcessor = new KCInputProcessor();
 	}
 	
