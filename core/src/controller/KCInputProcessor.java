@@ -18,7 +18,7 @@ import com.badlogic.gdx.math.Vector2;
 public class KCInputProcessor extends InputAdapter{
 	Timer timer;
 	
-	protected KCInputProcessor(){
+	public KCInputProcessor(){
 		timer = new Timer();
 	}
 	

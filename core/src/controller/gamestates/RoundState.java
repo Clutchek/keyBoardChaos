@@ -1,23 +1,37 @@
 package controller.gamestates;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.InputAdapter;
+
+import controller.KCInputProcessor;
+
 public class RoundState implements GameState {
 
+	private InputAdapter inputProcessor;
+	
+	public RoundState() {
+		inputProcessor = new KCInputProcessor();
+	}
+	
 	@Override
 	public void update() {
-		// TODO Auto-generated method stub
-		
+		handleInput();
+		// Destroy fixtures here?
 	}
 
 	@Override
 	public void handleInput() {
-		// TODO Auto-generated method stub
-		
+		// Shit is handled in input processor. Might be other stuff to add here.
 	}
 
 	@Override
 	public void render() {
-		// TODO Auto-generated method stub
-		
+		// Tell a specific class to render something? I dunno...
 	}
 
+	/*
+	 * Might use the initialize-method to create a new world (override the old one?), 
+	 * as we might want different worlds depending on the game state (bodies from 
+	 * UI world will stay in gameplay world if not desposed otherwise, and such).
+	 */
 }
