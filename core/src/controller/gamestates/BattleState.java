@@ -28,7 +28,7 @@ public class BattleState implements GameState {
 		MapBodyManager mbm = new MapBodyManager(world, controller.KCConstants.PPM, null, 0);
 		mbm.createPhysics(tileMap, "lavahurts");
 		
-		battleView = new BattleView();
+		battleView = new BattleView(this);
 	}
 	
 	@Override
@@ -51,6 +51,8 @@ public class BattleState implements GameState {
 	public World getWorld(){
 		return this.world;
 	}
+	
+	public TiledMap getTiledMap(){ return this.tileMap;}
 
 	/*
 	 * Might use the initialize-method to create a new world (override the old one?), 
