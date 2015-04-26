@@ -21,6 +21,12 @@ public class PlayerManager {
 		pControllers.add(p4);
 	}
 	
+	public void updatePlayers(){
+		for(PlayerController p: pControllers){
+			p.update();
+		}
+	}
+	
 	public List<PlayerController> getPlayerControllers(){
 		return pControllers;
 	}

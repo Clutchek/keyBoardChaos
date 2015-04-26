@@ -7,21 +7,13 @@ import model.spell.Spell;
 public class Player {
 	
 	private int healthPoints;
-	private int size; //Radius? Diameter?
-	private int posX, posY;
+	private int size;
+	private float posX, posY;
+	private int radius;
 	
 	private String playerName;
 	
 	private Spell spell1, spell2;
-
-	private int moveUpKey, moveDownKey, moveRightKey, moveLeftKey, useSpell1Key, useSpell2Key;
-	
-	/*
-	 * Questions:
-	 * 
-	 * Should Player take care of it's own movement, therefore needing a movement method?
-	 * Or should the world/some manager take care of movement of all bodies?
-	 */
 	
 	/**
 	 * Constructor for the Player class.
@@ -30,7 +22,9 @@ public class Player {
 		
 	}
 	
-
+	public int getRadius(){
+		return radius;
+	}
 
 	/**
 	 * Decreases the players health points by a certain amount.
@@ -126,7 +120,7 @@ public class Player {
 	 * Method used to return the X-value of the Player's position.
 	 * @return the X-value of the Player's position.
 	 */
-	public int getPosX() {
+	public float getPosX() {
 		return posX;
 	}
 	
@@ -134,7 +128,7 @@ public class Player {
 	 * Method used to set the X-value of the Player's current position.
 	 * @param posY represents the X-value of the Player's position.
 	 */
-	public void setPosX(int posX) {
+	public void setPosX(float posX) {
 		this.posX = posX;
 	}
 
@@ -142,7 +136,7 @@ public class Player {
 	 * Method used to return the Y-value of the Player's position.
 	 * @return the Y-value of the Player's position.
 	 */
-	public int getPosY() {
+	public float getPosY() {
 		return posY;
 	}
 
@@ -150,7 +144,7 @@ public class Player {
 	 * Method used to set the Y-value of the Player's current position.
 	 * @param posY represents the Y-value of the Player's position.
 	 */
-	public void setPosY(int posY) {
+	public void setPosY(float posY) {
 		this.posY = posY;
 	}
 	

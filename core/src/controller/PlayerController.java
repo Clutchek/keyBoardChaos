@@ -33,7 +33,22 @@ public class PlayerController {
 		bDef = new BodyDef();
 		setPlayerPos(p.getPosX(), p.getPosY());
 		
-		updateDirection();
+		setInputStatus();
+	}
+	
+	public void update(){
+		setInputStatus();
+		updatePlayerPosition();
+		
+	}
+	
+	/**
+	 * Updates the player models position accordingly to the one in the box2d world.
+	 */
+	private void updatePlayerPosition(){
+		Vector2 position = body.getPosition();
+		player.setPosX(position.x);
+		player.setPosY(position.y);
 	}
 	
 	/**
