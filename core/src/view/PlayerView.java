@@ -57,5 +57,4 @@ public class PlayerView implements Disposable{
 	public void dispose() {
 		
 	}
-
 }
