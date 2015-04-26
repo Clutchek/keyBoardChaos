@@ -44,8 +44,8 @@ public class KeyboardChaosRun implements ApplicationListener{
 		gameStateManager.update();
 		
 		accumulator += Gdx.graphics.getDeltaTime();
-		while(accumulator >= 1f / 60f){
-			accumulator -= (1f / 60f);
+		while(accumulator >= KCConstants.TIME_STEP){
+			accumulator -= (KCConstants.TIME_STEP);
 			gameStateManager.render();
 			
 		}
