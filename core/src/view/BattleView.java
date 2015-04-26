@@ -11,7 +11,7 @@ import controller.KCConstants;
 import controller.gamestates.BattleState;
 
 public class BattleView {
-	// private SpriteBatch spriteBatch; TODO: Not sure if this should be here or not
+	private SpriteBatch spriteBatch;
 	private OrthographicCamera worldCam, hudCam, box2DCam;
 	private Box2DDebugRenderer debugRenderer;
 	
@@ -25,6 +25,7 @@ public class BattleView {
 	public BattleView(BattleState battleState) {
 		this.battleState = battleState;
 		
+		spriteBatch = new SpriteBatch();
 		debugRenderer = new Box2DDebugRenderer();
 		mapRenderer = new OrthogonalTiledMapRenderer(battleState.getTiledMap());
 		
@@ -55,8 +56,10 @@ public class BattleView {
 		mapRenderer.render();
 		
 		// Render objects on map
-		playerView.render(); // TODO: QUESTION: Should all render functions share the
-		fireballView.render(); // same spritebatch, or should they create their own?
+		spriteBatch.begin();
+		playerView.render();
+		fireballView.render();
+		spriteBatch.end();
 		
 		debugRenderer.render(battleState.getWorld(), box2DCam.combined);
 	}
