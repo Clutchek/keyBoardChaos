@@ -24,8 +24,6 @@ public class PlayerController {
 		this.secondSpellKey = secondSpellKey;
 		
 		updateDirection();
-		
-		
 	}
 	
 	/**
@@ -93,32 +91,32 @@ public class PlayerController {
 	 * Method used to get the key that is used for the Player's first spell.
 	 * @return the numeric value of the key that responds to letting the Player use his first Spell.
 	 */
-	public int getUseSpell1Key() {
-		return useSpell1Key;
+	public int getfirstSpellKey() {
+		return firstSpellKey;
 	}
 
 	/**
 	 * Method used to set a key for the Player's first spell.
-	 * @param fireSpell1 represents the numeric value of the key that will be used for the Player's first spell.
+	 * @param spellKey represents the numeric value of the key that will be used for the Player's first spell.
 	 */
-	public void setUseSpell1Key(int fireSpell1) {
-		this.useSpell1Key = fireSpell1;
+	public void setfirstSpellKey(int spellKey) {
+		this.firstSpellKey = spellKey;
 	}
 
 	/**
 	 * Method used to get the key that is used for the Player's second spell.
 	 * @return the numeric value of the key that responds to letting the Player use his second Spell.
 	 */
-	public int getUseSpell2() {
-		return useSpell2Key;
+	public int getSecondSpellKey() {
+		return secondSpellKey;
 	}
 	
 	/**
 	 * Method used to set a key for the Player's second spell.
-	 * @param fireSpell2 represents the numeric value of the key that will be used for the Player's second spell.
+	 * @param spellKey represents the numeric value of the key that will be used for the Player's second spell.
 	 */
-	public void setFireSpell2Key(int fireSpell2) {
-		this.useSpell2Key = fireSpell2;
+	public void setFireSpell2Key(int spellKey) {
+		this.secondSpellKey = spellKey;
 	}
 	
 	/**
@@ -235,6 +233,9 @@ public class PlayerController {
 		}
 	}
 	
+	/**
+	 * Updates the vector in which the player is facing.
+	 */
 	private void updateDirection(){
 		direction = new Vector2(0,0);
 		
