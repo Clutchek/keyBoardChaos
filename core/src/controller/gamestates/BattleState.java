@@ -47,6 +47,10 @@ public class BattleState implements GameState {
 	public void render() {
 		battleView.render();
 	}
+	
+	public World getWorld(){
+		return this.world;
+	}
 
 	/*
 	 * Might use the initialize-method to create a new world (override the old one?), 
