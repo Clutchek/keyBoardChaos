@@ -38,6 +38,7 @@ public class PlayerController {
 	
 	public void update(){
 		setInputStatus();
+		body.applyForceToCenter(direction, true);
 		updatePlayerPosition();
 		
 	}
@@ -260,7 +261,7 @@ public class PlayerController {
 		this.bDef.position.set(x /  KCConstants.PPM, y / KCConstants.PPM);
 	}
 	
-	public void getBody(){
+	public Body getBody(){
 		return body;
 	}
 	
