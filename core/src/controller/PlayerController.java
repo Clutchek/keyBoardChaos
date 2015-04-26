@@ -6,6 +6,10 @@ import old.models.spell.Spell;
 import model.player.Player;
 
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.physics.box2d.Body;
+import com.badlogic.gdx.physics.box2d.BodyDef;
+import com.badlogic.gdx.physics.box2d.CircleShape;
+import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
 
 public class PlayerController {
 
@@ -13,6 +17,9 @@ public class PlayerController {
 	private boolean movingRight, movingLeft, movingUp, movingDown, isGettingInput;
 	private int moveUpKey, moveDownKey, moveLeftKey, moveRightKey, firstSpellKey, secondSpellKey;
 	private Vector2 direction;
+	
+	private BodyDef bDef;
+	private Body body;
 	
 	public PlayerController(Player p,int moveUpKey,int moveDownKey,int moveLeftKey,int moveRightKey,int firstSpellKey,int secondSpellKey){
 		this.player = p;
@@ -22,6 +29,9 @@ public class PlayerController {
 		this.moveRightKey = moveRightKey;
 		this.firstSpellKey = firstSpellKey;
 		this.secondSpellKey = secondSpellKey;
+		
+		bDef = new BodyDef();
+		setPlayerPos(p.getPosX(), p.getPosY());
 		
 		updateDirection();
 	}
@@ -220,6 +230,23 @@ public class PlayerController {
 	 */
 	public Vector2 getVector(){
 		return direction;
+	}
+	
+	private void createBody(){
+		bDef.type = BodyType.DynamicBody;
+		body = old.control.KeyboardChaosControl.getWorld().createBody(bDef);
+		CircleShape cshape = new CircleShape();
+		cshape.setRadius(player.getRadius() / KCConstants.PPM);
+		body.setUserData(player);
+		body.setLinearDamping(0.5f);	
+	}
+	
+	public void setPlayerPos(float x, float y){
+		this.bDef.position.set(x /  KCConstants.PPM, y / KCConstants.PPM);
+	}
+	
+	public void getBody(){
+		return body;
 	}
 	
 	/**
