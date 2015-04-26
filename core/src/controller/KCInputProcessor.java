@@ -25,7 +25,7 @@ public class KCInputProcessor extends InputAdapter{
 	@Override
 	public boolean keyDown(int keycode) {
 		
-		for(Player p : old.control.states.StandardMode.getPlayerList()){
+		for(PlayerController p : old.control.states.StandardMode.getPlayerList()){
 			if(keycode == p.getUpKey()){
 				p.setUp(true);
 			}else if(keycode == p.getDownKey()){
