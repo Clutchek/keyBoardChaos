@@ -2,16 +2,123 @@ package controller;
 
 import java.io.File;
 
+import old.models.spell.Spell;
+import model.player.Player;
+
 import com.badlogic.gdx.math.Vector2;
 
 public class PlayerController {
 
 	private Player player;
-	private boolean movingRight, movingLeft, movingUp, movingDown;
+	private boolean movingRight, movingLeft, movingUp, movingDown, isGettingInput;
 	private int moveUpKey, moveDownKey, moveLeftKey, moveRightKey, firstSpellKey, secondSpellKey;
+	private Vector2 direction;
 	
-	public PlayerController(Player p){
-		player = p;
+	public PlayerController(Player p,int moveUpKey,int moveDownKey,int moveLeftKey,int moveRightKey,int firstSpellKey,int secondSpellKey){
+		this.player = p;
+		this.moveUpKey = moveUpKey;
+		this.moveDownKey = moveDownKey;
+		this.moveLeftKey = moveLeftKey;
+		this.moveRightKey = moveRightKey;
+		this.firstSpellKey = firstSpellKey;
+		this.secondSpellKey = secondSpellKey;
+		
+		updateDirection();
+		
+		
+	}
+	
+	/**
+	 * Method used to get the key that is used to move the Player up.
+	 * @return the numeric value of the key that responds to moving the Player up.
+	 */
+	public int getMoveUpKey() {
+		return moveUpKey;
+	}
+	
+	/**
+	 * Method used to set a key that is used to move the Player up.
+	 * @param moveLeft the numeric value of the key responds to moving the Player up.
+	 */
+	public void setMoveUpKey(int moveUp) {
+		this.moveUpKey = moveUp;
+	}
+	
+	/**
+	 * Method used to get the key that is used to move the Player down.
+	 * @return the numeric value of the key that responds to moving the Player down.
+	 */
+	public int getMoveDownKey() {
+		return moveDownKey;
+	}
+	/**
+	 * Method used to set a key that is used to move the Player down.
+	 * @param moveLeft the numeric value of the key that responds to moving the Player down.
+	 */
+	public void setMoveDownKey(int moveDown) {
+		this.moveDownKey = moveDown;
+	}
+	
+	/**
+	 * Method used to get the key that is used to move the Player right.
+	 * @return the numeric value of the key that responds to moving the Player right.
+	 */
+	public int getMoveRightKey() {
+		return moveRightKey;
+	}
+	/**
+	 * Method used to set a key that is used to move the Player right.
+	 * @param moveLeft the numeric value of the key that responds to moving the Player right.
+	 */
+	public void setMoveRightKey(int moveRight) {
+		this.moveRightKey = moveRight;
+	}
+	
+	/**
+	 * Method used to get the key that is used to move the Player left.
+	 * @return the numeric value of the key that responds to moving the Player left.
+	 */
+	public int getMoveLeftKey() {
+		return moveLeftKey;
+	}
+	/**
+	 * Method used to set a key that is used to move the Player left.
+	 * @param moveLeft the numeric value of the key that responds to moving the Player left.
+	 */
+	public void setMoveLeftKey(int moveLeft) {
+		this.moveLeftKey = moveLeft;
+	}
+
+	/**
+	 * Method used to get the key that is used for the Player's first spell.
+	 * @return the numeric value of the key that responds to letting the Player use his first Spell.
+	 */
+	public int getUseSpell1Key() {
+		return useSpell1Key;
+	}
+
+	/**
+	 * Method used to set a key for the Player's first spell.
+	 * @param fireSpell1 represents the numeric value of the key that will be used for the Player's first spell.
+	 */
+	public void setUseSpell1Key(int fireSpell1) {
+		this.useSpell1Key = fireSpell1;
+	}
+
+	/**
+	 * Method used to get the key that is used for the Player's second spell.
+	 * @return the numeric value of the key that responds to letting the Player use his second Spell.
+	 */
+	public int getUseSpell2() {
+		return useSpell2Key;
+	}
+	
+	/**
+	 * Method used to set a key for the Player's second spell.
+	 * @param fireSpell2 represents the numeric value of the key that will be used for the Player's second spell.
+	 */
+	public void setFireSpell2Key(int fireSpell2) {
+		this.useSpell2Key = fireSpell2;
 	}
 	
 	/**
