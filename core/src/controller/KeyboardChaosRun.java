@@ -10,10 +10,16 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 
+import controller.gamestates.GameStateManager;
+
 public class KeyboardChaosRun implements ApplicationListener{
 
 	private SpriteBatch spriteBatch;
 	private float PPM = KCConstants.PPM;
+	
+	private float accumulator;
+	
+	private GameStateManager gameStateManager;
 
 	private OrthographicCamera worldCam, hudCam, b2dCam;
 	
@@ -27,39 +33,22 @@ public class KeyboardChaosRun implements ApplicationListener{
 	public void create() {
 		spriteBatch = new SpriteBatch();
 		
+		gameStateManager = new GameStateManager();
+		
 		Gdx.input.setInputProcessor(new KCInputProcessor());
-		
-		//Cameras
-		worldCam = new OrthographicCamera(KCConstants.GAME_WIDTH, KCConstants.GAME_HEIGHT);
-		worldCam.translate(KCConstants.GAME_WIDTH / 2, KCConstants.GAME_HEIGHT / 2);
-		/*
-		 * Translate is done since the cam before is centered at x = y = 0. 
-		 * We can to move the cam so that the bottom left corner is at (0 0).
-		 */
-		worldCam.update();
-		
-		
-		b2dCam = new OrthographicCamera();
-		b2dCam.setToOrtho(false, KCConstants.GAME_WIDTH / PPM, KCConstants.GAME_HEIGHT / PPM);
-		
-		//World
-		world = new World(KCConstants.GRAVITY, true);
-		world.setContactListener(new KCContactListener());
-		
-		//Renderers
-		b2dRenderer = new Box2DDebugRenderer();
-		
-		//Map stuff
-		tileMap = new TmxMapLoader().load("assets/maps/betatest.tmx");
-		MapBodyManager mbm = new MapBodyManager(world, PPM, null, 0);
-		mbm.createPhysics(tileMap, "lavahurts");
-		mapRenderer = new OrthogonalTiledMapRenderer(tileMap);
 		
 	}
 
 	@Override
 	public void render() {
-		// Call view to render?
+		gameStateManager.update();
+		
+		accumulator += Gdx.graphics.getDeltaTime();
+		while(accumulator >= 1f / 60f){
+			accumulator -= (1f / 60f);
+			gameStateManager.render();
+			
+		}
 		
 	}
 
