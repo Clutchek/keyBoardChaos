@@ -32,6 +32,7 @@ public class PlayerController {
 		
 		bDef = new BodyDef();
 		setPlayerPos(p.getPosX(), p.getPosY());
+		createBody();
 		
 		setInputStatus();
 	}
@@ -294,5 +295,13 @@ public class PlayerController {
 		if(isMovingDown()){
 			direction.y = -1;
 		}
+	}
+	
+	public void useFirstSpell(){
+		player.getSpell1();
+	}
+	
+	public void useSecondSpell(){
+		
 	}
 }

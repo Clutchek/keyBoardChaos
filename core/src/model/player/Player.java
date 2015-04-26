@@ -13,7 +13,7 @@ public class Player {
 	
 	private String playerName;
 	
-	private Spell spell1, spell2;
+	private Spell firstSpell, secondSpell;
 	
 	/**
 	 * Constructor for the Player class.
@@ -88,32 +88,32 @@ public class Player {
 	 * Method used to return the Player's first spell.
 	 * @return the first spell of the Player.
 	 */
-	public Spell getSpell1() {
-		return spell1;
+	public Spell getFirstSpell() {
+		return firstSpell;
 	}
 
 	/**
 	 * Method used to set the Player's first spell.
 	 * @param spell1 represents the spell that will be Player's first spell.
 	 */
-	public void setSpell1(Spell spell1) {
-		this.spell1 = spell1;
+	public void setFirstSpell(Spell spell1) {
+		this.firstSpell = spell1;
 	}
 
 	/**
 	 * Method used to return the Player's second spell.
 	 * @return the second spell of the Player.
 	 */
-	public Spell getSpell2() {
-		return spell2;
+	public Spell getSecondSpell() {
+		return secondSpell;
 	}
 
 	/**
 	 * Method used to set the Player's second spell.
 	 * @param spell2 represents the spell that will be Player's second spell.
 	 */
-	public void setSpell2(Spell spell2) {
-		this.spell2 = spell2;
+	public void setSecondSpell(Spell spell2) {
+		this.secondSpell = spell2;
 	}
 
 	/**
