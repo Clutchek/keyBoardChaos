@@ -36,6 +36,16 @@ public class GameStateManager {
 		
 	}
 	
+	public void switchToUIState(){
+		currentState = uiState;
+	}
+	
+	public void switchToRoundOverState(){
+		currentState = roundOverState;
+	}
 	
 	
+	public void switchToToBattleState(){
+		currentState = battleState;
+	}
 }
