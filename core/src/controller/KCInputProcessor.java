@@ -34,6 +34,10 @@ public class KCInputProcessor extends InputAdapter{
 				p.setRight(true);
 			}else if(keycode == p.getLeftKey()){
 				p.setLeft(true);
+			}else if(keycode == p.getfirstSpellKey()){
+				p.useFirstSpell();
+			}else if(keycode == p.getSecondSpellKey()){
+				p.useSecondSpell();
 			}
 		}
 		return true;

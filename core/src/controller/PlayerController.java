@@ -1,19 +1,20 @@
 package controller;
 
-import java.io.File;
-
-import old.models.spell.Spell;
 import model.player.Player;
 
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
-import com.badlogic.gdx.physics.box2d.CircleShape;
 import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
+import com.badlogic.gdx.physics.box2d.CircleShape;
+
+import controller.spellcontroller.SpellController;
+import controller.spellcontroller.SpellControllerFactory;
 
 public class PlayerController {
 
 	private Player player;
+	private SpellControllerFactory spellControllerFactory;
 	private boolean movingRight, movingLeft, movingUp, movingDown, isGettingInput;
 	private int moveUpKey, moveDownKey, moveLeftKey, moveRightKey, firstSpellKey, secondSpellKey;
 	private Vector2 direction;
@@ -23,6 +24,7 @@ public class PlayerController {
 	
 	public PlayerController(Player p,int moveUpKey,int moveDownKey,int moveLeftKey,int moveRightKey,int firstSpellKey,int secondSpellKey){
 		this.player = p;
+		spellControllerFactory = new SpellControllerFactory();
 		this.moveUpKey = moveUpKey;
 		this.moveDownKey = moveDownKey;
 		this.moveLeftKey = moveLeftKey;
@@ -297,11 +299,13 @@ public class PlayerController {
 		}
 	}
 	
-	public void useFirstSpell(){
-		player.getSpell1();
+	protected void useFirstSpell(){
+		SpellController spellController = spellControllerFactory.createSpellController(player.getFirstSpell(), this);
+		spellController.castSpell();
 	}
 	
-	public void useSecondSpell(){
-		
+	protected void useSecondSpell(){
+		SpellController spellController = spellControllerFactory.createSpellController(player.getSecondSpell(), this);
+		spellController.castSpell();
 	}
 }
