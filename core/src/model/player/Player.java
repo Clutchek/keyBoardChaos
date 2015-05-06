@@ -12,7 +12,6 @@ public class Player {
 	private int radius;
 	
 	private String playerName;
-	
 	private Spell firstSpell, secondSpell;
 	
 	/**
