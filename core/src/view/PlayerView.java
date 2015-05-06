@@ -7,6 +7,7 @@ import java.util.Map;
 import old.models.KeyboardChaosModel;
 import old.models.player.Player;
 
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
@@ -21,7 +22,7 @@ public class PlayerView implements Disposable{
 	private SpriteBatch spriteBatch;
 	private boolean assetsLoaded;
 	
-	private Map<Vector2, Object> map;
+	private Map<Vector2, Texture> map;
 	/**
 	 * 
 	 * @param model represents the model of the game containing the world and the players.
@@ -34,7 +35,7 @@ public class PlayerView implements Disposable{
 		
 		spriteBatch = new SpriteBatch();
 		
-		map = new HashMap<Vector2, Object>();
+		map = new HashMap<Vector2, Texture>();
 		fillMapWithIcons();
 		
 		
@@ -55,9 +56,8 @@ public class PlayerView implements Disposable{
 	}
 	
 	private void paintPlayer(PlayerController p){
-	spriteBatch.draw(/*put a texture here */, p.getBody().getPosition().x, p.getBody().getPosition().y); 
-
-	
+		// TODO: May need adjustments when it's possible to draw things up
+		spriteBatch.draw(map.get(p.getVector()), p.getBody().getPosition().x, p.getBody().getPosition().y);
 	}
 	
 	
@@ -91,4 +91,9 @@ public class PlayerView implements Disposable{
 	public void dispose() {
 		
 	}
+	
+	/*
+	 * Some kind of changeDirection method called from outside to tell the view that the player has changed
+	 * direction, instead of fetching the same image from the Hashmap over and over again?
+	 */
 }
