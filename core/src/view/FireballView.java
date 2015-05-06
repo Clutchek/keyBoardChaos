@@ -53,22 +53,6 @@ public class FireballView implements Disposable {
 	}
 	
 	/**
-	 * This method creates a fireball fixture.
-	 * It should be called everytime a new fireball is shot. 
-	 * 
-	 * @param fireball, the new fireball that is shot
-	 * @param body, the body in which the fixture will be created
-	 */
-	
-	public void addFireBallToView(Fireball fireball, Body b){
-		listOfFireBalls.add(fireball);
-		
-		this.body = world.createBody(this.bDef);
-		this.body.createFixture(fDef);
-		
-	}
-	
-	/**
 	 * Method used to render the fireball's textures.
 	 */
 	public void render(){

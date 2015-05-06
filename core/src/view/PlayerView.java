@@ -1,13 +1,18 @@
 package view;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import old.models.KeyboardChaosModel;
 import old.models.player.Player;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.Disposable;
+
+import controller.PlayerController;
 
 public class PlayerView implements Disposable{
 	
@@ -16,6 +21,7 @@ public class PlayerView implements Disposable{
 	private SpriteBatch spriteBatch;
 	private boolean assetsLoaded;
 	
+	private Map<Vector2, Object> map;
 	/**
 	 * 
 	 * @param model represents the model of the game containing the world and the players.
@@ -25,7 +31,35 @@ public class PlayerView implements Disposable{
 		players = model.getPlayerList();
 		
 		assetsLoaded = false;
+		
+		spriteBatch = new SpriteBatch();
+		
+		map = new HashMap<Vector2, Object>();
+		fillMapWithIcons();
+		
+		
 	}
+	/**
+	 * Method that maps each vector with an icon.
+	 * because we have no icons yet, the key is put to null
+	 */
+	private void fillMapWithIcons(){
+		map.put(new Vector2(1, 0), null);
+		map.put(new Vector2(1, 1), null);
+		map.put(new Vector2(0, 1), null);
+		map.put(new Vector2(-1, 1), null);
+		map.put(new Vector2(-1, 0), null);
+		map.put(new Vector2(-1, -1), null);
+		map.put(new Vector2(0, -1), null);
+		map.put(new Vector2(1, -1), null);
+	}
+	
+	private void paintPlayer(PlayerController p){
+	spriteBatch.draw(/*put a texture here */, p.getBody().getPosition().x, p.getBody().getPosition().y); 
+
+	
+	}
+	
 	
 	/**
 	 * Method used to load the resources for the Player.
