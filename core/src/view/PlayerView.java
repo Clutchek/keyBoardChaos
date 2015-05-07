@@ -15,28 +15,23 @@ import com.badlogic.gdx.utils.Disposable;
 
 import controller.PlayerController;
 
-public class PlayerView implements Disposable{
+public class PlayerView{
 	
-	private List<Player> players;
-	private World world;
+	
 	private SpriteBatch spriteBatch;
-	private boolean assetsLoaded;
 	
 	private Map<Vector2, Texture> map;
 	/**
 	 * 
 	 * @param model represents the model of the game containing the world and the players.
 	 */
-	public PlayerView(KeyboardChaosModel model){
-		this.world = model.getWorld();
-		players = model.getPlayerList();
+	public PlayerView(){
 		
-		assetsLoaded = false;
 		
 		spriteBatch = new SpriteBatch();
 		
 		map = new HashMap<Vector2, Texture>();
-		fillMapWithIcons();
+		//fillMapWithIcons();
 		
 		
 	}
@@ -44,16 +39,7 @@ public class PlayerView implements Disposable{
 	 * Method that maps each vector with an icon.
 	 * because we have no icons yet, the key is put to null
 	 */
-	private void fillMapWithIcons(){
-		map.put(new Vector2(1, 0), null);
-		map.put(new Vector2(1, 1), null);
-		map.put(new Vector2(0, 1), null);
-		map.put(new Vector2(-1, 1), null);
-		map.put(new Vector2(-1, 0), null);
-		map.put(new Vector2(-1, -1), null);
-		map.put(new Vector2(0, -1), null);
-		map.put(new Vector2(1, -1), null);
-	}
+	
 	
 	private void paintPlayer(PlayerController p){
 		// TODO: May need adjustments when it's possible to draw things up
@@ -62,35 +48,12 @@ public class PlayerView implements Disposable{
 	
 	
 	/**
-	 * Method used to load the resources for the Player.
-	 */
-	private void loadAssets(){
-		
-	}
-	
-	/**
 	 * Method used to render the Player's textures.
 	 */
 	public void render(){
-		if(!assetsLoaded){
-			loadAssets();
-		}
-		spriteBatch.begin();
-		drawActors();
-		spriteBatch.end();
-	}
-	
-	/**
-	 * Method used to 
-	 */
-	public void drawActors(){
-		//spriteBatch.draw();
-	}
-
-	@Override
-	public void dispose() {
 		
 	}
+
 	
 	/*
 	 * Some kind of changeDirection method called from outside to tell the view that the player has changed
