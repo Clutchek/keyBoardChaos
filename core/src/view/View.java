@@ -20,20 +20,23 @@ public abstract class View {
 		map = new HashMap<Vector2, Texture>();
 		textureList = new ArrayList<Texture>();
 		this.textureDirectory = textureDirectory;
+		this.loadListWithTextures();
+		this.fillMapWithIcons();
+		
 		
 	}
 	
 	
 
-	public void fillMapWithIcons(ArrayList<Texture> t){
-		map.put(new Vector2(0, 1), t.get(0));
-		map.put(new Vector2(1, 1), t.get(1));
-		map.put(new Vector2(1, 0), t.get(2));
-		map.put(new Vector2(1, -1), t.get(3));
-		map.put(new Vector2(0, -1), t.get(4));
-		map.put(new Vector2(-1, -1), t.get(5));
-		map.put(new Vector2(-1, 0), t.get(6));
-		map.put(new Vector2(1, -1), t.get(7));
+	public void fillMapWithIcons(){
+		map.put(new Vector2(0, 1), textureList.get(0));
+		map.put(new Vector2(1, 1), textureList.get(1));
+		map.put(new Vector2(1, 0), textureList.get(2));
+		map.put(new Vector2(1, -1), textureList.get(3));
+		map.put(new Vector2(0, -1), textureList.get(4));
+		map.put(new Vector2(-1, -1), textureList.get(5));
+		map.put(new Vector2(-1, 0), textureList.get(6));
+		map.put(new Vector2(1, -1), textureList.get(7));
 	}
 	
 	
