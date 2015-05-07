@@ -46,6 +46,8 @@ public class BattleView {
 		worldCam.translate(KCConstants.GAME_WIDTH / 2, KCConstants.GAME_HEIGHT / 2);
 		worldCam.update();
 		
+		mapRenderer.setView(worldCam);
+		
 		debugRenderer = new Box2DDebugRenderer();
 		
 		box2DCam = new OrthographicCamera();
@@ -57,10 +59,10 @@ public class BattleView {
 		Gdx.gl20.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		
 		// Render the map
-		mapRenderer.setView(worldCam);
 		mapRenderer.render();
 		
 		// Render objects on map
+		spriteBatch.begin();
 		
 		for (Fixture f : fixtures) {
 			if (f.getUserData() instanceof PlayerController) {
@@ -68,11 +70,12 @@ public class BattleView {
 			}
 		}
 		
-		spriteBatch.begin();
-		playerView.render();
-		fireballView.render();
 		spriteBatch.end();
 		
 		debugRenderer.render(battleState.getWorld(), box2DCam.combined);
+	}
+	
+	public void setFixtureArray(Array<Fixture> fixtures) {
+		this.fixtures = fixtures;
 	}
 }

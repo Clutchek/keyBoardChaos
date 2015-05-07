@@ -21,6 +21,7 @@ public class BattleState implements GameState {
 	private World world;
 	private TiledMap tileMap;
 	private BattleView battleView;
+	Array<Fixture> fixtures;
 	
 	public BattleState() {
 		//World
@@ -32,9 +33,7 @@ public class BattleState implements GameState {
 		MapBodyManager mbm = new MapBodyManager(world, controller.KCConstants.PPM, null, 0);
 		mbm.createPhysics(tileMap, "lavahurts");
 		
-		Array<Fixture> fixtures = new Array<Fixture>();
-		world.getFixtures(fixtures);
-		world.getF
+		refreshFixtureList();
 		battleView = new BattleView(fixtures);
 	}
 	
@@ -42,10 +41,15 @@ public class BattleState implements GameState {
 	public void update() {
 		handleInput();
 		world.step(controller.KCConstants.TIME_STEP, 6, 2);
+		refreshFixtureList();
 		// Destroy fixtures here?
 	}
 	
-	private void 
+	private void refreshFixtureList() {
+		fixtures.clear();
+		world.getFixtures(fixtures);
+		battleView.setFixtureArray(fixtures);
+	}
 
 	@Override
 	public void handleInput() {
