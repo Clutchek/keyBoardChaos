@@ -45,8 +45,8 @@ public class PlayerView extends View{
 	/**
 	 * Method used to render the Player's textures.
 	 */
-	public void render(){
-		
+	public void render(PlayerController playerController){
+		paintPlayer(playerController);
 	}
 
 	

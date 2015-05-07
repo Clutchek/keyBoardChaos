@@ -6,8 +6,11 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
+import com.badlogic.gdx.physics.box2d.Fixture;
+import com.badlogic.gdx.utils.Array;
 
 import controller.KCConstants;
+import controller.PlayerController;
 import controller.gamestates.BattleState;
 
 public class BattleView {
@@ -22,8 +25,10 @@ public class BattleView {
 	private PlayerView playerView;
 	private FireballView fireballView;
 	
-	public BattleView(BattleState battleState) {
-		this.battleState = battleState;
+	private Array<Fixture> fixtures;
+	
+	public BattleView(Array<Fixture> fixtures) {
+		this.fixtures = fixtures;
 		
 		spriteBatch = new SpriteBatch();
 		debugRenderer = new Box2DDebugRenderer();
@@ -56,6 +61,13 @@ public class BattleView {
 		mapRenderer.render();
 		
 		// Render objects on map
+		
+		for (Fixture f : fixtures) {
+			if (f.getUserData() instanceof PlayerController) {
+				playerView.render((PlayerController)f.getUserData());
+			}
+		}
+		
 		spriteBatch.begin();
 		playerView.render();
 		fireballView.render();

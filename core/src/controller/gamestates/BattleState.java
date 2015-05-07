@@ -1,11 +1,15 @@
 package controller.gamestates;
 
+import java.util.ArrayList;
+
 import view.BattleView;
 
 import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
+import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.World;
+import com.badlogic.gdx.utils.Array;
 
 import controller.KCConstants;
 import controller.KCContactListener;
@@ -28,7 +32,10 @@ public class BattleState implements GameState {
 		MapBodyManager mbm = new MapBodyManager(world, controller.KCConstants.PPM, null, 0);
 		mbm.createPhysics(tileMap, "lavahurts");
 		
-		battleView = new BattleView(this);
+		Array<Fixture> fixtures = new Array<Fixture>();
+		world.getFixtures(fixtures);
+		world.getF
+		battleView = new BattleView(fixtures);
 	}
 	
 	@Override
@@ -37,6 +44,8 @@ public class BattleState implements GameState {
 		world.step(controller.KCConstants.TIME_STEP, 6, 2);
 		// Destroy fixtures here?
 	}
+	
+	private void 
 
 	@Override
 	public void handleInput() {
