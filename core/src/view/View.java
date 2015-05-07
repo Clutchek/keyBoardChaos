@@ -18,6 +18,7 @@ public abstract class View {
 	public View(File textureDirectory){
 		
 		map = new HashMap<Vector2, Texture>();
+		textureList = new ArrayList<Texture>();
 		this.textureDirectory = textureDirectory;
 		
 	}
@@ -41,8 +42,8 @@ public abstract class View {
 	}
 	
 	protected void loadListWithTextures(){
-		for(int i = 0; i < textureDirectory.list().length; i++){
-			textureList.add(i, new Texture(textureDirectory.list()));
+		for(String s : textureDirectory.list()){
+			textureList.add(new Texture(textureDirectory.getPath() + s));
 		}
 	}
 	
