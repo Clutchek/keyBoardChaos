@@ -15,7 +15,7 @@ import com.badlogic.gdx.utils.Disposable;
 
 import controller.PlayerController;
 
-public class PlayerView{
+public class PlayerView extends View{
 	
 	
 	private SpriteBatch spriteBatch;
@@ -25,8 +25,8 @@ public class PlayerView{
 	 * 
 	 * @param model represents the model of the game containing the world and the players.
 	 */
-	public PlayerView(){
-		
+	public PlayerView(String path){
+		super(path);
 		
 		spriteBatch = new SpriteBatch();
 		

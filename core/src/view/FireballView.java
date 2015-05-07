@@ -19,7 +19,7 @@ import com.badlogic.gdx.utils.Disposable;
 
 import controller.gamestates.BattleState;
 
-public class FireballView{
+public class FireballView extends View{
 		
 	private SpriteBatch spriteBatch;
 
@@ -28,9 +28,8 @@ public class FireballView{
 
 	
 
-	public FireballView (BattleState battleState){
+	public FireballView (){
 		
-		this.world = battleState.getWorld();
 		
 		
 		
