@@ -29,8 +29,8 @@ public class BattleView {
 		debugRenderer = new Box2DDebugRenderer();
 		mapRenderer = new OrthogonalTiledMapRenderer(battleState.getTiledMap());
 		
-		playerView = new PlayerView(battleState);
-		fireballView = new FireballView(battleState);
+		playerView = new PlayerView();
+		fireballView = new FireballView();
 		
 		// Cameras
 		worldCam = new OrthographicCamera(KCConstants.GAME_WIDTH, KCConstants.GAME_HEIGHT);

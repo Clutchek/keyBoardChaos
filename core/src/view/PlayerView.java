@@ -20,19 +20,14 @@ public class PlayerView extends View{
 	
 	private SpriteBatch spriteBatch;
 	
-	private Map<Vector2, Texture> map;
+	private static String path;
 	/**
 	 * 
 	 * @param model represents the model of the game containing the world and the players.
 	 */
-	public PlayerView(String path){
+	public PlayerView(){
 		super(path);
-		
 		spriteBatch = new SpriteBatch();
-		
-		map = new HashMap<Vector2, Texture>();
-		//fillMapWithIcons();
-		
 		
 	}
 	/**
@@ -43,7 +38,7 @@ public class PlayerView extends View{
 	
 	private void paintPlayer(PlayerController p){
 		// TODO: May need adjustments when it's possible to draw things up
-		spriteBatch.draw(map.get(p.getVector()), p.getBody().getPosition().x, p.getBody().getPosition().y);
+		spriteBatch.draw(this.getTextureForVector(p.getVector()), p.getBody().getPosition().x, p.getBody().getPosition().y);
 	}
 	
 	

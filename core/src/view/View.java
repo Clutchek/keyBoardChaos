@@ -48,7 +48,7 @@ public abstract class View {
 		return textureList;
 	}
 	
-protected Texture getVectorsTexture(Vector2 v){
+	protected Texture getTextureForVector(Vector2 v){
 		return map.get(v);
 	}
 	/*
@@ -58,8 +58,7 @@ protected Texture getVectorsTexture(Vector2 v){
 		for(String s : textureDirectory.list()){
 			textureList.add(new Texture(textureDirectory.getPath() + s));
 		}
-	}
-	
+	}	
 	
 	
 	
