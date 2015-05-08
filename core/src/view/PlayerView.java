@@ -21,10 +21,7 @@ public class PlayerView extends View{
 	private SpriteBatch spriteBatch;
 	
 	private static String path;
-	/**
-	 * 
-	 * @param model represents the model of the game containing the world and the players.
-	 */
+	
 	public PlayerView(){
 		super(path);
 		spriteBatch = new SpriteBatch();
