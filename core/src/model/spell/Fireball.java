@@ -1,5 +1,6 @@
 package model.spell;
 
+import model.main.DirectionVector;
 import model.player.Player;
 
 import com.badlogic.gdx.math.Vector2;
@@ -12,7 +13,8 @@ public class Fireball implements Spell{
 	private Player originPlayer;
 	private Fireball fireball;
 	private final float fireballRadius;
-	private FireballController fireballController;
+	private float posX, posY;
+	private DirectionVector vector;
 
 	
 	public Fireball(Player originPlayer){
@@ -20,7 +22,6 @@ public class Fireball implements Spell{
 		this.projectileSpeed = 1;
 		this.originPlayer = originPlayer;
 		this.fireball = new Fireball(originPlayer);
-		this.fireballController = new FireballController(this, originPlayer);
 		fireballRadius = 3f;
 		
 	}
@@ -51,16 +52,24 @@ public class Fireball implements Spell{
 		return fireballRadius;
 	}
 	
-	public Vector2 getVector(){
-		
+	public DirectionVector getVector(){
+		return vector;
+	}
+	
+	public void setPosX(float x){
+		this.posX = x;
+	}
+	
+	public void setPosY(float y){
+		this.posY = y;
 	}
 	
 	public float getPosX(){
-		return fireballController.getBody().getPosition().x;
+		return posX;
 	}
 	
 	public float getPosY(){
-		return fireballController.getBody().getPosition().y;
+		return posY;
 	}
 
 }
