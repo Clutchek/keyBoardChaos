@@ -21,7 +21,7 @@ public class FixtureFactory {
 	/**
 	 * Creates and returns a fixture. The returned fixture will have a reference
 	 * to the object that is being represented. This is accessed using the fixture's
-	 * method [b]getUserData()[/b].
+	 * method <b>getUserData()</b>.
 	 * 
 	 * @param body The body which is getting a graphical representation (a fixture)
 	 * @return the newly created fixture

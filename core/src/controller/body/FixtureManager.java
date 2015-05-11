@@ -25,10 +25,11 @@ public class FixtureManager {
 	/**
 	 * Creates and returns a libGDX Fixture with pre-determined values depending on what object
 	 * that is being used as a parameter. This object can later be retrieved by calling the 
-	 * returned Fixture's method [b]getUserData()[/b].
+	 * returned Fixture's method <b>getUserData()</b>.
 	 * 
 	 * @param o The object that needs a libGDX component added to the world.
-	 * @return
+	 * @return the newly created fixture, with a reference to the object parameter
+	 * in the fixtures method <b>getUserData()</b>
 	 */
 	public Fixture createFixture(Object o){
 		Body body = fixtureFactory.createBody(o);
@@ -50,7 +51,7 @@ public class FixtureManager {
 	}
 	
 	/**
-	 * This method [b]must[/b] be called between updates in order to
+	 * This method <b>must be called between updates</b> in order to
 	 * safely remove fixtures and their linked body.
 	 * 
 	 */
