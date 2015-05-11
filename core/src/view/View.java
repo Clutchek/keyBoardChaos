@@ -58,7 +58,7 @@ public abstract class View {
 	 */
 	private void loadListWithTextures(){
 		for(String s : textureDirectory.list()){
-			textureList.add(new Texture(textureDirectory.getPath() + s));
+			textureList.add(new Texture(textureDirectory.getPath() + "/" + s));
 		}
 	}	
 	

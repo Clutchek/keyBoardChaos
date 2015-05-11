@@ -11,7 +11,7 @@ public class PlayerView extends View{
 	
 	private SpriteBatch spriteBatch;
 	
-	private static String path = "/recourses/playerTextures/";
+	private static String path = "assets/playerTextures/";
 	
 	public PlayerView(SpriteBatch spriteBatch){
 		super(path);

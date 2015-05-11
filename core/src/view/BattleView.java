@@ -31,7 +31,7 @@ public class BattleView {
 	
 	private Array<Fixture> fixtures;
 	
-	public BattleView(Array<Fixture> fixtures) {
+	public BattleView(Array<Fixture> fixtures, BattleState battleState) {
 		this.fixtures = fixtures;
 		
 		spriteBatch = new SpriteBatch();
