@@ -6,15 +6,25 @@ import model.spell.Fireball;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 
-public class FireballController implements SpellController{
+import controller.body.FixtureManager;
+
+public class FireballController extends SpellController{
 	private Fireball fireball;
 	private Player player;
+	private FixtureManager fixtureManager;
 	
 	private Body body;
 	
-	public FireballController(Fireball f, Player p){
+	public FireballController(Fireball f, Player p, FixtureManager fixtureManager){
+		//super();
 		fireball = f;
 		player = p;
+		this.fixtureManager = fixtureManager;
+		createBody();
+	}
+	
+	private void createBody(){
+		body = fixtureManager.createFixture(fireball).getBody();
 	}
 	
 	public void castSpell(){}

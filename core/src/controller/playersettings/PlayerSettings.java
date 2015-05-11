@@ -2,18 +2,24 @@ package controller.playersettings;
 
 import java.io.Serializable;
 
+import model.spell.Spell;
+
 public class PlayerSettings implements Serializable{
 	private int moveUpKey, moveDownKey, moveLeftKey, moveRightKey, firstSpellKey, secondSpellKey;
-	//private Spell firstSpell, secondSpell;
-	//private String playerName;
+	private Spell firstSpell, secondSpell;
+	private String playerName;
 	
-	public PlayerSettings(int moveUpKey,int moveDownKey,int moveLeftKey,int moveRightKey,int firstSpellKey,int secondSpellKey){
+	public PlayerSettings(int moveUpKey,int moveDownKey,int moveLeftKey,int moveRightKey,int firstSpellKey,int secondSpellKey,Spell firstSpell, Spell secondSpell, String playerName){
 		this.moveUpKey = moveUpKey;
 		this.moveDownKey = moveDownKey;
 		this.moveLeftKey = moveLeftKey;
 		this.moveRightKey = moveRightKey;
 		this.firstSpellKey = firstSpellKey;
 		this.secondSpellKey = secondSpellKey;
+		this.firstSpell = firstSpell;
+		this.secondSpell = secondSpell;
+		this.playerName = playerName; 
+		
 	}
 	
 	/**
@@ -108,5 +114,30 @@ public class PlayerSettings implements Serializable{
 	public void setFireSpell2Key(int spellKey) {
 		this.secondSpellKey = spellKey;
 	}
+	
+	public String getPlayerName(){
+		return playerName;
+	}
+	
+	public void setPlayerName(String playerName){
+		this.playerName = playerName;
+	}
+	
+	public Spell getFirstSpell(){
+		return firstSpell;
+	}
+	
+	public void setFirstSpell(Spell spell){
+		this.firstSpell = spell;
+	}
+	
+	public Spell getSecondSpell(){
+		return secondSpell;
+	}
+	
+	public void setSecondSpell(Spell spell){
+		this.secondSpell = spell;
+	}
+	
 	
 }

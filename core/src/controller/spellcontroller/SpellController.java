@@ -1,7 +1,16 @@
 package controller.spellcontroller;
 
-public interface SpellController {
+import model.player.Player;
+
+import com.badlogic.gdx.math.Vector2;
+
+public abstract class SpellController {
+	protected Vector2 vector;
 	
-	public void castSpell();
+	protected SpellController(){
+		
+	}
+	
+	public abstract void castSpell();
 
 }

@@ -1,13 +1,13 @@
 package controller;
 
+import model.main.DirectionVector;
 import model.player.Player;
 
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
-import com.badlogic.gdx.physics.box2d.BodyDef;
-import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
-import com.badlogic.gdx.physics.box2d.CircleShape;
 
+import controller.body.FixtureManager;
+import controller.playersettings.PlayerSettings;
 import controller.spellcontroller.SpellController;
 import controller.spellcontroller.SpellControllerFactory;
 
@@ -17,14 +17,16 @@ public class PlayerController {
 	private SpellControllerFactory spellControllerFactory;
 	private boolean movingRight, movingLeft, movingUp, movingDown, isGettingInput;
 	private Vector2 direction;
-	private BodyDef bDef;
 	private Body body;
+	private PlayerSettings settings;
+	private FixtureManager fixtureManager;
 	
-	public PlayerController(Player p, PlayerSettings){
+	public PlayerController(Player p, FixtureManager bodyManager){
 		this.player = p;
+		this.fixtureManager = bodyManager;
+		setPlayerSettings(settings);
 		spellControllerFactory = new SpellControllerFactory();
-		bDef = new BodyDef();
-		setPlayerPos(p.getPosX(), p.getPosY());
+		//setPlayerPos(p.getPosX(), p.getPosY());
 		createBody();
 		
 		setInputStatus();
@@ -34,7 +36,7 @@ public class PlayerController {
 		setInputStatus();
 		body.applyForceToCenter(direction, true);
 		updatePlayerPosition();
-		
+		updatePlayerDirection();
 	}
 	
 	/**
@@ -44,6 +46,11 @@ public class PlayerController {
 		Vector2 position = body.getPosition();
 		player.setPosX(position.x);
 		player.setPosY(position.y);
+	}
+	
+	private void updatePlayerDirection(){
+		DirectionVector vector = new DirectionVector(direction.x, direction.y);
+		player.setVector(vector);
 	}
 	
 	
@@ -151,20 +158,26 @@ public class PlayerController {
 	}
 	
 	private void createBody(){
-		bDef.type = BodyType.DynamicBody;
-		body = old.control.KeyboardChaosControl.getWorld().createBody(bDef);
-		CircleShape cshape = new CircleShape();
-		cshape.setRadius(player.getRadius() / KCConstants.PPM);
-		body.setUserData(player);
-		body.setLinearDamping(0.5f);	
+		body = fixtureManager.createFixture(player).getBody();
 	}
 	
-	public void setPlayerPos(float x, float y){
+	/*public void setPlayerPos(float x, float y){
 		this.bDef.position.set(x /  KCConstants.PPM, y / KCConstants.PPM);
-	}
+	}*/
 	
 	public Body getBody(){
 		return body;
+	}
+	
+	public PlayerSettings getPlayerSettings(){
+		return settings;
+	}
+	
+	public void setPlayerSettings(PlayerSettings settings){
+		this.settings = settings;
+		player.setFirstSpell(settings.getFirstSpell());
+		player.setSecondSpell(settings.getSecondSpell());
+		player.setPlayerName(settings.getPlayerName());
 	}
 	
 	/**
@@ -199,12 +212,12 @@ public class PlayerController {
 	}
 	
 	protected void useFirstSpell(){
-		SpellController spellController = spellControllerFactory.createSpellController(player.getFirstSpell(), this);
+		SpellController spellController = spellControllerFactory.createSpellController(player.getFirstSpell(), player);
 		spellController.castSpell();
 	}
 	
 	protected void useSecondSpell(){
-		SpellController spellController = spellControllerFactory.createSpellController(player.getSecondSpell(), this);
+		SpellController spellController = spellControllerFactory.createSpellController(player.getSecondSpell(), player);
 		spellController.castSpell();
 	}
 }

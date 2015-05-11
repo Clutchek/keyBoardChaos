@@ -70,7 +70,6 @@ public class SettingsService {
 		PlayerSettings playerSettings;
 		if(o == null || !(o instanceof PlayerSettings)){
 			playerSettings = getDefaultPlayerSettings(playerNumber);
-			//skriva ner?
 			writePlayerSettings(playerNumber, playerSettings);
 		}else{
 			playerSettings = (PlayerSettings)o;

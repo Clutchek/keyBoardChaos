@@ -1,7 +1,6 @@
 package controller.gamestates;
 
-import java.util.ArrayList;
-
+import model.main.KeyboardChaosModel;
 import view.BattleView;
 
 import com.badlogic.gdx.InputAdapter;
@@ -14,6 +13,7 @@ import com.badlogic.gdx.utils.Array;
 import controller.KCConstants;
 import controller.KCContactListener;
 import controller.MapBodyManager;
+import controller.body.FixtureManager;
 
 public class BattleState implements GameState {
 
@@ -21,9 +21,14 @@ public class BattleState implements GameState {
 	private World world;
 	private TiledMap tileMap;
 	private BattleView battleView;
-	Array<Fixture> fixtures;
+	private Array<Fixture> mapFixtures;
+	private FixtureManager fixtureManager;
+	private KeyboardChaosModel model;
 	
 	public BattleState() {
+		//model stuff
+		model = new KeyboardChaosModel();
+		
 		//World
 		world = new World(KCConstants.GRAVITY, true);
 		world.setContactListener(new KCContactListener());
@@ -32,9 +37,14 @@ public class BattleState implements GameState {
 		tileMap = new TmxMapLoader().load("assets/maps/betatest.tmx");
 		MapBodyManager mbm = new MapBodyManager(world, controller.KCConstants.PPM, null, 0);
 		mbm.createPhysics(tileMap, "lavahurts");
-		
 		refreshFixtureList();
-		battleView = new BattleView(fixtures);
+		battleView = new BattleView(mapFixtures);
+		
+		//Body stuff
+		fixtureManager = new FixtureManager(world);
+		
+		
+		
 	}
 	
 	@Override
