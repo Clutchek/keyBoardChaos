@@ -1,17 +1,8 @@
 package view;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import model.player.Player;
 
-import old.models.KeyboardChaosModel;
-import old.models.player.Player;
-
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.physics.box2d.World;
-import com.badlogic.gdx.utils.Disposable;
 
 import controller.PlayerController;
 
@@ -33,17 +24,17 @@ public class PlayerView extends View{
 	 */
 	
 	
-	private void paintPlayer(PlayerController p){
+	private void paintPlayer(Player p){
 		// TODO: May need adjustments when it's possible to draw things up
-		spriteBatch.draw(this.getTextureForVector(p.getVector()), p.getBody().getPosition().x, p.getBody().getPosition().y);
+		spriteBatch.draw(this.getTextureForVector(p.getVector()), p.getPosX(), p.getPosY());
 	}
 	
 	
 	/**
 	 * Method used to render the Player's textures.
 	 */
-	public void render(PlayerController playerController){
-		paintPlayer(playerController);
+	public void render(Player p){
+		paintPlayer(p);
 	}
 
 	
