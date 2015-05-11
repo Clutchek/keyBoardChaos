@@ -1,5 +1,8 @@
 package view;
 
+import model.player.Player;
+import model.spell.Fireball;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
