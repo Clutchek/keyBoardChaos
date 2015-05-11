@@ -50,8 +50,10 @@ public class BattleState implements GameState {
 		tileMap = new TmxMapLoader().load("assets/maps/betatest.tmx");
 		MapBodyManager mbm = new MapBodyManager(world, controller.KCConstants.PPM, null, 0);
 		mbm.createPhysics(tileMap, "lavahurts");
-		refreshFixtureList();
+		
+		mapFixtures = new Array<Fixture>();
 		battleView = new BattleView(mapFixtures);
+		refreshFixtureList();
 		
 		//Body stuff
 		fixtureManager = new FixtureManager(world);
