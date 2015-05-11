@@ -13,9 +13,9 @@ public class PlayerView extends View{
 	
 	private static String path = "/recourses/playerTextures/";
 	
-	public PlayerView(){
+	public PlayerView(SpriteBatch spriteBatch){
 		super(path);
-		spriteBatch = new SpriteBatch();
+		this.spriteBatch = spriteBatch;
 		
 	}
 	/**
@@ -26,7 +26,7 @@ public class PlayerView extends View{
 	
 	private void paintPlayer(Player p){
 		// TODO: May need adjustments when it's possible to draw things up
-		spriteBatch.draw(this.getTextureForVector(p.getVector()), p.getPosX(), p.getPosY());
+		spriteBatch.draw(this.getTextureForVector(p.getVector()), p.getPosX(), p.getPosY(), p.getRadius()*2, p.getRadius()*2);
 	}
 	
 	
