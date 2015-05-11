@@ -21,11 +21,11 @@ public class PlayerController {
 	private PlayerSettings settings;
 	private FixtureManager fixtureManager;
 	
-	public PlayerController(Player p, FixtureManager bodyManager){
+	public PlayerController(Player p, FixtureManager fixtureManager){
 		this.player = p;
-		this.fixtureManager = bodyManager;
+		this.fixtureManager = fixtureManager;
 		setPlayerSettings(settings);
-		spellControllerFactory = new SpellControllerFactory();
+		spellControllerFactory = new SpellControllerFactory(this.fixtureManager);
 		//setPlayerPos(p.getPosX(), p.getPosY());
 		createBody();
 		

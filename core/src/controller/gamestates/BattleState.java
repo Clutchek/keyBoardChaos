@@ -56,9 +56,9 @@ public class BattleState implements GameState {
 	}
 	
 	private void refreshFixtureList() {
-		fixtures.clear();
-		world.getFixtures(fixtures);
-		battleView.setFixtureArray(fixtures);
+		mapFixtures.clear();
+		world.getFixtures(mapFixtures);
+		battleView.setFixtureArray(mapFixtures);
 	}
 
 	@Override

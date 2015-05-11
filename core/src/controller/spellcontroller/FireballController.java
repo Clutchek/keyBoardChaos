@@ -16,7 +16,7 @@ public class FireballController extends SpellController{
 	private Body body;
 	
 	public FireballController(Fireball f, Player p, FixtureManager fixtureManager){
-		//super();
+		super();
 		fireball = f;
 		player = p;
 		this.fixtureManager = fixtureManager;

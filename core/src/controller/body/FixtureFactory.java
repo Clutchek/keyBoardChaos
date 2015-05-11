@@ -1,7 +1,7 @@
 package controller.body;
 
 import model.player.Player;
-import model.spell.Spell;
+import model.spell.Fireball;
 
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
@@ -13,9 +13,11 @@ import com.badlogic.gdx.physics.box2d.World;
 
 public class FixtureFactory {
 	private World world;
+	private float PPM;
 	
 	protected FixtureFactory(World world){
 		this.world = world;
+		this.PPM = controller.KCConstants.PPM;
 	}
 	
 	/**
@@ -30,20 +32,22 @@ public class FixtureFactory {
 		FixtureDef fixtureDef = new FixtureDef();
 		float fixtureRadius = 0f;
 		//Nullpointervarning här
-		if(body.getUserData() instanceof Spell){
+		if(body.getUserData() instanceof Fireball){
 			fixtureDef.filter.maskBits = controller.KCConstants.MASK_SPELL;
 			fixtureDef.filter.categoryBits = controller.KCConstants.BIT_SPELL;
-			fixtureRadius = 5f;
+			Fireball fireball = (Fireball)body.getUserData();
+			fixtureRadius = fireball.getFireballRadius() / PPM;
 			
 		}else if(body.getUserData() instanceof Player){
 			fixtureDef.filter.maskBits = controller.KCConstants.MASK_PLAYER;
 			fixtureDef.filter.categoryBits = controller.KCConstants.BIT_PLAYER;
-			fixtureRadius = 10f;
+			Player player = (Player)body.getUserData();
+			fixtureRadius = (float)(player.getSize() / PPM);
 			fixtureDef.friction = 0.1f; //Tweaking needed probably
 		}
 		
 		CircleShape cshape = new CircleShape();
-		cshape.setRadius(fixtureRadius); //Size not written in stone
+		cshape.setRadius(fixtureRadius);
 		
 		fixtureDef.shape = cshape;
 		
@@ -59,8 +63,13 @@ public class FixtureFactory {
 	 */
 	protected Body createBody(Object o){
 		BodyDef bodyDef = new BodyDef();
-		//**** Some way to get position ****//
-		//body.position.set();
+		if(o instanceof Player){
+			Player player = (Player)o;
+			bodyDef.position.set(player.getPosX() / PPM, player.getPosY() / PPM);	
+		}else if(o instanceof Fireball){
+			Fireball fireball = (Fireball)o;
+			bodyDef.position.set(fireball.getPosX() / PPM, fireball.getPosY() / PPM);
+		}
 		bodyDef.type = BodyType.DynamicBody;
 		
 		Body body = world.createBody(bodyDef);
