@@ -10,6 +10,7 @@ public abstract class OffensiveSpellController {
 	protected Vector2 vector;
 	protected Spell s;
 	protected Body body;
+	private boolean isActive;
 	
 	protected OffensiveSpellController(Spell s){
 		
@@ -18,5 +19,9 @@ public abstract class OffensiveSpellController {
 	protected void update(){
 		
 	
+	}
+	
+	public boolean isActive(){
+		return isActive;
 	}
 }
