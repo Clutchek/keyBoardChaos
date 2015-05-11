@@ -13,7 +13,7 @@ public class SpellControllerFactory {
 		this.fixtureManager = fixtureManager;
 	}
 	
-	public SpellController createSpellController(Spell spell, Player player){
+	protected SpellController createSpellController(Spell spell, Player player){
 		//kan behöva kolla efter null
 		if(spell instanceof Fireball){
 			Fireball fireball = (Fireball)spell;

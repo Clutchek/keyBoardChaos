@@ -14,7 +14,7 @@ public class SpellFactory {
 	 * 
 	 * @return the spell object that was created
 	 */
-	public Spell createSpell(String spellName, Player originPlayer){
+	protected Spell createSpell(String spellName, Player originPlayer){
 		if(spellName.equals("Fireball")){
 			return new Fireball(originPlayer);
 		}
