@@ -30,7 +30,8 @@ public class FireballController extends SpellController{
 	public void castSpell(){}
 
 	public Vector2 getVector(){
-		return fireball.getVector();
+		
+		return new Vector2(fireball.getVector().getX(), fireball.getVector().getY());
 	}
 	
 	public Body getBody(){
