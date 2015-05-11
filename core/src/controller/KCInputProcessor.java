@@ -35,16 +35,25 @@ public class KCInputProcessor extends InputAdapter{
 //		}
 
 		if(keycode == Keys.W){
-			p.getBody().applyForceToCenter(new Vector2(0,1), true);
+			p.setUp(true);
 		}
-		if(keycode == Keys.A){
-			p.getBody().applyForceToCenter(new Vector2(-1,0), true);
+		else if(keycode == Keys.A){
+			p.setLeft(true);
 		}
-		if(keycode == Keys.S){
-			p.getBody().applyForceToCenter(new Vector2(0,-1), true);
+		else if(keycode == Keys.S){
+			p.setDown(true);
 		}
-		if(keycode == Keys.D){
-			p.getBody().applyForceToCenter(new Vector2(1,0), true);
+		else if(keycode == Keys.D){
+			p.setRight(true);
+		}
+		else if(keycode == Keys.W){
+			p.useFirstSpell();
+		}
+		else if(keycode == Keys.Q){
+			p.useFirstSpell();
+		}
+		else if(keycode == Keys.E){
+			p.useSecondSpell();
 		}
 			
 //			if(keycode == p.getUpKey()){
@@ -67,6 +76,20 @@ public class KCInputProcessor extends InputAdapter{
 
 	@Override
 	public boolean keyUp(int keycode) {
+		PlayerController p = playerControllerList.get(0);
+		
+		if(keycode == Keys.W){
+			p.setUp(false);
+		}
+		else if(keycode == Keys.A){
+			p.setLeft(false);
+		}
+		else if(keycode == Keys.S){
+			p.setDown(false);
+		}
+		else if(keycode == Keys.D){
+			p.setRight(false);
+		}
 		
 //		for(final Player p : old.control.states.StandardMode.getPlayerList()){
 //			final Vector2 oldDirection = p.getVector();
