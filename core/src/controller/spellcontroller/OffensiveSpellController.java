@@ -1,27 +1,46 @@
 package controller.spellcontroller;
 
-import model.spell.Spell;
+import model.main.DirectionVector;
+import model.spell.OffensiveSpell;
 
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.physics.box2d.Body;
 
-public abstract class OffensiveSpellController {
+public abstract class OffensiveSpellController implements SpellController{
 
-	protected Vector2 vector;
-	protected Spell s;
-	protected Body body;
-	private boolean isActive;
+	private Vector2 vector;
+	private OffensiveSpell offensiveSpell;
 	
-	protected OffensiveSpellController(Spell s){
-		
+	public OffensiveSpellController(OffensiveSpell s){
+		this.offensiveSpell = s;
+		vector.set((s.getVector().getX()), s.getVector().getY());
 	}
 	
-	protected void update(){
-		
-	
+	public Vector2 getVector(){
+		return this.vector;
 	}
 	
-	public boolean isActive(){
-		return isActive;
+	public void setVector(float x, float y){
+		this.vector.set(x, y);
+		offensiveSpell.setVector(new DirectionVector(x, y));
 	}
+	
+	public void setPosX(float x){
+		offensiveSpell.setPosX(x);
+	}
+	
+	public void setPosY(float y){
+		offensiveSpell.setPosY(y);
+	}
+	
+	public float getPosX(){
+		return offensiveSpell.getPosX();
+	}
+	
+	public float getPosY(){
+		return offensiveSpell.getPosY();
+	}
+	
+	public abstract void update();
+	
+	public abstract boolean isActive();
 }

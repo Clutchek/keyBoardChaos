@@ -8,7 +8,7 @@ import com.badlogic.gdx.physics.box2d.Body;
 
 import controller.body.FixtureManager;
 
-public class FireballController extends SpellController{
+public class FireballController extends OffensiveSpellController{
 	private Fireball fireball;
 	private Player player;
 	private FixtureManager fixtureManager;
@@ -16,7 +16,7 @@ public class FireballController extends SpellController{
 	private Body body;
 	
 	public FireballController(Fireball f, Player p, FixtureManager fixtureManager){
-		super();
+		super(f);
 		fireball = f;
 		player = p;
 		this.fixtureManager = fixtureManager;
@@ -48,4 +48,9 @@ public class FireballController extends SpellController{
 		fireball.setPosX(position.x);
 		fireball.setPosY(position.y);
 	}
+	
+	public boolean isActive(){
+		
+	}
+
 }
