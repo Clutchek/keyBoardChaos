@@ -33,7 +33,7 @@ public class SpellControllerManager {
 		}
 	}
 	
-	private void removeInactiveSpells(){
+	private void removeInactiveSpellControllers(){
 		for(int i = 0; i < spellControllerList.size(); i++){
 			if(!spellControllerList.get(i).isActive()){
 				spellControllerList.remove(i);
@@ -50,7 +50,7 @@ public class SpellControllerManager {
 			sc.update();
 	
 		}
-		removeInactiveSpells();
+		removeInactiveSpellControllers();
 	}
 	
 }
