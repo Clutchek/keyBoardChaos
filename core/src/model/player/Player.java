@@ -1,5 +1,6 @@
 package model.player;
 
+import model.main.DirectionVector;
 import model.spell.Spell;
 /**
  * A class that represents a player in the keyBoardChaos game.
@@ -10,6 +11,7 @@ public class Player {
 	private int size;
 	private float posX, posY;
 	private int radius;
+	private DirectionVector vector;
 	
 	private String playerName;
 	private Spell firstSpell, secondSpell;
@@ -21,9 +23,7 @@ public class Player {
 		
 	}
 	
-	public int getRadius(){
-		return radius;
-	}
+	
 
 	/**
 	 * Decreases the players health points by a certain amount.
@@ -65,6 +65,18 @@ public class Player {
 	 */
 	public void setSize(int size) {
 		this.size = size;
+	}
+	
+	public int getRadius(){
+		return radius;
+	}
+	
+	public DirectionVector getVector(){
+		return vector;
+	}
+	
+	public void setVector(DirectionVector vector){
+		this.vector = vector;
 	}
 
 	/**
