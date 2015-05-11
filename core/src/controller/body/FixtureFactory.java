@@ -1,5 +1,8 @@
 package controller.body;
 
+import model.player.Player;
+import model.spell.Spell;
+
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
@@ -7,9 +10,6 @@ import com.badlogic.gdx.physics.box2d.CircleShape;
 import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.World;
-
-import controller.PlayerController;
-import controller.spellcontroller.SpellController;
 
 public class FixtureFactory {
 	private World world;
@@ -30,12 +30,12 @@ public class FixtureFactory {
 		FixtureDef fixtureDef = new FixtureDef();
 		float fixtureRadius = 0f;
 		//Nullpointervarning här
-		if(body.getUserData() instanceof SpellController){
+		if(body.getUserData() instanceof Spell){
 			fixtureDef.filter.maskBits = controller.KCConstants.MASK_SPELL;
 			fixtureDef.filter.categoryBits = controller.KCConstants.BIT_SPELL;
 			fixtureRadius = 5f;
 			
-		}else if(body.getUserData() instanceof PlayerController){
+		}else if(body.getUserData() instanceof Player){
 			fixtureDef.filter.maskBits = controller.KCConstants.MASK_PLAYER;
 			fixtureDef.filter.categoryBits = controller.KCConstants.BIT_PLAYER;
 			fixtureRadius = 10f;

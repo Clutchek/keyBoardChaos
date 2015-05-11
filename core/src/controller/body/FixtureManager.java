@@ -30,11 +30,12 @@ public class FixtureManager {
 	 * @param o The object that needs a libGDX component added to the world.
 	 * @return
 	 */
-	public void createFixture(Object o){
+	public Fixture createFixture(Object o){
 		Body body = fixtureFactory.createBody(o);
 		Fixture fixture = fixtureFactory.createFixture(body);
 		
 		fixtureList.add(fixture);
+		return fixture;
 	}
 
 	
