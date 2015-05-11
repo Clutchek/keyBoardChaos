@@ -8,8 +8,7 @@ import com.badlogic.gdx.physics.box2d.Body;
 
 import controller.body.FixtureManager;
 import controller.playersettings.PlayerSettings;
-import controller.spellcontroller.SpellController;
-import controller.spellcontroller.SpellControllerFactory;
+import controller.spellcontroller.SpellControllerManager;
 
 public class PlayerController {
 
@@ -18,12 +17,15 @@ public class PlayerController {
 	private Vector2 direction;
 	private Body body;
 	private PlayerSettings settings;
+	private SpellControllerManager spellControllerManager;
 	private FixtureManager fixtureManager;
 	
-	public PlayerController(Player p, spellControllerManager){
+	public PlayerController(Player p, FixtureManager fixtureManager, SpellControllerManager spellControllerManager){
 		this.player = p;
 		setPlayerSettings(settings);
 		createBody();
+		this.spellControllerManager = spellControllerManager;
+		this.fixtureManager = fixtureManager;
 		
 		setInputStatus();
 	}

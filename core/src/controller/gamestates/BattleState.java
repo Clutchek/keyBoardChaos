@@ -5,7 +5,6 @@ import java.util.List;
 
 import model.main.KeyboardChaosModel;
 import model.player.Player;
-import model.spell.SpellFactory;
 import view.BattleView;
 
 import com.badlogic.gdx.Gdx;
@@ -22,6 +21,8 @@ import controller.KCInputProcessor;
 import controller.MapBodyManager;
 import controller.PlayerController;
 import controller.body.FixtureManager;
+import controller.spellcontroller.SpellControllerFactory;
+import controller.spellcontroller.SpellControllerManager;
 
 public class BattleState implements GameState {
 
@@ -60,12 +61,11 @@ public class BattleState implements GameState {
 		playerControllerList = new ArrayList<PlayerController>();
 		
 		//Spell stuff
-		spellControllerFactory = new SpellControllerFactory(fixtureManager);
-		spellControllerManager = new SpellControllerManager(spellControllerFactory);
+		spellControllerManager = new SpellControllerManager(fixtureManager);
 		
 		
 		for(Player p : playerList){
-			playerControllerList.add(new PlayerController(p, spellControllerManager));
+			playerControllerList.add(new PlayerController(p,fixtureManager, spellControllerManager));
 		}
 		
 		Gdx.input.setInputProcessor(new KCInputProcessor(playerControllerList));
