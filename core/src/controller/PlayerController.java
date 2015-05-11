@@ -14,19 +14,15 @@ import controller.spellcontroller.SpellControllerFactory;
 public class PlayerController {
 
 	private Player player;
-	private SpellControllerFactory spellControllerFactory;
 	private boolean movingRight, movingLeft, movingUp, movingDown, isGettingInput;
 	private Vector2 direction;
 	private Body body;
 	private PlayerSettings settings;
 	private FixtureManager fixtureManager;
 	
-	public PlayerController(Player p, FixtureManager fixtureManager){
+	public PlayerController(Player p, spellControllerManager){
 		this.player = p;
-		this.fixtureManager = fixtureManager;
 		setPlayerSettings(settings);
-		spellControllerFactory = new SpellControllerFactory(this.fixtureManager);
-		//setPlayerPos(p.getPosX(), p.getPosY());
 		createBody();
 		
 		setInputStatus();
@@ -212,12 +208,10 @@ public class PlayerController {
 	}
 	
 	protected void useFirstSpell(){
-		SpellController spellController = spellControllerFactory.createSpellController(player.getFirstSpell(), player);
-		spellController.castSpell();
+		spellControllerManager.createSpellController(player.getFirstSpell(), player);
 	}
 	
 	protected void useSecondSpell(){
-		SpellController spellController = spellControllerFactory.createSpellController(player.getSecondSpell(), player);
-		spellController.castSpell();
+		spellControllerManager.createSpellController(player.getSecondSpell(), player);
 	}
 }
