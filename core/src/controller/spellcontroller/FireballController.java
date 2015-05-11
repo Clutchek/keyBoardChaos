@@ -36,7 +36,6 @@ public class FireballController extends OffensiveSpellController{
 	public void update() {
 		body.applyForceToCenter(getVector(), true);
 		updatePosition();
-		updateDirection();
 	}
 	
 	//kanske kan refaktorera ut till offensiveSpellController

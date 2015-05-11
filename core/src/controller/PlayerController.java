@@ -22,10 +22,11 @@ public class PlayerController {
 	
 	public PlayerController(Player p, FixtureManager fixtureManager, SpellControllerManager spellControllerManager){
 		this.player = p;
-		setPlayerSettings(settings);
-		createBody();
+		//setPlayerSettings(settings);
 		this.spellControllerManager = spellControllerManager;
 		this.fixtureManager = fixtureManager;
+		createBody();
+		direction = new Vector2();
 		
 		setInputStatus();
 	}

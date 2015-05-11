@@ -47,7 +47,9 @@ public class SpellControllerManager {
 	 */
 	public void update(){
 		for(SpellController sc : spellControllerList){
-			sc.update();
+			if(sc != null){
+				sc.update();
+			}
 	
 		}
 		removeInactiveSpellControllers();
