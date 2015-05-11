@@ -12,6 +12,7 @@ import com.badlogic.gdx.utils.Array;
 import controller.KCConstants;
 import controller.PlayerController;
 import controller.gamestates.BattleState;
+import controller.spellcontroller.FireballController;
 
 public class BattleView {
 	private SpriteBatch spriteBatch;
@@ -65,8 +66,12 @@ public class BattleView {
 		spriteBatch.begin();
 		
 		for (Fixture f : fixtures) {
-			if (f.getUserData() instanceof PlayerController) {
-				playerView.render((PlayerController)f.getUserData());
+			if (f != null) {
+				if (f.getUserData() instanceof Player) {
+					playerView.render((Player)f.getUserData());
+				} else if (f.getUserData() instanceof Fireball) {
+					fireballView.render((Fireball)f.getUserData());
+				}
 			}
 		}
 		

@@ -28,4 +28,13 @@ public class FireballController implements SpellController{
 		return body;
 	}
 	
+	public void update() {
+		body.applyForceToCenter(f.getVector(), true);
+	}
+	
+	private void updatePosition() {
+		Vector2 position = body.getPosition();
+		fireball.setPosX(position.x);
+		fireball.setPosY(position.y);
+	}
 }
