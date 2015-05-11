@@ -7,16 +7,18 @@ import com.badlogic.gdx.math.Vector2;
 
 public abstract class OffensiveSpellController implements SpellController{
 
-	private Vector2 vector;
 	private OffensiveSpell offensiveSpell;
+	private Vector2 vector;
 	
 	public OffensiveSpellController(OffensiveSpell s){
 		this.offensiveSpell = s;
-		vector.set((s.getVector().getX()), s.getVector().getY());
+		vector = new Vector2();
 	}
 	
 	public Vector2 getVector(){
-		return this.vector;
+		vector.x = offensiveSpell.getVector().getX();
+		vector.y = offensiveSpell.getVector().getY();
+		return vector;
 	}
 	
 	public void setVector(float x, float y){

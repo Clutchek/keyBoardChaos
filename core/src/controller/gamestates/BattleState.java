@@ -82,6 +82,7 @@ public class BattleState implements GameState {
 		for(PlayerController PC : playerControllerList){
 			PC.update();
 		}
+		spellControllerManager.update();
 		// Destroy fixtures here?
 	}
 	

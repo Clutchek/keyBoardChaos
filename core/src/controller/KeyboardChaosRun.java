@@ -14,29 +14,15 @@ import controller.gamestates.GameStateManager;
 
 public class KeyboardChaosRun implements ApplicationListener{
 
-	private SpriteBatch spriteBatch;
-	private float PPM = KCConstants.PPM;
 	
 	private float accumulator;
 	
 	private GameStateManager gameStateManager;
-
-	private OrthographicCamera worldCam, hudCam, b2dCam;
 	
-	private World world;
-	
-	private TiledMap tileMap;
-	private OrthogonalTiledMapRenderer mapRenderer;
-	private Box2DDebugRenderer b2dRenderer;
-
 	@Override
 	public void create() {
-		spriteBatch = new SpriteBatch();
 		
 		gameStateManager = new GameStateManager();
-		
-//		Gdx.input.setInputProcessor(new KCInputProcessor());
-		
 	}
 
 	@Override

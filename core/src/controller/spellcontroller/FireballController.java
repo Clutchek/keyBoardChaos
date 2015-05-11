@@ -1,5 +1,6 @@
 package controller.spellcontroller;
 
+import model.main.DirectionVector;
 import model.player.Player;
 import model.spell.Fireball;
 
@@ -19,19 +20,13 @@ public class FireballController extends OffensiveSpellController{
 		super(f);
 		fireball = f;
 		player = p;
+		f.setVector(new DirectionVector(p.getVector().getX(), p.getVector().getY()));
 		this.fixtureManager = fixtureManager;
 		createBody();
 	}
 	
 	private void createBody(){
 		body = fixtureManager.createFixture(fireball).getBody();
-	}
-	
-	public void castSpell(){}
-
-	public Vector2 getVector(){
-		
-		return new Vector2(fireball.getVector().getX(), fireball.getVector().getY());
 	}
 	
 	public Body getBody(){
@@ -41,8 +36,10 @@ public class FireballController extends OffensiveSpellController{
 	public void update() {
 		body.applyForceToCenter(getVector(), true);
 		updatePosition();
+		updateDirection();
 	}
 	
+	//kanske kan refaktorera ut till offensiveSpellController
 	private void updatePosition() {
 		Vector2 position = body.getPosition();
 		fireball.setPosX(position.x);
@@ -50,7 +47,7 @@ public class FireballController extends OffensiveSpellController{
 	}
 	
 	public boolean isActive(){
-		
+		return true;
 	}
 
 }
