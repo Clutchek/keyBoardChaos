@@ -8,6 +8,9 @@ import com.badlogic.gdx.physics.box2d.Manifold;
 
 public class KCContactListener implements ContactListener {
 
+	public KCContactListener(){
+		//TESTING
+	}
 	
 	@Override
 	public void beginContact(Contact contact) {
