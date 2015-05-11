@@ -7,7 +7,7 @@ import com.badlogic.gdx.math.Vector2;
 
 import controller.spellcontroller.FireballController;
 
-public class Fireball implements Spell{
+public class Fireball extends Spell{
 	
 	private int damage, projectileSpeed;
 	private Player originPlayer;
@@ -18,6 +18,7 @@ public class Fireball implements Spell{
 
 	
 	public Fireball(Player originPlayer){
+		super();
 		this.damage = 10;
 		this.projectileSpeed = 1;
 		this.originPlayer = originPlayer;
@@ -29,7 +30,6 @@ public class Fireball implements Spell{
 	/**
 	 * Casts fireball spell
 	 */
-	
 	@Override
 	public void castSpell(){
 	}
@@ -52,10 +52,6 @@ public class Fireball implements Spell{
 		return fireballRadius;
 	}
 	
-	public DirectionVector getVector(){
-		return vector;
-	}
-	
 	public void setPosX(float x){
 		this.posX = x;
 	}
@@ -71,5 +67,4 @@ public class Fireball implements Spell{
 	public float getPosY(){
 		return posY;
 	}
-
 }
