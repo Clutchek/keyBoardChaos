@@ -39,7 +39,7 @@ public class FireballController extends SpellController{
 	}
 	
 	public void update() {
-		body.applyForceToCenter(fireball.getVector(), true);
+		body.applyForceToCenter(getVector(), true);
 		updatePosition();
 	}
 	
