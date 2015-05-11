@@ -1,9 +1,5 @@
 package controller.body;
 
-import model.player.Player;
-import model.spell.Spell;
-
-import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
@@ -12,6 +8,9 @@ import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.World;
 
+import controller.PlayerController;
+import controller.spellcontroller.SpellController;
+
 public class FixtureFactory {
 	private World world;
 	
@@ -19,57 +18,54 @@ public class FixtureFactory {
 		this.world = world;
 	}
 	
-	protected Fixture createBody(Object o){
-		if(isOfAcceptedType(o)){
-			if(o instanceof Player){
-				return createPlayerFixture((Player)o);
-			}else if(o instanceof Spell){
-				return createSpellFixture((Spell)o);
-			}else
-				return null;
-		}else
-			return null;
-	}
-	
-	private boolean isOfAcceptedType(Object o){
-		if(o != null){
-			if(o instanceof Player || o instanceof Spell){
-				return true;
-			}else
-				return false;
-			
-		}else 
-			return false;
-	}
-	
-	private Fixture createSpellFixture(Spell spellObject){
-		BodyDef bodyDef = new BodyDef();
+	/**
+	 * Creates and returns a fixture. The returned fixture will have a reference
+	 * to the object that is being represented. This is accessed using the fixture's
+	 * method [b]getUserData()[/b].
+	 * 
+	 * @param body The body which is getting a graphical representation (a fixture)
+	 * @return the newly created fixture
+	 */
+	protected Fixture createFixture(Body body){
 		FixtureDef fixtureDef = new FixtureDef();
-		
-		bodyDef.type = BodyType.DynamicBody;
-		bodyDef.position.set(new Vector2(0, 0)); //Problem: Need to know where player is located in order to get the right position
-		
-		Body body = world.createBody(bodyDef);
+		float fixtureRadius = 0f;
+		//Nullpointervarning här
+		if(body.getUserData() instanceof SpellController){
+			fixtureDef.filter.maskBits = controller.KCConstants.MASK_SPELL;
+			fixtureDef.filter.categoryBits = controller.KCConstants.BIT_SPELL;
+			fixtureRadius = 5f;
+			
+		}else if(body.getUserData() instanceof PlayerController){
+			fixtureDef.filter.maskBits = controller.KCConstants.MASK_PLAYER;
+			fixtureDef.filter.categoryBits = controller.KCConstants.BIT_PLAYER;
+			fixtureRadius = 10f;
+			fixtureDef.friction = 0.1f; //Tweaking needed probably
+		}
 		
 		CircleShape cshape = new CircleShape();
-		cshape.setRadius(5f); //Gonna need tweaking
+		cshape.setRadius(fixtureRadius); //Size not written in stone
 		
 		fixtureDef.shape = cshape;
-		fixtureDef.filter.categoryBits = controller.KCConstants.BIT_SPELL;
-		fixtureDef.filter.maskBits = controller.KCConstants.MASK_SPELL;
 		
 		Fixture fixture = body.createFixture(fixtureDef);
-		
-		fixture.setUserData(spellObject);
-		fixture.
-		
+		fixture.setUserData(body.getUserData());
 		return fixture;
 	}
-	
-	private Fixture createPlayerFixture(Player playerObject){	
+	/**
+	 * Creates a body in the world and returns it
+	 * 
+	 * @param o The object thats getting a body representation
+	 * @return The newly created body
+	 */
+	protected Body createBody(Object o){
+		BodyDef bodyDef = new BodyDef();
+		//**** Some way to get position ****//
+		//body.position.set();
+		bodyDef.type = BodyType.DynamicBody;
 		
-		
-		return null;
+		Body body = world.createBody(bodyDef);
+		body.setUserData(o);
+		return body;
 	}
 	
 }
