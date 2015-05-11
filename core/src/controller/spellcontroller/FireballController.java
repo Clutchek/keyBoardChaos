@@ -10,7 +10,6 @@ public class FireballController implements SpellController{
 	private Fireball fireball;
 	private Player player;
 	
-	private Vector2 direction;
 	private Body body;
 	
 	public FireballController(Fireball f, Player p){
@@ -21,7 +20,7 @@ public class FireballController implements SpellController{
 	public void castSpell(){}
 
 	public Vector2 getVector(){
-		return direction;
+		return fireball.getVector();
 	}
 	
 	public Body getBody(){
@@ -29,7 +28,8 @@ public class FireballController implements SpellController{
 	}
 	
 	public void update() {
-		body.applyForceToCenter(f.getVector(), true);
+		body.applyForceToCenter(fireball.getVector(), true);
+		updatePosition();
 	}
 	
 	private void updatePosition() {
