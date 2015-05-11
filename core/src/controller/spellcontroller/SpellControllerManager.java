@@ -23,7 +23,7 @@ public class SpellControllerManager {
 	 * @param spell the spell that should be created
 	 * @param player the player which will own this spell controller
 	 */
-	public void createSpell(Spell spell, Player player){
+	public void createSpellController(Spell spell, Player player){
 		if(spell instanceof Spell){
 			SpellController SC = spellControllerFactory.
 					createSpellController(spell, player);
