@@ -169,9 +169,9 @@ public class PlayerController {
 		return body;
 	}
 	
-	public PlayerSettings getPlayerSettings(){
-		return settings;
-	}
+//	public PlayerSettings getPlayerSettings(){
+//		return settings;
+//	}
 	
 	public void setPlayerSettings(PlayerSettings settings){
 		this.settings = settings;

@@ -35,7 +35,7 @@ public class KeyboardChaosRun implements ApplicationListener{
 		
 		gameStateManager = new GameStateManager();
 		
-		Gdx.input.setInputProcessor(new KCInputProcessor());
+//		Gdx.input.setInputProcessor(new KCInputProcessor());
 		
 	}
 

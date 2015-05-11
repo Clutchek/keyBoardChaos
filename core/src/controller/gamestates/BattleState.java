@@ -1,8 +1,13 @@
 package controller.gamestates;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import model.main.KeyboardChaosModel;
+import model.player.Player;
 import view.BattleView;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
@@ -12,7 +17,9 @@ import com.badlogic.gdx.utils.Array;
 
 import controller.KCConstants;
 import controller.KCContactListener;
+import controller.KCInputProcessor;
 import controller.MapBodyManager;
+import controller.PlayerController;
 import controller.body.FixtureManager;
 
 public class BattleState implements GameState {
@@ -24,6 +31,8 @@ public class BattleState implements GameState {
 	private Array<Fixture> mapFixtures;
 	private FixtureManager fixtureManager;
 	private KeyboardChaosModel model;
+	private List<Player> playerList;
+	private List<PlayerController> playerControllerList;
 	
 	public BattleState() {
 		//model stuff
@@ -43,7 +52,15 @@ public class BattleState implements GameState {
 		//Body stuff
 		fixtureManager = new FixtureManager(world);
 		
+		//Player stuff
+		playerList = model.getPlayerList();
+		playerControllerList = new ArrayList<PlayerController>();
 		
+		for(Player p : playerList){
+			playerControllerList.add(new PlayerController(p, fixtureManager));
+		}
+		
+		Gdx.input.setInputProcessor(new KCInputProcessor(playerControllerList));
 		
 	}
 	
@@ -52,6 +69,9 @@ public class BattleState implements GameState {
 		handleInput();
 		world.step(controller.KCConstants.TIME_STEP, 6, 2);
 		refreshFixtureList();
+		for(PlayerController PC : playerControllerList){
+			PC.update();
+		}
 		// Destroy fixtures here?
 	}
 	
