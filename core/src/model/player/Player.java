@@ -19,8 +19,13 @@ public class Player {
 	/**
 	 * Constructor for the Player class.
 	 */
-	public Player(){
-		
+	public Player(String name, int posX, int posY){
+		this.playerName = name;
+		healthPoints = 100;
+		//size
+		this.posX = posX;
+		this.posY = posY;
+		vector = new DirectionVector(0,0);
 	}
 	
 	
