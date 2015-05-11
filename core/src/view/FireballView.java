@@ -13,10 +13,10 @@ public class FireballView extends View{
 	private static String path;
 
 
-	public FireballView (){
+	public FireballView (SpriteBatch spriteBatch){
 		
 		super(path);
-		spriteBatch = new SpriteBatch();
+		this.spriteBatch = spriteBatch;
 		
 		
 	}
