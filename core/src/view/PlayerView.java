@@ -16,7 +16,6 @@ public class PlayerView extends View{
 	public PlayerView(SpriteBatch spriteBatch){
 		super(path);
 		this.spriteBatch = spriteBatch;
-		
 	}
 	/**
 	 * Method that maps each vector with an icon.
@@ -26,7 +25,7 @@ public class PlayerView extends View{
 	
 	private void paintPlayer(Player p){
 		// TODO: May need adjustments when it's possible to draw things up
-		spriteBatch.draw(this.getTextureForVector(p.getVector()), p.getPosX(), p.getPosY(), p.getRadius()*2, p.getRadius()*2);
+		spriteBatch.draw(this.getTextureForVector(p.getVector()), p.getPosX(), p.getPosY());
 	}
 	
 	

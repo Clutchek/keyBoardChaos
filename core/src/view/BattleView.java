@@ -33,6 +33,7 @@ public class BattleView {
 	
 	public BattleView(Array<Fixture> fixtures, BattleState battleState) {
 		this.fixtures = fixtures;
+		this.battleState = battleState;
 		
 		spriteBatch = new SpriteBatch();
 		debugRenderer = new Box2DDebugRenderer();

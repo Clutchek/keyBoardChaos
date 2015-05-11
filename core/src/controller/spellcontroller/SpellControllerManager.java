@@ -1,5 +1,6 @@
 package controller.spellcontroller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import model.player.Player;
@@ -15,6 +16,7 @@ public class SpellControllerManager {
 	
 	public SpellControllerManager(FixtureManager fixtureManager){
 		spellControllerFactory = new SpellControllerFactory(fixtureManager);
+		spellControllerList = new ArrayList<SpellController>();
 	}
 	
 	/**

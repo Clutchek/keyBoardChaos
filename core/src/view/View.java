@@ -20,13 +20,11 @@ public abstract class View {
 	private File textureDirectory;
 	
 	public View(String path){
-		
 		map = new HashMap<DirectionVector, Texture>();
 		textureList = new ArrayList<Texture>();
 		this.textureDirectory = new File(path);
 		this.loadListWithTextures();
 		this.fillMapWithTextures();
-		
 		
 	}
 	
@@ -51,6 +49,7 @@ public abstract class View {
 	}
 	
 	protected Texture getTextureForVector(DirectionVector v){
+		System.out.println(map.get(v) == null);
 		return map.get(v);
 	}
 	/*
