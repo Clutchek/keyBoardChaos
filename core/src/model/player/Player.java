@@ -19,9 +19,11 @@ public class Player {
 	/**
 	 * Constructor for the Player class.
 	 */
-	public Player(String name, int posX, int posY){
+	public Player(String name, float posX, float posY, Spell firstSpell, Spell secondSpell){
 		this.playerName = name;
 		healthPoints = 100;
+		this.firstSpell = firstSpell;
+		this.secondSpell = secondSpell;
 		//size
 		this.posX = posX;
 		this.posY = posY;

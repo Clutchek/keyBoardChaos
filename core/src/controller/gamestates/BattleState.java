@@ -37,7 +37,7 @@ public class BattleState implements GameState {
 		tileMap = new TmxMapLoader().load("assets/maps/betatest.tmx");
 		MapBodyManager mbm = new MapBodyManager(world, controller.KCConstants.PPM, null, 0);
 		mbm.createPhysics(tileMap, "lavahurts");
-		refreshFixtureList();
+		refreshMapFixtureList();
 		battleView = new BattleView(mapFixtures);
 		
 		//Body stuff
@@ -51,14 +51,14 @@ public class BattleState implements GameState {
 	public void update() {
 		handleInput();
 		world.step(controller.KCConstants.TIME_STEP, 6, 2);
-		refreshFixtureList();
+		refreshMapFixtureList();
 		// Destroy fixtures here?
 	}
 	
-	private void refreshFixtureList() {
-		fixtures.clear();
-		world.getFixtures(fixtures);
-		battleView.setFixtureArray(fixtures);
+	private void refreshMapFixtureList() {
+		mapFixtures.clear();
+		world.getFixtures(mapFixtures);
+		battleView.setFixtureArray(mapFixtures);
 	}
 
 	@Override

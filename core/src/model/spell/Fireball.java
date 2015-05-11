@@ -17,12 +17,12 @@ public class Fireball implements Spell{
 	private DirectionVector vector;
 
 	
-	public Fireball(Player originPlayer){
+	public Fireball(){
 		this.damage = 10;
 		this.projectileSpeed = 1;
-		this.originPlayer = originPlayer;
-		this.fireball = new Fireball(originPlayer);
+		//this.originPlayer = originPlayer;
 		fireballRadius = 3f;
+		vector = new DirectionVector(0,0);
 		
 	}
 	
@@ -54,6 +54,10 @@ public class Fireball implements Spell{
 	
 	public DirectionVector getVector(){
 		return vector;
+	}
+	
+	public void setVector(DirectionVector vector){
+		this.vector = vector;
 	}
 	
 	public void setPosX(float x){

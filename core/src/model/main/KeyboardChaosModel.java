@@ -4,18 +4,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.player.Player;
+import model.spell.Fireball;
 import model.spell.Spell;
 
-
+//Klassen kanske borde innehålla score med.
 public class KeyboardChaosModel {
 	
 	
 	private List<Player> playerList;
-
-
 	
 	public KeyboardChaosModel(){
 		playerList = new ArrayList<Player>();
+		createPlayers();
 	}
 	
 	/**
@@ -23,8 +23,14 @@ public class KeyboardChaosModel {
 	 * 
 	 * @return
 	 */
-	public void createPlayer(){
-		playerList.add(new Player());
+	public void createPlayers(){
+		//Kolla settings antal aktiva spelare?
+		
+		//Skapa spelare utifrån settings
+		playerList.add(new Player("Player1", 10f,10f, new Fireball(),new Fireball())); 
+		playerList.add(new Player("Player2", 20f,20f, new Fireball(),new Fireball()));
+		playerList.add(new Player("Player3", 30f,30f, new Fireball(),new Fireball()));
+		playerList.add(new Player("Player4", 40f,40f, new Fireball(),new Fireball()));
 	}
 	
 	/**
@@ -33,6 +39,8 @@ public class KeyboardChaosModel {
 	public List<Player> getPlayerList(){
 		return this.playerList;
 	}
+	
+	//Saker nedanför här ska flyttas.....
 	
 	/**
 	 * When a collision/contact is registered in contact listener and
@@ -87,13 +95,4 @@ public class KeyboardChaosModel {
 	public void spellWorldWallCollision(Spell spell){
 		//Tell the view to remove this spell
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }
