@@ -16,14 +16,12 @@ public class Fireball extends Spell{
 	private float posX, posY;
 	private DirectionVector vector;
 
-	
-	public Fireball(Player originPlayer){
-		super();
+	public Fireball(){
 		this.damage = 10;
 		this.projectileSpeed = 1;
-		this.originPlayer = originPlayer;
-		this.fireball = new Fireball(originPlayer);
+		//this.originPlayer = originPlayer;
 		fireballRadius = 3f;
+		vector = new DirectionVector(0,0);
 		
 	}
 	
@@ -52,6 +50,13 @@ public class Fireball extends Spell{
 		return fireballRadius;
 	}
 	
+	public DirectionVector getVector(){
+		return vector;
+	}
+	
+	public void setVector(DirectionVector vector){
+		this.vector = vector;
+	}
 	public void setPosX(float x){
 		this.posX = x;
 	}
