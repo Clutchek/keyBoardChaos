@@ -49,7 +49,6 @@ public abstract class View {
 	}
 	
 	protected Texture getTextureForVector(DirectionVector v){
-		System.out.println(map.get(v) == null);
 		return map.get(v);
 	}
 	/*

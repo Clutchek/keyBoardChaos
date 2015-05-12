@@ -1,5 +1,6 @@
 package view;
 
+import model.main.DirectionVector;
 import model.player.Player;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -25,7 +26,8 @@ public class PlayerView extends View{
 	
 	private void paintPlayer(Player p){
 		// TODO: May need adjustments when it's possible to draw things up
-		spriteBatch.draw(this.getTextureForVector(p.getVector()), p.getPosX(), p.getPosY());
+		if(!p.getVector().equals(new DirectionVector(0, 0)))
+			spriteBatch.draw(this.getTextureForVector(p.getVector()), p.getPosX(), p.getPosY());
 	}
 	
 	

@@ -18,4 +18,22 @@ public class DirectionVector {
 		return x;
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		if (!(obj instanceof DirectionVector)) {
+			return false;
+		}
+		if (obj == this) {
+			return true;
+		}
+		
+		DirectionVector vector = (DirectionVector)obj;
+		return vector.x == this.x && vector.y == this.y;
+	}
+	
+	@Override
+	public int hashCode() {
+		// TODO: Maybe change float to int as it basically will only have x, y = 0 || 1.
+		return (int)(17*x + 31*y);
+	}
 }
