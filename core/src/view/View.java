@@ -40,7 +40,7 @@ public abstract class View {
 		map.put(new DirectionVector(0, -1), textureList.get(4));
 		map.put(new DirectionVector(-1, -1), textureList.get(5));
 		map.put(new DirectionVector(-1, 0), textureList.get(6));
-		map.put(new DirectionVector(1, -1), textureList.get(7));
+		map.put(new DirectionVector(-1, 1), textureList.get(7));
 	}
 	
 	

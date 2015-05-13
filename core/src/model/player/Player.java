@@ -25,9 +25,10 @@ public class Player {
 		this.firstSpell = firstSpell;
 		this.secondSpell = secondSpell;
 		//size
+		setSize(5);
 		this.posX = posX;
 		this.posY = posY;
-		vector = new DirectionVector(0,0);
+		
 	}
 	
 	
