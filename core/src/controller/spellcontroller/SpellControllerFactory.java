@@ -16,7 +16,10 @@ public class SpellControllerFactory {
 	protected SpellController createSpellController(Spell spell, Player player){
 		//kan behöva kolla efter null
 		if(spell instanceof Fireball){
-			return new FireballController(new Fireball(), player, fixtureManager);
+			Fireball fireball = new Fireball();
+			fireball.setPosX(player.getPosX() + player.getVector().getX()*10);
+			fireball.setPosY(player.getPosY() + player.getVector().getY()*10);
+			return new FireballController(fireball, player, fixtureManager);
 		}
 		return null;
 	}
