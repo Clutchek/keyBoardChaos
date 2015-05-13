@@ -10,6 +10,10 @@ public class DirectionVector {
 		this.y = y;
 	}
 	
+	public DirectionVector(DirectionVector vector) {
+		this(vector.getX(), vector.getY());
+	}
+	
 	public float getY(){
 		return y;
 	}

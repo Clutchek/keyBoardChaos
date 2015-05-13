@@ -7,6 +7,7 @@ import model.spell.Fireball;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 
+import controller.KCConstants;
 import controller.body.FixtureManager;
 
 public class FireballController extends OffensiveSpellController{
@@ -20,7 +21,7 @@ public class FireballController extends OffensiveSpellController{
 		super(f);
 		fireball = f;
 		player = p;
-		f.setVector(new DirectionVector(p.getVector().getX(), p.getVector().getY()));
+		f.setVector(new DirectionVector(p.getVector()));
 		this.fixtureManager = fixtureManager;
 		createBody();
 	}
@@ -41,8 +42,8 @@ public class FireballController extends OffensiveSpellController{
 	//kanske kan refaktorera ut till offensiveSpellController
 	private void updatePosition() {
 		Vector2 position = body.getPosition();
-		fireball.setPosX(position.x);
-		fireball.setPosY(position.y);
+		fireball.setPosX(position.x * KCConstants.PPM);
+		fireball.setPosY(position.y * KCConstants.PPM);
 	}
 	
 	public boolean isActive(){

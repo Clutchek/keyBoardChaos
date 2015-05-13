@@ -33,7 +33,7 @@ public class PlayerController {
 	
 	public void update(){
 		setInputStatus();
-		body.applyForceToCenter(direction, true);
+		applyForce();
 		updatePlayerPosition();
 		updatePlayerDirection();
 	}
@@ -47,11 +47,21 @@ public class PlayerController {
 		player.setPosY(position.y * KCConstants.PPM);
 	}
 	
+	/**
+	 * Updates the player model's direction accordingly to the keys that are held down
+	 */
 	private void updatePlayerDirection(){
 		DirectionVector vector = new DirectionVector(direction.x, direction.y);
 		player.setVector(vector);
 	}
 	
+	/**
+	 * Applies force to the player's body if the player is getting input
+	 */
+	private void applyForce() {
+		if (isGettingInput)
+			body.applyForceToCenter(direction, true);
+	}
 	
 	/**
 	 * Sets whether this player is moving upwards or not

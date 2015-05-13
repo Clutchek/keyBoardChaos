@@ -23,7 +23,7 @@ public class FireballView extends View{
 	
 	private void paintFireball(Fireball f){
 		// TODO: May need adjustments when it's possible to draw things up
-		spriteBatch.draw(this.getTextureForVector(f.getVector()), f.getPosX(), f.getPosY());
+		spriteBatch.draw(this.getTextureForVector(f.getVector()), f.getPosX() - f.getFireballRadius(), f.getPosY() - f.getFireballRadius(), f.getFireballRadius()*2, f.getFireballRadius()*2);
 	}
 	
 	

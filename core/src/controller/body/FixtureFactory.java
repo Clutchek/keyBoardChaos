@@ -74,6 +74,7 @@ public class FixtureFactory {
 		
 		Body body = world.createBody(bodyDef);
 		body.setUserData(o);
+		body.setLinearDamping(0.5f);
 		return body;
 	}
 	
