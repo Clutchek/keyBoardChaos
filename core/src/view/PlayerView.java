@@ -27,7 +27,7 @@ public class PlayerView extends View{
 	private void paintPlayer(Player p){
 		// TODO: May need adjustments when it's possible to draw things up
 		if(!p.getVector().equals(new DirectionVector(0, 0)))
-			spriteBatch.draw(this.getTextureForVector(p.getVector()), p.getPosX(), p.getPosY());
+			spriteBatch.draw(this.getTextureForVector(p.getVector()), p.getPosX() - p.getSize(), p.getPosY() - p.getSize(), p.getSize()*2, p.getSize()*2);
 	}
 	
 	

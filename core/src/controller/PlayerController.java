@@ -43,8 +43,8 @@ public class PlayerController {
 	 */
 	private void updatePlayerPosition(){
 		Vector2 position = body.getPosition();
-		player.setPosX(position.x);
-		player.setPosY(position.y);
+		player.setPosX(position.x * KCConstants.PPM);
+		player.setPosY(position.y * KCConstants.PPM);
 	}
 	
 	private void updatePlayerDirection(){

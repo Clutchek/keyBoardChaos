@@ -56,7 +56,8 @@ public class BattleView {
 		debugRenderer = new Box2DDebugRenderer();
 		
 		box2DCam = new OrthographicCamera();
-		box2DCam.setToOrtho(false, KCConstants.GAME_WIDTH / KCConstants.PPM, KCConstants.GAME_HEIGHT / KCConstants.PPM);
+		box2DCam.setToOrtho(false, KCConstants.GAME_WIDTH, KCConstants.GAME_HEIGHT);
+		box2DCam.combined.scale(KCConstants.PPM, KCConstants.PPM, 0);
 	}
 	
 	public void render() {
