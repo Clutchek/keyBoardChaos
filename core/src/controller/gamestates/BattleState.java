@@ -44,7 +44,7 @@ public class BattleState implements GameState {
 		
 		//World
 		world = new World(KCConstants.GRAVITY, true);
-		world.setContactListener(new KCContactListener());
+		world.setContactListener(new KCContactListener(fixtureManager));
 		
 		//Map stuff
 		tileMap = new TmxMapLoader().load("assets/maps/betatest.tmx");
