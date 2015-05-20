@@ -31,12 +31,31 @@ public class PlayerController {
 		setInputStatus();
 	}
 	
-	public void update(){
+	/*public void update(){
 		setInputStatus();
 		applyForce();
 		updatePlayerPosition();
 		updatePlayerDirection();
+	}*/
+	
+	public void updateBody(){
+		updateBodyPosition();
+		setInputStatus();
+		applyForce();
 	}
+
+	public void updatePlayer(){
+		updatePlayerPosition();
+		updatePlayerDirection();
+	}
+	
+	public void updateBodyPosition(){
+		Vector2 position = body.getPosition();
+		position.x = player.getPosX();
+		position.y = player.getPosY();	
+	}
+	
+	
 	
 	/**
 	 * Updates the player models position accordingly to the one in the box2d world.
@@ -48,7 +67,7 @@ public class PlayerController {
 	}
 	
 	/**
-	 * Updates the player model's direction accordingly to the keys that are held down
+	 * Updates the player model's direction accordingly to the keys that are held down.
 	 */
 	private void updatePlayerDirection(){
 		DirectionVector vector = new DirectionVector(direction.x, direction.y);

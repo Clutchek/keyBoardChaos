@@ -77,11 +77,23 @@ public class BattleState implements GameState {
 	@Override
 	public void update() {
 		handleInput();
-		world.step(controller.KCConstants.TIME_STEP, 6, 2);
-		refreshFixtureList();
 		for(PlayerController PC : playerControllerList){
-			PC.update();
+
+			PC.updateBody();
+
+			PC.updatePlayer();
+
 		}
+
+		world.step(controller.KCConstants.TIME_STEP, 6, 2);
+
+		/*for(PlayerController PC : playerControllerList){
+
+			PC.updatePlayer();
+
+		}*/
+		refreshFixtureList();
+		
 		spellControllerManager.update();
 		// Destroy fixtures here?
 	}
