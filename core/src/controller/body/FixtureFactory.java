@@ -1,6 +1,6 @@
 package controller.body;
 
-import model.player.Player;
+
 import model.spell.Fireball;
 
 import com.badlogic.gdx.physics.box2d.Body;
@@ -10,6 +10,8 @@ import com.badlogic.gdx.physics.box2d.CircleShape;
 import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.World;
+
+import controller.PlayerController;
 
 public class FixtureFactory {
 	private World world;
@@ -38,11 +40,11 @@ public class FixtureFactory {
 			Fireball fireball = (Fireball)body.getUserData();
 			fixtureRadius = fireball.getFireballRadius() / PPM;
 			
-		}else if(body.getUserData() instanceof Player){
+		}else if(body.getUserData() instanceof PlayerController){
 			fixtureDef.filter.maskBits = controller.KCConstants.MASK_PLAYER;
 			fixtureDef.filter.categoryBits = controller.KCConstants.BIT_PLAYER;
-			Player player = (Player)body.getUserData();
-			fixtureRadius = (float)(player.getSize() / PPM);
+			PlayerController playerController = (PlayerController)body.getUserData();
+			fixtureRadius = (float)(playerController.getPlayer().getSize() / PPM);
 			fixtureDef.friction = 0.1f; //Tweaking needed probably
 		}
 		
@@ -63,9 +65,9 @@ public class FixtureFactory {
 	 */
 	protected Body createBody(Object o){
 		BodyDef bodyDef = new BodyDef();
-		if(o instanceof Player){
-			Player player = (Player)o;
-			bodyDef.position.set(player.getPosX() / PPM, player.getPosY() / PPM);	
+		if(o instanceof PlayerController){
+			PlayerController playerController = (PlayerController)o;
+			bodyDef.position.set(playerController.getPlayer().getPosX() / PPM, playerController.getPlayer().getPosY() / PPM);	
 		}else if(o instanceof Fireball){
 			Fireball fireball = (Fireball)o;
 			bodyDef.position.set(fireball.getPosX() / PPM, fireball.getPosY() / PPM);

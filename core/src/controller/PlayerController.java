@@ -264,4 +264,12 @@ public class PlayerController {
 	protected void useSecondSpell(){
 		spellControllerManager.createSpellController(player.getSecondSpell(), player);
 	}
+	
+	/**
+	 * The player that this controller has
+	 * @return
+	 */
+	public Player getPlayer(){
+		return this.player;
+	}
 }

@@ -2,21 +2,14 @@ package controller;
 
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.maps.tiled.TiledMap;
-import com.badlogic.gdx.maps.tiled.TmxMapLoader;
-import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
-import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
-import com.badlogic.gdx.physics.box2d.World;
 
 import controller.gamestates.GameStateManager;
+
 
 public class KeyboardChaosRun implements ApplicationListener{
 
 	
 	private float accumulator;
-	
 	private GameStateManager gameStateManager;
 	
 	@Override
@@ -42,7 +35,10 @@ public class KeyboardChaosRun implements ApplicationListener{
 		
 	}
 	
-	
+	@Override
+	public void dispose() {
+		controller.playersettings.Options.getOptionsInstance().savePreferences();
+	}
 
 	
 	
@@ -62,7 +58,5 @@ public class KeyboardChaosRun implements ApplicationListener{
 	public void pause() {}
 	@Override
 	public void resume() {}
-	@Override
-	public void dispose() {}
 
 }
