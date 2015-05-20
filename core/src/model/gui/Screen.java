@@ -1,4 +1,4 @@
-package model.gui.component;
+package model.gui;
 
 public abstract class Screen {
 	private List<ComponentView> componentViews;
