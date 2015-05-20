@@ -25,7 +25,7 @@ public class Player {
 		this.firstSpell = firstSpell;
 		this.secondSpell = secondSpell;
 		//size
-		setSize(5);
+		setSize(25);
 		this.posX = posX;
 		this.posY = posY;
 		//the direction of the player when the game starts

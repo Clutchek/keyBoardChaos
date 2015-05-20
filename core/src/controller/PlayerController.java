@@ -1,5 +1,8 @@
 package controller;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 import model.main.DirectionVector;
 import model.player.Player;
 
@@ -19,6 +22,9 @@ public class PlayerController {
 	private PlayerSettings settings;
 	private SpellControllerManager spellControllerManager;
 	private FixtureManager fixtureManager;
+	private Timer diagonalHelpTimer;
+	private Vector2 oldDirection;
+	public final static int TIMER_DELAY = 50;
 	
 	public PlayerController(Player p, FixtureManager fixtureManager, SpellControllerManager spellControllerManager){
 		this.player = p;
@@ -26,8 +32,8 @@ public class PlayerController {
 		this.spellControllerManager = spellControllerManager;
 		this.fixtureManager = fixtureManager;
 		createBody();
-		direction = new Vector2();
-		
+		direction = new Vector2(0,1);
+		diagonalHelpTimer = new Timer();
 		setInputStatus();
 	}
 	
@@ -40,22 +46,35 @@ public class PlayerController {
 	
 	public void updateBody(){
 		updateBodyPosition();
-		setInputStatus();
 		applyForce();
 	}
 
 	public void updatePlayer(){
 		updatePlayerPosition();
-		updatePlayerDirection();
+		//updatePlayerDirection();
 	}
 	
 	public void updateBodyPosition(){
 		Vector2 position = body.getPosition();
 		position.x = player.getPosX();
-		position.y = player.getPosY();	
+		position.y = player.getPosY();
 	}
 	
-	
+	private void startDiagonalHelpTask(Boolean b, Vector2 vector){
+		final Vector2 test = vector;
+		if(!b && isGettingInput()){
+			System.out.println(test);
+			TimerTask diagonalHelpTask = new TimerTask(){
+				public void run(){
+					if(!isGettingInput()){
+						setDirection(test);
+						System.out.println(test);
+					}
+				}
+			};
+			diagonalHelpTimer.schedule(diagonalHelpTask, 10);
+		}
+	}
 	
 	/**
 	 * Updates the player models position accordingly to the one in the box2d world.
@@ -87,11 +106,10 @@ public class PlayerController {
 	 * @param b boolean describing if player should move upwards or not
 	 */
 	public void setUp(boolean b){
+		Vector2 vector = new Vector2(direction.x, direction.y);
 		movingUp = b;
 		setInputStatus();
-		if(b){
-			updateDirection();
-		}
+		startDiagonalHelpTask(b, vector);
 	}
 	
 	/**
@@ -99,11 +117,10 @@ public class PlayerController {
 	 * @param b boolean describing if player should move downwards or not
 	 */
 	public void setDown(boolean b){
+		Vector2 vector = new Vector2(direction.x, direction.y);
 		movingDown = b;
 		setInputStatus();
-		if(b){
-			updateDirection();
-		}
+		startDiagonalHelpTask(b, vector);
 	}
 	
 	/**
@@ -111,11 +128,10 @@ public class PlayerController {
 	 * @param b boolean describing if player should move to the right or not
 	 */
 	public void setRight(boolean b){
+		Vector2 vector = new Vector2(direction.x, direction.y);
 		movingRight = b;
 		setInputStatus();
-		if(b){
-			updateDirection();
-		}
+		startDiagonalHelpTask(b, vector);
 	}
 	
 	/**
@@ -123,11 +139,10 @@ public class PlayerController {
 	 * @param b boolean describing if player should move to the left or not
 	 */
 	public void setLeft(boolean b){
+		Vector2 vector = new Vector2(direction.x, direction.y);
 		movingLeft = b;
 		setInputStatus();
-		if(b){
-			updateDirection();
-		}
+		startDiagonalHelpTask(b, vector);
 	}
 	
 	/**
@@ -176,6 +191,7 @@ public class PlayerController {
 	 */
 	public void setDirection(Vector2 direction) {
 		this.direction = direction;
+		updatePlayerDirection();
 	}
 	
 	/**
@@ -237,6 +253,8 @@ public class PlayerController {
 		if(isMovingDown()){
 			direction.y = -1;
 		}
+		//System.out.println(direction);
+		updatePlayerDirection();
 	}
 	
 	protected void useFirstSpell(){

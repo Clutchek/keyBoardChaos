@@ -27,7 +27,7 @@ public class KeyboardChaosModel {
 		//Kolla settings antal aktiva spelare?
 		
 		//Skapa spelare utifrån settings
-		playerList.add(new Player("Player1", 10f,10f, new Fireball(),new Fireball())); 
+		playerList.add(new Player("Player1", 100f,100f, new Fireball(),new Fireball())); 
 		playerList.add(new Player("Player2", 20f,20f, new Fireball(),new Fireball()));
 		playerList.add(new Player("Player3", 30f,30f, new Fireball(),new Fireball()));
 		playerList.add(new Player("Player4", 40f,40f, new Fireball(),new Fireball()));
