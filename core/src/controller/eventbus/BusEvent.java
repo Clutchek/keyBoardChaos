@@ -6,11 +6,16 @@ public class BusEvent {
 		
 	}*/
 	
-	private Object o;
+	//private Object o;
+	private String command;
 	
-	public BusEvent(Object o){
-		
+	public BusEvent(String command){
+		this.command = command;
 	}
 	
-	//public 
+	public String getBusCommand(){
+		return command;
+	}
+	
+	//public object get
 }
