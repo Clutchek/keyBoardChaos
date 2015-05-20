@@ -5,7 +5,7 @@ import java.awt.Color;
 /**
  * A clickable button with text on it
  */
-public class TextButton {
+public class TextButton implements Component {
 
 	private String text;
 	private int posX, posY, width, height;

@@ -1,9 +1,9 @@
 package model.gui;
 
-public abstract class Screen {
+public abstract class ScreenView {
 	private List<ComponentView> componentViews;
 	
-	public Screen() {
+	public ScreenView() {
 		
 	}
 	
