@@ -6,7 +6,7 @@ import java.util.List;
 public class EventBusService {
 	
 	private static EventBusService ebs;
-	private List<EventHandler> handlers;
+	private static List<EventHandler> handlers;
 	
 	private EventBusService(){
 		handlers = new ArrayList<EventHandler>();
@@ -20,16 +20,29 @@ public class EventBusService {
 		return ebs;
 	}
 	
-	public void subscribe(EventHandler handler){
-		
+	/**
+	 * Adds an eventhandler to this service.
+	 * @param handler
+	 */
+	public static void subscribe(EventHandler handler){
+		handlers.add(handler);
 	}
 	
-	public void unsubscribe(EventHandler handler){
-		
+	/**
+	 * Removes an eventhandler from this service.
+	 * @param handler the handler to be removed.
+	 */
+	public static void unsubscribe(EventHandler handler){
+		handlers.remove(handler);
 	}
 	
-	public void publish(){
-		
+	/**
+	 * 
+	 */
+	public static void publish(BusEvent e){
+		for(EventHandler handler: handlers){
+			handler.onEvent(e);
+		}
 	}
 
 }
