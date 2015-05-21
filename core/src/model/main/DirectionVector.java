@@ -1,6 +1,8 @@
 package model.main;
 
-public class DirectionVector {
+import java.io.Serializable;
+
+public class DirectionVector implements Serializable{
 	
 	private float x;
 	private float y;

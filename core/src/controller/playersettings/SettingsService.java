@@ -25,7 +25,7 @@ public class SettingsService {
 	public SettingsService(){
 		settingsFileAddresses = new ArrayList<String>();
 		for(int i = 1; i < 5; i++){
-			settingsFileAddresses.add("keyBoardChaos/core/assets/player" + i + "settings.ser");
+			settingsFileAddresses.add("/assets/player" + i + "settings.ser");
 		}
 	}
 	
@@ -36,9 +36,9 @@ public class SettingsService {
 			objectOutputStream.writeObject(playerSettings);
 			objectOutputStream.close();
 		}catch(FileNotFoundException e){
-			File tmp = new File("keyBoardChaos/core/assets/player" + playerNumber +"settings.ser");
+			File tmp = new File(settingsFileAddresses.get(playerNumber-1));
 			try{
-				tmp.mkdirs();
+				//tmp.mkdirs();
 				boolean b = tmp.createNewFile();
 				System.out.println(b);
 			}catch(IOException ex){
