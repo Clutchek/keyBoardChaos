@@ -2,14 +2,17 @@ package model.gui.component;
 
 import java.awt.Color;
 
+import controller.eventbus.BusEvent;
+
 /**
  * A clickable button with text on it
  */
-public class TextButton implements Component {
+public class TextButton extends Component {
 
 	private String text;
 	private int posX, posY, width, height;
 	private Color currentColor, backgroundColor, hoverColor, clickColor;
+	private BusEvent event;
 	
 	/**
 	 * Create a text button with a standard color of gray
@@ -19,7 +22,8 @@ public class TextButton implements Component {
 	 * @param width Width of the button.
 	 * @param height Height of the button.
 	 */
-	public TextButton(String text, int posX, int posY, int width, int height) {
+	public TextButton(String text, int posX, int posY, int width, int height, BusEvent event) {
+		super(event);
 		this.text = text;
 		this.posX = posX;
 		this.posY = posY;
@@ -39,13 +43,13 @@ public class TextButton implements Component {
 	 * @param hoverColor Color of the button while hovered.
 	 * @param clickColor Color of the button while clicked.
 	 */
-	public TextButton(String text, int posX, int posY, int width, int height, Color backgroundColor, Color hoverColor, Color clickColor) {
-		this(text, posX, posY, width, height);
+	public TextButton(String text, int posX, int posY, int width, int height, Color backgroundColor, Color hoverColor, Color clickColor, BusEvent event) {
+		this(text, posX, posY, width, height, event);
 		this.setColors(backgroundColor, hoverColor, clickColor);
 	}
 	
-	public TextButton(String text, int posX, int posY, int width, int height, Color color) {
-		this(text, posX, posY, width, height);
+	public TextButton(String text, int posX, int posY, int width, int height, Color color, BusEvent event) {
+		this(text, posX, posY, width, height, event);
 		int red = color.getRed();
 		int green = color.getGreen();
 		int blue = color.getBlue();
