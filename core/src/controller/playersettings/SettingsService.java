@@ -10,6 +10,8 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import model.spell.Fireball;
+
 import com.badlogic.gdx.Input.Keys;
 
 public class SettingsService {
@@ -34,20 +36,18 @@ public class SettingsService {
 			objectOutputStream.writeObject(playerSettings);
 			objectOutputStream.close();
 		}catch(FileNotFoundException e){
-			File tmp = new File("keyBoardChaos/core/assets", "player" + playerNumber +"settings.ser");
+			File tmp = new File("keyBoardChaos/core/assets/player" + playerNumber +"settings.ser");
 			try{
-				tmp.createNewFile();
+				tmp.mkdirs();
+				boolean b = tmp.createNewFile();
+				System.out.println(b);
 			}catch(IOException ex){
 				ex.printStackTrace();
 			}
-			writePlayerSettings(playerNumber, playerSettings);
+			//writePlayerSettings(playerNumber, playerSettings);
 		}catch(Exception e){
 			e.printStackTrace();
 		}
-	}
-	
-	public void setPlayerSettings(int playerNumber, PlayerSettings playerSettings){
-		
 	}
 	
 	private Object readPlayerSettings(int playerNumber){
@@ -58,7 +58,7 @@ public class SettingsService {
 			objectInputStream.close();
 			return o;
 		}catch(Exception e){
-			e.printStackTrace();
+			//e.printStackTrace();
 			return null;
 		}
 		

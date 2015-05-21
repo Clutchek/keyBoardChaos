@@ -1,4 +1,6 @@
 package model.spell;
 
-public interface Spell {
+import java.io.Serializable;
+
+public interface Spell extends Serializable{
 }
