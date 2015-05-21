@@ -1,11 +1,17 @@
 package controller.gamestates;
 
+import view.gui.UIView;
 import model.gui.StartMenu;
 
 public class UIState implements GameState {
 
 	private StartMenu startMenu;
-	private StartMenuView startMenuView;
+	private UIView uiView;
+	
+	public UIState() {
+		startMenu = new StartMenu();
+		uiView = new UIView(startMenu);
+	}
 	
 	@Override
 	public void update() {
@@ -21,8 +27,7 @@ public class UIState implements GameState {
 
 	@Override
 	public void render() {
-		// TODO Auto-generated method stub
-		
+		uiView.render();
 	}
 
 }

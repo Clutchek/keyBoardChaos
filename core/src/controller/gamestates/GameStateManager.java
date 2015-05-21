@@ -16,7 +16,7 @@ public class GameStateManager {
 		uiState = new UIState();
 		battleState = new BattleState();
 		roundOverState = new RoundOverState();
-		currentState = battleState;
+		switchToUIState();
 	}
 	
 	//public void changeState...

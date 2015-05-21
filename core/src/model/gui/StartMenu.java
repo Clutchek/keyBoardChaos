@@ -7,22 +7,21 @@ import java.util.List;
 import model.gui.component.Component;
 import model.gui.component.TextButton;
 
-public class StartMenu{
+public class StartMenu extends Screen{
 	
-	private List<Component> components;
 	private TextButton playButton;
 	private TextButton exitButton;
 	
 	public StartMenu(){
-		this.playButton = new TextButton("Play", 50, 50, 50, 10, Color.GREEN);
-		this.exitButton = new TextButton("Exit", 50, 100, 50, 10, Color.GREEN);
+		super();
+		this.playButton = new TextButton("Play", 50, 50, 50, 10, new Color(150, 150, 150));
+		this.exitButton = new TextButton("Exit", 50, 100, 50, 10, new Color(150, 150, 150));
 		loadComponentList();
 	}
 	
 	private void loadComponentList(){
-		components = new ArrayList();
-		components.add(this.playButton);
-		components.add(this.exitButton);
+		super.getComponents().add(this.playButton);
+		super.getComponents().add(this.exitButton);
 	}
 
 }
