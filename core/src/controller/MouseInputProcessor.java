@@ -1,3 +1,8 @@
+/*
+ * Class handles mouse inputs in menu screens
+ */
+
+
 package controller;
 
 
@@ -11,6 +16,7 @@ import com.badlogic.gdx.InputProcessor;
 public class MouseInputProcessor implements InputProcessor {
 
 	private List<Component> components;
+	private TextButton selectedButton;
 
 	public MouseInputProcessor(List<Component> components){
 		this.components = components;
@@ -54,6 +60,9 @@ public class MouseInputProcessor implements InputProcessor {
 				TextButton button2 = (TextButton)c;
 				if(button2.isMouseOver(screenX, screenY)){
 					button2.buttonReleaseEvent();
+					if(button2.isSelectable()){
+						selectedButton = button2;
+					}
 				}
 			}
 		}
