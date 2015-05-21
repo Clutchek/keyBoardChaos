@@ -14,6 +14,7 @@ public class TextButton extends Component {
 	private String text;
 	private int posX, posY, width, height;
 	private Color currentColor, backgroundColor, hoverColor, clickColor;
+	private boolean selectableButton;
 	
 	/**
 	 * Create a text button with a standard color of gray
@@ -23,13 +24,14 @@ public class TextButton extends Component {
 	 * @param width Width of the button.
 	 * @param height Height of the button.
 	 */
-	public TextButton(String text, int posX, int posY, int width, int height, BusEvent event) {
+	public TextButton(String text, int posX, int posY, int width, int height, BusEvent event, boolean selectableButton) {
 		super(event);
 		this.text = text;
 		this.posX = posX;
 		this.posY = posY;
 		this.width = width;
 		this.height = height;
+		this.selectableButton = selectableButton;
 		this.setColors(new Color(152,152,152), new Color(165,165,165), new Color(139,139,139));
 	}
 	
@@ -44,13 +46,13 @@ public class TextButton extends Component {
 	 * @param hoverColor Color of the button while hovered.
 	 * @param clickColor Color of the button while clicked.
 	 */
-	public TextButton(String text, int posX, int posY, int width, int height, Color backgroundColor, Color hoverColor, Color clickColor, BusEvent event) {
-		this(text, posX, posY, width, height, event);
+	public TextButton(String text, int posX, int posY, int width, int height, Color backgroundColor, Color hoverColor, Color clickColor, BusEvent event, boolean selectableButton) {
+		this(text, posX, posY, width, height, event, selectableButton);
 		this.setColors(backgroundColor, hoverColor, clickColor);
 	}
 	
-	public TextButton(String text, int posX, int posY, int width, int height, Color color, BusEvent event) {
-		this(text, posX, posY, width, height, event);
+	public TextButton(String text, int posX, int posY, int width, int height, Color color, BusEvent event, boolean selectableButton) {
+		this(text, posX, posY, width, height, event, selectableButton);
 		int red = color.getRed();
 		int green = color.getGreen();
 		int blue = color.getBlue();
@@ -152,5 +154,9 @@ public class TextButton extends Component {
 	
 	public void buttonReleaseEvent(){
 		EventBusService.publish(super.getEvent());
+	}
+	
+	public boolean isSelectable(){
+		return this.selectableButton;
 	}
 }
