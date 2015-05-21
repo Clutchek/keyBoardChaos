@@ -2,7 +2,9 @@ package model.gui.component;
 
 import java.awt.Color;
 
+import controller.KCConstants;
 import controller.eventbus.BusEvent;
+import controller.eventbus.EventBusService;
 
 /**
  * A clickable button with text on it
@@ -12,7 +14,6 @@ public class TextButton extends Component {
 	private String text;
 	private int posX, posY, width, height;
 	private Color currentColor, backgroundColor, hoverColor, clickColor;
-	private BusEvent event;
 	
 	/**
 	 * Create a text button with a standard color of gray
@@ -77,7 +78,7 @@ public class TextButton extends Component {
 	 */
 	public boolean isMouseOver(int x, int y) {
 		boolean withinX = x >= posX && x <= posX + width;
-		boolean withinY = y >= 480 - posY - height && y <= 480 - posY; // Mouse position is from upper left corner
+		boolean withinY = y >= KCConstants.GAME_HEIGHT - posY - height && y <= KCConstants.GAME_HEIGHT - posY; // Mouse position is from upper left corner
 		return withinX && withinY;
 	}
 	
@@ -150,6 +151,6 @@ public class TextButton extends Component {
 	}
 	
 	public void buttonReleaseEvent(){
-		
+		EventBusService.publish(super.getEvent());
 	}
 }

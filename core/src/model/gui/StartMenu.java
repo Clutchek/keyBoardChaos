@@ -15,8 +15,8 @@ public class StartMenu extends Screen{
 	
 	public StartMenu(){
 		super();
-		this.playButton = new TextButton("Play", 50, 50, 50, 10, new Color(150, 150, 150), new BusEvent("play"));
-		this.exitButton = new TextButton("Exit", 50, 100, 50, 10, new Color(150, 150, 150), new BusEvent("exit"));
+		this.playButton = new TextButton("Play", 200, 600, 500, 150, new Color(150, 150, 150), new BusEvent("play"));
+		this.exitButton = new TextButton("Exit", 200, 300, 500, 150, new Color(150, 150, 150), new BusEvent("exit"));
 		loadComponentList();
 	}
 	

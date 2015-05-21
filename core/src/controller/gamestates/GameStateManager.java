@@ -2,7 +2,14 @@ package controller.gamestates;
 
 import java.util.Stack;
 
-public class GameStateManager {
+import com.badlogic.gdx.Gdx;
+
+import controller.MouseInputProcessor;
+import controller.eventbus.BusEvent;
+import controller.eventbus.EventBusService;
+import controller.eventbus.EventHandler;
+
+public class GameStateManager implements EventHandler{
 	
 	/*private Stack<GameState> gameStates;
 	private static final int PLAY_STATE = KCConstants.PLAY_STATE;*/
@@ -17,6 +24,7 @@ public class GameStateManager {
 		battleState = new BattleState();
 		roundOverState = new RoundOverState();
 		switchToUIState();
+		EventBusService.getInstance().subscribe(this);
 	}
 	
 	//public void changeState...
@@ -38,6 +46,7 @@ public class GameStateManager {
 	
 	public void switchToUIState(){
 		currentState = uiState;
+		Gdx.input.setInputProcessor(((UIState)uiState).getInputProcessor());
 	}
 	
 	public void switchToRoundOverState(){
@@ -45,7 +54,18 @@ public class GameStateManager {
 	}
 	
 	
-	public void switchToToBattleState(){
+	public void switchToBattleState(){
 		currentState = battleState;
+		Gdx.input.setInputProcessor(((BattleState)battleState).getInputProcessor());
+	}
+
+	@Override
+	public void onEvent(BusEvent e) {
+		String command = e.getBusCommand();
+		if (command.equals("play")) {
+			this.switchToBattleState();
+		} else if (command.equals("exit")) {
+			Gdx.app.exit();
+		}
 	}
 }

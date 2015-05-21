@@ -72,8 +72,8 @@ public class MouseInputProcessor implements InputProcessor {
 			if(c instanceof TextButton){
 				TextButton button = (TextButton)c;
 				if(button.isMouseOver(screenX, screenY)){
-					button.hover();				}
-				else if(!button.isMouseOver(screenX, screenY)){
+					button.hover();
+				} else if(!button.isMouseOver(screenX, screenY)){
 					button.noHover();
 				}
 			}
