@@ -108,6 +108,11 @@ public class TextButton implements Component {
 	/**
 	 * @return Text on this button.
 	 */
+	
+	public void setText(String s){
+		this.text = s;
+	}
+	
 	public String getText() {
 		return this.text;
 	}
