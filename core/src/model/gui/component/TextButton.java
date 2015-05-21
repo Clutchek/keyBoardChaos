@@ -2,15 +2,17 @@ package model.gui.component;
 
 import java.awt.Color;
 
+import controller.eventbus.BusEvent;
+
 /**
  * A clickable button with text on it
  */
-public class TextButton implements Component {
+public class TextButton extends Component {
 
 	private String text;
 	private int posX, posY, width, height;
 	private Color currentColor, backgroundColor, hoverColor, clickColor;
-	private boolean selectableButton;
+	private BusEvent event;
 	
 	/**
 	 * Create a text button with a standard color of gray
@@ -19,15 +21,14 @@ public class TextButton implements Component {
 	 * @param posY Y-position of the button.
 	 * @param width Width of the button.
 	 * @param height Height of the button.
-	 * @param selectableButton if the button is selectable
 	 */
-	public TextButton(String text, int posX, int posY, int width, int height, boolean selectableButton) {
+	public TextButton(String text, int posX, int posY, int width, int height, BusEvent event) {
+		super(event);
 		this.text = text;
 		this.posX = posX;
 		this.posY = posY;
 		this.width = width;
 		this.height = height;
-		this.selectableButton = selectableButton;
 		this.setColors(new Color(152,152,152), new Color(165,165,165), new Color(139,139,139));
 	}
 	
@@ -41,21 +42,18 @@ public class TextButton implements Component {
 	 * @param backgroundColor Normal color of the button.
 	 * @param hoverColor Color of the button while hovered.
 	 * @param clickColor Color of the button while clicked.
-	 * @param selectableButton if the button is selectable
 	 */
-	public TextButton(String text, int posX, int posY, int width, int height, Color backgroundColor, Color hoverColor, Color clickColor, boolean selectableButton) {
-		this(text, posX, posY, width, height, selectableButton);
+	public TextButton(String text, int posX, int posY, int width, int height, Color backgroundColor, Color hoverColor, Color clickColor, BusEvent event) {
+		this(text, posX, posY, width, height, event);
 		this.setColors(backgroundColor, hoverColor, clickColor);
-		this.selectableButton = selectableButton;
 	}
 	
-	public TextButton(String text, int posX, int posY, int width, int height, Color color, boolean selectableButton) {
-		this(text, posX, posY, width, height, selectableButton);
+	public TextButton(String text, int posX, int posY, int width, int height, Color color, BusEvent event) {
+		this(text, posX, posY, width, height, event);
 		int red = color.getRed();
 		int green = color.getGreen();
 		int blue = color.getBlue();
 		this.setColors(color, new Color(red + 10, green + 10, blue + 10), new Color(red - 10, green - 10, blue - 10));
-		this.selectableButton = selectableButton;
 	}
 	
 	/**
@@ -63,7 +61,6 @@ public class TextButton implements Component {
 	 * @param backgroundColor Normal color of the button.
 	 * @param hoverColor Color of the button while hovered.
 	 * @param clickColor Color of the button while clicked.
-	 * @param selectableButton if the button is selectable
 	 */
 	private void setColors(Color backgroundColor, Color hoverColor, Color clickColor) {
 		this.backgroundColor = backgroundColor;
@@ -154,9 +151,5 @@ public class TextButton implements Component {
 	
 	public void buttonReleaseEvent(){
 		
-	}
-	
-	public boolean isSelectable(){
-		return this.selectableButton;
 	}
 }
