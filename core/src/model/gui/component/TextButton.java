@@ -145,7 +145,11 @@ public class TextButton extends Component {
 	/**
 	 * Change color of this button to the click color.
 	 */
-	public void click() {
+	public void buttonPressEvent() {
 		this.currentColor = clickColor;
+	}
+	
+	public void buttonReleaseEvent(){
+		
 	}
 }
