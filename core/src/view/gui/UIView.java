@@ -2,10 +2,12 @@ package view.gui;
 
 import java.util.List;
 
-import view.gui.component.TextButtonView;
 import model.gui.Screen;
 import model.gui.component.Component;
+import model.gui.component.PlayerSettingsPanel;
 import model.gui.component.TextButton;
+import view.gui.component.PlayerSettingsPanelView;
+import view.gui.component.TextButtonView;
 
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -20,6 +22,7 @@ public class UIView {
 	List<Component> components;
 	
 	TextButtonView textButtonView;
+	PlayerSettingsPanelView pspView;
 	
 	public UIView (Screen startScreen) {
 		this.batch = new SpriteBatch();
@@ -29,12 +32,16 @@ public class UIView {
 		this.components = startScreen.getComponents();
 		
 		this.textButtonView = new TextButtonView(batch, font, shapeRenderer);
+		this.pspView = new PlayerSettingsPanelView(batch, font, shapeRenderer);
 	}
 	
 	public void render() {
 		for (Component c : this.components) {
 			if (c instanceof TextButton) {
 				textButtonView.render((TextButton)c);
+			}
+			if (c instanceof PlayerSettingsPanel){
+				pspView.render((PlayerSettingsPanel)c);
 			}
 		}
 	}
