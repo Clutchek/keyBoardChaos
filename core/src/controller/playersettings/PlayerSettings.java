@@ -100,6 +100,14 @@ public class PlayerSettings implements Serializable{
 	}
 
 	/**
+	 * Method used to set a key for the Player's second spell.
+	 * @param spellKey represents the numeric value of the key that will be used for the Player's first spell.
+	 */
+	public void setSecondSpellKey(int spellKey) {
+		this.secondSpellKey = spellKey;
+	}
+	
+	/**
 	 * Method used to get the key that is used for the Player's second spell.
 	 * @return the numeric value of the key that responds to letting the Player use his second Spell.
 	 */
