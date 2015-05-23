@@ -24,6 +24,8 @@ public class UIState implements GameState {
 		// TODO Auto-generated method stub
 		
 	}
+	
+	public void switchToPlayerSettingMenu(){}
 
 	@Override
 	public void handleInput() {
