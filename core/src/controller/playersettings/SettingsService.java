@@ -25,7 +25,7 @@ public class SettingsService {
 	public SettingsService(){
 		settingsFileAddresses = new ArrayList<String>();
 		for(int i = 1; i < 5; i++){
-			settingsFileAddresses.add("/assets/player" + i + "settings.ser");
+			settingsFileAddresses.add("D:/assets/player" + i + "settings.ser"); //Här
 		}
 	}
 	
@@ -38,7 +38,7 @@ public class SettingsService {
 		}catch(FileNotFoundException e){
 			File tmp = new File(settingsFileAddresses.get(playerNumber-1));
 			try{
-				//tmp.mkdirs();
+				tmp.getParentFile().mkdirs(); //Här
 				boolean b = tmp.createNewFile();
 				System.out.println(b);
 			}catch(IOException ex){
