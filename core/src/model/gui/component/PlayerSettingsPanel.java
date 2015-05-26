@@ -12,12 +12,14 @@ public class PlayerSettingsPanel extends Component implements EventHandler {
 	private final int height;
 	private final int width;
 	private final Color color;
+	private final int buttonSize;
+	private final int buttonSpace;
 	
 	private TextButton upButton;
 	private TextButton downButton;
 	private TextButton rightButton;
 	private TextButton leftButton;
-	private List<TextButton> components;
+	private List<Component> components;
 
 
 	/*
@@ -30,11 +32,14 @@ public class PlayerSettingsPanel extends Component implements EventHandler {
 		super(posX, posY, event);
 
 		height = 600;
-		width = 150;
-		components = new ArrayList();
-		createListOfComponents();
+		width = 300;
+		buttonSize = 60;
+		buttonSpace = 10;
+		components = new ArrayList<Component>();
 		this.color = new Color(152,152,152);
 		loadTextButtons();
+		createListOfComponents();
+
 
 	}
 	/*
@@ -42,15 +47,15 @@ public class PlayerSettingsPanel extends Component implements EventHandler {
 	 * @param posX determines the X-position of the button inside the PlayerSettingsPanel
 	 * @param posY determines the Y-position of the button inside the PlayerSettingsPanel
 	 */
-	private TextButton createControllerSettingsButton(int posX, int posY, String startText, BusEvent event){
-		return new TextButton(startText, (super.getPosX() + posX), (super.getPosY() + posY), 30, 30, new Color(199, 100,50), event, true);
+	private TextButton createControllerSettingsButton(int posX, int posY, String startText){
+		return new TextButton(startText, posX, posY, buttonSize, buttonSize, new Color(199, 100,50), null, true);
 	}
 	
 	private void loadTextButtons(){
-		upButton = createControllerSettingsButton(75, 100, "W", new BusEvent("chosenUpButton"));
-		downButton = createControllerSettingsButton(75, 135, "S", new BusEvent("chosenDownButton"));
-		rightButton = createControllerSettingsButton(110, 135, "D", new BusEvent("chosenRightButton"));
-		leftButton = createControllerSettingsButton(40, 135, "A", new BusEvent("chosenLeftButton"));
+		upButton = createControllerSettingsButton(super.getPosX() + this.width/2 - buttonSize/2, super.getPosY() + this.height/2 + 150, "W");
+		downButton = createControllerSettingsButton(this.upButton.getPosX(), this.upButton.getPosY() - (this.buttonSize + this.buttonSpace), "S");
+		rightButton = createControllerSettingsButton(this.downButton.getPosX() + this.downButton.getWidth() + this.buttonSpace, this.downButton.getPosY(), "D");
+		leftButton = createControllerSettingsButton(this.downButton.getPosX() - this.downButton.getWidth() - this.buttonSpace, this.downButton.getPosY(), "A");
 	}
 	
 	public void createListOfComponents(){
@@ -60,24 +65,37 @@ public class PlayerSettingsPanel extends Component implements EventHandler {
 		components.add(leftButton);
 	}
 	
-	public String getUpButton(){
+	public TextButton getUpButton(){
+		return this.upButton;
+	}
+	public TextButton getDownButton(){
+		return this.downButton;
+	}
+	public TextButton getLeftButton(){
+		return this.leftButton;
+	}
+	public TextButton getRightButton(){
+		return this.rightButton;
+	}
+	
+	public String getUpButtonText(){
 		return upButton.getText();
 	}
 	
-	public String downUpButton(){
+	public String downUpButtonText(){
 		return downButton.getText();
 	}
 	
-	public String rightUpButton(){
+	public String rightUpButtonText(){
 		return rightButton.getText();
 	}
 	
-	public String leftUpButton(){
+	public String leftUpButtonText(){
 		return leftButton.getText();
 	}
 	
 	
-	public List<TextButton> getComponents(){
+	public List<Component> getComponents(){
 		return this.components;
 	}
 	

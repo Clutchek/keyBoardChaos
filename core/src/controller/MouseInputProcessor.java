@@ -75,6 +75,8 @@ public class MouseInputProcessor implements InputProcessor {
 	@Override
 	public boolean touchUp(int screenX, int screenY, int pointer, int button) {
 		for(Component c : components){
+			
+					
 			if(c instanceof TextButton){
 				TextButton button2 = (TextButton)c;
 				if(button2.isMouseOver(screenX, screenY)){
