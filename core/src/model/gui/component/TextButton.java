@@ -12,7 +12,6 @@ import controller.eventbus.EventBusService;
 public class TextButton extends Component {
 
 	private String text;
-	private int posX, posY, width, height;
 	private Color currentColor, backgroundColor, hoverColor, clickColor;
 	private boolean selectableButton;
 	
@@ -25,12 +24,8 @@ public class TextButton extends Component {
 	 * @param height Height of the button.
 	 */
 	public TextButton(String text, int posX, int posY, int width, int height, BusEvent event, boolean selectableButton) {
-		super(event);
+		super(posX, posY, width, height, event);
 		this.text = text;
-		this.posX = posX;
-		this.posY = posY;
-		this.width = width;
-		this.height = height;
 		this.selectableButton = selectableButton;
 		this.setColors(new Color(152,152,152), new Color(165,165,165), new Color(139,139,139));
 	}
@@ -79,37 +74,9 @@ public class TextButton extends Component {
 	 * @return True if mouse is over button, otherwise false.
 	 */
 	public boolean isMouseOver(int x, int y) {
-		boolean withinX = x >= posX && x <= posX + width;
-		boolean withinY = y >= KCConstants.GAME_HEIGHT - posY - height && y <= KCConstants.GAME_HEIGHT - posY; // Mouse position is from upper left corner
+		boolean withinX = x >= super.getPosX() && x <= super.getPosX() + super.getWidth();
+		boolean withinY = y >= KCConstants.GAME_HEIGHT - super.getPosY() - super.getHeight() && y <= KCConstants.GAME_HEIGHT - super.getPosY(); // Mouse position is from upper left corner
 		return withinX && withinY;
-	}
-	
-	/**
-	 * @return X-position of this button.
-	 */
-	public int getX() {
-		return this.posX;
-	}
-	
-	/**
-	 * @return Y-position of this button.
-	 */
-	public int getY() {
-		return this.posY;
-	}
-	
-	/**
-	 * @return Width of this button.
-	 */
-	public int getWidth() {
-		return this.width;
-	}
-	
-	/**
-	 * @return Height of this button.
-	 */
-	public int getHeight() {
-		return this.height;
 	}
 	
 	/**

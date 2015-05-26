@@ -29,11 +29,11 @@ public class TextButtonView {
 		shapeRenderer.begin();
 		shapeRenderer.setColor(color);
 		shapeRenderer.set(ShapeType.Filled);
-		shapeRenderer.rect(button.getX(), button.getY(), button.getWidth(), button.getHeight());
+		shapeRenderer.rect(button.getPosX(), button.getPosY(), button.getWidth(), button.getHeight());
 		shapeRenderer.end();
 		layout.setText(font, button.getText());
-		int fontPosX = button.getX() + (int)(button.getWidth() - layout.width)/2;
-		int fontPosY = button.getY() + (int)(button.getHeight() + layout.height)/2;
+		int fontPosX = button.getPosX() + (int)(button.getWidth() - layout.width)/2;
+		int fontPosY = button.getPosY() + (int)(button.getHeight() + layout.height)/2;
 		batch.begin();
 		font.draw(batch, button.getText(), fontPosX, fontPosY);
 		batch.end();

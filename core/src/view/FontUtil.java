@@ -41,4 +41,43 @@ public class FontUtil {
 		int textPos = centerPoint - this.getCenterOfText(string);
 		return textPos;
 	}
+	
+	public String wrapText(String string, int lineLength) {
+		String newLine = "";
+		String line = "";
+		int startChar = 0;
+		
+		int i = 0;
+		while (i < string.length()) {
+			line = string.substring(startChar, i+1);
+			this.glyphLayout.setText(font, line);
+			if (this.glyphLayout.width > lineLength) {
+				String s = string.substring(startChar, i);
+				if (string.charAt(i) != ' ') {
+					int lastSpace = s.lastIndexOf(' ');
+					newLine += s.substring(0, lastSpace) + "\n";
+					i = newLine.length();
+				}
+				
+				startChar = i;
+			} else if (i == string.length() - 1) {
+				newLine += string.substring(startChar);
+			}
+			i++;
+		}
+		/*
+		for (int i = 0; i < string.length(); i++) {
+			line = string.substring(startChar, i+1);
+			this.glyphLayout.setText(font, line);
+			System.out.println("i: " + i + "; string.length(): " + string.length());
+			if (this.glyphLayout.width > lineLength) {
+				newLine += string.substring(startChar, i).trim() + "\n";
+				startChar = i;
+			} else if (i == string.length() - 1) {
+				newLine += string.substring(startChar).trim();
+			}
+		}
+		*/
+		return newLine;
+	}
 }

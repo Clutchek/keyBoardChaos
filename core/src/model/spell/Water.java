@@ -2,19 +2,16 @@ package model.spell;
 
 import model.player.Player;
 
-public class Fireball extends OffensiveSpell{
+public class Water extends OffensiveSpell{
 	
 	private int damage, projectileSpeed;
 	private Player originPlayer;
 	private final float fireballRadius;
 	
-	public final static String DESCRIPTION = "It may look like a tennis ball, "
-			+ "but it if you're not careful enough you will get it up your anus. "
-			+ "You DO NOT want to mess with a person using this!";
+	public final static String DESCRIPTION = "A drip of this shit and you will never forget the man who invaded your anal.";
+	public final static String NAME = "Water";
 
-	public final static String NAME = "Fireball";
-	
-	public Fireball(){
+	public Water(){
 		super();
 		this.damage = 10;
 		this.projectileSpeed = 1;

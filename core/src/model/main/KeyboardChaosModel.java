@@ -3,9 +3,11 @@ package model.main;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.badlogic.gdx.Input;
+
 import model.player.Player;
 import model.spell.Fireball;
-import model.spell.Spell;
+import model.spell.Spell.SpellEnum;;
 
 //Klassen kanske borde innehålla score med.
 public class KeyboardChaosModel {
@@ -27,10 +29,11 @@ public class KeyboardChaosModel {
 		//Kolla settings antal aktiva spelare?
 		
 		//Skapa spelare utifrån settings
-		playerList.add(new Player("Player1", 10f,10f, new Fireball(),new Fireball())); 
-		playerList.add(new Player("Player2", 20f,20f, new Fireball(),new Fireball()));
-		playerList.add(new Player("Player3", 30f,30f, new Fireball(),new Fireball()));
-		playerList.add(new Player("Player4", 40f,40f, new Fireball(),new Fireball()));
+		playerList.add(new Player("Player1", 10f,10f, SpellEnum.FIREBALL, SpellEnum.FIREBALL)); 
+		playerList.add(new Player("Player2", 20f,20f, SpellEnum.FIREBALL, SpellEnum.FIREBALL));
+		playerList.add(new Player("Player3", 30f,30f, SpellEnum.FIREBALL, SpellEnum.FIREBALL));
+		playerList.add(new Player("Player4", 40f,40f, SpellEnum.FIREBALL, SpellEnum.FIREBALL));
+		System.out.println(Input.Keys.toString(Input.Keys.L));
 	}
 	
 	/**
@@ -68,7 +71,7 @@ public class KeyboardChaosModel {
 	 * Borde denna metod ta bort ett spellobject, eller räcker det att controllern
 	 * ser till (själv eller via view) att fixturen tas bort?
 	 */
-	public void playerSpellCollision(Player player, Spell spell){
+	public void playerSpellCollision(Player player, SpellEnum spell){
 		//Do something to hurt the player
 	}
 	
@@ -80,7 +83,7 @@ public class KeyboardChaosModel {
 	 * @param spell2 The other one in the collision
 	 */
 
-	public void spellSpellCollision(Spell spell1, Spell spell2){
+	public void spellSpellCollision(SpellEnum spell1, SpellEnum spell2){
 		//this should tell the view to remove the two spells.
 	}
 	
@@ -92,7 +95,7 @@ public class KeyboardChaosModel {
 	 * 
 	 * @param spell The spell that should be removed
 	 */
-	public void spellWorldWallCollision(Spell spell){
+	public void spellWorldWallCollision(SpellEnum spell){
 		//Tell the view to remove this spell
 	}
 }

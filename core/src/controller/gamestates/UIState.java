@@ -2,21 +2,25 @@ package controller.gamestates;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
+import com.badlogic.gdx.graphics.GL20;
 
 import controller.MouseInputProcessor;
 import view.gui.UIView;
+import model.gui.SpellSelect;
 import model.gui.StartMenu;
 
 public class UIState implements GameState {
 
 	private StartMenu startMenu;
+	private SpellSelect spellSelect;
 	private UIView uiView;
 	private InputProcessor inputProcessor;
 	
 	public UIState() {
 		startMenu = new StartMenu();
-		uiView = new UIView(startMenu);
-		this.inputProcessor = new MouseInputProcessor(startMenu.getComponents());
+		spellSelect = new SpellSelect();
+		uiView = new UIView(spellSelect);
+		this.inputProcessor = new MouseInputProcessor(spellSelect.getComponents());
 	}
 	
 	@Override
@@ -35,6 +39,7 @@ public class UIState implements GameState {
 
 	@Override
 	public void render() {
+		Gdx.gl20.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		uiView.render();
 	}
 

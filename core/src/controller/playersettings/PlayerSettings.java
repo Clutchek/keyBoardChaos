@@ -3,13 +3,14 @@ package controller.playersettings;
 import java.io.Serializable;
 
 import model.spell.Spell;
+import model.spell.Spell.SpellEnum;
 
 public class PlayerSettings implements Serializable{
 	private int moveUpKey, moveDownKey, moveLeftKey, moveRightKey, firstSpellKey, secondSpellKey;
-	private Spell firstSpell, secondSpell;
+	private SpellEnum firstSpell, secondSpell;
 	private String playerName;
 	
-	public PlayerSettings(int moveUpKey,int moveDownKey,int moveLeftKey,int moveRightKey,int firstSpellKey,int secondSpellKey,Spell firstSpell, Spell secondSpell, String playerName){
+	public PlayerSettings(int moveUpKey,int moveDownKey,int moveLeftKey,int moveRightKey,int firstSpellKey,int secondSpellKey, SpellEnum firstSpell, SpellEnum secondSpell, String playerName){
 		this.moveUpKey = moveUpKey;
 		this.moveDownKey = moveDownKey;
 		this.moveLeftKey = moveLeftKey;
@@ -131,19 +132,19 @@ public class PlayerSettings implements Serializable{
 		this.playerName = playerName;
 	}
 	
-	public Spell getFirstSpell(){
+	public SpellEnum getFirstSpell(){
 		return firstSpell;
 	}
 	
-	public void setFirstSpell(Spell spell){
+	public void setFirstSpell(SpellEnum spell){
 		this.firstSpell = spell;
 	}
 	
-	public Spell getSecondSpell(){
+	public SpellEnum getSecondSpell(){
 		return secondSpell;
 	}
 	
-	public void setSecondSpell(Spell spell){
+	public void setSecondSpell(SpellEnum spell){
 		this.secondSpell = spell;
 	}
 	

@@ -9,9 +9,14 @@ package controller;
 import java.util.List;
 
 import model.gui.component.Component;
+import model.gui.component.SpellPanel;
 import model.gui.component.TextButton;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
+
+import controller.playersettings.Options;
 
 public class MouseInputProcessor implements InputProcessor {
 
@@ -24,13 +29,27 @@ public class MouseInputProcessor implements InputProcessor {
 
 	@Override
 	public boolean keyDown(int keycode) {
-		// TODO Auto-generated method stub
-		return false;
+		Options options = Options.getOptionsInstance();
+		for (Component c : components) {
+			if (c instanceof SpellPanel) {
+				SpellPanel panel = (SpellPanel)c;
+				int playerNbr = panel.getPlayerNumber();
+				if (keycode == options.getLeftButtonForPlayer(playerNbr)||
+						keycode == options.getRightButtonForPlayer(playerNbr)) {
+					panel.toggleSelectedSpellBox();
+				}
+				if (keycode == options.getUpButtonForPlayer(playerNbr)) {
+					panel.nextSpell();
+				} else if (keycode == options.getDownButtonForPlayer(playerNbr)) {
+					panel.previousSpell();
+				}
+			}
+		}
+		return true;
 	}
 
 	@Override
 	public boolean keyUp(int keycode) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
@@ -95,5 +114,4 @@ public class MouseInputProcessor implements InputProcessor {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
 }
