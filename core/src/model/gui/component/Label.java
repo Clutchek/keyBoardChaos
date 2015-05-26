@@ -6,8 +6,8 @@ public class Label extends Component {
 
 	String text;
 	
-	public Label(String text, int posX, int posY, int width, int height, BusEvent event) {
-		super(posX, posY, width, height, event);
+	public Label(String text, int posX, int posY, BusEvent event) {
+		super(posX, posY, event);
 		this.text = text;
 	}
 

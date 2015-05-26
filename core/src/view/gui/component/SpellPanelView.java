@@ -31,23 +31,23 @@ public class SpellPanelView {
 		shapeRenderer.begin();
 		shapeRenderer.setColor(Color.BLUE);
 		shapeRenderer.set(ShapeType.Filled);
-		shapeRenderer.rect(panel.getPosX(), panel.getPosY(), panel.getWidth(), panel.getHeight());
+		shapeRenderer.rect(panel.getPosX(), panel.getPosY(), panel.WIDTH, panel.HEIGHT);
 		shapeRenderer.end();
 		
 		// Draw the text
 		batch.begin();
 		
 		fontUtil.setFont(Font.INIKA_40);
-		int playerNamePosX = fontUtil.getCenteredTextPos(panel.getPlayerName(), panel);
+		int playerNamePosX = fontUtil.getCenteredTextPos(panel.getPlayerName(), panel.getPosX(), panel.WIDTH);
 		//fontUtil.getFont().draw(batch, panel.getPlayerName(), playerNamePosX, panel.getHeight() + panel.getPosY() - 10);
 		
 		SpellBox spellBox1 = panel.getSpellBox1();
 		SpellBox spellBox2 = panel.getSpellBox2();
 		
 		fontUtil.setFont(Font.ARIAL_20);
-		int spellTextPosY = spellBox1.getPosY() + spellBox1.getHeight() + fontUtil.getTextHeight(panel.getSpell1().getName()) + 10;
-		fontUtil.getFont().draw(batch, panel.getSpell1().getName(), fontUtil.getCenteredTextPos(panel.getSpell1().getName(), spellBox1), spellTextPosY);
-		fontUtil.getFont().draw(batch, panel.getSpell2().getName(), fontUtil.getCenteredTextPos(panel.getSpell2().getName(), spellBox2), spellTextPosY);
+		int spellTextPosY = spellBox1.getPosY() + spellBox1.SIZE + fontUtil.getTextHeight(panel.getSpell1().getName()) + 10;
+		fontUtil.getFont().draw(batch, panel.getSpell1().getName(), fontUtil.getCenteredTextPos(panel.getSpell1().getName(), spellBox1.getPosX(), SpellBox.SIZE), spellTextPosY);
+		fontUtil.getFont().draw(batch, panel.getSpell2().getName(), fontUtil.getCenteredTextPos(panel.getSpell2().getName(), spellBox2.getPosX(), SpellBox.SIZE), spellTextPosY);
 		
 		// TODO: Only wrap when new spell is selected
 		fontUtil.getFont().draw(batch, fontUtil.wrapText(panel.getSelectedSpell().getDescription(), (spellBox2.getPosX() + SpellBox.SIZE) - spellBox1.getPosX()), spellBox1.getPosX(), spellBox1.getPosY() - 20);

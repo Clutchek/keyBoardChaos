@@ -19,7 +19,7 @@ public class SpellBox extends Component {
 	private Label spellLabel;
 	
 	public SpellBox(int posX, int posY, SpellEnum spell) {
-		super(posX, posY, SIZE, SIZE, null);
+		super(posX, posY, null);
 		this.spell = spell;
 		this.isSelected = false;
 		this.backgroundColor = new Color(40, 40, 40);

@@ -24,7 +24,7 @@ public class MouseInputProcessor implements InputProcessor {
 	private TextButton selectedButton;
 
 	public MouseInputProcessor(List<Component> components){
-		this.components = components;
+		loadComponents(components);
 	}
 
 	@Override
@@ -113,5 +113,9 @@ public class MouseInputProcessor implements InputProcessor {
 	public boolean scrolled(int amount) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+	
+	public void loadComponents(List<Component> components) {
+		this.components = components;
 	}
 }

@@ -21,13 +21,13 @@ public class UIState implements GameState, EventHandler {
 	private StartMenu startMenu;
 	private SpellMenu spellMenu;
 	private UIView uiView;
-	private InputProcessor inputProcessor;
+	private MouseInputProcessor inputProcessor;
 	private SettingsMenu settingsMenu;
 	
 	public UIState() {
 		startMenu = new StartMenu();
 		settingsMenu = new SettingsMenu();
-		//spellMenu = new SpellMenu();
+		spellMenu = new SpellMenu();
 		uiView = new UIView(startMenu);
 		this.inputProcessor = new MouseInputProcessor(startMenu.getComponents());
 		EventBusService.getInstance().subscribe(this);
@@ -41,14 +41,17 @@ public class UIState implements GameState, EventHandler {
 	
 	private void switchToStartMenu(){
 		uiView.changeScreen(startMenu);
+		inputProcessor.loadComponents(startMenu.getComponents());
 	}
 	
 	private void switchToSettingMenu(){
 		uiView.changeScreen(settingsMenu);
+		inputProcessor.loadComponents(settingsMenu.getComponents());
 	}
 	
 	private void switchToSpellMenu(){
 		uiView.changeScreen(spellMenu);
+		inputProcessor.loadComponents(spellMenu.getComponents());
 	}
 
 	@Override
@@ -73,7 +76,7 @@ public class UIState implements GameState, EventHandler {
 			switchToStartMenu();
 		}
 		else if(e.getBusCommand().equals("ControllerSettings")){
-			switchToSettingMenu();
+			switchToSpellMenu();
 		}
 		else if(e.getBusCommand().equals("SpellSettings")){
 			switchToSpellMenu();

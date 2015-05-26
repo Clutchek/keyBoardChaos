@@ -49,12 +49,12 @@ public class SpellBoxView {
 		// TODO: Color coverter
 		shapeRenderer.setColor(new Color(box.getBackgroundColor().getRed()/255f, box.getBackgroundColor().getGreen()/255f, box.getBackgroundColor().getBlue()/255f, box.getBackgroundColor().getAlpha()));
 		shapeRenderer.set(ShapeType.Filled);
-		shapeRenderer.rect(box.getPosX(), box.getPosY(), box.getWidth(), box.getHeight());
+		shapeRenderer.rect(box.getPosX(), box.getPosY(), box.SIZE, box.SIZE);
 		if (box.isSelected()) {
 			shapeRenderer.setColor(new Color(box.getHighlightColor().getRed()/255f, box.getHighlightColor().getGreen()/255f, box.getHighlightColor().getBlue()/255f, box.getHighlightColor().getAlpha()));
 			Gdx.gl20.glLineWidth(lineWidth);
 			shapeRenderer.set(ShapeType.Line);
-			shapeRenderer.rect(box.getPosX() + lineWidth/2, box.getPosY() - lineWidth/2, box.getWidth() - lineWidth/2, box.getHeight() + lineWidth/2);
+			shapeRenderer.rect(box.getPosX() + lineWidth/2, box.getPosY() - lineWidth/2, box.SIZE - lineWidth/2, box.SIZE + lineWidth/2);
 		}
 		shapeRenderer.end();
 		Gdx.gl20.glLineWidth(1);
@@ -62,7 +62,7 @@ public class SpellBoxView {
 		// Draw the texture of selected spell
 		batch.begin();
 		Texture texture = this.textureMap.get(box.getSpell());
-		batch.draw(texture, box.getPosX(), box.getPosY(), box.getWidth(), box.getHeight());
+		batch.draw(texture, box.getPosX(), box.getPosY(), box.SIZE, box.SIZE);
 		batch.end();
 	}
 }

@@ -36,8 +36,8 @@ public class FontUtil {
 		return this.getTextWidth(string)/2;
 	}
 	
-	public int getCenteredTextPos(String string, Component component) {
-		int centerPoint = component.getPosX() + component.getWidth()/2;
+	public int getCenteredTextPos(String string, int posX, int width) {
+		int centerPoint = posX + width/2;
 		int textPos = centerPoint - this.getCenterOfText(string);
 		return textPos;
 	}

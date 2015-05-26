@@ -26,10 +26,10 @@ public class SpellControllerManager {
 	 * @param spells the spell that should be created
 	 * @param player the player which will own this spell controller
 	 */
-	public void createSpellController(Spell spells, Player player){
-		if(spells instanceof Spell){
+	public void createSpellController(SpellEnum spell, Player player){
+		if(spell instanceof SpellEnum){
 			SpellController SC = spellControllerFactory.
-					createSpellController(spells, player);
+					createSpellController(spell, player);
 			spellControllerList.add(SC);
 		}else{
 			System.out.println("NONONONONO");
