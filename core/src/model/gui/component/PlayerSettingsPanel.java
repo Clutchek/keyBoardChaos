@@ -4,9 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import controller.eventbus.BusEvent;
+import controller.eventbus.EventHandler;
 
 
-public class PlayerSettingsPanel extends Component {
+public class PlayerSettingsPanel extends Component implements EventHandler {
 
 	private int posX, posY;
 	private final int height;
@@ -62,6 +63,23 @@ public class PlayerSettingsPanel extends Component {
 		components.add(leftButton);
 	}
 	
+	public String getUpButton(){
+		return upButton.getText();
+	}
+	
+	public String downUpButton(){
+		return downButton.getText();
+	}
+	
+	public String rightUpButton(){
+		return rightButton.getText();
+	}
+	
+	public String leftUpButton(){
+		return leftButton.getText();
+	}
+	
+	
 	public List<TextButton> getComponents(){
 		return this.components;
 	}
@@ -84,6 +102,11 @@ public class PlayerSettingsPanel extends Component {
 	
 	public Color getPanelColor(){
 		return this.color;
+	}
+	@Override
+	public void onEvent(BusEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	

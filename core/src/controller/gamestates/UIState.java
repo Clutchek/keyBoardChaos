@@ -1,6 +1,9 @@
 package controller.gamestates;
 
-import com.badlogic.gdx.Gdx;
+import model.gui.SettingsMenu;
+import model.gui.StartMenu;
+import view.gui.UIView;
+
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.GL20;
 
@@ -8,19 +11,26 @@ import controller.MouseInputProcessor;
 import view.gui.UIView;
 import model.gui.SpellSelect;
 import model.gui.StartMenu;
+import controller.eventbus.BusEvent;
+import controller.eventbus.EventBusService;
+import controller.eventbus.EventHandler;
 
-public class UIState implements GameState {
+public class UIState implements GameState, EventHandler {
 
 	private StartMenu startMenu;
-	private SpellSelect spellSelect;
+	private SpellMenu spellMenu;
 	private UIView uiView;
 	private InputProcessor inputProcessor;
+	private SettingsMenu settingsMenu;
+	//private SpellMenu spellMenu;
 	
 	public UIState() {
 		startMenu = new StartMenu();
-		spellSelect = new SpellSelect();
-		uiView = new UIView(spellSelect);
-		this.inputProcessor = new MouseInputProcessor(spellSelect.getComponents());
+		settingsMenu = new SettingsMenu();
+	//	spellMenu = new SpellMenu();
+		uiView = new UIView(startMenu);
+		this.inputProcessor = new MouseInputProcessor(startMenu.getComponents());
+		EventBusService.getInstance().subscribe(this);
 	}
 	
 	@Override
@@ -29,7 +39,17 @@ public class UIState implements GameState {
 		
 	}
 	
-	public void switchToPlayerSettingMenu(){}
+	private void switchToStartMenu(){
+		uiView.changeScreen(startMenu);
+	}
+	
+	private void switchToSettingMenu(){
+		uiView.changeScreen(settingsMenu);
+	}
+	
+	private void switchToSpellMenu(){
+		uiView.changeScreen(spellMenu);
+	}
 
 	@Override
 	public void handleInput() {
@@ -45,5 +65,19 @@ public class UIState implements GameState {
 
 	public InputProcessor getInputProcessor() {
 		return this.inputProcessor;
+	}
+
+	@Override
+	public void onEvent(BusEvent e) {
+		
+		if(e.getBusCommand().equals("StartMenu")){
+			switchToStartMenu();
+		}
+		else if(e.getBusCommand().equals("ControllerSettings")){
+			switchToSettingMenu();
+		}
+		else if(e.getBusCommand().equals("SpellSettings")){
+			switchToSpellMenu();
+		}
 	}
 }
