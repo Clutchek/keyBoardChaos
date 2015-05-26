@@ -9,6 +9,8 @@ import model.gui.component.TextButton;
 import view.gui.component.PlayerSettingsPanelView;
 import view.gui.component.TextButtonView;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
@@ -36,6 +38,7 @@ public class UIView {
 	}
 	
 	public void render() {
+		Gdx.gl20.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		for (Component c : this.components) {
 			if (c instanceof TextButton) {
 				textButtonView.render((TextButton)c);
