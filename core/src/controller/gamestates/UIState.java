@@ -27,7 +27,7 @@ public class UIState implements GameState, EventHandler {
 	public UIState() {
 		startMenu = new StartMenu();
 		settingsMenu = new SettingsMenu();
-		spellMenu = new SpellMenu();
+		//spellMenu = new SpellMenu();
 		uiView = new UIView(startMenu);
 		this.inputProcessor = new MouseInputProcessor(startMenu.getComponents());
 		EventBusService.getInstance().subscribe(this);

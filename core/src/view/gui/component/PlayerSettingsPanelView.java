@@ -29,7 +29,7 @@ public class PlayerSettingsPanelView {
 		shapeRenderer.begin();
 		shapeRenderer.setColor(color);
 		shapeRenderer.set(ShapeType.Filled);
-		shapeRenderer.rect(psp.getX(), psp.getY(), psp.getWidth(), psp.getHeight());
+		shapeRenderer.rect(psp.getPosX(), psp.getPosY(), psp.getWidth(), psp.getHeight());
 		shapeRenderer.end();
 		batch.begin();
 		batch.end();

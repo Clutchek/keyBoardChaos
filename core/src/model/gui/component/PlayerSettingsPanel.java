@@ -9,7 +9,6 @@ import controller.eventbus.EventHandler;
 
 public class PlayerSettingsPanel extends Component implements EventHandler {
 
-	private int posX, posY;
 	private final int height;
 	private final int width;
 	private final Color color;
@@ -28,10 +27,8 @@ public class PlayerSettingsPanel extends Component implements EventHandler {
 	 */
 
 	public PlayerSettingsPanel (int posX, int posY, BusEvent event){
-		super(event);
+		super(posX, posY, event);
 
-		this.posX = posX;
-		this.posY = posY;
 		height = 600;
 		width = 150;
 		components = new ArrayList();
@@ -46,7 +43,7 @@ public class PlayerSettingsPanel extends Component implements EventHandler {
 	 * @param posY determines the Y-position of the button inside the PlayerSettingsPanel
 	 */
 	private TextButton createControllerSettingsButton(int posX, int posY, String startText, BusEvent event){
-		return new TextButton(startText, (this.posX + posX), (this.posY + posY), 30, 30, new Color(199, 100,50), event, true);
+		return new TextButton(startText, (super.getPosX() + posX), (super.getPosY() + posY), 30, 30, new Color(199, 100,50), event, true);
 	}
 	
 	private void loadTextButtons(){
@@ -82,14 +79,6 @@ public class PlayerSettingsPanel extends Component implements EventHandler {
 	
 	public List<TextButton> getComponents(){
 		return this.components;
-	}
-
-	public int getX(){
-		return this.posX;	
-	}
-
-	public int getY(){
-		return this.posY;	
 	}
 	
 	public int getWidth(){
