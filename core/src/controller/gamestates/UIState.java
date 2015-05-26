@@ -4,12 +4,13 @@ import model.gui.SettingsMenu;
 import model.gui.StartMenu;
 import view.gui.UIView;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.GL20;
 
 import controller.MouseInputProcessor;
 import view.gui.UIView;
-import model.gui.SpellSelect;
+import model.gui.SpellMenu;
 import model.gui.StartMenu;
 import controller.eventbus.BusEvent;
 import controller.eventbus.EventBusService;
@@ -22,12 +23,11 @@ public class UIState implements GameState, EventHandler {
 	private UIView uiView;
 	private InputProcessor inputProcessor;
 	private SettingsMenu settingsMenu;
-	//private SpellMenu spellMenu;
 	
 	public UIState() {
 		startMenu = new StartMenu();
 		settingsMenu = new SettingsMenu();
-	//	spellMenu = new SpellMenu();
+		spellMenu = new SpellMenu();
 		uiView = new UIView(startMenu);
 		this.inputProcessor = new MouseInputProcessor(startMenu.getComponents());
 		EventBusService.getInstance().subscribe(this);
@@ -59,7 +59,6 @@ public class UIState implements GameState, EventHandler {
 
 	@Override
 	public void render() {
-		Gdx.gl20.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		uiView.render();
 	}
 

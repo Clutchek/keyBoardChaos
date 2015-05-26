@@ -12,14 +12,14 @@ import model.gui.component.Label;
 import model.gui.component.SpellPanel;
 import model.gui.component.TextButton;
 
-public class SpellSelect extends Screen implements EventHandler {
+public class SpellMenu extends Screen implements EventHandler {
 	
 	private final SpellPanel spellPanel1, spellPanel2, spellPanel3, spellPanel4;
 	private final Label label;
 	private final TextButton back, play;
 	private final List<SpellPanel> spellPanels;
 	
-	public SpellSelect() {
+	public SpellMenu() {
 		super();
 		int halfOfScreen = KCConstants.GAME_WIDTH/2;
 		int space = 20;
