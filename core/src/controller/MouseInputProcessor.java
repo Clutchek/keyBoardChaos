@@ -24,7 +24,7 @@ public class MouseInputProcessor implements InputProcessor {
 	private TextButton selectedButton;
 
 	public MouseInputProcessor(List<Component> components){
-		loadComponents(components);
+		this.components = components;
 	}
 
 	@Override
@@ -82,7 +82,15 @@ public class MouseInputProcessor implements InputProcessor {
 				if(button2.isMouseOver(screenX, screenY)){
 					button2.buttonReleaseEvent();
 					if(button2.isSelectable()){
-						selectedButton = button2;
+						selectedButton.toggleSelect();
+						if(!button2.isSelected()){
+							selectedButton = null;	
+						}
+						else{
+							selectedButton = button2;
+							selectedButton.toggleSelect();
+						}
+						
 					}
 				}
 			}
@@ -115,9 +123,5 @@ public class MouseInputProcessor implements InputProcessor {
 	public boolean scrolled(int amount) {
 		// TODO Auto-generated method stub
 		return false;
-	}
-	
-	public void loadComponents(List<Component> components) {
-		this.components = components;
 	}
 }

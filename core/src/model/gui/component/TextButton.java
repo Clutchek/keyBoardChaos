@@ -14,7 +14,7 @@ public class TextButton extends Component {
 	private String text;
 	private Color currentColor, backgroundColor, hoverColor, clickColor;
 	private int width, height;
-	private boolean selectableButton;
+	private boolean selectableButton, selected;
 	
 	/**
 	 * Create a text button with a standard color of gray
@@ -132,6 +132,14 @@ public class TextButton extends Component {
 	
 	public void buttonReleaseEvent(){
 		EventBusService.publish(super.getEvent());
+	}
+	
+	public void toggleSelect(){
+		this.selected = !this.selected;
+	}
+	
+	public boolean isSelected(){
+		return this.selected;
 	}
 	
 	public boolean isSelectable(){
