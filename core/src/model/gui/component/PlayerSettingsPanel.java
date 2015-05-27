@@ -3,8 +3,11 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.badlogic.gdx.Input;
+
 import controller.eventbus.BusEvent;
 import controller.eventbus.EventHandler;
+import controller.playersettings.Options;
 
 
 public class PlayerSettingsPanel extends Component implements EventHandler {
@@ -19,24 +22,31 @@ public class PlayerSettingsPanel extends Component implements EventHandler {
 	private TextButton downButton;
 	private TextButton rightButton;
 	private TextButton leftButton;
+	private final int playerNbr;
 	private List<Component> components;
+	
+	private Options options;
 
 
 	/*
 	 * Creates a playerSettingsPanel containing controller settings for the user
 	 * @param posX determines the X-position of the button
 	 * @param posY determines the Y-position of the button
+	 * @param playerNbr determines what player this panel belongs to
 	 */
 
-	public PlayerSettingsPanel (int posX, int posY, BusEvent event){
+	public PlayerSettingsPanel (int posX, int posY, int playerNbr, BusEvent event){
 		super(posX, posY, event);
 
+		this.playerNbr = playerNbr;
+		
 		height = 600;
 		width = 300;
 		buttonSize = 60;
 		buttonSpace = 10;
 		components = new ArrayList<Component>();
 		this.color = new Color(152,152,152);
+		this.options = Options.getOptionsInstance();
 		loadTextButtons();
 		createListOfComponents();
 
@@ -52,10 +62,10 @@ public class PlayerSettingsPanel extends Component implements EventHandler {
 	}
 	
 	private void loadTextButtons(){
-		upButton = createControllerSettingsButton(super.getPosX() + this.width/2 - buttonSize/2, super.getPosY() + this.height/2 + 150, "W");
-		downButton = createControllerSettingsButton(this.upButton.getPosX(), this.upButton.getPosY() - (this.buttonSize + this.buttonSpace), "S");
-		rightButton = createControllerSettingsButton(this.downButton.getPosX() + this.downButton.getWidth() + this.buttonSpace, this.downButton.getPosY(), "D");
-		leftButton = createControllerSettingsButton(this.downButton.getPosX() - this.downButton.getWidth() - this.buttonSpace, this.downButton.getPosY(), "A");
+		upButton = createControllerSettingsButton(super.getPosX() + this.width/2 - buttonSize/2, super.getPosY() + this.height/2 + 150, Input.Keys.toString(options.getUpButtonForPlayer(this.playerNbr)));
+		downButton = createControllerSettingsButton(this.upButton.getPosX(), this.upButton.getPosY() - (this.buttonSize + this.buttonSpace), Input.Keys.toString(options.getDownButtonForPlayer(this.playerNbr)));
+		rightButton = createControllerSettingsButton(this.downButton.getPosX() + this.downButton.getWidth() + this.buttonSpace, this.downButton.getPosY(), Input.Keys.toString(options.getRightButtonForPlayer(this.playerNbr)));
+		leftButton = createControllerSettingsButton(this.downButton.getPosX() - this.downButton.getWidth() - this.buttonSpace, this.downButton.getPosY(), Input.Keys.toString(options.getLeftButtonForPlayer(this.playerNbr)));
 	}
 	
 	public void createListOfComponents(){
