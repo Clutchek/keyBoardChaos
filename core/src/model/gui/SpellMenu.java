@@ -35,7 +35,7 @@ public class SpellMenu extends Screen implements EventHandler {
 		spellPanels.add(spellPanel1);
 		spellPanels.add(spellPanel2);
 		
-		this.back = new TextButton("Back", 20, 20, 50, 25, new BusEvent("controller"), false);
+		this.back = new TextButton("Back", 20, 20, 50, 25, new BusEvent("ControllerSettings"), false);
 		this.play = new TextButton("Start Match", KCConstants.GAME_WIDTH - 120, 20, 100, 25, new BusEvent("play"), false);
 		
 		loadComponentList();

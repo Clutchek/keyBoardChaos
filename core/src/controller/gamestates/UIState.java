@@ -71,15 +71,16 @@ public class UIState implements GameState, EventHandler {
 
 	@Override
 	public void onEvent(BusEvent e) {
-		
-		if(e.getBusCommand().equals("StartMenu")){
-			switchToStartMenu();
-		}
-		else if(e.getBusCommand().equals("ControllerSettings")){
-			switchToSpellMenu();
-		}
-		else if(e.getBusCommand().equals("SpellSettings")){
-			switchToSpellMenu();
+		if (e != null) {
+			if(e.getBusCommand().equals("StartMenu")){
+				switchToStartMenu();
+			}
+			else if(e.getBusCommand().equals("ControllerSettings")){
+				switchToSettingMenu();
+			}
+			else if(e.getBusCommand().equals("SpellSettings")){
+				switchToSpellMenu();
+			}
 		}
 	}
 }
