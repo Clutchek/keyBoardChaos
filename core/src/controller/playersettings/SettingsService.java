@@ -39,7 +39,7 @@ public class SettingsService {
 		}catch(FileNotFoundException e){
 			File tmp = new File(settingsFileAddresses.get(playerNumber-1));
 			try{
-				//tmp.mkdirs();
+				tmp.mkdirs();
 				boolean b = tmp.createNewFile();
 				System.out.println(b);
 			}catch(IOException ex){

@@ -11,6 +11,7 @@ import model.gui.component.SpellPanel;
 import model.gui.component.TextButton;
 import controller.KCConstants;
 import controller.eventbus.BusEvent;
+import controller.eventbus.EventBusService;
 import controller.eventbus.EventHandler;
 import controller.playersettings.Options;
 
@@ -33,6 +34,8 @@ public class SettingsMenu extends Screen implements EventHandler {
 		this.nextButton = new TextButton("Next", KCConstants.GAME_WIDTH - 100 - 10, 10, 100, 100, new BusEvent("SpellSettings"), false);
 		loadPspList();
 		loadComponentList();
+		
+		EventBusService.getInstance().subscribe(this);
 	}
 
 	private List<PlayerSettingsPanel> getPlayerSettingsPanels(){
@@ -75,10 +78,11 @@ public class SettingsMenu extends Screen implements EventHandler {
 
 	@Override
 	public void onEvent(BusEvent e) {
-		if (e.getBusCommand().equals("SpellSettings")){
-			savePlayerKeys();	
+		if (e != null) {
+			if (e.getBusCommand().equals("SpellSettings")){
+				savePlayerKeys();	
+			}
 		}
-
 	}
 
 
