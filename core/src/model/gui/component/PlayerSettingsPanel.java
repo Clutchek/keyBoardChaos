@@ -22,6 +22,8 @@ public class PlayerSettingsPanel extends Component implements EventHandler {
 	private TextButton downButton;
 	private TextButton rightButton;
 	private TextButton leftButton;
+	private TextButton firstSpell;
+	private TextButton secondSpell;
 	private final int playerNbr;
 	private List<Component> components;
 	
@@ -66,6 +68,8 @@ public class PlayerSettingsPanel extends Component implements EventHandler {
 		downButton = createControllerSettingsButton(this.upButton.getPosX(), this.upButton.getPosY() - (this.buttonSize + this.buttonSpace), Input.Keys.toString(options.getDownButtonForPlayer(this.playerNbr)));
 		rightButton = createControllerSettingsButton(this.downButton.getPosX() + this.downButton.getWidth() + this.buttonSpace, this.downButton.getPosY(), Input.Keys.toString(options.getRightButtonForPlayer(this.playerNbr)));
 		leftButton = createControllerSettingsButton(this.downButton.getPosX() - this.downButton.getWidth() - this.buttonSpace, this.downButton.getPosY(), Input.Keys.toString(options.getLeftButtonForPlayer(this.playerNbr)));
+		firstSpell = createControllerSettingsButton(this.leftButton.getPosX() + 35, this.leftButton.getPosY() - 200, Input.Keys.toString(options.getFirstSpellButtonForPlayer(this.playerNbr)));
+		secondSpell = createControllerSettingsButton(this.downButton.getPosX() + 35, this.downButton.getPosY() - 200, Input.Keys.toString(options.getSecondSpellButtonForPlayer(this.playerNbr)));
 	}
 	
 	public void createListOfComponents(){
@@ -73,6 +77,8 @@ public class PlayerSettingsPanel extends Component implements EventHandler {
 		components.add(downButton);
 		components.add(rightButton);
 		components.add(leftButton);
+		components.add(firstSpell);
+		components.add(secondSpell);
 	}
 	
 	public TextButton getUpButton(){
@@ -86,6 +92,12 @@ public class PlayerSettingsPanel extends Component implements EventHandler {
 	}
 	public TextButton getRightButton(){
 		return this.rightButton;
+	}
+	public TextButton getFirstSpellButton(){
+		return this.firstSpell;
+	}
+	public TextButton getSecondSpellButton(){
+		return this.secondSpell;
 	}
 	
 	public String getUpButtonText(){
