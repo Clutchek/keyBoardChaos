@@ -82,15 +82,16 @@ public class MouseInputProcessor implements InputProcessor {
 				if(button2.isMouseOver(screenX, screenY)){
 					button2.buttonReleaseEvent();
 					if(button2.isSelectable()){
-						selectedButton.toggleSelect();
-						if(!button2.isSelected()){
-							selectedButton = null;	
-						}
-						else{
-							selectedButton = button2;
-							selectedButton.toggleSelect();
-						}
+						button2.toggleSelect();
 						
+						if (selectedButton == button2) {
+							selectedButton = null;
+						} else if (selectedButton != null) {
+							selectedButton.toggleSelect();
+							selectedButton = button2;
+						} else if (selectedButton == null) {
+							selectedButton = button2;
+						}
 					}
 				}
 			}
