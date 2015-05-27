@@ -30,6 +30,10 @@ public class MouseInputProcessor implements InputProcessor {
 	@Override
 	public boolean keyDown(int keycode) {
 		Options options = Options.getOptionsInstance();
+		if(selectedButton != null){
+			selectedButton.setText(Input.Keys.toString(keycode));
+			selectedButton = null;
+		}
 		for (Component c : components) {
 			if (c instanceof SpellPanel) {
 				SpellPanel panel = (SpellPanel)c;

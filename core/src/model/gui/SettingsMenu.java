@@ -1,5 +1,8 @@
 package model.gui;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import model.gui.component.PlayerSettingsPanel;
 import model.gui.component.SpellPanel;
 import model.gui.component.TextButton;
@@ -10,6 +13,7 @@ import controller.eventbus.EventHandler;
 public class SettingsMenu extends Screen implements EventHandler {
 	private PlayerSettingsPanel psp1, psp2, psp3, psp4;
 	private TextButton backButton, nextButton;
+	private List<PlayerSettingsPanel> pspList;
 	
 	int halfOfScreen = KCConstants.GAME_WIDTH/2;
 	int space = 20;
@@ -23,8 +27,20 @@ public class SettingsMenu extends Screen implements EventHandler {
 		
 		this.backButton = new TextButton("Back", 10, 10, 100, 100, new BusEvent("StartMenu"), false);
 		this.nextButton = new TextButton("Next", KCConstants.GAME_WIDTH - 100 - 10, 10, 100, 100, new BusEvent("SpellSettings"), false);
-		
+		loadPspList();
 		loadComponentList();
+	}
+	
+	public List<PlayerSettingsPanel> getPlayerSettingsPanels(){
+		return pspList;
+	}
+	
+	private void loadPspList(){
+		pspList = new ArrayList();
+		pspList.add(psp1);
+		pspList.add(psp2);
+		pspList.add(psp3);
+		pspList.add(psp4);
 	}
 
 	private void loadComponentList(){
