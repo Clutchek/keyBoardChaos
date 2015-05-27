@@ -14,7 +14,8 @@ public class TextButton extends Component {
 	private String text;
 	private Color currentColor, backgroundColor, hoverColor, clickColor;
 	private int width, height;
-	private boolean selectableButton, selected;
+	private final boolean selectableButton;
+	private boolean selected;
 	
 	/**
 	 * Create a text button with a standard color of gray
@@ -30,6 +31,7 @@ public class TextButton extends Component {
 		this.height = height;
 		this.text = text;
 		this.selectableButton = selectableButton;
+		this.selected = false;
 		this.setColors(new Color(152,152,152), new Color(165,165,165), new Color(139,139,139));
 	}
 	

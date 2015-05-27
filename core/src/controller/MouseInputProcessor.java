@@ -124,4 +124,8 @@ public class MouseInputProcessor implements InputProcessor {
 		// TODO Auto-generated method stub
 		return false;
 	}
+	
+	public void loadComponents(List<Component> components) {
+		this.components = components;
+	}
 }
