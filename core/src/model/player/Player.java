@@ -2,6 +2,7 @@ package model.player;
 
 import model.main.DirectionVector;
 import model.spell.Spell;
+import model.spell.Spell.SpellEnum;
 /**
  * A class that represents a player in the keyBoardChaos game.
  */
@@ -14,12 +15,12 @@ public class Player {
 	private DirectionVector vector;
 	
 	private String playerName;
-	private Spell firstSpell, secondSpell;
+	private SpellEnum firstSpell, secondSpell;
 	
 	/**
 	 * Constructor for the Player class.
 	 */
-	public Player(String name, float posX, float posY, Spell firstSpell, Spell secondSpell){
+	public Player(String name, float posX, float posY, SpellEnum firstSpell, SpellEnum secondSpell){
 		this.playerName = name;
 		healthPoints = 100;
 		this.firstSpell = firstSpell;
@@ -108,7 +109,7 @@ public class Player {
 	 * Method used to return the Player's first spell.
 	 * @return the first spell of the Player.
 	 */
-	public Spell getFirstSpell() {
+	public SpellEnum getFirstSpell() {
 		return firstSpell;
 	}
 
@@ -116,7 +117,7 @@ public class Player {
 	 * Method used to set the Player's first spell.
 	 * @param spell1 represents the spell that will be Player's first spell.
 	 */
-	public void setFirstSpell(Spell spell1) {
+	public void setFirstSpell(SpellEnum spell1) {
 		this.firstSpell = spell1;
 	}
 
@@ -124,7 +125,7 @@ public class Player {
 	 * Method used to return the Player's second spell.
 	 * @return the second spell of the Player.
 	 */
-	public Spell getSecondSpell() {
+	public SpellEnum getSecondSpell() {
 		return secondSpell;
 	}
 
@@ -132,7 +133,7 @@ public class Player {
 	 * Method used to set the Player's second spell.
 	 * @param spell2 represents the spell that will be Player's second spell.
 	 */
-	public void setSecondSpell(Spell spell2) {
+	public void setSecondSpell(SpellEnum spell2) {
 		this.secondSpell = spell2;
 	}
 

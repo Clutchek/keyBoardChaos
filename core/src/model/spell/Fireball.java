@@ -7,13 +7,19 @@ public class Fireball extends OffensiveSpell{
 	private int damage, projectileSpeed;
 	private Player originPlayer;
 	private final float fireballRadius;
+	
+	public final static String DESCRIPTION = "Fire is the rapid oxidation of a material in the exothermic chemical "
+			+ "process of combustion, releasing heat, light, and various reaction products.[1] Slower oxidative processes "
+			+ "like rusting or digestion are not included by this definition.";
 
+	public final static String NAME = "Fireball";
+	
 	public Fireball(){
 		super();
 		this.damage = 10;
 		this.projectileSpeed = 1;
 		//this.originPlayer = originPlayer;
-		fireballRadius = 3f;		
+		fireballRadius = 3f;
 	}
 	
 	/**
@@ -32,5 +38,15 @@ public class Fireball extends OffensiveSpell{
 	
 	public float getFireballRadius(){
 		return fireballRadius;
+	}
+	
+	@Override
+	public String getDescription() {
+		return DESCRIPTION;
+	}
+
+	@Override
+	public String getName() {
+		return NAME;
 	}
 }

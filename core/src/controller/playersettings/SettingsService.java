@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.spell.Fireball;
+import model.spell.Spell.SpellEnum;
 
 import com.badlogic.gdx.Input.Keys;
 
@@ -39,6 +40,7 @@ public class SettingsService {
 			File tmp = new File(settingsFileAddresses.get(playerNumber-1));
 			try{
 				tmp.getParentFile().mkdirs(); //Här
+
 				boolean b = tmp.createNewFile();
 				System.out.println(b);
 			}catch(IOException ex){
@@ -80,13 +82,13 @@ public class SettingsService {
 	private PlayerSettings getDefaultPlayerSettings(int playerNumber){
 		PlayerSettings playerSettings;
 		switch(playerNumber){
-		case 1: return playerSettings = new PlayerSettings(Keys.W,Keys.S,Keys.A,Keys.D,Keys.Q,Keys.E, new Fireball(),new Fireball(), "Player1");
+		case 1: return playerSettings = new PlayerSettings(Keys.W,Keys.S,Keys.A,Keys.D,Keys.Q,Keys.E, SpellEnum.FIREBALL, SpellEnum.FIREBALL, "Player1");
 		
-		case 2: return playerSettings = new PlayerSettings(Keys.UNKNOWN,Keys.UNKNOWN,Keys.UNKNOWN,Keys.UNKNOWN,Keys.UNKNOWN,Keys.UNKNOWN, new Fireball(),new Fireball(), "Player2");
+		case 2: return playerSettings = new PlayerSettings(Keys.UNKNOWN,Keys.UNKNOWN,Keys.UNKNOWN,Keys.UNKNOWN,Keys.UNKNOWN,Keys.UNKNOWN, SpellEnum.FIREBALL, SpellEnum.FIREBALL, "Player2");
 			
-		case 3: return playerSettings = new PlayerSettings(Keys.UNKNOWN,Keys.UNKNOWN,Keys.UNKNOWN,Keys.UNKNOWN,Keys.UNKNOWN,Keys.UNKNOWN, new Fireball(),new Fireball(), "Player3");
+		case 3: return playerSettings = new PlayerSettings(Keys.UNKNOWN,Keys.UNKNOWN,Keys.UNKNOWN,Keys.UNKNOWN,Keys.UNKNOWN,Keys.UNKNOWN, SpellEnum.FIREBALL, SpellEnum.FIREBALL, "Player3");
 			
-		case 4: return playerSettings = new PlayerSettings(Keys.UNKNOWN,Keys.UNKNOWN,Keys.UNKNOWN,Keys.UNKNOWN,Keys.UNKNOWN,Keys.UNKNOWN, new Fireball(),new Fireball(), "Player4");
+		case 4: return playerSettings = new PlayerSettings(Keys.UNKNOWN,Keys.UNKNOWN,Keys.UNKNOWN,Keys.UNKNOWN,Keys.UNKNOWN,Keys.UNKNOWN, SpellEnum.FIREBALL, SpellEnum.FIREBALL, "Player4");
 		
 		default: throw new IllegalArgumentException("Number must be 1-4");
 			

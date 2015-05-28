@@ -1,6 +1,6 @@
 package controller.playersettings;
 
-import model.spell.Spell;
+import model.spell.Spell.SpellEnum;
 
 /**
  * A singleton class which holds information about how many players that should
@@ -129,7 +129,7 @@ public class Options {
 	 * @param playerNbr the index of the player which first spell you want
 	 * @return the selected players first spell
 	 */
-	public Spell getFirstSpell(int playerNbr){
+	public SpellEnum getFirstSpell(int playerNbr){
 		return getPlayerSettingsForPlayer(playerNbr).getFirstSpell();
 	}
 	
@@ -139,7 +139,7 @@ public class Options {
 	 * @param playerNbr the index of the player which second spell you want
 	 * @return the selected players second spell
 	 */
-	public Spell getSecondSpell(int playerNbr){
+	public SpellEnum getSecondSpell(int playerNbr){
 		return getPlayerSettingsForPlayer(playerNbr).getSecondSpell();
 	}
 	
@@ -205,7 +205,7 @@ public class Options {
 	 * @param playerNbr
 	 * @param firstSpell
 	 */
-	public void setFirstSpell(int playerNbr, Spell firstSpell){
+	public void setFirstSpell(int playerNbr, SpellEnum firstSpell){
 		getPlayerSettingsForPlayer(playerNbr).setFirstSpell(firstSpell);
 	}
 	
@@ -214,10 +214,14 @@ public class Options {
 	 * @param playerNbr
 	 * @param secondSpell
 	 */
-	public void setSecondSpell(int playerNbr, Spell secondSpell){
+	public void setSecondSpell(int playerNbr, SpellEnum secondSpell){
 		getPlayerSettingsForPlayer(playerNbr).setSecondSpell(secondSpell);
 	}
 	
+	public void setSpells(int playerNbr, SpellEnum firstSpell, SpellEnum secondSpell) {
+		this.setFirstSpell(playerNbr, firstSpell);
+		this.setSecondSpell(playerNbr, secondSpell);
+	}
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	/**

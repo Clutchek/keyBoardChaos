@@ -3,6 +3,7 @@ package controller.spellcontroller;
 import model.player.Player;
 import model.spell.Fireball;
 import model.spell.Spell;
+import model.spell.Spell.SpellEnum;
 import controller.KCConstants;
 import controller.body.FixtureManager;
 
@@ -14,9 +15,9 @@ public class SpellControllerFactory {
 		this.fixtureManager = fixtureManager;
 	}
 	
-	protected SpellController createSpellController(Spell spell, Player player){
+	protected SpellController createSpellController(SpellEnum spell, Player player){
 		//kan behöva kolla efter null
-		if(spell instanceof Fireball){
+		if(spell == SpellEnum.FIREBALL){
 			Fireball fireball = new Fireball();
 			float spaceX = player.getVector().getX()*(player.getSize()+fireball.getFireballRadius());
 			float spaceY = player.getVector().getY()*(player.getSize()+fireball.getFireballRadius());

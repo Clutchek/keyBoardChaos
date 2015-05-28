@@ -8,7 +8,9 @@ import model.player.Player;
 import view.BattleView;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputAdapter;
+import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.physics.box2d.Fixture;
@@ -26,7 +28,7 @@ import controller.spellcontroller.SpellControllerManager;
 
 public class BattleState implements GameState {
 
-	private InputAdapter inputProcessor;
+	private InputProcessor inputProcessor;
 	private World world;
 	private TiledMap tileMap;
 	private BattleView battleView;
@@ -70,8 +72,7 @@ public class BattleState implements GameState {
 			playerControllerList.add(new PlayerController(p,fixtureManager, spellControllerManager));
 		}
 		
-		Gdx.input.setInputProcessor(new KCInputProcessor(playerControllerList));
-		
+		this.inputProcessor = new KCInputProcessor(playerControllerList);
 	}
 	
 	@Override
@@ -119,6 +120,10 @@ public class BattleState implements GameState {
 	}
 	
 	public TiledMap getTiledMap(){ return this.tileMap;}
+	
+	public InputProcessor getInputProcessor() {
+		return this.inputProcessor;
+	}
 
 	/*
 	 * Might use the initialize-method to create a new world (override the old one?), 
