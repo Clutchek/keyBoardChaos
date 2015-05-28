@@ -6,10 +6,10 @@ import edu.chl.KeyboardChaos.controll.UIInputProcessor;
 import edu.chl.KeyboardChaos.util.eventbus.BusEvent;
 import edu.chl.KeyboardChaos.util.eventbus.EventBusService;
 import edu.chl.KeyboardChaos.util.eventbus.EventHandler;
-import edu.chl.KeyboardChaos.view.gui.SettingsMenu;
-import edu.chl.KeyboardChaos.view.gui.SpellMenu;
-import edu.chl.KeyboardChaos.view.gui.StartMenu;
 import edu.chl.KeyboardChaos.view.gui.UIView;
+import edu.chl.KeyboardChaos.view.gui.screen.SettingsMenu;
+import edu.chl.KeyboardChaos.view.gui.screen.SpellMenu;
+import edu.chl.KeyboardChaos.view.gui.screen.StartMenu;
 
 
 

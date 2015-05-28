@@ -8,7 +8,6 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
-import edu.chl.KeyboardChaos.view.FontUtil;
 import edu.chl.KeyboardChaos.view.gui.component.Component;
 import edu.chl.KeyboardChaos.view.gui.component.Label;
 import edu.chl.KeyboardChaos.view.gui.component.PlayerSettingsPanel;
@@ -20,6 +19,7 @@ import edu.chl.KeyboardChaos.view.gui.componentview.PlayerSettingsPanelView;
 import edu.chl.KeyboardChaos.view.gui.componentview.SpellBoxView;
 import edu.chl.KeyboardChaos.view.gui.componentview.SpellPanelView;
 import edu.chl.KeyboardChaos.view.gui.componentview.TextButtonView;
+import edu.chl.KeyboardChaos.view.gui.screen.Screen;
 
 public class UIView {
 	

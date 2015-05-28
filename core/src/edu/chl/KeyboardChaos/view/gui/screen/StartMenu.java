@@ -1,4 +1,4 @@
-package edu.chl.KeyboardChaos.view.gui;
+package edu.chl.KeyboardChaos.view.gui.screen;
 
 import java.awt.Color;
 

@@ -1,4 +1,4 @@
-package edu.chl.KeyboardChaos.view;
+package edu.chl.KeyboardChaos.view.gui;
 
 
 import com.badlogic.gdx.graphics.g2d.BitmapFont;

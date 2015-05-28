@@ -8,8 +8,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 
-import edu.chl.KeyboardChaos.view.Font;
-import edu.chl.KeyboardChaos.view.FontUtil;
+import edu.chl.KeyboardChaos.view.gui.Font;
+import edu.chl.KeyboardChaos.view.gui.FontUtil;
 import edu.chl.KeyboardChaos.view.gui.component.SpellBox;
 import edu.chl.KeyboardChaos.view.gui.component.SpellPanel;
 

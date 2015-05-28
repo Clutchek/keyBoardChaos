@@ -4,8 +4,8 @@ package edu.chl.KeyboardChaos.view.gui.componentview;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-import edu.chl.KeyboardChaos.view.Font;
-import edu.chl.KeyboardChaos.view.FontUtil;
+import edu.chl.KeyboardChaos.view.gui.Font;
+import edu.chl.KeyboardChaos.view.gui.FontUtil;
 import edu.chl.KeyboardChaos.view.gui.component.Label;
 
 public class LabelView {

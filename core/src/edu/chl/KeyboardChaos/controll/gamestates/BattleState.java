@@ -20,7 +20,7 @@ import edu.chl.KeyboardChaos.controll.spellcontroller.SpellControllerManager;
 import edu.chl.KeyboardChaos.model.main.KeyboardChaosModel;
 import edu.chl.KeyboardChaos.model.player.Player;
 import edu.chl.KeyboardChaos.util.KCConstants;
-import edu.chl.KeyboardChaos.view.BattleView;
+import edu.chl.KeyboardChaos.view.battleStateView.BattleView;
 
 
 

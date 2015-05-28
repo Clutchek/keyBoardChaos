@@ -1,4 +1,4 @@
-package edu.chl.KeyboardChaos.view;
+package edu.chl.KeyboardChaos.view.battleStateView;
 
 import java.io.File;
 import java.util.ArrayList;
