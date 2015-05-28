@@ -9,7 +9,7 @@ import edu.chl.KeyboardChaos.util.DirectionVector;
  */
 public class Player {
 	
-	private int healthPoints;
+	private float healthPoints;
 	private int size;
 	private float posX, posY;
 	private int radius;
@@ -40,7 +40,7 @@ public class Player {
 	 * Decreases the players health points by a certain amount.
 	 * @param dmg the amount of damage the Player's health should decrease by.
 	 */
-	public void takeDamage(int dmg){
+	public void takeDamage(float dmg){
 		healthPoints -= dmg;
 	}
 	
@@ -50,7 +50,7 @@ public class Player {
 	 * Method used to get the Player's current amount of health points.
 	 * @return an integer representation of the Player's health.
 	 */
-	public int getHealthPoints() {
+	public float getHealthPoints() {
 		return healthPoints;
 	}
 
@@ -58,7 +58,7 @@ public class Player {
 	 * Method used to set the Player's current amount of health points.
 	 * @param healthPoints an integer that will represent the Player's health.
 	 */
-	public void setHealthPoints(int healthPoints) {
+	public void setHealthPoints(float healthPoints) {
 		this.healthPoints = healthPoints;
 	}
 

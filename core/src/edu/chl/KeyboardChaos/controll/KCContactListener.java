@@ -7,7 +7,7 @@ import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.Manifold;
 
 import edu.chl.KeyboardChaos.controll.body.FixtureManager;
-import edu.chl.KeyboardChaos.controll.playercontroller.PlayerController;
+import edu.chl.KeyboardChaos.model.player.Player;
 import edu.chl.KeyboardChaos.model.spell.Fireball;
 import edu.chl.KeyboardChaos.model.spell.Spell;
 
@@ -34,8 +34,8 @@ public class KCContactListener implements ContactListener {
 	@Override
 	public void beginContact(Contact contact) {
 		if(isLavaInContact(contact) && isPlayerInContact(contact)){
-			PlayerController pc = getPlayerFromContact(contact);
-			
+			Player player = getPlayerFromContact(contact);
+			player.takeDamage((1f / 60f));
 		
 		}else if(isTwoSpellsInContact(contact)){
 			fixtureManager.addToDisposeList(contact.getFixtureA());
@@ -45,11 +45,11 @@ public class KCContactListener implements ContactListener {
 			Spell spell = getSpellFromContact(contact);
 			fixtureManager.addToDisposeList(getSpellFixture(contact));
 						
-			PlayerController pc = getPlayerFromContact(contact);
+			Player player = getPlayerFromContact(contact);
 
 			if(spell instanceof Fireball){
 				Fireball fb = (Fireball)spell;
-				pc.getPlayer().setHealthPoints(pc.getPlayer().getHealthPoints() - fb.getDamage());
+				player.takeDamage(fb.getDamage());
 			}
 		}
 		
@@ -72,14 +72,14 @@ public class KCContactListener implements ContactListener {
 		
 	}
 		
-	private PlayerController getPlayerFromContact(Contact c){
+	private Player getPlayerFromContact(Contact c){
 		Fixture fixA = c.getFixtureA();
 		Fixture fixB = c.getFixtureB();
 		
-		if(fixA.getUserData() instanceof PlayerController){
-			return (PlayerController)(fixA.getUserData());
-		}else if(fixB.getUserData() instanceof PlayerController){
-			return (PlayerController)(fixB.getUserData());
+		if(fixA.getUserData() instanceof Player){
+			return (Player)(fixA.getUserData());
+		}else if(fixB.getUserData() instanceof Player){
+			return (Player)(fixB.getUserData());
 		}else
 			return null; 	//Denna metod ropas aldrig pÂ om man inte redan vet att en fixture i en contact ‰r en player
 							//sÂ null borde aldrig bli returnerat. Fortfarande inte snyggt med null... Exception?
@@ -113,7 +113,7 @@ public class KCContactListener implements ContactListener {
 	private boolean isPlayerInContact(Contact c){
 		Fixture fixA = c.getFixtureA();
 		Fixture fixB = c.getFixtureB();
-		if(fixA.getUserData() instanceof PlayerController || fixB.getUserData() instanceof PlayerController){
+		if(fixA.getUserData() instanceof Player || fixB.getUserData() instanceof Player){
 			return true;
 		}else
 			return false;
