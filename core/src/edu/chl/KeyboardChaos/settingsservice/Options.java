@@ -1,5 +1,8 @@
 package edu.chl.KeyboardChaos.settingsservice;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import edu.chl.KeyboardChaos.model.spell.Spell.SpellEnum;
 
 
@@ -14,13 +17,13 @@ import edu.chl.KeyboardChaos.model.spell.Spell.SpellEnum;
 public class Options {
 
 	private static Options options;
-	private int nbrOfPlayers;
 	private PlayerSettings playerOneSettings;
 	private PlayerSettings playerTwoSettings;
 	private PlayerSettings playerThreeSettings;
 	private PlayerSettings playerFourSettings;
 	private SettingsService settingsService;
 	
+	private List<Integer> activePlayers;
 	
 	private Options(){
 		settingsService = new SettingsService();
@@ -29,6 +32,13 @@ public class Options {
 		playerThreeSettings = settingsService.getPlayerSettings(3);
 		playerFourSettings = settingsService.getPlayerSettings(4);
 		
+		this.activePlayers = new ArrayList<Integer>();
+		
+		// TODO: Make this happen in the UIState while selecting player controller
+		this.activePlayers.add(1);
+		this.activePlayers.add(2);
+		this.activePlayers.add(3);
+		this.activePlayers.add(4);
 	}
 	
 	
@@ -46,12 +56,12 @@ public class Options {
 	
 	
 	/**
-	 * Set the amount of players that will play
+	 * Set a player as active by its number
 	 * 
-	 * @param nbrOfPlayers
+	 * @param playerNumber
 	 */
-	public void setNbrOfPlayers(int nbrOfPlayers){
-		this.nbrOfPlayers = nbrOfPlayers;
+	public void addPlayer(int playerNumber){
+		this.activePlayers.add(playerNumber);
 	}
 	
 	private PlayerSettings getPlayerSettingsForPlayer(int playerIndex){
@@ -65,10 +75,10 @@ public class Options {
 	}
 	
 	/**
-	 * @return The amount of players that has been selected to play
+	 * @return The active players' number
 	 */
-	public int getNbrOfPlayers(){
-		return nbrOfPlayers;
+	public List<Integer> getActivePlayers(){
+		return activePlayers;
 	}
 	/**
 	 * 

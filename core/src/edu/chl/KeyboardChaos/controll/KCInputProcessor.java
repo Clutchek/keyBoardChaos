@@ -30,25 +30,26 @@ public class KCInputProcessor extends InputAdapter{
 	
 	@Override
 	public boolean keyDown(int keycode) {
-		for(int i = 1; i < optionsService.getNbrOfPlayers(); i++){
-			PlayerController p = playerControllerList.get(i);
+		for(PlayerController p : playerControllerList){
+			int index = playerControllerList.indexOf(p);
+			int playerNumber = optionsService.getActivePlayers().get(index);
 	
-			if(keycode == optionsService.getUpButtonForPlayer(i)){
+			if(keycode == optionsService.getUpButtonForPlayer(playerNumber)){
 				p.setUp(true);
 			}
-			else if(keycode == optionsService.getLeftButtonForPlayer(i)){
+			else if(keycode == optionsService.getLeftButtonForPlayer(playerNumber)){
 				p.setLeft(true);
 			}
-			else if(keycode == optionsService.getDownButtonForPlayer(i)){
+			else if(keycode == optionsService.getDownButtonForPlayer(playerNumber)){
 				p.setDown(true);
 			}
-			else if(keycode == optionsService.getRightButtonForPlayer(i)){
+			else if(keycode == optionsService.getRightButtonForPlayer(playerNumber)){
 				p.setRight(true);
 			}
-			else if(keycode == optionsService.getFirstSpellButtonForPlayer(i)){
+			else if(keycode == optionsService.getFirstSpellButtonForPlayer(playerNumber)){
 				p.useFirstSpell();
 			}
-			else if(keycode == optionsService.getSecondSpellButtonForPlayer(i)){
+			else if(keycode == optionsService.getSecondSpellButtonForPlayer(playerNumber)){
 				p.useSecondSpell();
 			}
 		}
@@ -58,19 +59,20 @@ public class KCInputProcessor extends InputAdapter{
 
 	@Override
 	public boolean keyUp(int keycode) {
-		for(int i = 1; i < optionsService.getNbrOfPlayers(); i++){
-			PlayerController p = playerControllerList.get(i);
+		for(PlayerController p : playerControllerList){
+			int index = playerControllerList.indexOf(p);
+			int playerNumber = optionsService.getActivePlayers().get(index);
 	
-			if(keycode == optionsService.getUpButtonForPlayer(i)){
+			if(keycode == optionsService.getUpButtonForPlayer(playerNumber)){
 				p.setUp(false);
 			}
-			else if(keycode == optionsService.getLeftButtonForPlayer(i)){
+			else if(keycode == optionsService.getLeftButtonForPlayer(playerNumber)){
 				p.setLeft(false);
 			}
-			else if(keycode == optionsService.getDownButtonForPlayer(i)){
+			else if(keycode == optionsService.getDownButtonForPlayer(playerNumber)){
 				p.setDown(false);
 			}
-			else if(keycode == optionsService.getRightButtonForPlayer(i)){
+			else if(keycode == optionsService.getRightButtonForPlayer(playerNumber)){
 				p.setRight(false);
 			}
 		}

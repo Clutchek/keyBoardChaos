@@ -29,10 +29,14 @@ public class KeyboardChaos {
 		
 		//Skapa spelare utifr�n settings
 		Options options = Options.getOptionsInstance();
-		playerList.add(new Player("Player1", 10f,10f, options.getFirstSpell(1), options.getSecondSpell(1))); 
-		playerList.add(new Player("Player2", 20f,20f, options.getFirstSpell(2), options.getSecondSpell(2)));
-		playerList.add(new Player("Player3", 30f,30f, options.getFirstSpell(3), options.getSecondSpell(3)));
-		playerList.add(new Player("Player4", 40f,40f, options.getFirstSpell(4), options.getSecondSpell(4)));
+		if (options.getActivePlayers().contains(1))
+			playerList.add(new Player("Player1", 10f,10f, options.getFirstSpell(1), options.getSecondSpell(1))); 
+		if (options.getActivePlayers().contains(2))
+			playerList.add(new Player("Player2", 20f,20f, options.getFirstSpell(2), options.getSecondSpell(2)));
+		if (options.getActivePlayers().contains(3))
+			playerList.add(new Player("Player3", 30f,30f, options.getFirstSpell(3), options.getSecondSpell(3)));
+		if (options.getActivePlayers().contains(4))
+			playerList.add(new Player("Player4", 40f,40f, options.getFirstSpell(4), options.getSecondSpell(4)));
 	}
 	
 	/**
