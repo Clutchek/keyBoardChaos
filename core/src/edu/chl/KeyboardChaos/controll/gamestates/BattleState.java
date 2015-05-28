@@ -47,7 +47,7 @@ public class BattleState implements GameState {
 		world.setContactListener(new KCContactListener(fixtureManager));
 		
 		//Map stuff
-		tileMap = new TmxMapLoader().load("assets/maps/betatest.tmx");
+		tileMap = new TmxMapLoader().load("assets/maps/map1.tmx");
 		MapBodyManager mbm = new MapBodyManager(world, KCConstants.PPM, null, 0);
 		mbm.createPhysics(tileMap, "lavahurts");
 		

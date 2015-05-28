@@ -35,7 +35,7 @@ public class KCContactListener implements ContactListener {
 	public void beginContact(Contact contact) {
 		if(isLavaInContact(contact) && isPlayerInContact(contact)){
 			Player player = getPlayerFromContact(contact);
-			player.takeDamage((1f / 60f));
+			player.takeDamage(1f / 60f);
 		
 		}else if(isTwoSpellsInContact(contact)){
 			fixtureManager.addToDisposeList(contact.getFixtureA());
