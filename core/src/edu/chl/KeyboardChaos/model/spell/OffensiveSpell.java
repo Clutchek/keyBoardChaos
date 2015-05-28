@@ -1,6 +1,6 @@
 package edu.chl.KeyboardChaos.model.spell;
 
-import edu.chl.KeyboardChaos.model.main.DirectionVector;
+import edu.chl.KeyboardChaos.util.DirectionVector;
 
 
 

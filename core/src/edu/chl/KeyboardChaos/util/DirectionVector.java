@@ -1,4 +1,4 @@
-package edu.chl.KeyboardChaos.model.main;
+package edu.chl.KeyboardChaos.util;
 
 import java.io.Serializable;
 

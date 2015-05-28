@@ -1,4 +1,4 @@
-package edu.chl.KeyboardChaos.model.main;
+package edu.chl.KeyboardChaos.model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,13 +8,13 @@ import edu.chl.KeyboardChaos.model.spell.Spell.SpellEnum;
 import edu.chl.KeyboardChaos.settingsservice.Options;
 
 
-//Klassen kanske borde innehålla score med.
-public class KeyboardChaosModel {
+//Klassen kanske borde innehï¿½lla score med.
+public class KeyboardChaos {
 	
 	
 	private List<Player> playerList;
 	
-	public KeyboardChaosModel(){
+	public KeyboardChaos(){
 		playerList = new ArrayList<Player>();
 		createPlayers();
 	}
@@ -27,7 +27,7 @@ public class KeyboardChaosModel {
 	public void createPlayers(){
 		//Kolla settings antal aktiva spelare?
 		
-		//Skapa spelare utifrån settings
+		//Skapa spelare utifrï¿½n settings
 		Options options = Options.getOptionsInstance();
 		playerList.add(new Player("Player1", 10f,10f, options.getFirstSpell(1), options.getSecondSpell(1))); 
 		playerList.add(new Player("Player2", 20f,20f, options.getFirstSpell(2), options.getSecondSpell(2)));
@@ -42,7 +42,7 @@ public class KeyboardChaosModel {
 		return this.playerList;
 	}
 	
-	//Saker nedanför här ska flyttas.....
+	//Saker nedanfï¿½r hï¿½r ska flyttas.....
 	
 	/**
 	 * When a collision/contact is registered in contact listener and
@@ -67,8 +67,8 @@ public class KeyboardChaosModel {
 	 */
 	/*
 	 * QUESTION:
-	 * Borde denna metod ta bort ett spellobject, eller räcker det att controllern
-	 * ser till (själv eller via view) att fixturen tas bort?
+	 * Borde denna metod ta bort ett spellobject, eller rï¿½cker det att controllern
+	 * ser till (sjï¿½lv eller via view) att fixturen tas bort?
 	 */
 	public void playerSpellCollision(Player player, SpellEnum spell){
 		//Do something to hurt the player

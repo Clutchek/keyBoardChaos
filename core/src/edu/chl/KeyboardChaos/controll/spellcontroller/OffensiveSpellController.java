@@ -2,8 +2,8 @@ package edu.chl.KeyboardChaos.controll.spellcontroller;
 
 import com.badlogic.gdx.math.Vector2;
 
-import edu.chl.KeyboardChaos.model.main.DirectionVector;
 import edu.chl.KeyboardChaos.model.spell.OffensiveSpell;
+import edu.chl.KeyboardChaos.util.DirectionVector;
 
 
 

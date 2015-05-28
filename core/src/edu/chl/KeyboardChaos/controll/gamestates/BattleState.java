@@ -17,7 +17,7 @@ import edu.chl.KeyboardChaos.controll.body.MapBodyManager;
 import edu.chl.KeyboardChaos.controll.playercontroller.PlayerController;
 import edu.chl.KeyboardChaos.controll.spellcontroller.SpellControllerFactory;
 import edu.chl.KeyboardChaos.controll.spellcontroller.SpellControllerManager;
-import edu.chl.KeyboardChaos.model.main.KeyboardChaosModel;
+import edu.chl.KeyboardChaos.model.KeyboardChaos;
 import edu.chl.KeyboardChaos.model.player.Player;
 import edu.chl.KeyboardChaos.util.KCConstants;
 import edu.chl.KeyboardChaos.view.battleStateView.BattleView;
@@ -32,7 +32,7 @@ public class BattleState implements GameState {
 	private BattleView battleView;
 	private Array<Fixture> mapFixtures;
 	private FixtureManager fixtureManager;
-	private KeyboardChaosModel model;
+	private KeyboardChaos model;
 	private List<Player> playerList;
 	private List<PlayerController> playerControllerList;
 	private SpellControllerFactory spellControllerFactory;
@@ -40,7 +40,7 @@ public class BattleState implements GameState {
 	
 	public BattleState() {
 		//model stuff
-		model = new KeyboardChaosModel();
+		model = new KeyboardChaos();
 		
 		//World
 		world = new World(KCConstants.GRAVITY, true);

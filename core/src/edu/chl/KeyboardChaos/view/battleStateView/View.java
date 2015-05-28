@@ -7,7 +7,7 @@ import java.util.Map;
 
 import com.badlogic.gdx.graphics.Texture;
 
-import edu.chl.KeyboardChaos.model.main.DirectionVector;
+import edu.chl.KeyboardChaos.util.DirectionVector;
 
 
 

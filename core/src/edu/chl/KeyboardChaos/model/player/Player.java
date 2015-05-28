@@ -1,7 +1,7 @@
 package edu.chl.KeyboardChaos.model.player;
 
-import edu.chl.KeyboardChaos.model.main.DirectionVector;
 import edu.chl.KeyboardChaos.model.spell.Spell.SpellEnum;
+import edu.chl.KeyboardChaos.util.DirectionVector;
 
 
 /**

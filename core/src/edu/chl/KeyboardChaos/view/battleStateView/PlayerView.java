@@ -2,8 +2,8 @@ package edu.chl.KeyboardChaos.view.battleStateView;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-import edu.chl.KeyboardChaos.model.main.DirectionVector;
 import edu.chl.KeyboardChaos.model.player.Player;
+import edu.chl.KeyboardChaos.util.DirectionVector;
 
 
 

@@ -8,9 +8,9 @@ import com.badlogic.gdx.physics.box2d.Body;
 
 import edu.chl.KeyboardChaos.controll.body.FixtureManager;
 import edu.chl.KeyboardChaos.controll.spellcontroller.SpellControllerManager;
-import edu.chl.KeyboardChaos.model.main.DirectionVector;
 import edu.chl.KeyboardChaos.model.player.Player;
 import edu.chl.KeyboardChaos.settingsservice.PlayerSettings;
+import edu.chl.KeyboardChaos.util.DirectionVector;
 
 
 
