@@ -4,7 +4,7 @@ public interface Spell {
 	
 	public enum SpellEnum{
 		FIREBALL(new Fireball()),
-		WATER(new Water());
+		ICE(new Ice());
 		
 		private final String description;
 		private final String name;

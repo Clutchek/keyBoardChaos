@@ -8,7 +8,6 @@ import model.gui.component.SpellBox;
 import model.spell.Fireball;
 import model.spell.Spell;
 import model.spell.Spell.SpellEnum;
-import model.spell.Water;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -36,7 +35,7 @@ public class SpellBoxView {
 	
 	private void loadTextures() {
 		this.textureMap.put(SpellEnum.FIREBALL, createTexture("assets/Fireball.png"));
-		this.textureMap.put(SpellEnum.WATER, createTexture("assets/Water.png"));
+		this.textureMap.put(SpellEnum.ICE, createTexture("assets/Water.png"));
 	}
 	
 	private Texture createTexture(String path) {

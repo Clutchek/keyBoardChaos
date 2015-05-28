@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.badlogic.gdx.Input;
 
+import controller.playersettings.Options;
 import model.player.Player;
 import model.spell.Fireball;
 import model.spell.Spell.SpellEnum;;
@@ -29,10 +30,11 @@ public class KeyboardChaosModel {
 		//Kolla settings antal aktiva spelare?
 		
 		//Skapa spelare utifrån settings
-		playerList.add(new Player("Player1", 10f,10f, SpellEnum.FIREBALL, SpellEnum.FIREBALL)); 
-		playerList.add(new Player("Player2", 20f,20f, SpellEnum.FIREBALL, SpellEnum.FIREBALL));
-		playerList.add(new Player("Player3", 30f,30f, SpellEnum.FIREBALL, SpellEnum.FIREBALL));
-		playerList.add(new Player("Player4", 40f,40f, SpellEnum.FIREBALL, SpellEnum.FIREBALL));
+		Options options = Options.getOptionsInstance();
+		playerList.add(new Player("Player1", 10f,10f, options.getFirstSpell(1), options.getSecondSpell(1))); 
+		playerList.add(new Player("Player2", 20f,20f, options.getFirstSpell(2), options.getSecondSpell(2)));
+		playerList.add(new Player("Player3", 30f,30f, options.getFirstSpell(3), options.getSecondSpell(3)));
+		playerList.add(new Player("Player4", 40f,40f, options.getFirstSpell(4), options.getSecondSpell(4)));
 		System.out.println(Input.Keys.toString(Input.Keys.L));
 	}
 	

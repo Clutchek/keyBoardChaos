@@ -1,14 +1,7 @@
 package model.gui.component;
 
 import java.awt.Color;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-import model.spell.Fireball;
-import model.spell.Spell;
 import model.spell.Spell.SpellEnum;
-import model.spell.Water;
 
 public class SpellBox extends Component {
 	

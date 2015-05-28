@@ -64,6 +64,7 @@ public class SpellMenu extends Screen implements EventHandler {
 			for (SpellPanel panel : spellPanels) {
 				options.setSpells(spellPanels.indexOf(panel)+1, panel.getSpell1(), panel.getSpell2());
 			}
+			options.savePreferences();
 		}
 	}
 }

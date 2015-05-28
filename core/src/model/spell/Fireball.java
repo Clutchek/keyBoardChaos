@@ -8,9 +8,9 @@ public class Fireball extends OffensiveSpell{
 	private Player originPlayer;
 	private final float fireballRadius;
 	
-	public final static String DESCRIPTION = "It may look like a tennis ball, "
-			+ "but it if you're not careful enough you will get it up your anus. "
-			+ "You DO NOT want to mess with a person using this!";
+	public final static String DESCRIPTION = "Fire is the rapid oxidation of a material in the exothermic chemical "
+			+ "process of combustion, releasing heat, light, and various reaction products.[1] Slower oxidative processes "
+			+ "like rusting or digestion are not included by this definition.";
 
 	public final static String NAME = "Fireball";
 	
@@ -40,6 +40,7 @@ public class Fireball extends OffensiveSpell{
 		return fireballRadius;
 	}
 	
+	@Override
 	public String getDescription() {
 		return DESCRIPTION;
 	}
