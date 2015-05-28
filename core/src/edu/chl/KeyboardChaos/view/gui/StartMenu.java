@@ -1,9 +1,9 @@
-package edu.chl.KeyboardChaos.model.gui;
+package edu.chl.KeyboardChaos.view.gui;
 
 import java.awt.Color;
 
-import edu.chl.KeyboardChaos.model.gui.component.TextButton;
 import edu.chl.KeyboardChaos.util.eventbus.BusEvent;
+import edu.chl.KeyboardChaos.view.gui.component.TextButton;
 
 
 

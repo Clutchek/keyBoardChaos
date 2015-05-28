@@ -1,12 +1,12 @@
-package edu.chl.KeyboardChaos.model.gui.component;
+package edu.chl.KeyboardChaos.view.gui.component;
 
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 
 import edu.chl.KeyboardChaos.model.spell.Spell.SpellEnum;
+import edu.chl.KeyboardChaos.settingsservice.Options;
 import edu.chl.KeyboardChaos.util.eventbus.BusEvent;
-import edu.chl.KeyboardChaos.util.playersettings.Options;
 
 
 

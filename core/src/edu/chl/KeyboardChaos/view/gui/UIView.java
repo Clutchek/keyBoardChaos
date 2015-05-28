@@ -8,19 +8,18 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
-import edu.chl.KeyboardChaos.model.gui.Screen;
-import edu.chl.KeyboardChaos.model.gui.component.Component;
-import edu.chl.KeyboardChaos.model.gui.component.Label;
-import edu.chl.KeyboardChaos.model.gui.component.PlayerSettingsPanel;
-import edu.chl.KeyboardChaos.model.gui.component.SpellBox;
-import edu.chl.KeyboardChaos.model.gui.component.SpellPanel;
-import edu.chl.KeyboardChaos.model.gui.component.TextButton;
 import edu.chl.KeyboardChaos.view.FontUtil;
-import edu.chl.KeyboardChaos.view.gui.component.LabelView;
-import edu.chl.KeyboardChaos.view.gui.component.PlayerSettingsPanelView;
-import edu.chl.KeyboardChaos.view.gui.component.SpellBoxView;
-import edu.chl.KeyboardChaos.view.gui.component.SpellPanelView;
-import edu.chl.KeyboardChaos.view.gui.component.TextButtonView;
+import edu.chl.KeyboardChaos.view.gui.component.Component;
+import edu.chl.KeyboardChaos.view.gui.component.Label;
+import edu.chl.KeyboardChaos.view.gui.component.PlayerSettingsPanel;
+import edu.chl.KeyboardChaos.view.gui.component.SpellBox;
+import edu.chl.KeyboardChaos.view.gui.component.SpellPanel;
+import edu.chl.KeyboardChaos.view.gui.component.TextButton;
+import edu.chl.KeyboardChaos.view.gui.componentview.LabelView;
+import edu.chl.KeyboardChaos.view.gui.componentview.PlayerSettingsPanelView;
+import edu.chl.KeyboardChaos.view.gui.componentview.SpellBoxView;
+import edu.chl.KeyboardChaos.view.gui.componentview.SpellPanelView;
+import edu.chl.KeyboardChaos.view.gui.componentview.TextButtonView;
 
 public class UIView {
 	

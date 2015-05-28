@@ -1,9 +1,9 @@
-package edu.chl.KeyboardChaos.model.gui;
+package edu.chl.KeyboardChaos.view.gui;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import edu.chl.KeyboardChaos.model.gui.component.Component;
+import edu.chl.KeyboardChaos.view.gui.component.Component;
 
 
 

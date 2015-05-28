@@ -8,7 +8,7 @@ import edu.chl.KeyboardChaos.util.eventbus.EventHandler;
 
 
 
-public class GameStateManager implements EventHandler{
+public class GameStateContext implements EventHandler{
 	
 	/*private Stack<GameState> gameStates;
 	private static final int PLAY_STATE = KCConstants.PLAY_STATE;*/
@@ -18,7 +18,7 @@ public class GameStateManager implements EventHandler{
 	GameState roundOverState;
 	GameState currentState;
 	
-	public GameStateManager(){
+	public GameStateContext(){
 		uiState = new UIState();
 		battleState = new BattleState();
 		roundOverState = new RoundOverState();

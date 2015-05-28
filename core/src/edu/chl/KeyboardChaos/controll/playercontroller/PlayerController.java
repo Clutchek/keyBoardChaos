@@ -10,7 +10,7 @@ import edu.chl.KeyboardChaos.controll.body.FixtureManager;
 import edu.chl.KeyboardChaos.controll.spellcontroller.SpellControllerManager;
 import edu.chl.KeyboardChaos.model.main.DirectionVector;
 import edu.chl.KeyboardChaos.model.player.Player;
-import edu.chl.KeyboardChaos.util.playersettings.PlayerSettings;
+import edu.chl.KeyboardChaos.settingsservice.PlayerSettings;
 
 
 

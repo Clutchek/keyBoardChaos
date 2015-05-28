@@ -1,4 +1,4 @@
-package edu.chl.KeyboardChaos.view.gui.component;
+package edu.chl.KeyboardChaos.view.gui.componentview;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -10,8 +10,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 
-import edu.chl.KeyboardChaos.model.gui.component.SpellBox;
 import edu.chl.KeyboardChaos.model.spell.Spell.SpellEnum;
+import edu.chl.KeyboardChaos.view.gui.component.SpellBox;
 
 public class SpellBoxView {
 	private final SpriteBatch batch;

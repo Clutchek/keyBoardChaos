@@ -6,7 +6,7 @@ import java.util.Timer;
 import com.badlogic.gdx.InputAdapter;
 
 import edu.chl.KeyboardChaos.controll.playercontroller.PlayerController;
-import edu.chl.KeyboardChaos.util.playersettings.Options;
+import edu.chl.KeyboardChaos.settingsservice.Options;
 
 
 

@@ -1,4 +1,4 @@
-package edu.chl.KeyboardChaos.util.playersettings;
+package edu.chl.KeyboardChaos.settingsservice;
 
 import java.io.Serializable;
 

@@ -1,18 +1,18 @@
-package edu.chl.KeyboardChaos.model.gui;
+package edu.chl.KeyboardChaos.view.gui;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import com.badlogic.gdx.Input;
 
-import edu.chl.KeyboardChaos.model.gui.component.PlayerSettingsPanel;
-import edu.chl.KeyboardChaos.model.gui.component.SpellPanel;
-import edu.chl.KeyboardChaos.model.gui.component.TextButton;
+import edu.chl.KeyboardChaos.settingsservice.Options;
 import edu.chl.KeyboardChaos.util.KCConstants;
 import edu.chl.KeyboardChaos.util.eventbus.BusEvent;
 import edu.chl.KeyboardChaos.util.eventbus.EventBusService;
 import edu.chl.KeyboardChaos.util.eventbus.EventHandler;
-import edu.chl.KeyboardChaos.util.playersettings.Options;
+import edu.chl.KeyboardChaos.view.gui.component.PlayerSettingsPanel;
+import edu.chl.KeyboardChaos.view.gui.component.SpellPanel;
+import edu.chl.KeyboardChaos.view.gui.component.TextButton;
 
 
 

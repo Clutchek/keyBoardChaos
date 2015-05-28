@@ -1,4 +1,4 @@
-package edu.chl.KeyboardChaos.view.gui.component;
+package edu.chl.KeyboardChaos.view.gui.componentview;
 
 
 
@@ -10,7 +10,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 
-import edu.chl.KeyboardChaos.model.gui.component.PlayerSettingsPanel;
+import edu.chl.KeyboardChaos.view.gui.component.PlayerSettingsPanel;
 
 public class PlayerSettingsPanelView {
 

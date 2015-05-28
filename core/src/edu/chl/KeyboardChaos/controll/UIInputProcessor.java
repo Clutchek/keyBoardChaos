@@ -10,10 +10,10 @@ import java.util.List;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
 
-import edu.chl.KeyboardChaos.model.gui.component.Component;
-import edu.chl.KeyboardChaos.model.gui.component.SpellPanel;
-import edu.chl.KeyboardChaos.model.gui.component.TextButton;
-import edu.chl.KeyboardChaos.util.playersettings.Options;
+import edu.chl.KeyboardChaos.settingsservice.Options;
+import edu.chl.KeyboardChaos.view.gui.component.Component;
+import edu.chl.KeyboardChaos.view.gui.component.SpellPanel;
+import edu.chl.KeyboardChaos.view.gui.component.TextButton;
 
 
 

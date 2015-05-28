@@ -1,4 +1,4 @@
-package edu.chl.KeyboardChaos.util.playersettings;
+package edu.chl.KeyboardChaos.settingsservice;
 
 import edu.chl.KeyboardChaos.model.spell.Spell.SpellEnum;
 

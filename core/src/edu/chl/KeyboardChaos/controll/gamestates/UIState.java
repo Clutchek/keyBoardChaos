@@ -3,12 +3,12 @@ package edu.chl.KeyboardChaos.controll.gamestates;
 import com.badlogic.gdx.InputProcessor;
 
 import edu.chl.KeyboardChaos.controll.UIInputProcessor;
-import edu.chl.KeyboardChaos.model.gui.SettingsMenu;
-import edu.chl.KeyboardChaos.model.gui.SpellMenu;
-import edu.chl.KeyboardChaos.model.gui.StartMenu;
 import edu.chl.KeyboardChaos.util.eventbus.BusEvent;
 import edu.chl.KeyboardChaos.util.eventbus.EventBusService;
 import edu.chl.KeyboardChaos.util.eventbus.EventHandler;
+import edu.chl.KeyboardChaos.view.gui.SettingsMenu;
+import edu.chl.KeyboardChaos.view.gui.SpellMenu;
+import edu.chl.KeyboardChaos.view.gui.StartMenu;
 import edu.chl.KeyboardChaos.view.gui.UIView;
 
 

@@ -1,4 +1,4 @@
-package edu.chl.KeyboardChaos.model.gui.component;
+package edu.chl.KeyboardChaos.view.gui.component;
 
 import edu.chl.KeyboardChaos.util.eventbus.BusEvent;
 

@@ -5,7 +5,7 @@ import java.util.List;
 
 import edu.chl.KeyboardChaos.model.player.Player;
 import edu.chl.KeyboardChaos.model.spell.Spell.SpellEnum;
-import edu.chl.KeyboardChaos.util.playersettings.Options;
+import edu.chl.KeyboardChaos.settingsservice.Options;
 
 
 //Klassen kanske borde innehålla score med.
