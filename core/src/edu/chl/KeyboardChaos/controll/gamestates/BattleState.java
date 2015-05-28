@@ -49,7 +49,7 @@ public class BattleState implements GameState {
 		//Map stuff
 		tileMap = new TmxMapLoader().load("assets/maps/map1.tmx");
 		MapBodyManager mbm = new MapBodyManager(world, KCConstants.PPM, null, 0);
-		mbm.createPhysics(tileMap, "lavahurts");
+		mbm.createPhysics(tileMap, "lava");
 		
 		mapFixtures = new Array<Fixture>();
 		battleView = new BattleView(mapFixtures, world, tileMap);
