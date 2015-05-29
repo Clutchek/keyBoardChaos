@@ -10,7 +10,11 @@ import edu.chl.KeyboardChaos.util.eventbus.BusEvent;
 
 
 
-
+/*
+ * This class represents a panel that contains
+ * two spell boxes, in which a player can iterate through
+ * available spells and choose the desired spell
+ */
 public class SpellPanel extends Component {
 	
 	private final Color panelColor;

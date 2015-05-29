@@ -6,7 +6,10 @@ import edu.chl.KeyboardChaos.model.spell.OffensiveSpell;
 import edu.chl.KeyboardChaos.util.DirectionVector;
 
 
-
+/*
+ * Abstract class for the handling of all attacking projectile spells 
+ * It is used to keep a projectile spell on its correct position 
+ */
 public abstract class OffensiveSpellController implements SpellController{
 
 	private OffensiveSpell offensiveSpell;

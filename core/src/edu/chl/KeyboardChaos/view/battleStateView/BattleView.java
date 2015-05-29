@@ -18,7 +18,9 @@ import edu.chl.KeyboardChaos.model.spell.Fireball;
 import edu.chl.KeyboardChaos.util.KCConstants;
 
 
-
+/*
+ * This class renders all the visual elements during a battle in KeyboardChaos
+ */
 public class BattleView {
 	private SpriteBatch spriteBatch;
 	private OrthographicCamera worldCam, hudCam, box2DCam;

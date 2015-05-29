@@ -3,7 +3,9 @@ package edu.chl.KeyboardChaos.view.gui.component;
 import edu.chl.KeyboardChaos.util.eventbus.BusEvent;
 
 
-
+/*
+ * This abstract class is used by visual components in the GUI part of keyboardChaos
+ */
 public abstract class Component {
 	
 	private final int posX, posY;

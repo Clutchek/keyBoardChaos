@@ -3,7 +3,9 @@ package edu.chl.KeyboardChaos.view.gui.component;
 import edu.chl.KeyboardChaos.util.eventbus.BusEvent;
 
 
-
+/*
+ * This class represents a text label
+ */
 public class Label extends Component {
 
 	String text;

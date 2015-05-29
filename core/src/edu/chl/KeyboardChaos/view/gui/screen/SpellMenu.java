@@ -12,7 +12,9 @@ import edu.chl.KeyboardChaos.view.gui.component.Label;
 import edu.chl.KeyboardChaos.view.gui.component.SpellPanel;
 import edu.chl.KeyboardChaos.view.gui.component.TextButton;
 
-
+/*
+ * This class represents the spell menu in the GUI of KeyboardChaos
+ */
 
 public class SpellMenu extends Screen implements EventHandler {
 	

@@ -10,7 +10,10 @@ import edu.chl.KeyboardChaos.util.DirectionVector;
 import edu.chl.KeyboardChaos.util.KCConstants;
 
 
-
+/*
+ * Class that handles the controlling of a fireball that has been fired from a player.
+ * It keeps the positioning of an active fireball updated
+ */
 public class FireballController extends OffensiveSpellController{
 	private Fireball fireball;
 	private Player player;

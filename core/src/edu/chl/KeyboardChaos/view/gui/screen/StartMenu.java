@@ -5,7 +5,9 @@ import java.awt.Color;
 import edu.chl.KeyboardChaos.util.eventbus.BusEvent;
 import edu.chl.KeyboardChaos.view.gui.component.TextButton;
 
-
+/*
+ * This class represents the start menu in the GUI of KeyboardChaos
+ */
 
 public class StartMenu extends Screen{
 

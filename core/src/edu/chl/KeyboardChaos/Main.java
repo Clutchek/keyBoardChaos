@@ -8,7 +8,9 @@ import edu.chl.KeyboardChaos.settingsservice.Options;
 import edu.chl.KeyboardChaos.util.KCConstants;
 
 
-
+/*
+ * Main class that creates and renders the game
+ */
 
 public class Main implements ApplicationListener{
 

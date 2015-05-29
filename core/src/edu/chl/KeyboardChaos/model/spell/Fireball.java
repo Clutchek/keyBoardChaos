@@ -1,5 +1,8 @@
 package edu.chl.KeyboardChaos.model.spell;
 
+/**
+ * A class that represents a fireball in the keyBoardChaos game.
+ */
 
 public class Fireball extends OffensiveSpell{
 	

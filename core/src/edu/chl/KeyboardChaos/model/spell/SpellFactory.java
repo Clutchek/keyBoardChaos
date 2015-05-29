@@ -2,6 +2,9 @@ package edu.chl.KeyboardChaos.model.spell;
 
 import edu.chl.KeyboardChaos.model.player.Player;
 
+/**
+ * A factory for creating spells
+ */
 
 
 public class SpellFactory {

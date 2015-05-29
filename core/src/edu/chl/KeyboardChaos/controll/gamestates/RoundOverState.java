@@ -1,5 +1,10 @@
 package edu.chl.KeyboardChaos.controll.gamestates;
 
+/*
+ * Class that handles a menu that shows on the screen in between battle rounds
+ * In the round over state the players can changes their spells and upgrade their spells
+ */
+
 public class RoundOverState implements GameState {
 
 	@Override

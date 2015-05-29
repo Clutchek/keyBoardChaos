@@ -1,4 +1,7 @@
 package edu.chl.KeyboardChaos.util.eventbus;
+/*
+ * This class holds an event in the form of a text string.
+ */
 
 public class BusEvent {
 

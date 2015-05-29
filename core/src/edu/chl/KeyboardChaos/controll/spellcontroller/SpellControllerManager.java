@@ -8,7 +8,9 @@ import edu.chl.KeyboardChaos.model.player.Player;
 import edu.chl.KeyboardChaos.model.spell.Spell.SpellEnum;
 
 
-
+/*
+ * Class for managing which spell controllers should be active and inactive
+ */
 public class SpellControllerManager {
 
 	private SpellControllerFactory spellControllerFactory;

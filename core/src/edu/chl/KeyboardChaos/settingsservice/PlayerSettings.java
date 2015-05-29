@@ -4,7 +4,10 @@ import java.io.Serializable;
 
 import edu.chl.KeyboardChaos.model.spell.Spell.SpellEnum;
 
-
+/*
+ * A class that contains all the customizable settings of a player
+ * That includes a players keyboard controllers, spells and the name of the player.
+ */
 
 public class PlayerSettings implements Serializable{
 	private int moveUpKey, moveDownKey, moveLeftKey, moveRightKey, firstSpellKey, secondSpellKey;

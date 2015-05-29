@@ -5,7 +5,9 @@ import java.util.concurrent.ConcurrentHashMap;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.Fixture;
-
+/*
+ * This class holds all the used constants of the game KeyboardChaos
+ */
 public class KCConstants {
 	
 	// Enum describing a direction

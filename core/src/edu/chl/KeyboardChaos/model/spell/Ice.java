@@ -1,5 +1,7 @@
 package edu.chl.KeyboardChaos.model.spell;
-
+/**
+ * A class that represents an ice spell in the keyBoardChaos game.
+*/
 public class Ice extends OffensiveSpell{
 	
 	private int damage, projectileSpeed;

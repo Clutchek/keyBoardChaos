@@ -1,7 +1,9 @@
 package edu.chl.KeyboardChaos.util;
 
 import java.io.Serializable;
-
+/*
+ * This class represents a vector with an x, y direction
+ */
 public class DirectionVector implements Serializable{
 	
 	private float x;

@@ -11,7 +11,10 @@ import edu.chl.KeyboardChaos.util.eventbus.BusEvent;
 import edu.chl.KeyboardChaos.util.eventbus.EventHandler;
 
 
-
+/*
+ * This class represents a panel in which a player
+ *  can configure his keyboard controller settings
+ */
 public class PlayerSettingsPanel extends Component implements EventHandler {
 
 	private final int height;

@@ -14,7 +14,9 @@ import com.badlogic.gdx.Input.Keys;
 
 import edu.chl.KeyboardChaos.model.spell.Spell.SpellEnum;
 
-
+/*
+ * This class saves and loads the playersettings to a file on a local directory on the computer
+ */
 
 public class SettingsService {
 	private FileInputStream fileInputStream;

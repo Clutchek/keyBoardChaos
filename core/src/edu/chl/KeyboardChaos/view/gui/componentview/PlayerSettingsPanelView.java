@@ -11,7 +11,9 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 
 import edu.chl.KeyboardChaos.view.gui.component.PlayerSettingsPanel;
-
+/*
+ * This class is used to render a player settings panel
+ */
 public class PlayerSettingsPanelView {
 
 	private ShapeRenderer shapeRenderer;

@@ -2,7 +2,10 @@ package edu.chl.KeyboardChaos.util.eventbus;
 
 import java.util.ArrayList;
 import java.util.List;
-
+/*
+ * A singleton class which other classes can subscribe to.
+ * All subscribed classes will receive an event whenever an event i published by any class
+ */
 public class EventBusService {
 	
 	private static EventBusService ebs;

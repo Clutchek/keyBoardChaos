@@ -10,7 +10,10 @@ import com.badlogic.gdx.graphics.Texture;
 import edu.chl.KeyboardChaos.util.DirectionVector;
 
 
-
+/*
+ * This abstract class is used to show the correct texture
+ *  of an element depending on its direction, during a battle in KeyboardChaos
+ */
 public abstract class View {
 	
 	private Map<DirectionVector, Texture> map;

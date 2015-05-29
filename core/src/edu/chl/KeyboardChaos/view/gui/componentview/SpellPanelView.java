@@ -12,7 +12,9 @@ import edu.chl.KeyboardChaos.view.gui.Font;
 import edu.chl.KeyboardChaos.view.gui.FontUtil;
 import edu.chl.KeyboardChaos.view.gui.component.SpellBox;
 import edu.chl.KeyboardChaos.view.gui.component.SpellPanel;
-
+/*
+ * This class is used to render a spell panel
+*/
 public class SpellPanelView {
 
 	private final SpriteBatch batch;

@@ -16,7 +16,11 @@ import edu.chl.KeyboardChaos.view.gui.component.SpellPanel;
 import edu.chl.KeyboardChaos.view.gui.component.TextButton;
 
 
-
+/*
+ * This class handles the key and mouse inputs that are received during the UI state
+ * and then makes the correct action for that input
+ * 
+ */
 
 public class UIInputProcessor implements InputProcessor {
 

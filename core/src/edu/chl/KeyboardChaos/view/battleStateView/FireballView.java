@@ -5,7 +5,9 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import edu.chl.KeyboardChaos.model.spell.Fireball;
 
 
-
+/*
+ * This class renders the texture of a fireball that is fired during a battle in KeyboardChaos
+ */
 public class FireballView extends View{
 		
 	private SpriteBatch spriteBatch;

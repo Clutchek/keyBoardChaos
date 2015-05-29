@@ -4,7 +4,11 @@ import java.awt.Color;
 
 import edu.chl.KeyboardChaos.model.spell.Spell.SpellEnum;
 
-
+/*
+ * This class represents a box in which a player can
+ * iterate through all available spells and choose 
+ * the spell that the player desires
+ */
 public class SpellBox extends Component {
 	
 	public final static int SIZE = 135;

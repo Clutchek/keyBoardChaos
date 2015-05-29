@@ -14,7 +14,9 @@ import edu.chl.KeyboardChaos.view.gui.component.PlayerSettingsPanel;
 import edu.chl.KeyboardChaos.view.gui.component.SpellPanel;
 import edu.chl.KeyboardChaos.view.gui.component.TextButton;
 
-
+/*
+ * This class represents the settings menu in the GUI of KeyboardChaos
+ */
 
 public class SettingsMenu extends Screen implements EventHandler {
 	private PlayerSettingsPanel psp1, psp2, psp3, psp4;

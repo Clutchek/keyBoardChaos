@@ -14,7 +14,9 @@ public class TextButtonView {
 	private BitmapFont font;
 	private SpriteBatch batch;
 	private GlyphLayout layout;
-	
+	/*
+	 * This class is used to render a button containing a text
+	 */
 	public TextButtonView(SpriteBatch batch, BitmapFont font, ShapeRenderer shapeRenderer) {
 		this.shapeRenderer = shapeRenderer;
 		this.font = font;

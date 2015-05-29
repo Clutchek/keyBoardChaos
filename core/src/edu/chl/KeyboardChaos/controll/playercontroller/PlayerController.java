@@ -13,7 +13,10 @@ import edu.chl.KeyboardChaos.settingsservice.PlayerSettings;
 import edu.chl.KeyboardChaos.util.DirectionVector;
 
 
-
+/*
+ * Class that handles the controlling of a player during a battle
+ * It handles the positioning of the players body, and withholds information of what spells the player has
+ */
 public class PlayerController {
 
 	private Player player;

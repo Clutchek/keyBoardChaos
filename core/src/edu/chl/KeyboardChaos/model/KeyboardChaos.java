@@ -7,8 +7,9 @@ import edu.chl.KeyboardChaos.model.player.Player;
 import edu.chl.KeyboardChaos.model.spell.Spell.SpellEnum;
 import edu.chl.KeyboardChaos.settingsservice.Options;
 
-
-//Klassen kanske borde inneh�lla score med.
+/*
+ * This is the model that represents the game KeyboardChaos.
+ */
 public class KeyboardChaos {
 	
 	

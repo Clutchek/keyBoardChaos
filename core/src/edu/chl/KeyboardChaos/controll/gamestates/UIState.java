@@ -11,7 +11,10 @@ import edu.chl.KeyboardChaos.view.gui.screen.SettingsMenu;
 import edu.chl.KeyboardChaos.view.gui.screen.SpellMenu;
 import edu.chl.KeyboardChaos.view.gui.screen.StartMenu;
 
-
+/*
+ * Class that handles the UI state of the program, from the startup of the program until a battle is started
+ * When the players switch from one UI menu to another this class switches to the correct one
+ */
 
 public class UIState implements GameState, EventHandler {
 

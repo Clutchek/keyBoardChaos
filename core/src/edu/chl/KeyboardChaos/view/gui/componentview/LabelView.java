@@ -7,7 +7,9 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import edu.chl.KeyboardChaos.view.gui.Font;
 import edu.chl.KeyboardChaos.view.gui.FontUtil;
 import edu.chl.KeyboardChaos.view.gui.component.Label;
-
+/*
+ * This class is used to render a visual text label
+ */
 public class LabelView {
 	private final SpriteBatch batch;
 	private final FontUtil fontUtil;

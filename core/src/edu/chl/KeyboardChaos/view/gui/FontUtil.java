@@ -4,7 +4,11 @@ package edu.chl.KeyboardChaos.view.gui;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 
-
+/*
+ * This class is used to make text strings
+ * fit a surface regardless of its length
+ * 
+ */
 public class FontUtil {
 	private final GlyphLayout glyphLayout;
 	private BitmapFont font;

@@ -11,6 +11,11 @@ import edu.chl.KeyboardChaos.settingsservice.Options;
 
 
 /*
+ * 
+ * Class that receives key inputs from all players during a battle
+ * and notifies all the player controllers what keys are pressed and which
+ * keys are not.
+ * 
  * If, in the future, this for some reason needs to extend 
  * another class, it is possible to implement InputProcessor 
  * instead of extending InputAdapter.

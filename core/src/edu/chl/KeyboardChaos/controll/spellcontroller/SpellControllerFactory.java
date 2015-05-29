@@ -6,6 +6,9 @@ import edu.chl.KeyboardChaos.model.spell.Fireball;
 import edu.chl.KeyboardChaos.model.spell.Spell.SpellEnum;
 
 
+/*
+ * Factory class for the creation of SpellControllers
+ */
 
 public class SpellControllerFactory {
 	
@@ -16,7 +19,7 @@ public class SpellControllerFactory {
 	}
 	
 	protected SpellController createSpellController(SpellEnum spell, Player player){
-		//kan behöva kolla efter null
+		//kan behï¿½va kolla efter null
 		if(spell == SpellEnum.FIREBALL){
 			Fireball fireball = new Fireball();
 			float spaceX = player.getVector().getX()*(player.getSize()+fireball.getFireballRadius());

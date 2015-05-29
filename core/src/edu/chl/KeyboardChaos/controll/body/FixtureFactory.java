@@ -12,7 +12,9 @@ import edu.chl.KeyboardChaos.model.player.Player;
 import edu.chl.KeyboardChaos.model.spell.Fireball;
 import edu.chl.KeyboardChaos.util.KCConstants;
 
-
+/*
+ * Factory class that can create fixtures and bodies for both players and spells
+ */
 
 
 public class FixtureFactory {
@@ -35,7 +37,7 @@ public class FixtureFactory {
 	protected Fixture createFixture(Body body){
 		FixtureDef fixtureDef = new FixtureDef();
 		float fixtureRadius = 0f;
-		//Nullpointervarning här
+		//Nullpointervarning hï¿½r
 		if(body.getUserData() instanceof Fireball){
 			fixtureDef.filter.maskBits = KCConstants.MASK_SPELL;
 			fixtureDef.filter.categoryBits = KCConstants.BIT_SPELL;

@@ -2,7 +2,9 @@ package edu.chl.KeyboardChaos.model.spell;
 
 import edu.chl.KeyboardChaos.util.DirectionVector;
 
-
+/**
+ * A class that represents an attacking projectile spell in the keyBoardChaos game.
+ */
 
 public abstract class OffensiveSpell implements Spell {
 	private DirectionVector vector;

@@ -20,7 +20,10 @@ import edu.chl.KeyboardChaos.view.gui.componentview.SpellBoxView;
 import edu.chl.KeyboardChaos.view.gui.componentview.SpellPanelView;
 import edu.chl.KeyboardChaos.view.gui.componentview.TextButtonView;
 import edu.chl.KeyboardChaos.view.gui.screen.Screen;
-
+/*
+ * This class renders all the visuals of
+ * any screen in the GUI state of KeyboardChaos
+ */
 public class UIView {
 	
 	SpriteBatch batch;

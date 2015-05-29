@@ -12,7 +12,9 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 
 import edu.chl.KeyboardChaos.model.spell.Spell.SpellEnum;
 import edu.chl.KeyboardChaos.view.gui.component.SpellBox;
-
+/*
+ * This class is used to render a visual spell box
+ */
 public class SpellBoxView {
 	private final SpriteBatch batch;
 	private final ShapeRenderer shapeRenderer;
