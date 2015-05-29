@@ -3,7 +3,7 @@ package edu.chl.KeyboardChaos;
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 
-import edu.chl.KeyboardChaos.controll.gamestates.GameStateContext;
+import edu.chl.KeyboardChaos.controller.gamestates.GameStateContext;
 import edu.chl.KeyboardChaos.settingsservice.Options;
 import edu.chl.KeyboardChaos.util.KCConstants;
 
