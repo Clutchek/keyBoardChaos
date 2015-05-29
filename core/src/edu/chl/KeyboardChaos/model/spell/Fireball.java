@@ -9,9 +9,7 @@ public class Fireball extends OffensiveSpell{
 	private int damage, projectileSpeed;
 	private final float fireballRadius;
 	
-	public final static String DESCRIPTION = "Fire is the rapid oxidation of a material in the exothermic chemical "
-			+ "process of combustion, releasing heat, light, and various reaction products.[1] Slower oxidative processes "
-			+ "like rusting or digestion are not included by this definition.";
+	public final static String DESCRIPTION = "This is a description of a fireball.";
 
 	public final static String NAME = "Fireball";
 	

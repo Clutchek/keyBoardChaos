@@ -17,7 +17,6 @@ public class KeyboardChaos {
 	
 	public KeyboardChaos(){
 		playerList = new ArrayList<Player>();
-		createPlayers();
 	}
 	
 	/**

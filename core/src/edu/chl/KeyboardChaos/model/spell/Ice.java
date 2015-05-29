@@ -7,9 +7,7 @@ public class Ice extends OffensiveSpell{
 	private int damage, projectileSpeed;
 	private final float radius;
 	
-	public final static String DESCRIPTION = "Ice is water, frozen into a solid state. Depending on the presence of "
-			+ "impurities such as particles of soil or bubbles of air, it can appear transparent or a more or less "
-			+ "opaque bluish-white color.";
+	public final static String DESCRIPTION = "This is a description of ice.";
 	public final static String NAME = "Ice";
 
 	public Ice(){

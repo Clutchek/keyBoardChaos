@@ -11,13 +11,13 @@ public class FixtureManager {
 
 	private FixtureFactory fixtureFactory;
 	private List<Fixture> fixtureToDelete;
-	private List<Fixture> fixtureList;
+	//private List<Fixture> fixtureList;
 	private World world;
 	
 	public FixtureManager(World world){
 		fixtureFactory = new FixtureFactory(world);
 		fixtureToDelete = new ArrayList<Fixture>();
-		fixtureList = new ArrayList<Fixture>();
+		//fixtureList = new ArrayList<Fixture>();
 		this.world = world;
 		
 	}
@@ -35,7 +35,7 @@ public class FixtureManager {
 		Body body = fixtureFactory.createBody(o);
 		Fixture fixture = fixtureFactory.createFixture(body);
 		
-		fixtureList.add(fixture);
+		//fixtureList.add(fixture);
 		return fixture;
 	}
 
@@ -47,7 +47,9 @@ public class FixtureManager {
 	 * @param f The fixture that should be removed 
 	 */
 	public void addToDisposeList(Fixture f){
-		fixtureToDelete.add(f);
+		if(f != null && !fixtureToDelete.contains(f)){	
+			fixtureToDelete.add(f);
+		}
 	}
 	
 	/**
@@ -56,11 +58,15 @@ public class FixtureManager {
 	 * 
 	 */
 	public void deleteSelectedBodies(){
-		for(Fixture f : fixtureToDelete){
-			Body body = f.getBody();
-			body.destroyFixture(f);
-			world.destroyBody(body);
-			fixtureToDelete.remove(f);
+		if(!fixtureToDelete.isEmpty()){
+			for(Fixture f : fixtureToDelete){
+				Body body = f.getBody();
+				//body.destroyFixture(f);
+				world.destroyBody(body);
+				
+			}
+			
+			fixtureToDelete.clear();
 		}
 	}
 }

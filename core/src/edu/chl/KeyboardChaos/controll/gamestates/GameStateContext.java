@@ -32,6 +32,7 @@ public class GameStateContext implements EventHandler{
 	//public void changeState...
 
 	public void update() {
+		
 		currentState.update();
 		
 	}
@@ -58,6 +59,7 @@ public class GameStateContext implements EventHandler{
 	
 	public void switchToBattleState(){
 		currentState = battleState;
+		((BattleState)battleState).loadPlayers();
 		Gdx.input.setInputProcessor(((BattleState)battleState).getInputProcessor());
 	}
 

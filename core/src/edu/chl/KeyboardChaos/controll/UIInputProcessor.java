@@ -12,6 +12,7 @@ import com.badlogic.gdx.InputProcessor;
 
 import edu.chl.KeyboardChaos.settingsservice.Options;
 import edu.chl.KeyboardChaos.view.gui.component.Component;
+import edu.chl.KeyboardChaos.view.gui.component.PlayerSettingsPanel;
 import edu.chl.KeyboardChaos.view.gui.component.SpellPanel;
 import edu.chl.KeyboardChaos.view.gui.component.TextButton;
 
@@ -101,6 +102,12 @@ public class UIInputProcessor implements InputProcessor {
 							selectedButton = button2;
 						}
 					}
+				}
+			} else if (c instanceof PlayerSettingsPanel) {
+				PlayerSettingsPanel panel = (PlayerSettingsPanel)c;
+				if (!panel.isActive() && panel.isMouseOver(screenX, screenY)) {
+					panel.toggleActive();
+					Options.getOptionsInstance().addPlayer(panel.getPlayerNumber());
 				}
 			}
 		}

@@ -1,6 +1,10 @@
 package edu.chl.KeyboardChaos.view.gui.component;
 
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+
 import edu.chl.KeyboardChaos.util.eventbus.BusEvent;
+import edu.chl.KeyboardChaos.view.gui.FontUtil;
 
 
 /*
@@ -24,6 +28,8 @@ public abstract class Component {
 	public int getPosY() {
 		return this.posY;
 	}
+	
+	public abstract void render(SpriteBatch batch, ShapeRenderer shapeRenderer, FontUtil fontUtil);
 	
 	/**
 	 * @return The BusEvent of this component.

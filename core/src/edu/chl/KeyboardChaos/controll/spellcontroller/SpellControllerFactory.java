@@ -22,8 +22,8 @@ public class SpellControllerFactory {
 		//kan beh�va kolla efter null
 		if(spell == SpellEnum.FIREBALL){
 			Fireball fireball = new Fireball();
-			float spaceX = player.getVector().getX()*(player.getSize()+fireball.getFireballRadius());
-			float spaceY = player.getVector().getY()*(player.getSize()+fireball.getFireballRadius());
+			float spaceX = player.getVector().getX()*(player.getSize()+fireball.getFireballRadius()+10);
+			float spaceY = player.getVector().getY()*(player.getSize()+fireball.getFireballRadius()+10);
 			if (player.getVector().getX() != 0 && player.getVector().getY() != 0) {
 				spaceX *= Math.sqrt(2)/2;
 				spaceY *= Math.sqrt(2)/2;

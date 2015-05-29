@@ -1,6 +1,11 @@
 package edu.chl.KeyboardChaos.view.gui.component;
 
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+
 import edu.chl.KeyboardChaos.util.eventbus.BusEvent;
+import edu.chl.KeyboardChaos.view.gui.Font;
+import edu.chl.KeyboardChaos.view.gui.FontUtil;
 
 
 /*
@@ -21,5 +26,14 @@ public class Label extends Component {
 	
 	public void setText(String text) {
 		this.text = text;
+	}
+
+	@Override
+	public void render(SpriteBatch batch, ShapeRenderer shapeRenderer,
+			FontUtil fontUtil) {
+		batch.begin();
+		fontUtil.setFont(Font.INIKA_40);
+		fontUtil.getFont().draw(batch, this.getText(), this.getPosX() - fontUtil.getTextWidth(this.getText())/2, this.getPosY());
+		batch.end();
 	}
 }

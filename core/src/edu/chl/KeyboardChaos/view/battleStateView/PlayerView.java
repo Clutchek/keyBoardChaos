@@ -1,5 +1,6 @@
 package edu.chl.KeyboardChaos.view.battleStateView;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import edu.chl.KeyboardChaos.model.player.Player;
@@ -14,7 +15,7 @@ public class PlayerView extends View{
 	
 	private SpriteBatch spriteBatch;
 	
-	private static String path = "assets/playerTextures/";
+	private static String path = "assets/player1/";
 	
 	public PlayerView(SpriteBatch spriteBatch){
 		super(path);

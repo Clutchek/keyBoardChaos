@@ -55,13 +55,9 @@ public class SettingsMenu extends Screen implements EventHandler {
 
 	private void loadComponentList(){
 		super.getComponents().add(this.psp1);
-		super.getComponents().addAll(this.psp1.getComponents());
 		super.getComponents().add(this.psp2);
-		super.getComponents().addAll(this.psp2.getComponents());
 		super.getComponents().add(this.psp3);
-		super.getComponents().addAll(this.psp3.getComponents());
 		super.getComponents().add(this.psp4);
-		super.getComponents().addAll(this.psp4.getComponents());
 		super.getComponents().add(backButton);
 		super.getComponents().add(nextButton);
 	}

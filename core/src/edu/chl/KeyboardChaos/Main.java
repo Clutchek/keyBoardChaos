@@ -31,6 +31,7 @@ public class Main implements ApplicationListener{
 		accumulator += Gdx.graphics.getDeltaTime();
 		while(accumulator >= KCConstants.TIME_STEP){
 			accumulator -= (KCConstants.TIME_STEP);
+			
 			gameStateManager.render();
 			
 		}

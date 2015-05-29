@@ -28,7 +28,7 @@ public class SpellMenu extends Screen implements EventHandler {
 		int halfOfScreen = KCConstants.GAME_WIDTH/2;
 		int space = 20;
 		
-		label = new Label("Choose you spells, mofos", KCConstants.GAME_WIDTH/2, KCConstants.GAME_HEIGHT - 10, null);
+		label = new Label("Choose your spells", KCConstants.GAME_WIDTH/2, KCConstants.GAME_HEIGHT - 10, null);
 		spellPanel1 = new SpellPanel(halfOfScreen - space*3 - SpellPanel.WIDTH*2, KCConstants.GAME_HEIGHT - SpellPanel.HEIGHT - 100, null, 1);
 		spellPanel2 = new SpellPanel(halfOfScreen - space - SpellPanel.WIDTH, KCConstants.GAME_HEIGHT - SpellPanel.HEIGHT - 100, null, 2);
 		spellPanel3 = new SpellPanel(halfOfScreen + space, KCConstants.GAME_HEIGHT - SpellPanel.HEIGHT - 100, null, 3);
@@ -48,13 +48,9 @@ public class SpellMenu extends Screen implements EventHandler {
 	
 	private void loadComponentList(){
 		super.getComponents().add(this.spellPanel1);
-		super.getComponents().addAll(this.spellPanel1.getComponents());
 		super.getComponents().add(this.spellPanel2);
-		super.getComponents().addAll(this.spellPanel2.getComponents());
 		super.getComponents().add(this.spellPanel3);
-		super.getComponents().addAll(this.spellPanel3.getComponents());
 		super.getComponents().add(this.spellPanel4);
-		super.getComponents().addAll(this.spellPanel4.getComponents());
 		super.getComponents().add(this.back);
 		super.getComponents().add(this.play);
 		super.getComponents().add(this.label);

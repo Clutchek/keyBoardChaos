@@ -44,6 +44,7 @@ public class BattleState implements GameState {
 		
 		//World
 		world = new World(KCConstants.GRAVITY, true);
+		fixtureManager = new FixtureManager(world);
 		world.setContactListener(new KCContactListener(fixtureManager));
 		
 		//Map stuff
@@ -55,26 +56,18 @@ public class BattleState implements GameState {
 		battleView = new BattleView(mapFixtures, world, tileMap);
 		refreshFixtureList();
 		
-		//Body stuff
-		fixtureManager = new FixtureManager(world);
-		
 		//Player stuff
-		playerList = model.getPlayerList();
 		playerControllerList = new ArrayList<PlayerController>();
 		
 		//Spell stuff
 		spellControllerManager = new SpellControllerManager(fixtureManager);
-		
-		
-		for(Player p : playerList){
-			playerControllerList.add(new PlayerController(p,fixtureManager, spellControllerManager));
-		}
 		
 		this.inputProcessor = new KCInputProcessor(playerControllerList);
 	}
 	
 	@Override
 	public void update() {
+		fixtureManager.deleteSelectedBodies();
 		handleInput();
 		for(PlayerController PC : playerControllerList){
 
@@ -121,6 +114,13 @@ public class BattleState implements GameState {
 	
 	public InputProcessor getInputProcessor() {
 		return this.inputProcessor;
+	}
+	
+	public void loadPlayers() {
+		model.createPlayers();
+		for(Player p : model.getPlayerList()){
+			playerControllerList.add(new PlayerController(p,fixtureManager, spellControllerManager));
+		}
 	}
 
 	/*

@@ -1,10 +1,16 @@
 package edu.chl.KeyboardChaos.view.gui.component;
 
-import java.awt.Color;
+
+
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 
 import edu.chl.KeyboardChaos.util.KCConstants;
 import edu.chl.KeyboardChaos.util.eventbus.BusEvent;
 import edu.chl.KeyboardChaos.util.eventbus.EventBusService;
+import edu.chl.KeyboardChaos.view.gui.FontUtil;
 
 
 
@@ -34,7 +40,7 @@ public class TextButton extends Component {
 		this.text = text;
 		this.selectableButton = selectableButton;
 		this.selected = false;
-		this.setColors(new Color(152,152,152), new Color(165,165,165), new Color(139,139,139));
+		this.setColors(Color.valueOf("989898"), Color.valueOf("a5a5a5"), Color.valueOf("8b8b8b"));
 	}
 	
 	/**
@@ -55,10 +61,10 @@ public class TextButton extends Component {
 	
 	public TextButton(String text, int posX, int posY, int width, int height, Color color, BusEvent event, boolean selectableButton) {
 		this(text, posX, posY, width, height, event, selectableButton);
-		int red = color.getRed();
-		int green = color.getGreen();
-		int blue = color.getBlue();
-		this.setColors(color, new Color(red + 10, green + 10, blue + 10), new Color(red - 10, green - 10, blue - 10));
+		float red = color.r;
+		float green = color.g;
+		float blue = color.b;
+		this.setColors(color, new Color(red + 10/255f, green + 10/255f, blue + 10/255f, 0), new Color(red - 10/255f, green - 10/255f, blue - 10/255f, 0));
 	}
 	
 	/**
@@ -148,5 +154,20 @@ public class TextButton extends Component {
 	
 	public boolean isSelectable(){
 		return this.selectableButton;
+	}
+
+	@Override
+	public void render(SpriteBatch batch, ShapeRenderer shapeRenderer,
+			FontUtil fontUtil) {
+		shapeRenderer.begin();
+		shapeRenderer.setColor(this.currentColor);
+		shapeRenderer.set(ShapeType.Filled);
+		shapeRenderer.rect(this.getPosX(), this.getPosY(), this.getWidth(), this.getHeight());
+		shapeRenderer.end();
+		int fontPosX = fontUtil.getCenteredTextPos(this.text, this.getPosX(), this.width);
+		int fontPosY = this.getPosY() + (int)(this.getHeight() + fontUtil.getTextHeight(this.text))/2;
+		batch.begin();
+		fontUtil.getFont().draw(batch, this.getText(), fontPosX, fontPosY);
+		batch.end();
 	}
 }

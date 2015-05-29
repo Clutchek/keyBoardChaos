@@ -29,7 +29,7 @@ public class UIState implements GameState, EventHandler {
 		settingsMenu = new SettingsMenu();
 		spellMenu = new SpellMenu();
 		uiView = new UIView(startMenu);
-		this.inputProcessor = new UIInputProcessor(startMenu.getComponents());
+		this.inputProcessor = new UIInputProcessor(startMenu.getAllComponents());
 		EventBusService.getInstance().subscribe(this);
 	}
 	
@@ -41,17 +41,17 @@ public class UIState implements GameState, EventHandler {
 	
 	private void switchToStartMenu(){
 		uiView.changeScreen(startMenu);
-		inputProcessor.loadComponents(startMenu.getComponents());
+		inputProcessor.loadComponents(startMenu.getAllComponents());
 	}
 	
 	private void switchToSettingMenu(){
 		uiView.changeScreen(settingsMenu);
-		inputProcessor.loadComponents(settingsMenu.getComponents());
+		inputProcessor.loadComponents(settingsMenu.getAllComponents());
 	}
 	
 	private void switchToSpellMenu(){
 		uiView.changeScreen(spellMenu);
-		inputProcessor.loadComponents(spellMenu.getComponents());
+		inputProcessor.loadComponents(spellMenu.getAllComponents());
 	}
 
 	@Override

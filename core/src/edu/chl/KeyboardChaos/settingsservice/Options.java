@@ -33,12 +33,6 @@ public class Options {
 		playerFourSettings = settingsService.getPlayerSettings(4);
 		
 		this.activePlayers = new ArrayList<Integer>();
-		
-		// TODO: Make this happen in the UIState while selecting player controller
-		this.activePlayers.add(1);
-		this.activePlayers.add(2);
-		this.activePlayers.add(3);
-		this.activePlayers.add(4);
 	}
 	
 	
