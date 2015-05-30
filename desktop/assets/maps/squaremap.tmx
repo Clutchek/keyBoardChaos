@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="45" height="30" tilewidth="32" tileheight="32" nextobjectid="7">
+ <tileset firstgid="1" name="maptiles" tilewidth="32" tileheight="32">
+  <image source="maptiles.png" trans="ff00ff" width="320" height="320"/>
+ </tileset>
+ <layer name="Tile Layer 1" width="45" height="30">
+  <data encoding="base64" compression="zlib">
+   eJztzqENgDAQAMDvArAFAoVoQtIVuv8+/AAIRPOGE+evRUSDH9jSXuRYdD7TXeRydnZ2dnZ2dnZ2dnb+oKdZZCw6A7x5APisd70=
+  </data>
+ </layer>
+ <objectgroup name="lava">
+  <object id="3" x="1.33333" y="0" width="1438.67" height="128"/>
+  <object id="4" x="1116" y="128" width="324" height="636"/>
+  <object id="5" x="1.33333" y="764" width="1438.67" height="197.333"/>
+  <object id="6" x="0" y="126.667" width="225.333" height="636"/>
+ </objectgroup>
+</map>
