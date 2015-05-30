@@ -1,6 +1,6 @@
 package edu.chl.KeyboardChaos.model.player;
 
-import edu.chl.KeyboardChaos.model.spell.Spell.SpellEnum;
+import edu.chl.KeyboardChaos.model.spell.Spell;
 import edu.chl.KeyboardChaos.util.DirectionVector;
 
 
@@ -16,12 +16,12 @@ public class Player {
 	private DirectionVector vector;
 	
 	private String playerName;
-	private SpellEnum firstSpell, secondSpell;
+	private Spell firstSpell, secondSpell;
 	
 	/**
 	 * Constructor for the Player class.
 	 */
-	public Player(String name, float posX, float posY, SpellEnum firstSpell, SpellEnum secondSpell){
+	public Player(String name, float posX, float posY, Spell firstSpell, Spell secondSpell){
 		this.playerName = name;
 		healthPoints = 100;
 		this.firstSpell = firstSpell;
@@ -115,7 +115,7 @@ public class Player {
 	 * Method used to return the Player's first spell.
 	 * @return the first spell of the Player.
 	 */
-	public SpellEnum getFirstSpell() {
+	public Spell getFirstSpell() {
 		return firstSpell;
 	}
 
@@ -123,7 +123,7 @@ public class Player {
 	 * Method used to set the Player's first spell.
 	 * @param spell1 represents the spell that will be Player's first spell.
 	 */
-	public void setFirstSpell(SpellEnum spell1) {
+	public void setFirstSpell(Spell spell1) {
 		this.firstSpell = spell1;
 	}
 
@@ -131,7 +131,7 @@ public class Player {
 	 * Method used to return the Player's second spell.
 	 * @return the second spell of the Player.
 	 */
-	public SpellEnum getSecondSpell() {
+	public Spell getSecondSpell() {
 		return secondSpell;
 	}
 
@@ -139,7 +139,7 @@ public class Player {
 	 * Method used to set the Player's second spell.
 	 * @param spell2 represents the spell that will be Player's second spell.
 	 */
-	public void setSecondSpell(SpellEnum spell2) {
+	public void setSecondSpell(Spell spell2) {
 		this.secondSpell = spell2;
 	}
 

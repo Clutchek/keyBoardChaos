@@ -5,7 +5,7 @@ import java.util.List;
 
 import edu.chl.KeyboardChaos.controller.battlecontroller.body.FixtureManager;
 import edu.chl.KeyboardChaos.model.player.Player;
-import edu.chl.KeyboardChaos.model.spell.Spell.SpellEnum;
+import edu.chl.KeyboardChaos.model.spell.Spell;
 
 
 /*
@@ -28,8 +28,8 @@ public class SpellControllerManager {
 	 * @param spells the spell that should be created
 	 * @param player the player which will own this spell controller
 	 */
-	public void createSpellController(SpellEnum spell, Player player){
-		if(spell instanceof SpellEnum){
+	public void createSpellController(Spell spell, Player player){
+		if(spell instanceof Spell){
 			SpellController SC = spellControllerFactory.
 					createSpellController(spell, player);
 			spellControllerList.add(SC);

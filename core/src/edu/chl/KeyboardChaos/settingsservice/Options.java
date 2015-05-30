@@ -3,7 +3,7 @@ package edu.chl.KeyboardChaos.settingsservice;
 import java.util.ArrayList;
 import java.util.List;
 
-import edu.chl.KeyboardChaos.model.spell.Spell.SpellEnum;
+import edu.chl.KeyboardChaos.model.spell.Spell;
 
 
 
@@ -135,7 +135,7 @@ public class Options {
 	 * @param playerNbr the index of the player which first spell you want
 	 * @return the selected players first spell
 	 */
-	public SpellEnum getFirstSpell(int playerNbr){
+	public Spell getFirstSpell(int playerNbr){
 		return getPlayerSettingsForPlayer(playerNbr).getFirstSpell();
 	}
 	
@@ -145,7 +145,7 @@ public class Options {
 	 * @param playerNbr the index of the player which second spell you want
 	 * @return the selected players second spell
 	 */
-	public SpellEnum getSecondSpell(int playerNbr){
+	public Spell getSecondSpell(int playerNbr){
 		return getPlayerSettingsForPlayer(playerNbr).getSecondSpell();
 	}
 	
@@ -211,7 +211,7 @@ public class Options {
 	 * @param playerNbr
 	 * @param firstSpell
 	 */
-	public void setFirstSpell(int playerNbr, SpellEnum firstSpell){
+	public void setFirstSpell(int playerNbr, Spell firstSpell){
 		getPlayerSettingsForPlayer(playerNbr).setFirstSpell(firstSpell);
 	}
 	
@@ -220,11 +220,11 @@ public class Options {
 	 * @param playerNbr
 	 * @param secondSpell
 	 */
-	public void setSecondSpell(int playerNbr, SpellEnum secondSpell){
+	public void setSecondSpell(int playerNbr, Spell secondSpell){
 		getPlayerSettingsForPlayer(playerNbr).setSecondSpell(secondSpell);
 	}
 	
-	public void setSpells(int playerNbr, SpellEnum firstSpell, SpellEnum secondSpell) {
+	public void setSpells(int playerNbr, Spell firstSpell, Spell secondSpell) {
 		this.setFirstSpell(playerNbr, firstSpell);
 		this.setSecondSpell(playerNbr, secondSpell);
 	}
