@@ -9,9 +9,9 @@ import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator.FreeTypeFont
  * A font and a size for a text
  */
 public class Font {
-	public final static BitmapFont ARIAL_20 = new Font("assets/Arial.ttf", 20).getFont();
-	public final static BitmapFont INIKA_40 = new Font("assets/Inika-Regular.ttf", 40).getFont();
-	public final static BitmapFont MYRIAD_60 = new Font("assets/Myriad.otf", 60).getFont();
+	public final static BitmapFont EUPHEMIA_21 = new Font("assets/Euphemia.ttf", 21).getFont();
+	public final static BitmapFont SLABO_43 = new Font("assets/Slabo.ttf", 43).getFont();
+	public final static BitmapFont LATO_20 = new Font("assets/Lato.ttf", 20).getFont();
 	
 	private final BitmapFont font;
 	

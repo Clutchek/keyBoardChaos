@@ -35,9 +35,9 @@ public class SettingsMenu extends Screen implements EventHandler {
 		psp3 = new PlayerSettingsPanel(halfOfScreen + space, KCConstants.GAME_HEIGHT - SpellPanel.HEIGHT - 100, 3, null);
 		psp4 = new PlayerSettingsPanel(halfOfScreen + space*3 + SpellPanel.WIDTH, KCConstants.GAME_HEIGHT - SpellPanel.HEIGHT - 100, 4, null);
 
-		this.backButton = new TextButton("Back", 10, 10, 100, 100, new BusEvent("StartMenu"), false);
-		this.nextButton = new TextButton("Next", KCConstants.GAME_WIDTH - 100 - 10, 10, 100, 100, new BusEvent("SpellSettings"), false);
-		this.label = new Label("Join and choose your controller settings!", 600, 925, null);
+		this.backButton = new TextButton("Back", 20, 20, 80, 50, new BusEvent("StartMenu"), false);
+		this.nextButton = new TextButton("Next", KCConstants.GAME_WIDTH - 100, 20, 80, 50, new BusEvent("SpellSettings"), false);
+		this.label = new Label("Join and choose your controller settings!", KCConstants.GAME_WIDTH/2, KCConstants.GAME_HEIGHT - 25, null);
 		loadPspList();
 		loadComponentList();
 		
@@ -69,12 +69,13 @@ public class SettingsMenu extends Screen implements EventHandler {
 	private void savePlayerKeys(){
 		Options options = Options.getOptionsInstance();
 		for(PlayerSettingsPanel p : pspList){
-			options.setUpButtonForPlayer(pspList.indexOf(p) + 1,Input.Keys.valueOf(p.getUpButton().getText()));
-			options.setDownButtonForPlayer(pspList.indexOf(p) + 1,Input.Keys.valueOf(p.getDownButton().getText()));
-			options.setRightButtonForPlayer(pspList.indexOf(p) + 1,Input.Keys.valueOf(p.getRightButton().getText()));
-			options.setLeftButtonForPlayer(pspList.indexOf(p) + 1,Input.Keys.valueOf(p.getLeftButton().getText()));
-
-
+			int playerIndex = pspList.indexOf(p) + 1;
+			options.setUpButtonForPlayer(playerIndex,Input.Keys.valueOf(p.getUpButton().getText()));
+			options.setDownButtonForPlayer(playerIndex,Input.Keys.valueOf(p.getDownButton().getText()));
+			options.setRightButtonForPlayer(playerIndex,Input.Keys.valueOf(p.getRightButton().getText()));
+			options.setLeftButtonForPlayer(playerIndex,Input.Keys.valueOf(p.getLeftButton().getText()));
+			options.setFirstSpellButtonForPlayer(playerIndex, Input.Keys.valueOf(p.getFirstSpellButton().getText()));
+			options.setSecondSpellButtonForPlayer(playerIndex, Input.Keys.valueOf(p.getSecondSpellButton().getText()));
 		}
 		options.savePreferences();
 	}

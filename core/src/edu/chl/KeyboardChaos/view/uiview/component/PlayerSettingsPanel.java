@@ -16,6 +16,7 @@ import edu.chl.KeyboardChaos.settingsservice.Options;
 import edu.chl.KeyboardChaos.util.KCConstants;
 import edu.chl.KeyboardChaos.util.eventbus.BusEvent;
 import edu.chl.KeyboardChaos.util.eventbus.EventHandler;
+import edu.chl.KeyboardChaos.view.uiview.Font;
 import edu.chl.KeyboardChaos.view.uiview.FontUtil;
 
 /*
@@ -188,6 +189,7 @@ public class PlayerSettingsPanel extends Panel implements EventHandler {
 			shapeRenderer.end();
 			
 			batch.begin();
+			fontUtil.setFont(Font.EUPHEMIA_21);
 			fontUtil.getFont().draw(batch, "Click to join...", fontUtil.getCenteredTextPos("Click to join...", this.getPosX(), this.width), this.getHeight()/2);
 			batch.end();
 		}

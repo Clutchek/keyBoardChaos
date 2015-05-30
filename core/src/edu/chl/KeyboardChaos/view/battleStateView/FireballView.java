@@ -12,7 +12,7 @@ public class FireballView extends View{
 		
 	private SpriteBatch spriteBatch;
 
-	private static String path = "assets/playerTextures/";
+	private static String path = "assets/Spells/Fireball/";
 
 
 	public FireballView (SpriteBatch spriteBatch){

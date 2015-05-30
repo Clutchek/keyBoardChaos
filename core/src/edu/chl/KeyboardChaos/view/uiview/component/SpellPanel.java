@@ -123,19 +123,23 @@ public class SpellPanel extends Panel {
 		// Draw the text
 		batch.begin();
 		
-		fontUtil.setFont(Font.INIKA_40);
+		// Player name
+		fontUtil.setFont(Font.SLABO_43);
 		int playerNamePosX = fontUtil.getCenteredTextPos(this.getPlayerName(), this.getPosX(), this.WIDTH);
 		//fontUtil.getFont().draw(batch, panel.getPlayerName(), playerNamePosX, panel.getHeight() + panel.getPosY() - 10);
 		
 		SpellBox spellBox1 = this.getSpellBox1();
 		SpellBox spellBox2 = this.getSpellBox2();
 		
-		fontUtil.setFont(Font.ARIAL_20);
+		// Spell name
+		fontUtil.setFont(Font.EUPHEMIA_21);
 		int spellTextPosY = spellBox1.getPosY() + spellBox1.SIZE + fontUtil.getTextHeight(this.getSpell1().getName()) + 10;
 		fontUtil.getFont().draw(batch, this.getSpell1().getName(), fontUtil.getCenteredTextPos(this.getSpell1().getName(), spellBox1.getPosX(), SpellBox.SIZE), spellTextPosY);
 		fontUtil.getFont().draw(batch, this.getSpell2().getName(), fontUtil.getCenteredTextPos(this.getSpell2().getName(), spellBox2.getPosX(), SpellBox.SIZE), spellTextPosY);
 		
+		// Spell description
 		// TODO: Only wrap when new spell is selected
+		fontUtil.setFont(Font.LATO_20);
 		fontUtil.getFont().draw(batch, fontUtil.wrapText(this.getSelectedSpell().getDescription(), (spellBox2.getPosX() + SpellBox.SIZE) - spellBox1.getPosX()), spellBox1.getPosX(), spellBox1.getPosY() - 20);
 		batch.end();
 		

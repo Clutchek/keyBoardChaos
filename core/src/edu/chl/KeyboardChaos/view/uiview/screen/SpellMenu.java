@@ -28,7 +28,7 @@ public class SpellMenu extends Screen implements EventHandler {
 		int halfOfScreen = KCConstants.GAME_WIDTH/2;
 		int space = 20;
 		
-		label = new Label("Choose your spells", KCConstants.GAME_WIDTH/2, KCConstants.GAME_HEIGHT - 10, null);
+		label = new Label("Choose your spells", KCConstants.GAME_WIDTH/2, KCConstants.GAME_HEIGHT - 25, null);
 		spellPanel1 = new SpellPanel(halfOfScreen - space*3 - SpellPanel.WIDTH*2, KCConstants.GAME_HEIGHT - SpellPanel.HEIGHT - 100, null, 1);
 		spellPanel2 = new SpellPanel(halfOfScreen - space - SpellPanel.WIDTH, KCConstants.GAME_HEIGHT - SpellPanel.HEIGHT - 100, null, 2);
 		spellPanel3 = new SpellPanel(halfOfScreen + space, KCConstants.GAME_HEIGHT - SpellPanel.HEIGHT - 100, null, 3);
@@ -39,8 +39,8 @@ public class SpellMenu extends Screen implements EventHandler {
 		spellPanels.add(spellPanel1);
 		spellPanels.add(spellPanel2);
 		
-		this.back = new TextButton("Back", 20, 20, 50, 25, new BusEvent("ControllerSettings"), false);
-		this.play = new TextButton("Start Match", KCConstants.GAME_WIDTH - 120, 20, 100, 25, new BusEvent("play"), false);
+		this.back = new TextButton("Back", 20, 20, 80, 50, new BusEvent("ControllerSettings"), false);
+		this.play = new TextButton("Start Match", KCConstants.GAME_WIDTH - 150, 20, 130, 50, new BusEvent("play"), false);
 		
 		loadComponentList();
 		EventBusService.getInstance().subscribe(this);;

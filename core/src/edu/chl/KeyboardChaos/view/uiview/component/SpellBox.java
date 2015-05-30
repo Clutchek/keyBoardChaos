@@ -13,7 +13,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 
 import edu.chl.KeyboardChaos.model.spell.Spell;
-import edu.chl.KeyboardChaos.model.spell.Spell.SpellEnum;
+import edu.chl.KeyboardChaos.model.spell.SpellEnum;
 import edu.chl.KeyboardChaos.view.uiview.FontUtil;
 
 /*
@@ -43,8 +43,8 @@ public class SpellBox extends Component {
 	}
 	
 	private void loadTextures() {
-		this.textureMap.put(SpellEnum.FIREBALL, createTexture("assets/Fireball.png"));
-		this.textureMap.put(SpellEnum.ICE, createTexture("assets/Water.png"));
+		this.textureMap.put(SpellEnum.FIREBALL, createTexture("assets/Spells/Fireball_icon.png"));
+		this.textureMap.put(SpellEnum.ICE, createTexture("assets/Spells/Iceball_icon.png"));
 	}
 	
 	private Texture createTexture(String path) {

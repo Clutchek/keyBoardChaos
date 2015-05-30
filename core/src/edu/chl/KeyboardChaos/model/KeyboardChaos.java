@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import edu.chl.KeyboardChaos.model.player.Player;
-import edu.chl.KeyboardChaos.model.spell.Spell.SpellEnum;
+import edu.chl.KeyboardChaos.model.spell.Spell;
 import edu.chl.KeyboardChaos.settingsservice.Options;
 
 /*
@@ -74,7 +74,7 @@ public class KeyboardChaos {
 	 * Borde denna metod ta bort ett spellobject, eller r�cker det att controllern
 	 * ser till (sj�lv eller via view) att fixturen tas bort?
 	 */
-	public void playerSpellCollision(Player player, SpellEnum spell){
+	public void playerSpellCollision(Player player, Spell spell){
 		//Do something to hurt the player
 	}
 	
@@ -86,7 +86,7 @@ public class KeyboardChaos {
 	 * @param spell2 The other one in the collision
 	 */
 
-	public void spellSpellCollision(SpellEnum spell1, SpellEnum spell2){
+	public void spellSpellCollision(Spell spell1, Spell spell2){
 		//this should tell the view to remove the two spells.
 	}
 	
@@ -98,7 +98,7 @@ public class KeyboardChaos {
 	 * 
 	 * @param spell The spell that should be removed
 	 */
-	public void spellWorldWallCollision(SpellEnum spell){
+	public void spellWorldWallCollision(Spell spell){
 		//Tell the view to remove this spell
 	}
 }

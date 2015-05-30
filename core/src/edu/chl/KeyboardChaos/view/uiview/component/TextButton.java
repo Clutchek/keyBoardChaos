@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import edu.chl.KeyboardChaos.util.KCConstants;
 import edu.chl.KeyboardChaos.util.eventbus.BusEvent;
 import edu.chl.KeyboardChaos.util.eventbus.EventBusService;
+import edu.chl.KeyboardChaos.view.uiview.Font;
 import edu.chl.KeyboardChaos.view.uiview.FontUtil;
 
 
@@ -164,9 +165,10 @@ public class TextButton extends Component {
 		shapeRenderer.set(ShapeType.Filled);
 		shapeRenderer.rect(this.getPosX(), this.getPosY(), this.getWidth(), this.getHeight());
 		shapeRenderer.end();
-		int fontPosX = fontUtil.getCenteredTextPos(this.text, this.getPosX(), this.width);
-		int fontPosY = this.getPosY() + (int)(this.getHeight() + fontUtil.getTextHeight(this.text))/2;
 		batch.begin();
+		fontUtil.setFont(Font.LATO_20);
+		int fontPosX = fontUtil.getCenteredTextPos(this.getText(), this.getPosX(), this.width);
+		int fontPosY = this.getPosY() + (int)(this.getHeight() + fontUtil.getTextHeight(this.text))/2;
 		fontUtil.getFont().draw(batch, this.getText(), fontPosX, fontPosY);
 		batch.end();
 	}

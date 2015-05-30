@@ -32,7 +32,7 @@ public class Label extends Component {
 	public void render(SpriteBatch batch, ShapeRenderer shapeRenderer,
 			FontUtil fontUtil) {
 		batch.begin();
-		fontUtil.setFont(Font.INIKA_40);
+		fontUtil.setFont(Font.SLABO_43);
 		fontUtil.getFont().draw(batch, this.getText(), this.getPosX() - fontUtil.getTextWidth(this.getText())/2, this.getPosY());
 		batch.end();
 	}
