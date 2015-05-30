@@ -21,18 +21,29 @@ public class PlayerView extends View{
 		super(path);
 		this.spriteBatch = spriteBatch;
 	}
-	/**
-	 * Method that maps each vector with an icon.
-	 * because we have no icons yet, the key is put to null
-	 */
-	
 	
 	private void paintPlayer(Player p){
-		// TODO: May need adjustments when it's possible to draw things up
 		if(!p.getVector().equals(new DirectionVector(0, 0)))
+			switch (p.getPlayerNumber()) {
+				case 1: 
+					spriteBatch.setColor(Color.RED);
+					break;
+				case 2:
+					spriteBatch.setColor(Color.BLUE);
+					break;
+				case 3:
+					spriteBatch.setColor(Color.GREEN);
+					break;
+				case 4:
+					spriteBatch.setColor(Color.YELLOW);
+					break;
+				default:
+					spriteBatch.setColor(Color.CYAN);
+					break;
+			}
 			spriteBatch.draw(this.getTextureForVector(p.getVector()), p.getPosX() - p.getSize(), p.getPosY() - p.getSize(), p.getSize()*2, p.getSize()*2);
+			spriteBatch.setColor(Color.WHITE);
 	}
-	
 	
 	/**
 	 * Method used to render the Player's textures.
