@@ -47,6 +47,15 @@ public interface Spell extends Serializable{
 		public SpellEnum previous() {
 			return VALUES[(this.ordinal() + VALUES.length - 1) % VALUES.length];
 		}
+		
+		public static SpellEnum getSpellEnum(Spell spell) {
+			for (SpellEnum v : VALUES) {
+				if (v.getSpell().getName() == spell.getName()) {
+					return v;
+				}
+			}
+			return null;
+		}
 	}
 	
 	public String getDescription();

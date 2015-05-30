@@ -2,7 +2,7 @@ package edu.chl.KeyboardChaos.settingsservice;
 
 import java.io.Serializable;
 
-import edu.chl.KeyboardChaos.model.spell.Spell.SpellEnum;
+import edu.chl.KeyboardChaos.model.spell.Spell;
 
 /*
  * A class that contains all the customizable settings of a player
@@ -11,10 +11,10 @@ import edu.chl.KeyboardChaos.model.spell.Spell.SpellEnum;
 
 public class PlayerSettings implements Serializable{
 	private int moveUpKey, moveDownKey, moveLeftKey, moveRightKey, firstSpellKey, secondSpellKey;
-	private SpellEnum firstSpell, secondSpell;
+	private Spell firstSpell, secondSpell;
 	private String playerName;
 	
-	public PlayerSettings(int moveUpKey,int moveDownKey,int moveLeftKey,int moveRightKey,int firstSpellKey,int secondSpellKey, SpellEnum firstSpell, SpellEnum secondSpell, String playerName){
+	public PlayerSettings(int moveUpKey,int moveDownKey,int moveLeftKey,int moveRightKey,int firstSpellKey,int secondSpellKey, Spell firstSpell, Spell secondSpell, String playerName){
 		this.moveUpKey = moveUpKey;
 		this.moveDownKey = moveDownKey;
 		this.moveLeftKey = moveLeftKey;
@@ -136,19 +136,19 @@ public class PlayerSettings implements Serializable{
 		this.playerName = playerName;
 	}
 	
-	public SpellEnum getFirstSpell(){
+	public Spell getFirstSpell(){
 		return firstSpell;
 	}
 	
-	public void setFirstSpell(SpellEnum spell){
+	public void setFirstSpell(Spell spell){
 		this.firstSpell = spell;
 	}
 	
-	public SpellEnum getSecondSpell(){
+	public Spell getSecondSpell(){
 		return secondSpell;
 	}
 	
-	public void setSecondSpell(SpellEnum spell){
+	public void setSecondSpell(Spell spell){
 		this.secondSpell = spell;
 	}
 	

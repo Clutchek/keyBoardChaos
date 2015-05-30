@@ -3,7 +3,7 @@ package edu.chl.KeyboardChaos.controll.spellcontroller;
 import edu.chl.KeyboardChaos.controll.body.FixtureManager;
 import edu.chl.KeyboardChaos.model.player.Player;
 import edu.chl.KeyboardChaos.model.spell.Fireball;
-import edu.chl.KeyboardChaos.model.spell.Spell.SpellEnum;
+import edu.chl.KeyboardChaos.model.spell.Spell;
 
 
 /*
@@ -18,9 +18,9 @@ public class SpellControllerFactory {
 		this.fixtureManager = fixtureManager;
 	}
 	
-	protected SpellController createSpellController(SpellEnum spell, Player player){
+	protected SpellController createSpellController(Spell spell, Player player){
 		//kan beh�va kolla efter null
-		if(spell == SpellEnum.FIREBALL){
+		if(spell instanceof Fireball){
 			Fireball fireball = new Fireball();
 			float spaceX = player.getVector().getX()*(player.getSize()+fireball.getFireballRadius()+10);
 			float spaceY = player.getVector().getY()*(player.getSize()+fireball.getFireballRadius()+10);

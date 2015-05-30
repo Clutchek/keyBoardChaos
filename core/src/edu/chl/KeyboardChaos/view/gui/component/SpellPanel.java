@@ -9,7 +9,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 
-import edu.chl.KeyboardChaos.model.spell.Spell.SpellEnum;
+import edu.chl.KeyboardChaos.model.spell.Spell;
 import edu.chl.KeyboardChaos.settingsservice.Options;
 import edu.chl.KeyboardChaos.util.eventbus.BusEvent;
 import edu.chl.KeyboardChaos.view.gui.Font;
@@ -94,15 +94,15 @@ public class SpellPanel extends Panel {
 		return spellBox1.isSelected() ? spellBox1 : spellBox2;
 	}
 	
-	public SpellEnum getSelectedSpell() {
+	public Spell getSelectedSpell() {
 		return getSelectedSpellBox().getSpell();
 	}
 	
-	public SpellEnum getSpell1() {
+	public Spell getSpell1() {
 		return this.spellBox1.getSpell();
 	}
 	
-	public SpellEnum getSpell2() {
+	public Spell getSpell2() {
 		return this.spellBox2.getSpell();
 	}
 	

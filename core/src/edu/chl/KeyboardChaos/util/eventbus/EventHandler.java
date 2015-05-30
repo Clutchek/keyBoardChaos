@@ -1,5 +1,5 @@
 package edu.chl.KeyboardChaos.util.eventbus;
-eventhandler
+
 /*
  * Interface for all classes that will receive events
  */

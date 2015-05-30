@@ -12,6 +12,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 
+import edu.chl.KeyboardChaos.model.spell.Spell;
 import edu.chl.KeyboardChaos.model.spell.Spell.SpellEnum;
 import edu.chl.KeyboardChaos.view.gui.FontUtil;
 
@@ -30,9 +31,9 @@ public class SpellBox extends Component {
 
 	private final Map<SpellEnum, Texture> textureMap;
 	
-	public SpellBox(int posX, int posY, SpellEnum spell) {
+	public SpellBox(int posX, int posY, Spell spell) {
 		super(posX, posY, null);
-		this.spell = spell;
+		this.spell = SpellEnum.getSpellEnum(spell);
 		this.isSelected = false;
 		this.backgroundColor = Color.valueOf("282828");
 		this.highlightColor = Color.valueOf("ff8900");
@@ -50,8 +51,8 @@ public class SpellBox extends Component {
 		return new Texture(Gdx.files.internal(path));
 	}
 	
-	public SpellEnum getSpell() {
-		return this.spell;
+	public Spell getSpell() {
+		return this.spell.getSpell();
 	}
 	
 	public boolean isSelected() {
@@ -98,7 +99,7 @@ public class SpellBox extends Component {
 
 		// Draw the texture of selected spell
 		batch.begin();
-		Texture texture = this.textureMap.get(this.getSpell());
+		Texture texture = this.textureMap.get(this.spell);
 		batch.draw(texture, this.getPosX(), this.getPosY(), this.SIZE, this.SIZE);
 		batch.end();
 	}
