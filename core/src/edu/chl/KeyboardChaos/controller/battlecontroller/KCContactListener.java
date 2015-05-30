@@ -14,7 +14,7 @@ import edu.chl.KeyboardChaos.model.spell.Spell;
 
 
 /**
- * A custom contact listener. This class listens to contacts between two libGDX fixtures.
+ * A custom contact listener. This class listens to contacts between two box2D fixtures.
  * When a contact happens, it will determine which two bodies that's in contact, and 
  * proceed with the appropriate action.
  * 
@@ -41,16 +41,17 @@ public class KCContactListener implements ContactListener {
 			Fixture fixA = contact.getFixtureA();
 			Fixture fixB = contact.getFixtureB();
 			
-			
-			if(fixA != null){	
-				fixtureManager.addToDisposeList(fixA);
-			}
-			if(fixB != null){
-				fixtureManager.addToDisposeList(fixB);
+			if(!fixA.getBody().equals(fixB.getBody())){
+				if(fixA != null){	
+					fixtureManager.addToDisposeList(fixA.getBody());
+				}
+				if(fixB != null){
+					fixtureManager.addToDisposeList(fixB.getBody());
+				}
 			}
 		}else if(isPlayerInContact(contact) && isSpellInContact(contact)){
 			Spell spell = getSpellFromContact(contact);
-			fixtureManager.addToDisposeList(getSpellFixture(contact));
+			fixtureManager.addToDisposeList(getSpellFixture(contact).getBody());
 						
 			Player player = getPlayerFromContact(contact);
 

@@ -1,4 +1,4 @@
-package edu.chl.KeyboardChaos.controller.battlecontroller.body;
+package edu.chl.KeyboardChaos.controll.body;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,17 +7,23 @@ import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.World;
 
+/*
+ * Class for managing of active fixtures
+ * Wrapper class for FixtureFactory. This class creates fixtures via FixtureFactory 
+ * and removes fixtures that needs to be removed
+ */
+
 public class FixtureManager {
 
 	private FixtureFactory fixtureFactory;
-	private List<Body> bodiesToDelete;
-	//private List<Fixture> fixtureList;
+	private List<Fixture> fixtureToDelete;
+	private List<Fixture> fixtureList;
 	private World world;
 	
 	public FixtureManager(World world){
 		fixtureFactory = new FixtureFactory(world);
-		bodiesToDelete = new ArrayList<Body>();
-		//fixtureList = new ArrayList<Fixture>();
+		fixtureToDelete = new ArrayList<Fixture>();
+		fixtureList = new ArrayList<Fixture>();
 		this.world = world;
 		
 	}
@@ -32,11 +38,10 @@ public class FixtureManager {
 	 * in the fixtures method <b>getUserData()</b>
 	 */
 	public Fixture createFixture(Object o){
-		System.out.println("Im in create Fixture");
 		Body body = fixtureFactory.createBody(o);
 		Fixture fixture = fixtureFactory.createFixture(body);
 		
-		//fixtureList.add(fixture);
+		fixtureList.add(fixture);
 		return fixture;
 	}
 
@@ -47,15 +52,8 @@ public class FixtureManager {
 	 * 
 	 * @param f The fixture that should be removed 
 	 */
-	public void addToDisposeList(Body body){
-		if(body != null && !bodiesToDelete.contains(body)){	
-			bodiesToDelete.add(body);
-		}
-		for(Body b : bodiesToDelete){
-			System.out.println("add: " + b);
-			
-		}
-		System.out.println("end");
+	public void addToDisposeList(Fixture f){
+		fixtureToDelete.add(f);
 	}
 	
 	/**
@@ -64,21 +62,11 @@ public class FixtureManager {
 	 * 
 	 */
 	public void deleteSelectedBodies(){
-		while(!bodiesToDelete.isEmpty()){
-			System.out.println(world.isLocked());
-			Body body = bodiesToDelete.get(0);
-			System.out.println("Removing: " + body);
+		for(Fixture f : fixtureToDelete){
+			Body body = f.getBody();
+			body.destroyFixture(f);
 			world.destroyBody(body);
-			body.setUserData(null);
-			body = null;
-			bodiesToDelete.remove(0);
-//			for(Body b : bodiesToDelete){
-//				System.out.println("remove: " + b);
-//				
-//			}
-//			System.out.println("end");
-			}
-//		System.out.println(bodiesToDelete);
-//		System.out.println(world.getBodyCount());
+			fixtureToDelete.remove(f);
+		}
 	}
 }
