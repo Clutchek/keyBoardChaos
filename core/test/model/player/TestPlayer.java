@@ -11,7 +11,6 @@ import com.badlogic.gdx.backends.headless.HeadlessApplicationConfiguration;
 
 import edu.chl.KeyboardChaos.model.player.Player;
 import edu.chl.KeyboardChaos.model.spell.Fireball;
-import edu.chl.KeyboardChaos.model.spell.Spell.SpellEnum;
 
 
 public class TestPlayer{

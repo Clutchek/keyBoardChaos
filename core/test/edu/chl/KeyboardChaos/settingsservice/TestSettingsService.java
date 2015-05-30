@@ -1,3 +1,5 @@
+package edu.chl.KeyboardChaos.settingsservice;
+
 import static org.junit.Assert.*;
 
 import org.junit.Test;

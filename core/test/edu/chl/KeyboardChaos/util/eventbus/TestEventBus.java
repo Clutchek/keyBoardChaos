@@ -1,3 +1,5 @@
+package edu.chl.KeyboardChaos.util.eventbus;
+
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
