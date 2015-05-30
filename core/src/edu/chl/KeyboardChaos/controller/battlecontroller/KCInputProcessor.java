@@ -36,8 +36,7 @@ public class KCInputProcessor extends InputAdapter{
 	@Override
 	public boolean keyDown(int keycode) {
 		for(PlayerController p : playerControllerList){
-			int index = playerControllerList.indexOf(p);
-			int playerNumber = optionsService.getActivePlayers().get(index);
+			int playerNumber = p.getPlayer().getPlayerNumber();
 	
 			if(keycode == optionsService.getUpButtonForPlayer(playerNumber)){
 				p.setUp(true);
@@ -65,8 +64,7 @@ public class KCInputProcessor extends InputAdapter{
 	@Override
 	public boolean keyUp(int keycode) {
 		for(PlayerController p : playerControllerList){
-			int index = playerControllerList.indexOf(p);
-			int playerNumber = optionsService.getActivePlayers().get(index);
+			int playerNumber = p.getPlayer().getPlayerNumber();
 	
 			if(keycode == optionsService.getUpButtonForPlayer(playerNumber)){
 				p.setUp(false);

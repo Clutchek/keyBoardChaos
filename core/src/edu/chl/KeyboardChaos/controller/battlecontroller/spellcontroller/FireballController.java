@@ -40,7 +40,8 @@ public class FireballController extends OffensiveSpellController{
 	
 	public void update() {
 		if(body != null){	
-			body.setLinearVelocity(getVector());
+			float speed = fireball.getProjectileSpeed();
+			body.setLinearVelocity(getVector().setLength(speed));
 		}
 		//body.applyForceToCenter(getVector(), true);
 		updatePosition();

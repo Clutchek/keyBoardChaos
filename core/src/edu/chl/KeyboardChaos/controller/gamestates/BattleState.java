@@ -128,7 +128,7 @@ public class BattleState implements GameState {
 	public void loadPlayers() {
 		model.createPlayers();
 		for(Player p : model.getPlayerList()){
-			playerControllerList.add(new PlayerController(p,fixtureManager, spellControllerManager));
+			playerControllerList.add(new PlayerController(p, fixtureManager, spellControllerManager));
 		}
 	}
 	

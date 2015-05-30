@@ -14,6 +14,7 @@ public class Player {
 	private float posX, posY;
 	private final int radius;
 	private DirectionVector vector;
+	private final int playerNumber;
 	
 	private String playerName;
 	private Spell firstSpell, secondSpell;
@@ -21,7 +22,7 @@ public class Player {
 	/**
 	 * Constructor for the Player class.
 	 */
-	public Player(String name, float posX, float posY, Spell firstSpell, Spell secondSpell){
+	public Player(String name, float posX, float posY, Spell firstSpell, Spell secondSpell, int playerNumber){
 		this.playerName = name;
 		healthPoints = 100;
 		this.firstSpell = firstSpell;
@@ -34,6 +35,8 @@ public class Player {
 		this.posY = posY;
 		//the direction of the player when the game starts
 		setVector(new DirectionVector(1, 0));
+		
+		this.playerNumber = playerNumber;
 	}
 	
 	
@@ -101,6 +104,10 @@ public class Player {
 	 */
 	public String getPlayerName() {
 		return playerName;
+	}
+	
+	public int getPlayerNumber() {
+		return playerNumber;
 	}
 	
 	/**
