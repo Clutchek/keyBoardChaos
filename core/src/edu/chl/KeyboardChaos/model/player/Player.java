@@ -33,7 +33,7 @@ public class Player {
 		this.posX = posX;
 		this.posY = posY;
 		//the direction of the player when the game starts
-		//setVector(new DirectionVector(1, 0));
+		setVector(new DirectionVector(1, 0));
 	}
 	
 	

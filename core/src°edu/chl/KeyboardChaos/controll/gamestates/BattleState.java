@@ -1,4 +1,4 @@
-package edu.chl.KeyboardChaos.controller.gamestates;
+package edu.chl.KeyboardChaos.controll.gamestates;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,19 +10,22 @@ import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.Array;
 
-import edu.chl.KeyboardChaos.controller.battlecontroller.KCContactListener;
-import edu.chl.KeyboardChaos.controller.battlecontroller.KCInputProcessor;
-import edu.chl.KeyboardChaos.controller.battlecontroller.body.FixtureManager;
-import edu.chl.KeyboardChaos.controller.battlecontroller.body.MapBodyManager;
-import edu.chl.KeyboardChaos.controller.battlecontroller.playercontroller.PlayerController;
-import edu.chl.KeyboardChaos.controller.battlecontroller.spellcontroller.SpellControllerFactory;
-import edu.chl.KeyboardChaos.controller.battlecontroller.spellcontroller.SpellControllerManager;
+import edu.chl.KeyboardChaos.controll.KCContactListener;
+import edu.chl.KeyboardChaos.controll.KCInputProcessor;
+import edu.chl.KeyboardChaos.controll.body.FixtureManager;
+import edu.chl.KeyboardChaos.controll.body.MapBodyManager;
+import edu.chl.KeyboardChaos.controll.playercontroller.PlayerController;
+import edu.chl.KeyboardChaos.controll.spellcontroller.SpellControllerFactory;
+import edu.chl.KeyboardChaos.controll.spellcontroller.SpellControllerManager;
 import edu.chl.KeyboardChaos.model.KeyboardChaos;
 import edu.chl.KeyboardChaos.model.player.Player;
 import edu.chl.KeyboardChaos.util.KCConstants;
 import edu.chl.KeyboardChaos.view.battleStateView.BattleView;
 
-
+/*
+ * Class that handles the battle state of the program
+ * The class loads the map, the players and their controllers and all other things that needs to be active during a battle 
+ */
 
 public class BattleState implements GameState {
 
@@ -44,7 +47,6 @@ public class BattleState implements GameState {
 		
 		//World
 		world = new World(KCConstants.GRAVITY, true);
-		fixtureManager = new FixtureManager(world);
 		world.setContactListener(new KCContactListener(fixtureManager));
 		
 		//Map stuff
@@ -56,18 +58,26 @@ public class BattleState implements GameState {
 		battleView = new BattleView(mapFixtures, world, tileMap);
 		refreshFixtureList();
 		
+		//Body stuff
+		fixtureManager = new FixtureManager(world);
+		
 		//Player stuff
+		playerList = model.getPlayerList();
 		playerControllerList = new ArrayList<PlayerController>();
 		
 		//Spell stuff
 		spellControllerManager = new SpellControllerManager(fixtureManager);
 		
+		
+		for(Player p : playerList){
+			playerControllerList.add(new PlayerController(p,fixtureManager, spellControllerManager));
+		}
+		
 		this.inputProcessor = new KCInputProcessor(playerControllerList);
 	}
 	
 	@Override
-	public synchronized void update() {
-		fixtureManager.deleteSelectedBodies();
+	public void update() {
 		handleInput();
 		for(PlayerController PC : playerControllerList){
 
@@ -76,11 +86,7 @@ public class BattleState implements GameState {
 			PC.updatePlayer();
 
 		}
-		refreshFixtureList();
-		
-		spellControllerManager.update();
-		
-		
+
 		world.step(KCConstants.TIME_STEP, 6, 2);
 
 		/*for(PlayerController PC : playerControllerList){
@@ -88,7 +94,9 @@ public class BattleState implements GameState {
 			PC.updatePlayer();
 
 		}*/
-
+		refreshFixtureList();
+		
+		spellControllerManager.update();
 		// Destroy fixtures here?
 	}
 	
@@ -116,13 +124,6 @@ public class BattleState implements GameState {
 	
 	public InputProcessor getInputProcessor() {
 		return this.inputProcessor;
-	}
-	
-	public void loadPlayers() {
-		model.createPlayers();
-		for(Player p : model.getPlayerList()){
-			playerControllerList.add(new PlayerController(p,fixtureManager, spellControllerManager));
-		}
 	}
 
 	/*
