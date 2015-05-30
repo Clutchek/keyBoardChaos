@@ -12,7 +12,7 @@ public class TestPlayer{
 	
 	@BeforeClass
 	public void startLibrary(){
-		
+		HeadlessApplicationConfiguration
 		HeadlessApplication fakeApp = new HeadlessApplication();
 	}
 	

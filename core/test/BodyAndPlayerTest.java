@@ -23,7 +23,7 @@ public class BodyAndPlayerTest {
 	Player player2;
 	
 	@Test
-	public void testShootPlayer(){
+	public void testFireballToPlayerContact(){
 		World world = world = new World(KCConstants.GRAVITY, true);
 		FixtureManager fixtureManager = new FixtureManager(world);
 		world.setContactListener(new KCContactListener(fixtureManager));
