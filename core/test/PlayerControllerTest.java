@@ -18,6 +18,7 @@ import edu.chl.KeyboardChaos.controller.battlecontroller.body.FixtureManager;
 import edu.chl.KeyboardChaos.controller.battlecontroller.playercontroller.PlayerController;
 import edu.chl.KeyboardChaos.controller.battlecontroller.spellcontroller.SpellControllerManager;
 import edu.chl.KeyboardChaos.model.player.Player;
+import edu.chl.KeyboardChaos.model.spell.Fireball;
 import edu.chl.KeyboardChaos.model.spell.Spell.SpellEnum;
 import edu.chl.KeyboardChaos.util.KCConstants;
 
@@ -30,7 +31,7 @@ public class PlayerControllerTest{
 		MockitoAnnotations.initMocks(this);
 		HeadlessApplication fakeApp = new HeadlessApplication(fakeAppListener);
 		try{
-			Thread.sleep(200);
+			Thread.sleep(1000);
 		}catch(Exception e){
 			
 		}
@@ -41,14 +42,15 @@ public class PlayerControllerTest{
 		World world = world = new World(KCConstants.GRAVITY, true);
 		FixtureManager fixtureManager = new FixtureManager(world);
 		SpellControllerManager spellControllerManager = new SpellControllerManager(fixtureManager);
-		Player player1 = new Player("Player1", 100f,100f, SpellEnum.FIREBALL, SpellEnum.FIREBALL);
+		Player player1 = new Player("Player1", 100f,100f, new Fireball(), new Fireball());
 		PlayerController player1Controller = new PlayerController(player1, fixtureManager, spellControllerManager);
 		
 		player1Controller.setRight(true);
-		world.step(KCConstants.TIME_STEP, 6, 2);
 		player1Controller.updateBody();
+		world.step(10, 6, 2);
 		player1Controller.updatePlayer();
-		assertTrue(player1.getPosX() == 100f);
+		System.out.println(player1.getPosX());
+		assertTrue(player1.getPosY() > 100);
 		
 	}
 

@@ -20,14 +20,14 @@ public class TestPlayer{
 	
 	@Test
 	public void testTakeDamage() {
-		Player player = new Player("Player", 10f, 10f, SpellEnum.FIREBALL, SpellEnum.FIREBALL);
+		Player player = new Player("Player", 10f, 10f, new Fireball(), new Fireball());
 		player.takeDamage(10);
 		assertTrue(90 == player.getHealthPoints());
 	}
 	
 	@Test
 	public void testIsAlive(){
-		Player player = new Player("Player", 10f, 10f, SpellEnum.FIREBALL, SpellEnum.FIREBALL);
+		Player player = new Player("Player", 10f, 10f, new Fireball(), new Fireball());
 		player.takeDamage(110);
 		assertFalse(true == player.isAlive());
 	}
