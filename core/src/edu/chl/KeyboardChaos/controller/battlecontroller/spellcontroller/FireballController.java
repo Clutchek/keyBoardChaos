@@ -16,7 +16,6 @@ import edu.chl.KeyboardChaos.util.KCConstants;
  */
 public class FireballController extends OffensiveSpellController{
 	private Fireball fireball;
-	private Player player;
 	private FixtureManager fixtureManager;
 	
 	private Body body;
@@ -24,7 +23,6 @@ public class FireballController extends OffensiveSpellController{
 	public FireballController(Fireball f, Player p, FixtureManager fixtureManager){
 		super(f);
 		fireball = f;
-		player = p;
 		f.setVector(new DirectionVector(p.getVector()));
 		this.fixtureManager = fixtureManager;
 		createBody();

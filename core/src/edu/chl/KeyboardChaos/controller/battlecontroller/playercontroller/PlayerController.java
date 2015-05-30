@@ -27,7 +27,6 @@ public class PlayerController {
 	private SpellControllerManager spellControllerManager;
 	private FixtureManager fixtureManager;
 	private Timer diagonalHelpTimer;
-	private Vector2 oldDirection;
 	public final static int TIMER_DELAY = 50;
 	
 	public PlayerController(Player p, FixtureManager fixtureManager, SpellControllerManager spellControllerManager){

@@ -24,7 +24,7 @@ import edu.chl.KeyboardChaos.util.KCConstants;
  */
 public class BattleView {
 	private SpriteBatch spriteBatch;
-	private OrthographicCamera worldCam, hudCam, box2DCam;
+	private OrthographicCamera worldCam, box2DCam;
 	private Box2DDebugRenderer debugRenderer;
 	
 	private OrthogonalTiledMapRenderer mapRenderer;

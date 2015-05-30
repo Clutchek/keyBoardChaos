@@ -18,7 +18,6 @@ import edu.chl.KeyboardChaos.controller.battlecontroller.body.FixtureManager;
 import edu.chl.KeyboardChaos.controller.battlecontroller.body.MapBodyManager;
 import edu.chl.KeyboardChaos.controller.battlecontroller.playercontroller.PlayerController;
 import edu.chl.KeyboardChaos.controller.battlecontroller.spellcontroller.SpellController;
-import edu.chl.KeyboardChaos.controller.battlecontroller.spellcontroller.SpellControllerFactory;
 import edu.chl.KeyboardChaos.controller.battlecontroller.spellcontroller.SpellControllerManager;
 import edu.chl.KeyboardChaos.model.KeyboardChaos;
 import edu.chl.KeyboardChaos.model.player.Player;
@@ -36,9 +35,7 @@ public class BattleState implements GameState {
 	private Array<Fixture> mapFixtures;
 	private FixtureManager fixtureManager;
 	private KeyboardChaos model;
-	private List<Player> playerList;
 	private List<PlayerController> playerControllerList;
-	private SpellControllerFactory spellControllerFactory;
 	private SpellControllerManager spellControllerManager;
 	private MatchStats matchStats;
 	
@@ -140,7 +137,6 @@ public class BattleState implements GameState {
 	}
 	
 	private void removeSpellControllers() {
-		List<SpellController> spellsToDelete = new ArrayList<SpellController>();
 		for (Body b : fixtureManager.getBodiesToDelete()) {
 			for (SpellController sc : spellControllerManager.getSpellControllers()) {
 				if (sc.getBody() == b) {

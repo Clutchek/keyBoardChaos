@@ -142,7 +142,7 @@ public class TextButton extends Component {
 	}
 	
 	public void buttonReleaseEvent(){
-		EventBusService.publish(super.getEvent());
+		EventBusService.getInstance().publish(super.getEvent());
 	}
 	
 	public void toggleSelect(){
