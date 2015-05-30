@@ -1,11 +1,11 @@
 import static org.junit.Assert.assertTrue;
-import org.junit.Before;
 
+import org.junit.Before;
 import org.junit.Test;
 
-import controller.eventbus.BusEvent;
-import controller.eventbus.EventBusService;
-import controller.eventbus.EventHandler;
+import edu.chl.KeyboardChaos.util.eventbus.BusEvent;
+import edu.chl.KeyboardChaos.util.eventbus.EventBusService;
+import edu.chl.KeyboardChaos.util.eventbus.EventHandler;
 
 
 public class TestEventBus implements EventHandler{
