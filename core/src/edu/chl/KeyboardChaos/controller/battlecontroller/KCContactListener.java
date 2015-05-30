@@ -6,6 +6,7 @@ import com.badlogic.gdx.physics.box2d.ContactListener;
 import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.Manifold;
 
+import edu.chl.KeyboardChaos.controller.MatchStats;
 import edu.chl.KeyboardChaos.controller.battlecontroller.body.FixtureManager;
 import edu.chl.KeyboardChaos.model.player.Player;
 import edu.chl.KeyboardChaos.model.spell.Fireball;
@@ -26,9 +27,11 @@ import edu.chl.KeyboardChaos.model.spell.Spell;
 public class KCContactListener implements ContactListener {
 	
 	FixtureManager fixtureManager;
+	private MatchStats matchStats;
 	
-	public KCContactListener(FixtureManager fixtureManager){
+	public KCContactListener(FixtureManager fixtureManager, MatchStats matchStats){
 		this.fixtureManager = fixtureManager;
+		this.matchStats = matchStats;
 	}
 	
 	@Override

@@ -1,7 +1,9 @@
 package edu.chl.KeyboardChaos.controller;
 
 import edu.chl.KeyboardChaos.model.player.Player;
-
+/*
+ * This class handles the stats of all players during a battle in KeyboardChaos
+ */
 public class MatchStats {
 
 	private int playerOneScore;

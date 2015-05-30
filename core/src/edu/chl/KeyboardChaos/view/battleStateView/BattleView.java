@@ -13,6 +13,7 @@ import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.Array;
 
+import edu.chl.KeyboardChaos.controller.MatchStats;
 import edu.chl.KeyboardChaos.model.player.Player;
 import edu.chl.KeyboardChaos.model.spell.Fireball;
 import edu.chl.KeyboardChaos.util.KCConstants;
@@ -35,9 +36,12 @@ public class BattleView {
 	
 	private Array<Fixture> fixtures;
 	
-	public BattleView(Array<Fixture> fixtures, World world, TiledMap tileMap) {
+	private MatchStats matchStats;
+	
+	public BattleView(Array<Fixture> fixtures, World world, TiledMap tileMap, MatchStats matchStats) {
 		this.fixtures = fixtures;
 		this.world = world;
+		this.matchStats = matchStats;
 		
 		spriteBatch = new SpriteBatch();
 		debugRenderer = new Box2DDebugRenderer();

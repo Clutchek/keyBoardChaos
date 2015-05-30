@@ -11,6 +11,7 @@ import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.Array;
 
+import edu.chl.KeyboardChaos.controller.MatchStats;
 import edu.chl.KeyboardChaos.controller.battlecontroller.KCContactListener;
 import edu.chl.KeyboardChaos.controller.battlecontroller.KCInputProcessor;
 import edu.chl.KeyboardChaos.controller.battlecontroller.body.FixtureManager;
@@ -39,15 +40,19 @@ public class BattleState implements GameState {
 	private List<PlayerController> playerControllerList;
 	private SpellControllerFactory spellControllerFactory;
 	private SpellControllerManager spellControllerManager;
+	private MatchStats matchStats;
 	
 	public BattleState() {
 		//model stuff
 		model = new KeyboardChaos();
 		
+		//match stats
+		this.matchStats = new MatchStats();
+		
 		//World
 		world = new World(KCConstants.GRAVITY, true);
 		fixtureManager = new FixtureManager(world);
-		world.setContactListener(new KCContactListener(fixtureManager));
+		world.setContactListener(new KCContactListener(fixtureManager, this.matchStats));
 		
 		//Map stuff
 		tileMap = new TmxMapLoader().load("assets/maps/map1.tmx");
@@ -55,7 +60,7 @@ public class BattleState implements GameState {
 		mbm.createPhysics(tileMap, "lava");
 		
 		mapFixtures = new Array<Fixture>();
-		battleView = new BattleView(mapFixtures, world, tileMap);
+		battleView = new BattleView(mapFixtures, world, tileMap, this.matchStats);
 		refreshFixtureList();
 		
 		//Player stuff
