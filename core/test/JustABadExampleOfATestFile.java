@@ -32,7 +32,7 @@ public class JustABadExampleOfATestFile {
 	// Method ran before each test method
 	@Before
 	public void before() {
-		player = new Player();
+		//player = new Player();
 	}
 	
 	// Method ran after each test method

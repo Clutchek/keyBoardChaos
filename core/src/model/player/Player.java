@@ -10,7 +10,7 @@ public class Player {
 	private int healthPoints;
 	private int size;
 	private float posX, posY;
-	private int radius;
+	private final int radius;
 	private DirectionVector vector;
 	
 	private String playerName;
@@ -25,14 +25,19 @@ public class Player {
 		this.firstSpell = firstSpell;
 		this.secondSpell = secondSpell;
 		//size
+		radius = 2;
 		setSize(25);
+		//position
 		this.posX = posX;
 		this.posY = posY;
 		//the direction of the player when the game starts
-		setVector(new DirectionVector(1, 0));
+		//setVector(new DirectionVector(1, 0));
 	}
 	
 	
+	public boolean isAlive(){
+		return (getHealthPoints() > 0);
+	}
 
 	/**
 	 * Decreases the players health points by a certain amount.
