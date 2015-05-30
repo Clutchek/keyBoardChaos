@@ -60,7 +60,7 @@ public class BattleState implements GameState {
 		mbm.createPhysics(tileMap, "lava");
 		
 		mapFixtures = new Array<Fixture>();
-		battleView = new BattleView(mapFixtures, world, tileMap);
+		battleView = new BattleView(mapFixtures, world, tileMap, this.matchStats);
 		refreshFixtureList();
 		
 		//Player stuff
