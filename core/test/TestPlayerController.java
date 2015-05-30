@@ -16,6 +16,7 @@ import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
 
+import edu.chl.KeyboardChaos.controller.MatchStats;
 import edu.chl.KeyboardChaos.controller.battlecontroller.KCContactListener;
 import edu.chl.KeyboardChaos.controller.battlecontroller.body.FixtureManager;
 import edu.chl.KeyboardChaos.controller.battlecontroller.body.MapBodyManager;
@@ -29,6 +30,9 @@ import edu.chl.KeyboardChaos.util.KCConstants;
 public class TestPlayerController{
 	@Mock
 	static ApplicationListener fakeAppListener;
+	
+	@Mock
+	static MatchStats fakeMatchStats;
 
 	
 	World world;
@@ -69,7 +73,7 @@ public class TestPlayerController{
 	
 	@Test
 	public void testShootAnotherPlayerWithFireball(){
-		world.setContactListener(new KCContactListener(fixtureManager));
+		world.setContactListener(new KCContactListener(fixtureManager, fakeMatchStats));
 		Player player2 = new Player("Player2", 110f, 100f, new Fireball(), new Fireball());
 		PlayerController player2Controller = new PlayerController(player2, fixtureManager, spellControllerManager);
 		
@@ -84,7 +88,7 @@ public class TestPlayerController{
 	
 	@Test
 	public void testPlayerInLava(){
-		world.setContactListener(new KCContactListener(fixtureManager));
+		world.setContactListener(new KCContactListener(fixtureManager, fakeMatchStats));
 		TiledMap tileMap = new TmxMapLoader().load("assets/maps/lavamap.tmx");
 		MapBodyManager mbm = new MapBodyManager(world, KCConstants.PPM, null, 0);
 		mbm.createPhysics(tileMap, "lava");
