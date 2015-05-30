@@ -66,7 +66,7 @@ public class BattleState implements GameState {
 	}
 	
 	@Override
-	public void update() {
+	public synchronized void update() {
 		fixtureManager.deleteSelectedBodies();
 		handleInput();
 		for(PlayerController PC : playerControllerList){
