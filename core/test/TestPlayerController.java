@@ -11,15 +11,19 @@ import org.mockito.runners.MockitoJUnit44Runner;
 
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.backends.headless.HeadlessApplication;
-import com.badlogic.gdx.maps.tiled.TiledMap;
-import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.physics.box2d.Body;
+import com.badlogic.gdx.physics.box2d.BodyDef;
+import com.badlogic.gdx.physics.box2d.CircleShape;
+import com.badlogic.gdx.physics.box2d.Contact;
+import com.badlogic.gdx.physics.box2d.Fixture;
+import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.World;
+import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
 
 import edu.chl.KeyboardChaos.controller.MatchStats;
 import edu.chl.KeyboardChaos.controller.battlecontroller.KCContactListener;
 import edu.chl.KeyboardChaos.controller.battlecontroller.body.FixtureManager;
-import edu.chl.KeyboardChaos.controller.battlecontroller.body.MapBodyManager;
 import edu.chl.KeyboardChaos.controller.battlecontroller.playercontroller.PlayerController;
 import edu.chl.KeyboardChaos.controller.battlecontroller.spellcontroller.SpellControllerManager;
 import edu.chl.KeyboardChaos.model.player.Player;
@@ -88,10 +92,29 @@ public class TestPlayerController{
 	
 	@Test
 	public void testPlayerInLava(){
-		world.setContactListener(new KCContactListener(fixtureManager, fakeMatchStats));
-		TiledMap tileMap = new TmxMapLoader().load("assets/maps/lavamap.tmx");
-		MapBodyManager mbm = new MapBodyManager(world, KCConstants.PPM, null, 0);
-		mbm.createPhysics(tileMap, "lava");
+		KCContactListener contactListener = new KCContactListener(fixtureManager, fakeMatchStats);
+		world.setContactListener(contactListener);
+		Contact fakeLavaContact = new Contact(world, 1337){
+			@Override
+			public Fixture getFixtureA(){
+				return player1Controller.getBody().getFixtureList().get(0);
+			}
+			
+			@Override
+			public Fixture getFixtureB(){
+				BodyDef bodyDef = new BodyDef();
+				Body body;
+				bodyDef.type = BodyType.DynamicBody;
+				body = world.createBody(bodyDef);
+				FixtureDef fixtureDef = new FixtureDef();
+				CircleShape cshape = new CircleShape();
+				fixtureDef.shape = cshape;
+				Fixture fixture = body.createFixture(fixtureDef);
+				fixture.setUserData("lava");
+				return fixture;
+			}
+		};
+		contactListener.beginContact(fakeLavaContact);
 		world.step(10, 6, 2);
 		assertTrue(player1.getHealthPoints() < 100);
 		
