@@ -73,10 +73,6 @@ public class BattleState implements GameState {
 		
 		
 		world.step(KCConstants.TIME_STEP, 6, 2);
-
-		if (playerControllerList.size() == 1) {
-			EventBusService.getInstance().publish(new BusEvent("menu"));
-		}
 		
 		/*for(PlayerController PC : playerControllerList){
 
