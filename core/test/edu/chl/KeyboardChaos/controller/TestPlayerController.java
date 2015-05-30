@@ -49,11 +49,6 @@ public class TestPlayerController{
 	public static void startLibrary(){
 		//MockitoAnnotations.initMocks(this);
 		HeadlessApplication fakeApp = new HeadlessApplication(fakeAppListener);
-		try{
-			Thread.sleep(1000);
-		}catch(Exception e){
-			
-		}
 	}
 	
 	@Before

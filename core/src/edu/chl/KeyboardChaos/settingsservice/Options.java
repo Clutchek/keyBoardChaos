@@ -3,6 +3,9 @@ package edu.chl.KeyboardChaos.settingsservice;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.badlogic.gdx.Input.Keys;
+
+import edu.chl.KeyboardChaos.model.spell.Fireball;
 import edu.chl.KeyboardChaos.model.spell.Spell;
 
 
@@ -21,16 +24,16 @@ public class Options {
 	private PlayerSettings playerTwoSettings;
 	private PlayerSettings playerThreeSettings;
 	private PlayerSettings playerFourSettings;
-	private SettingsService settingsService;
+	private FileService fileService;
 	
 	private List<Integer> activePlayers;
 	
 	private Options(){
-		settingsService = new SettingsService();
-		playerOneSettings = settingsService.getPlayerSettings(1);
-		playerTwoSettings = settingsService.getPlayerSettings(2);
-		playerThreeSettings = settingsService.getPlayerSettings(3);
-		playerFourSettings = settingsService.getPlayerSettings(4);
+		fileService = new FileService();
+		playerOneSettings = getPlayerSettings(1);
+		playerTwoSettings = getPlayerSettings(2);
+		playerThreeSettings = getPlayerSettings(3);
+		playerFourSettings = getPlayerSettings(4);
 		
 		this.activePlayers = new ArrayList<Integer>();
 	}
@@ -230,12 +233,41 @@ public class Options {
 	}
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
+	
+	private PlayerSettings getPlayerSettings(int playerNumber){
+		Object o = fileService.readPlayerSettings(playerNumber);
+		PlayerSettings playerSettings;
+		if(o == null || !(o instanceof PlayerSettings)){
+			playerSettings = getDefaultPlayerSettings(playerNumber);
+			fileService.writePlayerSettings(playerNumber, playerSettings);
+		}else{
+			playerSettings = (PlayerSettings)o;
+		}
+		return playerSettings;
+	}
+	
+	private PlayerSettings getDefaultPlayerSettings(int playerNumber){
+		PlayerSettings playerSettings;
+		switch(playerNumber){
+		case 1: return playerSettings = new PlayerSettings(Keys.W,Keys.S,Keys.A,Keys.D,Keys.Q,Keys.E, new Fireball(), new Fireball(), "Player1");
+		
+		case 2: return playerSettings = new PlayerSettings(Keys.UNKNOWN,Keys.UNKNOWN,Keys.UNKNOWN,Keys.UNKNOWN,Keys.UNKNOWN,Keys.UNKNOWN, new Fireball(), new Fireball(), "Player2");
+			
+		case 3: return playerSettings = new PlayerSettings(Keys.UNKNOWN,Keys.UNKNOWN,Keys.UNKNOWN,Keys.UNKNOWN,Keys.UNKNOWN,Keys.UNKNOWN, new Fireball(), new Fireball(), "Player3");
+			
+		case 4: return playerSettings = new PlayerSettings(Keys.UNKNOWN,Keys.UNKNOWN,Keys.UNKNOWN,Keys.UNKNOWN,Keys.UNKNOWN,Keys.UNKNOWN, new Fireball(), new Fireball(), "Player4");
+		
+		default: throw new IllegalArgumentException("Number must be 1-4");
+			
+		}
+	}
+	
 	/**
 	 * This gets called upon before exiting the program, saves all the current player settings.
 	 */
 	public void savePreferences(){
 		for(int i = 1 ; i<=4 ; i++){
-			settingsService.writePlayerSettings(i, getPlayerSettingsForPlayer(i));
+			fileService.writePlayerSettings(i, getPlayerSettingsForPlayer(i));
 	
 		}
 	}
