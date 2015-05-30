@@ -26,6 +26,7 @@ public class KeyboardChaos {
 	 */
 	public void createPlayers(){
 		//Kolla settings antal aktiva spelare?
+		this.playerList.clear();
 		
 		//Skapa spelare utifr�n settings
 		Options options = Options.getOptionsInstance();

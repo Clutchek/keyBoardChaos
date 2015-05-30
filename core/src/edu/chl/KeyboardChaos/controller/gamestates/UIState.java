@@ -83,4 +83,10 @@ public class UIState implements GameState, EventHandler {
 			}
 		}
 	}
+
+	@Override
+	public void reset() {
+		switchToStartMenu();
+		// Reset individual screens?
+	}
 }

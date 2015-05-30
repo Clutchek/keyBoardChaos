@@ -22,6 +22,8 @@ import edu.chl.KeyboardChaos.controller.battlecontroller.spellcontroller.SpellCo
 import edu.chl.KeyboardChaos.model.KeyboardChaos;
 import edu.chl.KeyboardChaos.model.player.Player;
 import edu.chl.KeyboardChaos.util.KCConstants;
+import edu.chl.KeyboardChaos.util.eventbus.BusEvent;
+import edu.chl.KeyboardChaos.util.eventbus.EventBusService;
 import edu.chl.KeyboardChaos.view.battleStateView.BattleView;
 
 
@@ -46,25 +48,10 @@ public class BattleState implements GameState {
 		//match stats
 		this.matchStats = new MatchStats();
 		
-		//World
-		world = new World(KCConstants.GRAVITY, true);
-		fixtureManager = new FixtureManager(world);
-		world.setContactListener(new KCContactListener(fixtureManager, this.matchStats));
-		
-		//Map stuff
-		tileMap = new TmxMapLoader().load("assets/maps/map1.tmx");
-		MapBodyManager mbm = new MapBodyManager(world, KCConstants.PPM, null, 0);
-		mbm.createPhysics(tileMap, "lava");
-		
 		mapFixtures = new Array<Fixture>();
-		battleView = new BattleView(mapFixtures, world, tileMap, this.matchStats);
-		refreshFixtureList();
-		
-		//Player stuff
 		playerControllerList = new ArrayList<PlayerController>();
 		
-		//Spell stuff
-		spellControllerManager = new SpellControllerManager(fixtureManager);
+		//reset();
 		
 		this.inputProcessor = new KCInputProcessor(playerControllerList);
 	}
@@ -87,6 +74,10 @@ public class BattleState implements GameState {
 		
 		world.step(KCConstants.TIME_STEP, 6, 2);
 
+		if (playerControllerList.size() == 1) {
+			EventBusService.getInstance().publish(new BusEvent("menu"));
+		}
+		
 		/*for(PlayerController PC : playerControllerList){
 
 			PC.updatePlayer();
@@ -157,6 +148,33 @@ public class BattleState implements GameState {
 			}
 		}
 		this.playerControllerList.removeAll(controllersToRemove);
+	}
+
+	@Override
+	public void reset() {
+		//World
+		if (world != null)
+			world.dispose();
+		world = new World(KCConstants.GRAVITY, true);
+		fixtureManager = new FixtureManager(world);
+		world.setContactListener(new KCContactListener(fixtureManager, this.matchStats));
+		
+		//Map stuff
+		tileMap = new TmxMapLoader().load("assets/maps/map1.tmx");
+		MapBodyManager mbm = new MapBodyManager(world, KCConstants.PPM, null, 0);
+		mbm.createPhysics(tileMap, "lava");
+		
+		mapFixtures.clear();
+		battleView = new BattleView(mapFixtures, world, tileMap, this.matchStats);
+		refreshFixtureList();
+		
+		//Player stuff
+		playerControllerList.clear();
+		
+		//Spell stuff
+		spellControllerManager = new SpellControllerManager(fixtureManager);
+		
+		loadPlayers();
 	}
 
 	/*
