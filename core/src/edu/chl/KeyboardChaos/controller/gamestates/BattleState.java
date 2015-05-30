@@ -6,6 +6,7 @@ import java.util.List;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
+import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.Array;
@@ -15,6 +16,7 @@ import edu.chl.KeyboardChaos.controller.battlecontroller.KCInputProcessor;
 import edu.chl.KeyboardChaos.controller.battlecontroller.body.FixtureManager;
 import edu.chl.KeyboardChaos.controller.battlecontroller.body.MapBodyManager;
 import edu.chl.KeyboardChaos.controller.battlecontroller.playercontroller.PlayerController;
+import edu.chl.KeyboardChaos.controller.battlecontroller.spellcontroller.SpellController;
 import edu.chl.KeyboardChaos.controller.battlecontroller.spellcontroller.SpellControllerFactory;
 import edu.chl.KeyboardChaos.controller.battlecontroller.spellcontroller.SpellControllerManager;
 import edu.chl.KeyboardChaos.model.KeyboardChaos;
@@ -67,7 +69,7 @@ public class BattleState implements GameState {
 	
 	@Override
 	public synchronized void update() {
-		fixtureManager.deleteSelectedBodies();
+		removeObjects();
 		handleInput();
 		for(PlayerController PC : playerControllerList){
 
@@ -123,6 +125,19 @@ public class BattleState implements GameState {
 		for(Player p : model.getPlayerList()){
 			playerControllerList.add(new PlayerController(p,fixtureManager, spellControllerManager));
 		}
+	}
+	
+	private void removeObjects() {
+		List<SpellController> spellsToDelete = new ArrayList<SpellController>();
+		for (Body b : fixtureManager.getBodiesToDelete()) {
+			for (SpellController sc : spellControllerManager.getSpellControllers()) {
+				if (sc.getBody() == b) {
+					spellControllerManager.addControllerToRemove(sc);
+				}
+			}
+		}
+		spellControllerManager.removeControllers();
+		fixtureManager.deleteSelectedBodies();
 	}
 
 	/*

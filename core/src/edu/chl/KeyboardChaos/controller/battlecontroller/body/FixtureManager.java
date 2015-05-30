@@ -83,4 +83,8 @@ public class FixtureManager {
 //		System.out.println(bodiesToDelete);
 //		System.out.println(world.getBodyCount());
 	}
+	
+	public List<Body> getBodiesToDelete() {
+		return this.bodiesToDelete;
+	}
 }

@@ -15,11 +15,12 @@ public class SpellControllerManager {
 
 	private SpellControllerFactory spellControllerFactory;
 	private List<SpellController> spellControllerList;
-//	private List<SpellController> controllersToBeRemoved;
+	private List<SpellController> controllersToBeRemoved;
 	
 	public SpellControllerManager(FixtureManager fixtureManager){
 		spellControllerFactory = new SpellControllerFactory(fixtureManager);
 		spellControllerList = new ArrayList<SpellController>();
+		controllersToBeRemoved = new ArrayList<SpellController>();
 	}
 	
 	/**
@@ -60,4 +61,16 @@ public class SpellControllerManager {
 		removeInactiveSpellControllers();
 	}
 	
+	public void addControllerToRemove(SpellController controller) {
+		if (!controllersToBeRemoved.contains(controller))
+			this.controllersToBeRemoved.add(controller);
+	}
+	
+	public void removeControllers() {
+		this.spellControllerList.removeAll(controllersToBeRemoved);
+	}
+	
+	public List<SpellController> getSpellControllers() {
+		return this.spellControllerList;
+	}
 }
