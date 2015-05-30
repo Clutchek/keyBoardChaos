@@ -133,6 +133,13 @@ public class BattleState implements GameState {
 	}
 	
 	private void removeObjects() {
+		removePlayerControllers();
+		removeSpellControllers();
+		
+		fixtureManager.deleteSelectedBodies();
+	}
+	
+	private void removeSpellControllers() {
 		List<SpellController> spellsToDelete = new ArrayList<SpellController>();
 		for (Body b : fixtureManager.getBodiesToDelete()) {
 			for (SpellController sc : spellControllerManager.getSpellControllers()) {
@@ -142,7 +149,18 @@ public class BattleState implements GameState {
 			}
 		}
 		spellControllerManager.removeControllers();
-		fixtureManager.deleteSelectedBodies();
+	}
+	
+	private void removePlayerControllers() {
+		// Perhaps somehow directly add to controllersToRemove when isAlive = false
+		List<PlayerController> controllersToRemove = new ArrayList<PlayerController>();
+		for (PlayerController pc : playerControllerList) {
+			if (!pc.getPlayer().isAlive()) {
+				controllersToRemove.add(pc);
+				fixtureManager.addToDisposeList(pc.getBody());
+			}
+		}
+		this.playerControllerList.removeAll(controllersToRemove);
 	}
 
 	/*
