@@ -10,6 +10,7 @@ import edu.chl.KeyboardChaos.util.KCConstants;
 import edu.chl.KeyboardChaos.util.eventbus.BusEvent;
 import edu.chl.KeyboardChaos.util.eventbus.EventBusService;
 import edu.chl.KeyboardChaos.util.eventbus.EventHandler;
+import edu.chl.KeyboardChaos.view.uiview.component.Label;
 import edu.chl.KeyboardChaos.view.uiview.component.PlayerSettingsPanel;
 import edu.chl.KeyboardChaos.view.uiview.component.SpellPanel;
 import edu.chl.KeyboardChaos.view.uiview.component.TextButton;
@@ -21,6 +22,7 @@ import edu.chl.KeyboardChaos.view.uiview.component.TextButton;
 public class SettingsMenu extends Screen implements EventHandler {
 	private PlayerSettingsPanel psp1, psp2, psp3, psp4;
 	private TextButton backButton, nextButton;
+	private Label label;
 	private List<PlayerSettingsPanel> pspList;
 
 	int halfOfScreen = KCConstants.GAME_WIDTH/2;
@@ -35,6 +37,7 @@ public class SettingsMenu extends Screen implements EventHandler {
 
 		this.backButton = new TextButton("Back", 10, 10, 100, 100, new BusEvent("StartMenu"), false);
 		this.nextButton = new TextButton("Next", KCConstants.GAME_WIDTH - 100 - 10, 10, 100, 100, new BusEvent("SpellSettings"), false);
+		this.label = new Label("Join and choose your controller settings!", 600, 925, null);
 		loadPspList();
 		loadComponentList();
 		
@@ -60,6 +63,7 @@ public class SettingsMenu extends Screen implements EventHandler {
 		super.getComponents().add(this.psp4);
 		super.getComponents().add(backButton);
 		super.getComponents().add(nextButton);
+		super.getComponents().add(label);
 	}
 
 	private void savePlayerKeys(){
