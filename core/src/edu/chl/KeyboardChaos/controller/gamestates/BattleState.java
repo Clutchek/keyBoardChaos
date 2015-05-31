@@ -48,7 +48,6 @@ public class BattleState implements GameState {
 		
 		//match stats
 		this.matchStats = new MatchStats();
-		this.roundIsOver = false;
 		
 		mapFixtures = new Array<Fixture>();
 		playerControllerList = new ArrayList<PlayerController>();
@@ -153,6 +152,7 @@ public class BattleState implements GameState {
 
 	@Override
 	public void reset() {
+		this.roundIsOver = false;
 		//World
 		if (world != null)
 			world.dispose();
