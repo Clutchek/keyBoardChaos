@@ -51,37 +51,25 @@ public class FontUtil {
 		String line = "";
 		int startChar = 0;
 		
+		// Not the most optimal way to wrap
 		int i = 0;
 		while (i < string.length()) {
-			line = string.substring(startChar, i+1);
+			line = string.substring(startChar, i+1); // Go through all characters one by one
 			this.glyphLayout.setText(font, line);
-			if (this.glyphLayout.width > lineLength) {
+			if (this.glyphLayout.width > lineLength) { // Check if the string with a specific font is longer than a specified length
 				String s = string.substring(startChar, i);
-				if (string.charAt(i) != ' ') {
+				if (string.charAt(i) != ' ') { // Make new line where the last space is located
 					int lastSpace = s.lastIndexOf(' ');
 					newLine += s.substring(0, lastSpace) + "\n";
 					i = newLine.length();
 				}
 				
 				startChar = i;
-			} else if (i == string.length() - 1) {
+			} else if (i == string.length() - 1) { // Add last bit
 				newLine += string.substring(startChar);
 			}
 			i++;
 		}
-		/*
-		for (int i = 0; i < string.length(); i++) {
-			line = string.substring(startChar, i+1);
-			this.glyphLayout.setText(font, line);
-			System.out.println("i: " + i + "; string.length(): " + string.length());
-			if (this.glyphLayout.width > lineLength) {
-				newLine += string.substring(startChar, i).trim() + "\n";
-				startChar = i;
-			} else if (i == string.length() - 1) {
-				newLine += string.substring(startChar).trim();
-			}
-		}
-		*/
 		return newLine;
 	}
 }

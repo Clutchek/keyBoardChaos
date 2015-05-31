@@ -16,7 +16,7 @@ import edu.chl.KeyboardChaos.util.KCConstants;
  */
 public class OffensiveSpellController extends SpellController{
 
-	private OffensiveSpell offensiveSpell;
+	private final OffensiveSpell offensiveSpell;
 	private Vector2 vector;
 	private FixtureManager fixtureManager;
 	private Body body;

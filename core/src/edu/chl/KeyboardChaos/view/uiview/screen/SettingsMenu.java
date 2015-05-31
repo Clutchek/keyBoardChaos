@@ -20,13 +20,13 @@ import edu.chl.KeyboardChaos.view.uiview.component.TextButton;
  */
 
 public class SettingsMenu extends Screen implements BusEventHandler {
-	private PlayerSettingsPanel psp1, psp2, psp3, psp4;
-	private TextButton backButton, nextButton;
-	private Label label;
+	private final PlayerSettingsPanel psp1, psp2, psp3, psp4;
+	private final TextButton backButton, nextButton;
+	private final Label label;
 	private List<PlayerSettingsPanel> pspList;
 
-	int halfOfScreen = KCConstants.GAME_WIDTH/2;
-	int space = 20;
+	private final int halfOfScreen = KCConstants.GAME_WIDTH/2;
+	private final int space = 20;
 
 	public SettingsMenu(){
 

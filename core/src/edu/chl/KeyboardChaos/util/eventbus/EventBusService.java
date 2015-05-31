@@ -9,14 +9,14 @@ import java.util.List;
 public class EventBusService {
 	
 	private static EventBusService ebs;
-	private List<BusEventHandler> handlers;
+	private final List<BusEventHandler> handlers;
 	
 	private EventBusService(){
 		handlers = new ArrayList<BusEventHandler>();
 		
 	}
 	
-	public static EventBusService getInstance(){
+	public static synchronized EventBusService getInstance(){
 		if(ebs == null){
 			ebs = new EventBusService();
 		}

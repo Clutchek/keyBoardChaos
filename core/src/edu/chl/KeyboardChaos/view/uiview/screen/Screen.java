@@ -11,7 +11,7 @@ import edu.chl.KeyboardChaos.view.uiview.component.Panel;
  */
 
 public abstract class Screen {
-	private List<Component> components;
+	private final List<Component> components;
 	
 	public Screen() {
 		this.components = new ArrayList<Component>();

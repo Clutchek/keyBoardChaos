@@ -38,11 +38,11 @@ public class PlayerSettingsPanel extends Panel implements BusEventHandler {
 	private TextButton firstSpell;
 	private TextButton secondSpell;
 	private final int playerNbr;
-	private List<Component> components;
+	private final List<Component> components;
 	
 	private boolean isActive;
 	
-	private Options options;
+	private final Options options;
 
 
 	/*

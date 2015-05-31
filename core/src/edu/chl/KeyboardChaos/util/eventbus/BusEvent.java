@@ -10,7 +10,7 @@ public class BusEvent {
 	}*/
 	
 	private Object object;
-	private String command;
+	private final String command;
 	
 	public BusEvent(String command){
 		this.command = command;

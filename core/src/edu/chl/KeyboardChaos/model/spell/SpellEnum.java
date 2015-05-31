@@ -1,5 +1,8 @@
 package edu.chl.KeyboardChaos.model.spell;
 
+/**
+ * Enum representing a spell. This makes it possible to go through a list of all available spells.
+ */
 public enum SpellEnum {
 	FIREBALL(new Fireball()),
 	ICE(new Iceball());
@@ -23,7 +26,7 @@ public enum SpellEnum {
 		return this.name;
 	}
 	
-	// TODO: This could probably be done better
+	// TODO: This could probably be done better, clone or something
 	public Spell getSpell() {
 		try {
 			return (Spell)spell.getClass().newInstance();
@@ -45,7 +48,7 @@ public enum SpellEnum {
 	
 	public static SpellEnum getSpellEnum(Spell spell) {
 		for (SpellEnum v : VALUES) {
-			if (v.getSpell().getName() == spell.getName()) {
+			if (v.getSpell().getName().equals(spell.getName())) {
 				return v;
 			}
 		}

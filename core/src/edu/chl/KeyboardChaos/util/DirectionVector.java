@@ -6,6 +6,7 @@ import java.io.Serializable;
  */
 public class DirectionVector implements Serializable{
 	
+	private static final long serialVersionUID = -2981627454258096827L;
 	private float x;
 	private float y;
 	

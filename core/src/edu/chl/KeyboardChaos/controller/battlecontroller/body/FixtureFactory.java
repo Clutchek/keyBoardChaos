@@ -20,7 +20,7 @@ import edu.chl.KeyboardChaos.util.KCConstants;
 
 public class FixtureFactory {
 	private World world;
-	private float PPM;
+	private final float PPM;
 	private Body body;
 	
 	protected FixtureFactory(World world){
@@ -80,22 +80,16 @@ public class FixtureFactory {
 			body = world.createBody(bodyDef);
 			body.setUserData(player);
 		}else if(o instanceof OffensiveSpell){
-			System.out.println("Im in bodycreation for spell");
 			OffensiveSpell oSpell = (OffensiveSpell)o;
 			bodyDef.position.set(oSpell.getPosX() / PPM, oSpell.getPosY() / PPM);
-			System.out.println("Next is creating the body in the world, problematic step");
 			body = world.createBody(bodyDef);
-			System.out.println("...but it worked");
 			if(oSpell instanceof Fireball){
 				Fireball fireball = (Fireball)oSpell;
 				body.setUserData(fireball);
-				System.out.println("The if did not crash it");
 			}
-			
 		}
 		bodyDef.type = BodyType.DynamicBody;
 		body.setLinearDamping(0.5f);
-		System.out.println("Is passed through creating body");
 		return body;
 		
 	}

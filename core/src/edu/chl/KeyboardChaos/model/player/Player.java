@@ -27,7 +27,6 @@ public class Player {
 		healthPoints = 100;
 		this.firstSpell = firstSpell;
 		this.secondSpell = secondSpell;
-		//size
 		radius = 2;
 		setSize(25);
 		//position

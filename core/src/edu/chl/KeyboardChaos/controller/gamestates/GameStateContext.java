@@ -16,10 +16,10 @@ public class GameStateContext implements BusEventHandler{
 	/*private Stack<GameState> gameStates;
 	private static final int PLAY_STATE = KCConstants.PLAY_STATE;*/
 	
-	GameState uiState;
-	GameState battleState;
-	GameState roundOverState;
-	GameState currentState;
+	private final GameState uiState;
+	private final GameState battleState;
+	private final GameState roundOverState;
+	private GameState currentState;
 	
 	public GameStateContext(){
 		uiState = new UIState();

@@ -16,19 +16,17 @@ import edu.chl.KeyboardChaos.view.uiview.component.Component;
  */
 public class ScreenView {
 	
-	SpriteBatch batch;
-	ShapeRenderer shapeRenderer;
-	BitmapFont font;
-	FontUtil fontUtil;
+	private final SpriteBatch batch;
+	private final ShapeRenderer shapeRenderer;
+	private final FontUtil fontUtil;
 	
-	List<Component> components;
+	private List<Component> components;
 	
 	public ScreenView (Screen screen) {
 		this.batch = new SpriteBatch();
 		this.shapeRenderer = new ShapeRenderer();
 		this.shapeRenderer.setAutoShapeType(true);
 		this.fontUtil = new FontUtil();
-		this.font = fontUtil.getFont();
 		
 		this.components = screen.getComponents();
 	}

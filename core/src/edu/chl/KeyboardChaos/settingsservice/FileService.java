@@ -20,7 +20,7 @@ public class FileService {
 	private ObjectOutputStream objectOutputStream;
 	private ObjectInputStream objectInputStream;
 	
-	private List<String> settingsFileAddresses;
+	private final List<String> settingsFileAddresses;
 	
 	public FileService(){
 		settingsFileAddresses = new ArrayList<String>();
@@ -33,16 +33,16 @@ public class FileService {
 		if(playerNumber < 1 || playerNumber > 4){
 			throw new IllegalArgumentException("Player number must be 1-4!");
 		}
-		try{
+		try{ // Overwrite existing files
 			fileOutputStream = new FileOutputStream(settingsFileAddresses.get(playerNumber-1), false);
 			objectOutputStream = new ObjectOutputStream(fileOutputStream);
 			objectOutputStream.writeObject(playerSettings);
 			objectOutputStream.close();
-		}catch(FileNotFoundException e){
+		}catch(FileNotFoundException e){ // Create new files if there were no existing files
 			File tmp = new File(settingsFileAddresses.get(playerNumber-1));
 			tmp.getParentFile().mkdirs();
 			writePlayerSettings(playerNumber, playerSettings);
-		}catch(Exception e){
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
@@ -57,7 +57,10 @@ public class FileService {
 			Object o = objectInputStream.readObject();
 			objectInputStream.close();
 			return o;
-		}catch(Exception e){
+		}catch(IOException e){
+			e.printStackTrace();
+			return null;
+		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 			return null;
 		}

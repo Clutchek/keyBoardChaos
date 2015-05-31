@@ -16,8 +16,8 @@ import edu.chl.KeyboardChaos.util.eventbus.BusEventHandler;
 public class SpellControllerManager implements BusEventHandler{
 
 	private SpellControllerFactory spellControllerFactory;
-	private List<SpellController> spellControllerList;
-	private List<SpellController> controllersToBeRemoved;
+	private final List<SpellController> spellControllerList;
+	private final List<SpellController> controllersToBeRemoved;
 	
 	public SpellControllerManager(FixtureManager fixtureManager){
 		spellControllerFactory = new SpellControllerFactory(fixtureManager);
@@ -34,6 +34,7 @@ public class SpellControllerManager implements BusEventHandler{
 	public void createSpellController(Spell spell, Player player){
 			SpellController SC = spellControllerFactory.createSpellController(spell, player);
 			spellControllerList.add(SC);
+
 	}
 	
 	private void removeInactiveSpellControllers(){

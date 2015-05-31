@@ -21,33 +21,35 @@ import edu.chl.KeyboardChaos.model.player.Player;
 import edu.chl.KeyboardChaos.model.spell.Fireball;
 import edu.chl.KeyboardChaos.util.KCConstants;
 import edu.chl.KeyboardChaos.util.eventbus.BusEvent;
-import edu.chl.KeyboardChaos.util.eventbus.EventBusService;
 import edu.chl.KeyboardChaos.util.eventbus.BusEventHandler;
+import edu.chl.KeyboardChaos.util.eventbus.EventBusService;
 import edu.chl.KeyboardChaos.view.uiview.Font;
 import edu.chl.KeyboardChaos.view.uiview.FontUtil;
+import edu.chl.KeyboardChaos.view.uiview.component.MatchStatsView;
 
 
 /*
  * This class renders all the visual elements during a battle in KeyboardChaos
  */
 public class BattleView implements BusEventHandler {
-	private SpriteBatch spriteBatch;
-	private ShapeRenderer shapeRenderer;
-	private OrthographicCamera worldCam, box2DCam;
+	private final SpriteBatch spriteBatch;
+	private final ShapeRenderer shapeRenderer;
+	private final OrthographicCamera worldCam, box2DCam;
 	private Box2DDebugRenderer debugRenderer;
 	
-	private FontUtil fontUtil;
+	private final FontUtil fontUtil;
 	
-	private OrthogonalTiledMapRenderer mapRenderer;
+	private final OrthogonalTiledMapRenderer mapRenderer;
 	
-	private World world;
+	private final World world;
 	
-	private PlayerView playerView;
-	private FireballView fireballView;
+	private final PlayerView playerView;
+	private final FireballView fireballView;
 	
 	private Array<Fixture> fixtures;
 	
 	private MatchStats matchStats;
+	private MatchStatsView msv;
 	
 	private boolean roundIsOver;
 	
@@ -85,7 +87,8 @@ public class BattleView implements BusEventHandler {
 		box2DCam = new OrthographicCamera();
 		box2DCam.setToOrtho(false, KCConstants.GAME_WIDTH, KCConstants.GAME_HEIGHT);
 		box2DCam.combined.scale(KCConstants.PPM, KCConstants.PPM, 0);
-
+		
+		msv = new MatchStatsView(shapeRenderer, matchStats, KCConstants.GAME_WIDTH - 200, KCConstants.GAME_HEIGHT);
 		EventBusService.getInstance().subscribe(this);
 	}
 	
@@ -110,8 +113,10 @@ public class BattleView implements BusEventHandler {
 		}
 		
 		spriteBatch.end();
+		msv.render(spriteBatch);
 		
 		if (roundIsOver) {
+			// Make screen darker
 			shapeRenderer.begin();
 			shapeRenderer.setColor(new Color(0, 0 , 0 , 0.5f)); 
 			Gdx.gl.glEnable(GL20.GL_BLEND);
@@ -121,6 +126,7 @@ public class BattleView implements BusEventHandler {
 			Gdx.gl.glEnable(GL20.GL_BLEND);
 			shapeRenderer.end();
 			
+			// Print message on screen
 			spriteBatch.begin();
 			fontUtil.setFont(Font.SLABO_43);
 			String text = "SOMEBODY WON\nPRESS ENTER TO RETURN TO MENU";
