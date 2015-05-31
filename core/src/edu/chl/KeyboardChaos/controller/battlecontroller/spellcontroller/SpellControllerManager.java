@@ -6,12 +6,14 @@ import java.util.List;
 import edu.chl.KeyboardChaos.controller.battlecontroller.body.FixtureManager;
 import edu.chl.KeyboardChaos.model.player.Player;
 import edu.chl.KeyboardChaos.model.spell.Spell;
+import edu.chl.KeyboardChaos.util.eventbus.BusEvent;
+import edu.chl.KeyboardChaos.util.eventbus.BusEventHandler;
 
 
 /*
  * Class for managing which spell controllers should be active and inactive
  */
-public class SpellControllerManager {
+public class SpellControllerManager implements BusEventHandler{
 
 	private SpellControllerFactory spellControllerFactory;
 	private List<SpellController> spellControllerList;
@@ -68,5 +70,14 @@ public class SpellControllerManager {
 	
 	public List<SpellController> getSpellControllers() {
 		return this.spellControllerList;
+	}
+
+	@Override
+	public void onEvent(BusEvent e) {
+		if(e.getBusCommand().equals("RemoveSpellController") && e.getObject() instanceof SpellController){
+			SpellController sc = (SpellController)e.getObject();
+			addControllerToRemove(sc);
+		}
+		
 	}
 }

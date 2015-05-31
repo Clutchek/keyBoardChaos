@@ -9,10 +9,10 @@ import java.util.List;
 public class EventBusService {
 	
 	private static EventBusService ebs;
-	private List<EventHandler> handlers;
+	private List<BusEventHandler> handlers;
 	
 	private EventBusService(){
-		handlers = new ArrayList<EventHandler>();
+		handlers = new ArrayList<BusEventHandler>();
 		
 	}
 	
@@ -27,7 +27,7 @@ public class EventBusService {
 	 * Adds an eventhandler to this service.
 	 * @param handler
 	 */
-	public void subscribe(EventHandler handler){
+	public void subscribe(BusEventHandler handler){
 		handlers.add(handler);
 	}
 	
@@ -35,7 +35,7 @@ public class EventBusService {
 	 * Removes an eventhandler from this service.
 	 * @param handler the handler to be removed.
 	 */
-	public void unsubscribe(EventHandler handler){
+	public void unsubscribe(BusEventHandler handler){
 		handlers.remove(handler);
 	}
 	
@@ -44,11 +44,11 @@ public class EventBusService {
 	 */
 	public void publish(BusEvent e){
 		// Copy handlers to a temporary list
-		List<EventHandler> tmp = new ArrayList<EventHandler>();
+		List<BusEventHandler> tmp = new ArrayList<BusEventHandler>();
 		tmp.addAll(handlers);
 		
 		// Go through the temporary handlers
-		for(EventHandler handler: tmp){
+		for(BusEventHandler handler: tmp){
 			handler.onEvent(e);
 		}
 	}

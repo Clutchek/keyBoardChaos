@@ -5,10 +5,8 @@ package edu.chl.KeyboardChaos.model.spell;
  */
 
 public class Fireball extends OffensiveSpell{
-	
 	private static final long serialVersionUID = 8857635637656332791L;
-	private float damage, projectileSpeed;
-	private final float fireballRadius;
+	private float damage, projectileSpeed, duration, cooldown;
 	
 	public final static String DESCRIPTION = "This is a description of a fireball.";
 
@@ -18,17 +16,18 @@ public class Fireball extends OffensiveSpell{
 		super();
 		this.damage = 10;
 		this.projectileSpeed = 3f;
-		fireballRadius = 3f;
+		duration = 2f;
+		cooldown = 1.5f;
 	}
 	
 	@Override
 	public float getCooldown(){
-		return 1.5f;
+		return cooldown;
 	}
 	
 	@Override
 	public float getDuration(){
-		return 10f;
+		return duration;
 	}
 	
 	/**
@@ -45,9 +44,9 @@ public class Fireball extends OffensiveSpell{
 		return this.projectileSpeed;
 	}
 	
-	public float getFireballRadius(){
-		return fireballRadius;
-	}
+//	public float getRadius(){
+//		return radius;
+//	}
 	
 	@Override
 	public String getDescription() {
@@ -58,4 +57,5 @@ public class Fireball extends OffensiveSpell{
 	public String getName() {
 		return NAME;
 	}
+
 }

@@ -10,7 +10,7 @@ import edu.chl.KeyboardChaos.controller.battlecontroller.playercontroller.Player
 import edu.chl.KeyboardChaos.settingsservice.Options;
 import edu.chl.KeyboardChaos.util.eventbus.BusEvent;
 import edu.chl.KeyboardChaos.util.eventbus.EventBusService;
-import edu.chl.KeyboardChaos.util.eventbus.EventHandler;
+import edu.chl.KeyboardChaos.util.eventbus.BusEventHandler;
 
 
 
@@ -26,7 +26,7 @@ import edu.chl.KeyboardChaos.util.eventbus.EventHandler;
  * 
  */
 
-public class KCInputProcessor extends InputAdapter implements EventHandler{
+public class KCInputProcessor extends InputAdapter implements BusEventHandler{
 	Timer timer;
 	private List<PlayerController> playerControllerList;
 	private Options optionsService;

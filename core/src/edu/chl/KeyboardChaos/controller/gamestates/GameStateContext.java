@@ -4,14 +4,14 @@ import com.badlogic.gdx.Gdx;
 
 import edu.chl.KeyboardChaos.util.eventbus.BusEvent;
 import edu.chl.KeyboardChaos.util.eventbus.EventBusService;
-import edu.chl.KeyboardChaos.util.eventbus.EventHandler;
+import edu.chl.KeyboardChaos.util.eventbus.BusEventHandler;
 
 /*
  * Class that manages what state the game is in
  * When an input is recieved to change from one game state to another, the classes switches gamestate
  */
 
-public class GameStateContext implements EventHandler{
+public class GameStateContext implements BusEventHandler{
 	
 	/*private Stack<GameState> gameStates;
 	private static final int PLAY_STATE = KCConstants.PLAY_STATE;*/

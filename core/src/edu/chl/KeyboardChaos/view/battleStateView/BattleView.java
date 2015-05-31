@@ -22,7 +22,7 @@ import edu.chl.KeyboardChaos.model.spell.Fireball;
 import edu.chl.KeyboardChaos.util.KCConstants;
 import edu.chl.KeyboardChaos.util.eventbus.BusEvent;
 import edu.chl.KeyboardChaos.util.eventbus.EventBusService;
-import edu.chl.KeyboardChaos.util.eventbus.EventHandler;
+import edu.chl.KeyboardChaos.util.eventbus.BusEventHandler;
 import edu.chl.KeyboardChaos.view.uiview.Font;
 import edu.chl.KeyboardChaos.view.uiview.FontUtil;
 
@@ -30,7 +30,7 @@ import edu.chl.KeyboardChaos.view.uiview.FontUtil;
 /*
  * This class renders all the visual elements during a battle in KeyboardChaos
  */
-public class BattleView implements EventHandler {
+public class BattleView implements BusEventHandler {
 	private SpriteBatch spriteBatch;
 	private ShapeRenderer shapeRenderer;
 	private OrthographicCamera worldCam, box2DCam;

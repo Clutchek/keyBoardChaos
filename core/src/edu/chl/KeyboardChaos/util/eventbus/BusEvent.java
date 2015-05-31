@@ -9,16 +9,24 @@ public class BusEvent {
 		
 	}*/
 	
-	//private Object o;
+	private Object object;
 	private String command;
 	
 	public BusEvent(String command){
 		this.command = command;
+		this.object = null;
+	}
+	
+	public BusEvent(String command, Object o){
+		this(command);
+		object = o;
 	}
 	
 	public String getBusCommand(){
 		return command;
 	}
 	
-	//public object get
+	public Object getObject(){
+		return object;
+	}
 }
