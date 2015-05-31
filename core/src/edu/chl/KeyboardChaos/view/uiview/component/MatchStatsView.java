@@ -62,7 +62,6 @@ public class MatchStatsView {
 
 		for(int i = 0; i < this.matchStats.getActivePlayers().size(); i++){
 
-			System.out.println(i);
 			font.draw(sb, "Player" + this.matchStats.getActivePlayers().get(i) + "     " + this.matchStats.getPlayerKills(matchStats.getActivePlayers().get(i)-1)
 					+ "       " + this.matchStats.getPlayerDeaths(matchStats.getActivePlayers().get(i)-1)
 					+ "        " + this.matchStats.getPlayerScore(matchStats.getActivePlayers().get(i)-1),
