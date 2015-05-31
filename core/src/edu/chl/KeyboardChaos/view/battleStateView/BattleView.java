@@ -144,7 +144,7 @@ public class BattleView implements BusEventHandler {
 			spriteBatch.end();
 		}
 		
-		debugRenderer.render(world, box2DCam.combined);
+		//debugRenderer.render(world, box2DCam.combined);
 	}
 	
 	public void setFixtureArray(Array<Fixture> fixtures) {
