@@ -44,8 +44,8 @@ public class FixtureFactory {
 			System.out.println("Im in fixturecreation fireball");
 			fixtureDef.filter.maskBits = KCConstants.MASK_SPELL;
 			fixtureDef.filter.categoryBits = KCConstants.BIT_SPELL;
-			OffensiveSpell fireball = (OffensiveSpell)body.getUserData();
-			fixtureRadius = fireball.getRadius() / PPM;
+			OffensiveSpell oSpell = (OffensiveSpell)body.getUserData();
+			fixtureRadius = oSpell.getRadius() / PPM;
 			
 		}else if(body.getUserData() instanceof Player){
 			fixtureDef.filter.maskBits = KCConstants.MASK_PLAYER;
@@ -81,13 +81,17 @@ public class FixtureFactory {
 			body.setUserData(player);
 		}else if(o instanceof OffensiveSpell){
 			System.out.println("Im in bodycreation for spell");
-			OffensiveSpell fireball = (OffensiveSpell)o;
-			bodyDef.position.set(fireball.getPosX() / PPM, fireball.getPosY() / PPM);
+			OffensiveSpell oSpell = (OffensiveSpell)o;
+			bodyDef.position.set(oSpell.getPosX() / PPM, oSpell.getPosY() / PPM);
 			System.out.println("Next is creating the body in the world, problematic step");
 			body = world.createBody(bodyDef);
 			System.out.println("...but it worked");
-			body.setUserData(fireball);
-			System.out.println("The if did not crash it");
+			if(oSpell instanceof Fireball){
+				Fireball fireball = (Fireball)oSpell;
+				body.setUserData(fireball);
+				System.out.println("The if did not crash it");
+			}
+			
 		}
 		bodyDef.type = BodyType.DynamicBody;
 		body.setLinearDamping(0.5f);

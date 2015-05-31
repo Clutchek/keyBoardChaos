@@ -13,6 +13,7 @@ public abstract class OffensiveSpell implements Spell {
 	
 	public OffensiveSpell() {
 		this.vector = new DirectionVector(0, 0);
+		radius = 3f;
 	}
 	
 	public DirectionVector getVector() {
