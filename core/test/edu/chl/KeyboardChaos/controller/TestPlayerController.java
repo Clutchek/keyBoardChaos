@@ -56,7 +56,7 @@ public class TestPlayerController{
 		world = world = new World(KCConstants.GRAVITY, true);
 		fixtureManager = new FixtureManager(world);
 		spellControllerManager = new SpellControllerManager(fixtureManager);
-		player1 = new Player("Player1", 100f,100f, new Fireball(), new Fireball(),1);
+		player1 = new Player("Player1", 100f,100f, new Fireball(1), new Fireball(1),1);
 		player1Controller = new PlayerController(player1, fixtureManager, spellControllerManager);
 	}
 
@@ -73,7 +73,7 @@ public class TestPlayerController{
 	@Test
 	public void testShootAnotherPlayerWithFireball(){
 		world.setContactListener(new KCContactListener(fixtureManager, fakeMatchStats));
-		Player player2 = new Player("Player2", 110f, 100f, new Fireball(), new Fireball(),1);
+		Player player2 = new Player("Player2", 110f, 100f, new Fireball(2), new Fireball(2),1);
 		PlayerController player2Controller = new PlayerController(player2, fixtureManager, spellControllerManager);
 		
 		Vector2 vector = new Vector2();
