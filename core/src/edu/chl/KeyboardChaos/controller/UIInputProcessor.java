@@ -98,7 +98,7 @@ public class UIInputProcessor implements InputProcessor {
 						} else if (selectedButton != null) {
 							selectedButton.toggleSelect();
 							selectedButton = button2;
-						} else if (selectedButton == null) {
+						} else {
 							selectedButton = button2;
 						}
 					}

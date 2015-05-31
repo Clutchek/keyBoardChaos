@@ -49,13 +49,4 @@ public class KCConstants {
 	public static final int PLAY_STATE = 17*5*37*41;
 	public static final int MENU_STATE = 19*13*51*43;
 	public static final int UNKNOWN_STATE = 11*31*39*67;
-	//Test
-	
-	public static boolean playerIsInLava = false;
-	
-	
-	//List of fixtures to destroy
-	public static ConcurrentHashMap<Body, Fixture> fixturesToDestroy = new ConcurrentHashMap<Body, Fixture>();
-	
-	
 }

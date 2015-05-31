@@ -105,8 +105,10 @@ public class MatchStats {
 	 * @param p the player that got the kill
 	 */
 	public void playerKills(Player p){
+		
 		this.playerScores.set(indexOfPlayer(p),this.playerScores.get(indexOfPlayer(p)) + this.killScore);
 		this.playerKills.set(indexOfPlayer(p),this.playerKills.get(indexOfPlayer(p)) + 1);
+		
 	}
 	/*
 	 * This method is called on when a player gets killed
@@ -137,6 +139,7 @@ public class MatchStats {
 
 	public List<Integer> getActivePlayers(){
 		return Options.getOptionsInstance().getActivePlayers();
+
 	}
 
 }

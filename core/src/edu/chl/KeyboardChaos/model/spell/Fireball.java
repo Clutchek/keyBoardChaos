@@ -5,7 +5,7 @@ package edu.chl.KeyboardChaos.model.spell;
  */
 
 public class Fireball extends OffensiveSpell{
-	
+	private static final long serialVersionUID = 8857635637656332791L;
 	private float damage, projectileSpeed, duration, cooldown;
 	
 	public final static String DESCRIPTION = "This is a description of a fireball.";

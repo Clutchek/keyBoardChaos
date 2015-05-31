@@ -10,6 +10,7 @@ import edu.chl.KeyboardChaos.model.spell.Spell;
  */
 
 public class PlayerSettings implements Serializable{
+	private static final long serialVersionUID = 1553090381314916480L;
 	private int moveUpKey, moveDownKey, moveLeftKey, moveRightKey, firstSpellKey, secondSpellKey;
 	private Spell firstSpell, secondSpell;
 	private String playerName;

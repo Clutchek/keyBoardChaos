@@ -7,6 +7,8 @@ import edu.chl.KeyboardChaos.util.DirectionVector;
  */
 
 public abstract class OffensiveSpell implements Spell {
+	
+	private static final long serialVersionUID = 4246452556975709909L;
 	private DirectionVector vector;
 	private float posX, posY;
 	protected float radius;

@@ -45,7 +45,7 @@ public enum SpellEnum {
 	
 	public static SpellEnum getSpellEnum(Spell spell) {
 		for (SpellEnum v : VALUES) {
-			if (v.getSpell().getName() == spell.getName()) {
+			if (v.getSpell().getName().equals(spell.getName())) {
 				return v;
 			}
 		}

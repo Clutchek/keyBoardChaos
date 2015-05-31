@@ -44,13 +44,9 @@ public class KCContactListener implements ContactListener {
 			Fixture fixA = contact.getFixtureA();
 			Fixture fixB = contact.getFixtureB();
 			
-			if(!fixA.getBody().equals(fixB.getBody())){
-				if(fixA != null){	
-					fixtureManager.addToDisposeList(fixA.getBody());
-				}
-				if(fixB != null){
-					fixtureManager.addToDisposeList(fixB.getBody());
-				}
+			if(!fixA.getBody().equals(fixB.getBody())){	
+				fixtureManager.addToDisposeList(fixA.getBody());
+				fixtureManager.addToDisposeList(fixB.getBody());
 			}
 		}else if(isPlayerInContact(contact) && isSpellInContact(contact)){
 			Spell spell = getSpellFromContact(contact);

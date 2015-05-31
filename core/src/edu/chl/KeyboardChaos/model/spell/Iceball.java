@@ -4,6 +4,7 @@ package edu.chl.KeyboardChaos.model.spell;
 */
 public class Iceball extends OffensiveSpell{
 	
+	private static final long serialVersionUID = -7105427562354348157L;
 	private int damage, projectileSpeed;
 	private final float radius;
 	
