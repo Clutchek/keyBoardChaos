@@ -60,21 +60,6 @@ public class PlayerController {
 		body.setTransform(player.getPosX() / (float)KCConstants.PPM, player.getPosY() / (float)KCConstants.PPM, 0);
 	}
 	
-	private void startDiagonalHelpTask(Boolean b, Vector2 vector){
-		final Vector2 test = vector;
-		if(!b && isGettingInput()){
-			TimerTask diagonalHelpTask = new TimerTask(){
-				public void run(){
-					if(!isGettingInput()){
-						setDirection(test);
-						System.out.println(test);
-					}
-				}
-			};
-			diagonalHelpTimer.schedule(diagonalHelpTask, 10);
-		}
-	}
-	
 	/**
 	 * Updates the player models position accordingly to the one in the box2d world.
 	 */
@@ -108,7 +93,6 @@ public class PlayerController {
 		Vector2 vector = new Vector2(direction.x, direction.y);
 		movingUp = b;
 		setInputStatus();
-		startDiagonalHelpTask(b, vector);
 	}
 	
 	/**
@@ -119,7 +103,6 @@ public class PlayerController {
 		Vector2 vector = new Vector2(direction.x, direction.y);
 		movingDown = b;
 		setInputStatus();
-		startDiagonalHelpTask(b, vector);
 	}
 	
 	/**
@@ -130,7 +113,6 @@ public class PlayerController {
 		Vector2 vector = new Vector2(direction.x, direction.y);
 		movingRight = b;
 		setInputStatus();
-		startDiagonalHelpTask(b, vector);
 	}
 	
 	/**
@@ -141,7 +123,6 @@ public class PlayerController {
 		Vector2 vector = new Vector2(direction.x, direction.y);
 		movingLeft = b;
 		setInputStatus();
-		startDiagonalHelpTask(b, vector);
 	}
 	
 	/**
