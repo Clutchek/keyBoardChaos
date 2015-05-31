@@ -1,4 +1,9 @@
-package edu.chl.KeyboardChaos.model.spell;
+package edu.chl.KeyboardChaos.util;
+
+import edu.chl.KeyboardChaos.model.spell.Fireball;
+import edu.chl.KeyboardChaos.model.spell.Iceball;
+import edu.chl.KeyboardChaos.model.spell.OffensiveSpell;
+import edu.chl.KeyboardChaos.model.spell.Spell;
 
 
 /**

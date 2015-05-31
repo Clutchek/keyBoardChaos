@@ -13,7 +13,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 
 import edu.chl.KeyboardChaos.model.spell.Spell;
-import edu.chl.KeyboardChaos.model.spell.SpellEnum;
+import edu.chl.KeyboardChaos.util.SpellEnum;
 import edu.chl.KeyboardChaos.view.uiview.FontUtil;
 
 /*
