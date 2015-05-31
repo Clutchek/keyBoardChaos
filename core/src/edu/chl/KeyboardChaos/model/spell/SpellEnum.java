@@ -4,7 +4,7 @@ package edu.chl.KeyboardChaos.model.spell;
  * Enum representing a spell. This makes it possible to go through a list of all available spells.
  */
 public enum SpellEnum {
-	FIREBALL(new Fireball()),
+	FIREBALL(new Fireball(1)),
 	ICE(new Iceball());
 	
 	private final String description;

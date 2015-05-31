@@ -1,8 +1,12 @@
 package edu.chl.KeyboardChaos.settingsservice;
 
 import static org.junit.Assert.*;
+import edu.chl.KeyboardChaos.model.spell.Fireball;
 import edu.chl.KeyboardChaos.settingsservice.PlayerSettings;
+
 import org.junit.Test;
+
+import com.badlogic.gdx.Input.Keys;
 
 
 public class TestFileService {
@@ -20,25 +24,13 @@ public class TestFileService {
 	}
 	
 	@Test
-	public void testReadSettingsForFirstPlayer(){
+	public void testWriteAndRead(){
+		PlayerSettings testObject = new PlayerSettings(Keys.W,Keys.S,Keys.A,Keys.D,Keys.Q,Keys.E, new Fireball(1), new Fireball(1), "Player1");
 		FileService fileService = new FileService();
-		assertTrue(fileService.readPlayerSettings(1) instanceof PlayerSettings);
+		fileService.writePlayerSettings(1, testObject);
+		Object o = fileService.readPlayerSettings(1);
+		PlayerSettings copyObject = (PlayerSettings)o;
+		assertTrue(copyObject.equals(testObject));
 	}
-	/*
-	@Test
-	public void testReadSettingsForSecondPlayer(){
-		FileService fileService = new FileService();
-		assertTrue(fileService.readPlayerSettings(2) instanceof PlayerSettings);
-	}
-	@Test
-	public void testReadSettingsForThirdPlayer(){
-		FileService fileService = new FileService();
-		assertTrue(fileService.readPlayerSettings(3) instanceof PlayerSettings);
-	}
-	@Test
-	public void testReadSettingsForFourthPlayer(){
-		FileService fileService = new FileService();
-		assertTrue(fileService.readPlayerSettings(4) instanceof PlayerSettings);
-	}*/
 
 }

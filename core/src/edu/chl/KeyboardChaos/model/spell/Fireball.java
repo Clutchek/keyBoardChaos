@@ -12,8 +12,8 @@ public class Fireball extends OffensiveSpell{
 
 	public final static String NAME = "Fireball";
 	
-	public Fireball(){
-		super(10f, 3f,3f,2f,1.5f);
+	public Fireball(int originPlayerNumber){
+		super(10f, 3f,3f,2f,1.5f, originPlayerNumber);
 	}
 	
 	@Override

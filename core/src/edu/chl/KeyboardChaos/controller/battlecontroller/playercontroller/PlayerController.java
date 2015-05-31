@@ -1,7 +1,5 @@
 package edu.chl.KeyboardChaos.controller.battlecontroller.playercontroller;
 
-import java.util.Timer;
-import java.util.TimerTask;
 
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
@@ -25,8 +23,6 @@ public class PlayerController {
 	private Body body;
 	private SpellControllerManager spellControllerManager;
 	private FixtureManager fixtureManager;
-	private final Timer diagonalHelpTimer;
-	public final static int TIMER_DELAY = 50;
 	
 	public PlayerController(Player p, FixtureManager fixtureManager, SpellControllerManager spellControllerManager){
 		this.player = p;
@@ -35,7 +31,6 @@ public class PlayerController {
 		this.fixtureManager = fixtureManager;
 		createBody();
 		direction = new Vector2(0,1);
-		diagonalHelpTimer = new Timer();
 		setInputStatus();
 	}
 	
