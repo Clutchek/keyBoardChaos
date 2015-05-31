@@ -19,6 +19,7 @@ import com.badlogic.gdx.utils.Array;
 import edu.chl.KeyboardChaos.controller.MatchStats;
 import edu.chl.KeyboardChaos.model.player.Player;
 import edu.chl.KeyboardChaos.model.spell.Fireball;
+import edu.chl.KeyboardChaos.model.spell.Iceball;
 import edu.chl.KeyboardChaos.util.KCConstants;
 import edu.chl.KeyboardChaos.util.eventbus.BusEvent;
 import edu.chl.KeyboardChaos.util.eventbus.BusEventHandler;
@@ -45,6 +46,7 @@ public class BattleView implements BusEventHandler {
 	
 	private final PlayerView playerView;
 	private final FireballView fireballView;
+	private final IceballView iceballView;
 	
 	private Array<Fixture> fixtures;
 	
@@ -70,6 +72,7 @@ public class BattleView implements BusEventHandler {
 		
 		playerView = new PlayerView(spriteBatch);
 		fireballView = new FireballView(spriteBatch);
+		iceballView = new IceballView(spriteBatch);
 		
 		// Cameras
 		worldCam = new OrthographicCamera(KCConstants.GAME_WIDTH, KCConstants.GAME_HEIGHT);
@@ -106,8 +109,12 @@ public class BattleView implements BusEventHandler {
 			if (f != null) {
 				if (f.getUserData() instanceof Player) {
 					playerView.render((Player)f.getUserData());
+					
+					// Could make a view only for spells (no specific spell needed)
 				} else if (f.getUserData() instanceof Fireball) {
 					fireballView.render((Fireball)f.getUserData());
+				} else if (f.getUserData() instanceof Iceball) {
+					iceballView.render((Iceball)f.getUserData());
 				}
 			}
 		}

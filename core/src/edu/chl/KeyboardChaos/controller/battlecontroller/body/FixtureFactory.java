@@ -10,6 +10,7 @@ import com.badlogic.gdx.physics.box2d.World;
 
 import edu.chl.KeyboardChaos.model.player.Player;
 import edu.chl.KeyboardChaos.model.spell.Fireball;
+import edu.chl.KeyboardChaos.model.spell.Iceball;
 import edu.chl.KeyboardChaos.model.spell.OffensiveSpell;
 import edu.chl.KeyboardChaos.util.KCConstants;
 
@@ -86,6 +87,9 @@ public class FixtureFactory {
 			if(oSpell instanceof Fireball){
 				Fireball fireball = (Fireball)oSpell;
 				body.setUserData(fireball);
+			} else if (oSpell instanceof Iceball) {
+				Iceball iceball = (Iceball)oSpell;
+				body.setUserData(iceball);
 			}
 		}
 		bodyDef.type = BodyType.DynamicBody;
