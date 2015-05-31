@@ -12,14 +12,17 @@ public abstract class OffensiveSpell implements Spell {
 	private DirectionVector vector;
 	private float posX, posY;
 	private float damage, radius, projectileSpeed, duration, cooldown;
+	private int originPlayerNumber;
 	
-	public OffensiveSpell(Float damage, Float projectileSpeed,Float radius , Float duration, Float cooldown) {
+	public OffensiveSpell(Float damage, Float projectileSpeed,Float radius , Float duration, Float cooldown, int originPlayerNumber) {
 		this.vector = new DirectionVector(0, 0);
 		this.radius = radius;
 		this.projectileSpeed = projectileSpeed;
 		this.damage = damage;
 		this.duration = duration;
 		this.cooldown = cooldown;
+		this.originPlayerNumber = originPlayerNumber;
+		
 	}
 	
 	@Override
@@ -36,6 +39,10 @@ public abstract class OffensiveSpell implements Spell {
 		}
 		
 		
+	}
+	
+	public int getOriginPlayerNumber(){
+		return originPlayerNumber;
 	}
 	
 	public DirectionVector getVector() {
