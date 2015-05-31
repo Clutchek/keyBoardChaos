@@ -62,7 +62,7 @@ public class BattleView implements BusEventHandler {
 		this.roundIsOver = false;
 		
 		spriteBatch = new SpriteBatch();
-		debugRenderer = new Box2DDebugRenderer();
+		//debugRenderer = new Box2DDebugRenderer();
 		mapRenderer = new OrthogonalTiledMapRenderer(tileMap);
 		shapeRenderer = new ShapeRenderer();
 		shapeRenderer.setAutoShapeType(true);
@@ -87,7 +87,7 @@ public class BattleView implements BusEventHandler {
 		
 		mapRenderer.setView(worldCam);
 		
-		debugRenderer = new Box2DDebugRenderer();
+		//debugRenderer = new Box2DDebugRenderer();
 		
 		box2DCam = new OrthographicCamera();
 		box2DCam.setToOrtho(false, KCConstants.GAME_WIDTH, KCConstants.GAME_HEIGHT);

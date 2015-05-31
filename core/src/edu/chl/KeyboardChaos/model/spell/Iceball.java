@@ -11,7 +11,7 @@ public class Iceball extends OffensiveSpell{
 	public final static String NAME = "Iceball";
 
 	public Iceball(int playerNumber){
-		super(2f, 3f, 10f, 2f, 1.5f, playerNumber);
+		super(100f, 3f, 10f, 2f, 1.5f, playerNumber);
 		//this.originPlayer = originPlayer;
 		radius = 10f;
 	}

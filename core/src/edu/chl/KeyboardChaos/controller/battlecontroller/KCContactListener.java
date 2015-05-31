@@ -53,25 +53,22 @@ public class KCContactListener implements ContactListener {
 				fixtureManager.addToDisposeList(fixA.getBody());
 				fixtureManager.addToDisposeList(fixB.getBody());
 			}
-		}else if(isPlayerInContact(contact) && isSpellInContact(contact)){ 
+		}else if(isPlayerInContact(contact) && isSpellInContact(contact)){
 			OffensiveSpell spell = getSpellFromContact(contact);
 			fixtureManager.addToDisposeList(getSpellFixture(contact).getBody());
 						
 			Player player = getPlayerFromContact(contact);
 
-			if(spell instanceof Fireball){ //if player gets struck by a fireball he receives dmg
-				Fireball fb = (Fireball)spell;
-				player.takeDamage(fb.getDamage());
 
-				player.setAggressor(fb.getOriginPlayerNumber());
-				if (!player.isAlive()){ 	// if player dies gamestats will change
+				player.takeDamage(spell.getDamage());
+
+				System.out.println(spell.getOriginPlayerNumber());
+				player.setAggressor(player.getPlayerNumber());
+				if (!player.isAlive()){
 					this.matchStats.playerKilled(player);
-					this.matchStats.playerKills(fb.getOriginPlayerNumber()-1);
+					this.matchStats.playerKills(spell.getOriginPlayerNumber()-1);
 				}
-
-			}
 		}
-		
 	}
 
 	@Override
