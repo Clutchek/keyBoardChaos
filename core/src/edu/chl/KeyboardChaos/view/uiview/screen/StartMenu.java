@@ -2,6 +2,7 @@ package edu.chl.KeyboardChaos.view.uiview.screen;
 
 
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 
 import edu.chl.KeyboardChaos.util.KCConstants;
@@ -19,8 +20,8 @@ public class StartMenu extends Screen{
 
 	public StartMenu(){
 		super();
-		this.playButton = new TextButton("Play", KCConstants.GAME_WIDTH/2 - 250, 500, 500, 150, Color.valueOf("969696"), new BusEvent("ControllerSettings"), false);
-		this.exitButton = new TextButton("Exit", KCConstants.GAME_WIDTH/2 - 250, 300, 500, 150, Color.valueOf("969696"), new BusEvent("exit"), false);
+		this.playButton = new TextButton("Play", Gdx.graphics.getWidth()/2 - 250, 500, 500, 150, Color.valueOf("969696"), new BusEvent("ControllerSettings"), false);
+		this.exitButton = new TextButton("Exit", Gdx.graphics.getWidth()/2 - 250, 300, 500, 150, Color.valueOf("969696"), new BusEvent("exit"), false);
 		loadComponentList();
 	}
 

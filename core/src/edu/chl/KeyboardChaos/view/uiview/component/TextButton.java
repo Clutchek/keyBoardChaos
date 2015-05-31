@@ -2,6 +2,7 @@ package edu.chl.KeyboardChaos.view.uiview.component;
 
 
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
@@ -89,7 +90,7 @@ public class TextButton extends EventComponent {
 	 */
 	public boolean isMouseOver(int x, int y) {
 		boolean withinX = x >= super.getPosX() && x <= super.getPosX() + getWidth();
-		boolean withinY = y >= KCConstants.GAME_HEIGHT - super.getPosY() - getHeight() && y <= KCConstants.GAME_HEIGHT - super.getPosY(); // Mouse position is from upper left corner
+		boolean withinY = y >= Gdx.graphics.getHeight() - super.getPosY() - getHeight() && y <= Gdx.graphics.getHeight() - super.getPosY(); // Mouse position is from upper left corner
 		return withinX && withinY;
 	}
 	

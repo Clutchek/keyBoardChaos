@@ -84,6 +84,7 @@ public class BattleView implements BusEventHandler {
 		worldCam.update();
 		
 		spriteBatch.setProjectionMatrix(worldCam.combined);
+		shapeRenderer.setProjectionMatrix(worldCam.combined);
 		
 		mapRenderer.setView(worldCam);
 		

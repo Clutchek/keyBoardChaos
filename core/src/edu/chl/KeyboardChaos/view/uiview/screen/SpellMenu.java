@@ -3,6 +3,8 @@ package edu.chl.KeyboardChaos.view.uiview.screen;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.badlogic.gdx.Gdx;
+
 import edu.chl.KeyboardChaos.settingsservice.Options;
 import edu.chl.KeyboardChaos.util.KCConstants;
 import edu.chl.KeyboardChaos.util.eventbus.BusEvent;
@@ -25,14 +27,14 @@ public class SpellMenu extends Screen implements BusEventHandler {
 	
 	public SpellMenu() {
 		super();
-		int halfOfScreen = KCConstants.GAME_WIDTH/2;
+		int halfOfScreen = Gdx.graphics.getWidth()/2;
 		int space = 20;
 		
-		label = new Label("Choose your spells", KCConstants.GAME_WIDTH/2, KCConstants.GAME_HEIGHT - 25);
-		spellPanel1 = new SpellPanel(halfOfScreen - space*3 - SpellPanel.WIDTH*2, KCConstants.GAME_HEIGHT - SpellPanel.HEIGHT - 100, 1);
-		spellPanel2 = new SpellPanel(halfOfScreen - space - SpellPanel.WIDTH, KCConstants.GAME_HEIGHT - SpellPanel.HEIGHT - 100, 2);
-		spellPanel3 = new SpellPanel(halfOfScreen + space, KCConstants.GAME_HEIGHT - SpellPanel.HEIGHT - 100, 3);
-		spellPanel4 = new SpellPanel(halfOfScreen + space*3 + SpellPanel.WIDTH, KCConstants.GAME_HEIGHT - SpellPanel.HEIGHT - 100, 4);
+		label = new Label("Choose your spells", Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight() - 25);
+		spellPanel1 = new SpellPanel(halfOfScreen - space*3 - SpellPanel.WIDTH*2, Gdx.graphics.getHeight() - SpellPanel.HEIGHT - 100, 1);
+		spellPanel2 = new SpellPanel(halfOfScreen - space - SpellPanel.WIDTH, Gdx.graphics.getHeight() - SpellPanel.HEIGHT - 100, 2);
+		spellPanel3 = new SpellPanel(halfOfScreen + space, Gdx.graphics.getHeight() - SpellPanel.HEIGHT - 100, 3);
+		spellPanel4 = new SpellPanel(halfOfScreen + space*3 + SpellPanel.WIDTH, Gdx.graphics.getHeight() - SpellPanel.HEIGHT - 100, 4);
 		
 		
 		spellPanels = new ArrayList<SpellPanel>();
@@ -40,7 +42,7 @@ public class SpellMenu extends Screen implements BusEventHandler {
 		spellPanels.add(spellPanel2);
 		
 		this.back = new TextButton("Back", 20, 20, 80, 50, new BusEvent("ControllerSettings"), false);
-		this.play = new TextButton("Start Match", KCConstants.GAME_WIDTH - 150, 20, 130, 50, new BusEvent("play"), false);
+		this.play = new TextButton("Start Match", Gdx.graphics.getWidth() - 150, 20, 130, 50, new BusEvent("play"), false);
 		
 		loadComponentList();
 		EventBusService.getInstance().subscribe(this);;

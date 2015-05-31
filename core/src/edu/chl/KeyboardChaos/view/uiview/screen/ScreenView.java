@@ -4,10 +4,12 @@ import java.util.List;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
+import edu.chl.KeyboardChaos.util.KCConstants;
 import edu.chl.KeyboardChaos.view.uiview.FontUtil;
 import edu.chl.KeyboardChaos.view.uiview.component.Component;
 /*
@@ -22,6 +24,8 @@ public class ScreenView {
 	
 	private List<Component> components;
 	
+	private final OrthographicCamera uiCam;
+	
 	public ScreenView (Screen screen) {
 		this.batch = new SpriteBatch();
 		this.shapeRenderer = new ShapeRenderer();
@@ -29,6 +33,12 @@ public class ScreenView {
 		this.fontUtil = new FontUtil();
 		
 		this.components = screen.getComponents();
+		
+		uiCam = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		uiCam.translate(Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/2);
+		uiCam.update();
+		batch.setProjectionMatrix(uiCam.combined);
+		shapeRenderer.setProjectionMatrix(uiCam.combined);
 	}
 	
 	public void render() {
