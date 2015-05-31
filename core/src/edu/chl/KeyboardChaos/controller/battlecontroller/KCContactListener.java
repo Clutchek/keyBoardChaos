@@ -40,7 +40,8 @@ public class KCContactListener implements ContactListener {
 	public void beginContact(Contact contact) {
 		if(isLavaInContact(contact) && isPlayerInContact(contact)){
 			Player player = getPlayerFromContact(contact);
-			player.takeDamage(1f / 60f);
+			player.setPlayerInLava(true);
+			System.out.println(player.getHealthPoints());
 		
 		}else if(isTwoSpellsInContact(contact)){
 			Fixture fixA = contact.getFixtureA();
@@ -66,7 +67,12 @@ public class KCContactListener implements ContactListener {
 
 	@Override
 	public void endContact(Contact contact) {
-
+		if(isLavaInContact(contact) && isPlayerInContact(contact)){
+			Player player = getPlayerFromContact(contact);
+			player.setPlayerInLava(false);
+			System.out.println(player.getHealthPoints());
+		}
+		
 	}
 
 	@Override

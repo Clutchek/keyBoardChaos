@@ -48,7 +48,9 @@ public class PlayerController {
 
 	public void updatePlayer(){
 		updatePlayerPosition();
-		//updatePlayerDirection();
+		if(player.isPlayerInLava()){
+			player.takeDamage(1f / 60f);
+		}
 	}
 	
 	public void updateBodyPosition(){

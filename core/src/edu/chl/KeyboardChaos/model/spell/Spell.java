@@ -9,4 +9,5 @@ public interface Spell extends Serializable, Cloneable{
 	public String getName();
 	public float getCooldown();
 	public float getDuration();
+	public Spell clone();
 }
