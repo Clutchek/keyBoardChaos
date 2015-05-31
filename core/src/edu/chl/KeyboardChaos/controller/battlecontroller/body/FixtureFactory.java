@@ -39,9 +39,7 @@ public class FixtureFactory {
 	protected Fixture createFixture(Body body){
 		FixtureDef fixtureDef = new FixtureDef();
 		float fixtureRadius = 0f;
-		//Nullpointervarning h�r
 		if(body.getUserData() instanceof OffensiveSpell){
-			System.out.println("Im in fixturecreation fireball");
 			fixtureDef.filter.maskBits = KCConstants.MASK_SPELL;
 			fixtureDef.filter.categoryBits = KCConstants.BIT_SPELL;
 			OffensiveSpell oSpell = (OffensiveSpell)body.getUserData();

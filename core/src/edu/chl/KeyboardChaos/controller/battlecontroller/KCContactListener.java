@@ -41,7 +41,6 @@ public class KCContactListener implements ContactListener {
 		if(isLavaInContact(contact) && isPlayerInContact(contact)){
 			Player player = getPlayerFromContact(contact);
 			player.setPlayerInLava(true);
-			System.out.println(player.getHealthPoints());
 		
 		}else if(isTwoSpellsInContact(contact)){
 			Fixture fixA = contact.getFixtureA();
@@ -70,7 +69,6 @@ public class KCContactListener implements ContactListener {
 		if(isLavaInContact(contact) && isPlayerInContact(contact)){
 			Player player = getPlayerFromContact(contact);
 			player.setPlayerInLava(false);
-			System.out.println(player.getHealthPoints());
 		}
 		
 	}

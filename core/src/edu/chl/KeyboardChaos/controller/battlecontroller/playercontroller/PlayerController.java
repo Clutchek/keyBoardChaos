@@ -26,20 +26,12 @@ public class PlayerController {
 	
 	public PlayerController(Player p, FixtureManager fixtureManager, SpellControllerManager spellControllerManager){
 		this.player = p;
-		//setPlayerSettings(settings);
 		this.spellControllerManager = spellControllerManager;
 		this.fixtureManager = fixtureManager;
 		createBody();
 		direction = new Vector2(0,1);
 		setInputStatus();
 	}
-	
-	/*public void update(){
-		setInputStatus();
-		applyForce();
-		updatePlayerPosition();
-		updatePlayerDirection();
-	}*/
 	
 	public void updateBody(){
 		updateBodyPosition();
@@ -49,7 +41,7 @@ public class PlayerController {
 	public void updatePlayer(){
 		updatePlayerPosition();
 		if(player.isPlayerInLava()){
-			player.takeDamage(1f / 60f);
+			player.takeDamage(1f / 6f);
 		}
 	}
 	
@@ -182,17 +174,9 @@ public class PlayerController {
 		body = fixtureManager.createFixture(player).getBody();
 	}
 	
-	/*public void setPlayerPos(float x, float y){
-		this.bDef.position.set(x /  KCConstants.PPM, y / KCConstants.PPM);
-	}*/
-	
 	public Body getBody(){
 		return body;
 	}
-	
-//	public PlayerSettings getPlayerSettings(){
-//		return settings;
-//	}
 	
 	
 	/**
@@ -224,7 +208,6 @@ public class PlayerController {
 		if(isMovingDown()){
 			direction.y = -1;
 		}
-		//System.out.println(direction);
 		updatePlayerDirection();
 	}
 	
