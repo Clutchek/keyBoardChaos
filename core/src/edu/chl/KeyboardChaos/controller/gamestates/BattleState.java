@@ -74,10 +74,8 @@ public class BattleState implements GameState {
 		for(PlayerController PC : playerControllerList){
 
 			PC.updateBody();
-
-			PC.updatePlayer();
-
 		}
+		
 		refreshFixtureList();
 		
 		spellControllerManager.update();
@@ -88,11 +86,11 @@ public class BattleState implements GameState {
 		
 		world.step(KCConstants.TIME_STEP, 6, 2);
 		
-		/*for(PlayerController PC : playerControllerList){
+		for(PlayerController PC : playerControllerList){
 
 			PC.updatePlayer();
 
-		}*/
+		}
 
 		// Destroy fixtures here?
 	}

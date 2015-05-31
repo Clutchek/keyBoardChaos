@@ -11,6 +11,7 @@ import edu.chl.KeyboardChaos.controller.battlecontroller.spellcontroller.SpellCo
 import edu.chl.KeyboardChaos.model.player.Player;
 import edu.chl.KeyboardChaos.settingsservice.PlayerSettings;
 import edu.chl.KeyboardChaos.util.DirectionVector;
+import edu.chl.KeyboardChaos.util.KCConstants;
 
 
 /*
@@ -58,9 +59,7 @@ public class PlayerController {
 	}
 	
 	public void updateBodyPosition(){
-		Vector2 position = body.getPosition();
-		position.x = player.getPosX();
-		position.y = player.getPosY();
+		body.setTransform(player.getPosX() / (float)KCConstants.PPM, player.getPosY() / (float)KCConstants.PPM, 0);
 	}
 	
 	private void startDiagonalHelpTask(Boolean b, Vector2 vector){
