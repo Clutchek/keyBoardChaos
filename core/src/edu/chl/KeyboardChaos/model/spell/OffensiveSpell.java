@@ -90,4 +90,27 @@ public abstract class OffensiveSpell implements Spell {
 	public float getProjectileSpeed(){
 		return this.projectileSpeed;
 	}
+	
+	@Override
+	public boolean equals(Object otherObject){
+		if(otherObject == this){
+			return true;
+		}
+		if(otherObject == null){
+			return false;
+		}
+		if(otherObject.getClass() != this.getClass()){
+			return false;
+		}
+		OffensiveSpell otherSpell = (OffensiveSpell)otherObject;
+		return (vector.equals(otherSpell.vector) &&
+				radius == otherSpell.radius &&
+				projectileSpeed == otherSpell.projectileSpeed &&
+				damage == otherSpell.damage &&
+				duration == otherSpell.duration &&
+				cooldown == otherSpell.cooldown &&
+				originPlayerNumber == originPlayerNumber &&
+				posX == otherSpell.posX && posY == otherSpell.posY
+				);
+	}
 }
