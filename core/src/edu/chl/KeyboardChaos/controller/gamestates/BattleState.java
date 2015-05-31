@@ -78,13 +78,20 @@ public class BattleState implements GameState {
 	
 	@Override
 	public void update() {
-		removeObjects();	// Removes fixtures and bodies from the world that has been marked for removal.
+			// Removes fixtures and bodies from the world that has been marked for removal.
 							// Read SDD for info about safe removal.
 							// With the bodies destroyed, below makes sure that the last reference to the body
 							// is removed so it never can be called upon again - which would cause a crash.
 		for(PlayerController PC : playerControllerList){
 			PC.updateBody();
+			if(!PC.getPlayer().isAlive() && PC.getPlayer().isPlayerInLava()){
+				System.out.println("kollar bajs");
+					matchStats.playerKilled(PC.getPlayer());
+					matchStats.playerKills(PC.getPlayer().getEnemyAggrssor() - 1);
+				
+			}
 		}
+		removeObjects();
 		
 		refreshFixtureList();
 		spellControllerManager.update();
