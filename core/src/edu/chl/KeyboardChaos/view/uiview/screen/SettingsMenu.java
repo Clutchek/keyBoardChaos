@@ -3,6 +3,7 @@ package edu.chl.KeyboardChaos.view.uiview.screen;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 
 import edu.chl.KeyboardChaos.settingsservice.Options;
@@ -25,19 +26,19 @@ public class SettingsMenu extends Screen implements BusEventHandler {
 	private final Label label;
 	private List<PlayerSettingsPanel> pspList;
 
-	private final int halfOfScreen = KCConstants.GAME_WIDTH/2;
+	private final int halfOfScreen = Gdx.graphics.getWidth()/2;
 	private final int space = 20;
 
 	public SettingsMenu(){
 
-		psp1 = new PlayerSettingsPanel(halfOfScreen - space*3 - SpellPanel.WIDTH*2, KCConstants.GAME_HEIGHT - SpellPanel.HEIGHT - 100, 1);
-		psp2 = new PlayerSettingsPanel(halfOfScreen - space - SpellPanel.WIDTH, KCConstants.GAME_HEIGHT - SpellPanel.HEIGHT - 100, 2);
-		psp3 = new PlayerSettingsPanel(halfOfScreen + space, KCConstants.GAME_HEIGHT - SpellPanel.HEIGHT - 100, 3);
-		psp4 = new PlayerSettingsPanel(halfOfScreen + space*3 + SpellPanel.WIDTH, KCConstants.GAME_HEIGHT - SpellPanel.HEIGHT - 100, 4);
+		psp1 = new PlayerSettingsPanel(halfOfScreen - space*3 - SpellPanel.WIDTH*2, Gdx.graphics.getHeight() - SpellPanel.HEIGHT - 100, 1);
+		psp2 = new PlayerSettingsPanel(halfOfScreen - space - SpellPanel.WIDTH, Gdx.graphics.getHeight() - SpellPanel.HEIGHT - 100, 2);
+		psp3 = new PlayerSettingsPanel(halfOfScreen + space, Gdx.graphics.getHeight() - SpellPanel.HEIGHT - 100, 3);
+		psp4 = new PlayerSettingsPanel(halfOfScreen + space*3 + SpellPanel.WIDTH, Gdx.graphics.getHeight() - SpellPanel.HEIGHT - 100, 4);
 
 		this.backButton = new TextButton("Back", 20, 20, 80, 50, new BusEvent("StartMenu"), false);
-		this.nextButton = new TextButton("Next", KCConstants.GAME_WIDTH - 100, 20, 80, 50, new BusEvent("SpellSettings"), false);
-		this.label = new Label("Join and choose your controller settings!", KCConstants.GAME_WIDTH/2, KCConstants.GAME_HEIGHT - 25);
+		this.nextButton = new TextButton("Next", Gdx.graphics.getWidth() - 100, 20, 80, 50, new BusEvent("SpellSettings"), false);
+		this.label = new Label("Join and choose your controller settings!", Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight() - 25);
 		loadPspList();
 		loadComponentList();
 		

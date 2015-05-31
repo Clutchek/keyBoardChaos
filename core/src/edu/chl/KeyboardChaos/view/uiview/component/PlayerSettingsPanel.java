@@ -190,7 +190,7 @@ public class PlayerSettingsPanel extends Panel implements BusEventHandler {
 			
 			batch.begin();
 			fontUtil.setFont(Font.EUPHEMIA_21);
-			fontUtil.getFont().draw(batch, "Click to join...", fontUtil.getCenteredTextPos("Click to join...", this.getPosX(), this.width), this.getHeight()/2);
+			fontUtil.getFont().draw(batch, "Click to join...", fontUtil.getCenteredTextPos("Click to join...", this.getPosX(), this.width), this.getPosY()+50);
 			batch.end();
 		}
 	}

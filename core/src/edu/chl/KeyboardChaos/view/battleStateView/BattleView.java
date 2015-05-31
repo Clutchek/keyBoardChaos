@@ -83,6 +83,9 @@ public class BattleView implements BusEventHandler {
 		worldCam.translate(KCConstants.GAME_WIDTH / 2, KCConstants.GAME_HEIGHT / 2);
 		worldCam.update();
 		
+		spriteBatch.setProjectionMatrix(worldCam.combined);
+		shapeRenderer.setProjectionMatrix(worldCam.combined);
+		
 		mapRenderer.setView(worldCam);
 		
 		debugRenderer = new Box2DDebugRenderer();
@@ -142,7 +145,7 @@ public class BattleView implements BusEventHandler {
 			spriteBatch.end();
 		}
 		
-		//debugRenderer.render(world, box2DCam.combined);
+		debugRenderer.render(world, box2DCam.combined);
 	}
 	
 	public void setFixtureArray(Array<Fixture> fixtures) {
