@@ -18,6 +18,8 @@ public abstract class OffensiveSpell implements Spell {
 		radius = 3f;
 	}
 	
+	public abstract float getProjectileSpeed();
+	
 	public DirectionVector getVector() {
 		return this.vector;
 	}

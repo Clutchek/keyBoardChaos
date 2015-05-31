@@ -33,7 +33,7 @@ public class OffensiveSpellController extends SpellController{
 	public void update(){
 		super.update();
 		if(body != null){
-			body.setLinearVelocity(getVector().setLength(3f));
+			body.setLinearVelocity(getVector().setLength(offensiveSpell.getProjectileSpeed()));
 		}
 		//body.applyForceToCenter(getVector(), true);q
 		if(super.ticksActivated >= offensiveSpell.getDuration()*60){
