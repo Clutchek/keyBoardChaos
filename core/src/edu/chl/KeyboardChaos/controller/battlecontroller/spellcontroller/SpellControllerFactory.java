@@ -47,8 +47,10 @@ public class SpellControllerFactory {
 				//Stub
 				
 			
+		}else{
+			throw new IllegalArgumentException("Spell not yet implemented");
 		}
-		return null;
+		
 	}
 
 }
