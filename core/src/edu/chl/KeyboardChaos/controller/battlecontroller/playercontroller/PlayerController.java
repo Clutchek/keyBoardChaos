@@ -7,6 +7,7 @@ import com.badlogic.gdx.physics.box2d.Body;
 import edu.chl.KeyboardChaos.controller.battlecontroller.body.FixtureManager;
 import edu.chl.KeyboardChaos.controller.battlecontroller.spellcontroller.SpellControllerManager;
 import edu.chl.KeyboardChaos.model.player.Player;
+import edu.chl.KeyboardChaos.model.spell.Spell;
 import edu.chl.KeyboardChaos.util.DirectionVector;
 import edu.chl.KeyboardChaos.util.KCConstants;
 
@@ -24,9 +25,12 @@ public class PlayerController {
 	private SpellControllerManager spellControllerManager;
 	private FixtureManager fixtureManager;
 	private final float LAVA_DAMAGE_PER_TICK;
+	private Spell firstSpell,secondSpell;
 	
 	public PlayerController(Player p, FixtureManager fixtureManager, SpellControllerManager spellControllerManager){
 		this.player = p;
+		firstSpell = p.getFirstSpell();
+		secondSpell = p.getSecondSpell();
 		this.spellControllerManager = spellControllerManager;
 		this.fixtureManager = fixtureManager;
 		createBody();
@@ -45,6 +49,8 @@ public class PlayerController {
 		if(player.isPlayerInLava()){
 			player.takeDamage(LAVA_DAMAGE_PER_TICK);
 		}
+		firstSpell.tickCooldownTimer();
+		secondSpell.tickCooldownTimer();
 	}
 	
 	public void updateBodyPosition(){
@@ -214,11 +220,17 @@ public class PlayerController {
 	}
 	
 	public void useFirstSpell(){
-		spellControllerManager.createSpellController(player.getFirstSpell(), player);
+		if(!firstSpell.isOnCoolDown()){
+			spellControllerManager.createSpellController(firstSpell, player);
+			firstSpell.resetCooldownTimer();
+		}
 	}
 	
 	public void useSecondSpell(){
-		spellControllerManager.createSpellController(player.getSecondSpell(), player);
+		if(!secondSpell.isOnCoolDown()){
+			spellControllerManager.createSpellController(secondSpell, player);
+			secondSpell.resetCooldownTimer();
+		}
 	}
 	
 	/**

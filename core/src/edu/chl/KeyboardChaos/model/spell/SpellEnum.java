@@ -29,7 +29,7 @@ public enum SpellEnum {
 	}
 	
 	public Spell getSpell(int playerNumber) {
-		Spell copy = spell.clone();
+		Spell copy = (Spell) spell.clone();
 		if (copy instanceof OffensiveSpell) {
 			((OffensiveSpell) copy).setPlayerNumber(playerNumber);
 		}

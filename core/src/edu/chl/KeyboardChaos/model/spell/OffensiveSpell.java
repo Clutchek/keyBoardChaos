@@ -6,7 +6,7 @@ import edu.chl.KeyboardChaos.util.DirectionVector;
  * A class that represents an attacking projectile spell in the keyBoardChaos game.
  */
 
-public abstract class OffensiveSpell implements Spell {
+public abstract class OffensiveSpell extends Spell {
 	
 	private static final long serialVersionUID = 4246452556975709909L;
 	private DirectionVector vector;
@@ -24,19 +24,20 @@ public abstract class OffensiveSpell implements Spell {
 		this.originPlayerNumber = originPlayerNumber;
 		
 	}
+	//Koperingskonstruktor
+	public OffensiveSpell(OffensiveSpell spell){
+		this(spell.damage, spell.projectileSpeed,spell.radius , spell.duration,spell.cooldown, spell.originPlayerNumber);
+		this.vector = new DirectionVector(spell.vector.getX(), spell.vector.getY());
+	}
 	
 	@Override
 	public OffensiveSpell clone(){
-		try {
+			
 			OffensiveSpell oSpell = (OffensiveSpell)super.clone();
 			DirectionVector copy = new DirectionVector(vector);
 			oSpell.vector = copy;
 			return oSpell;
-			
-		} catch (CloneNotSupportedException e) {
-			e.printStackTrace();
-			return null; //never invoked
-		}
+			//return new OffensiveSpell(this);
 		
 		
 	}
