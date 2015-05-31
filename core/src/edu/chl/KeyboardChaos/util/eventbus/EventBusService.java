@@ -16,7 +16,7 @@ public class EventBusService {
 		
 	}
 	
-	public static EventBusService getInstance(){
+	public static synchronized EventBusService getInstance(){
 		if(ebs == null){
 			ebs = new EventBusService();
 		}

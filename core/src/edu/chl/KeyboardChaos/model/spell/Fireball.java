@@ -6,6 +6,7 @@ package edu.chl.KeyboardChaos.model.spell;
 
 public class Fireball extends OffensiveSpell{
 	
+	private static final long serialVersionUID = 8857635637656332791L;
 	private float damage, projectileSpeed;
 	private final float fireballRadius;
 	

@@ -60,7 +60,7 @@ public class MatchStats {
 	/*
 	 * This method receives a player and returns the index of that player in MatchStats
 	 */
-	public int IndexOfPlayer(Player p){
+	public int indexOfPlayer(Player p){
 		if(p.getPlayerName().equals("Player1")){
 			return 0;
 		}
@@ -80,8 +80,8 @@ public class MatchStats {
 	 * @param p the player that got the kill
 	 */
 	public void playerKills(Player p){
-		playerScores[IndexOfPlayer(p)] = playerScores[IndexOfPlayer(p)] + this.killScore;
-		playerKills[IndexOfPlayer(p)] = playerKills[IndexOfPlayer(p)] + 1;
+		playerScores[indexOfPlayer(p)] = playerScores[indexOfPlayer(p)] + this.killScore;
+		playerKills[indexOfPlayer(p)] = playerKills[indexOfPlayer(p)] + 1;
 	}
 	/*
 	 * This method is called on when a player gets killed
@@ -89,19 +89,19 @@ public class MatchStats {
 	 * @param p the player that got killed
 	 */
 	public void playerKilled(Player p){
-		playerDeaths[IndexOfPlayer(p)] = playerDeaths[IndexOfPlayer(p)] + 1;
+		playerDeaths[indexOfPlayer(p)] = playerDeaths[indexOfPlayer(p)] + 1;
 	}
 	
 	public int getPlayerScore(Player p){
-		return playerScores[IndexOfPlayer(p)];
+		return playerScores[indexOfPlayer(p)];
 	}
 	
 	public int getPlayerKills(Player p){
-		return playerKills[IndexOfPlayer(p)];
+		return playerKills[indexOfPlayer(p)];
 	}
 	
 	public int getPlayerDeaths(Player p){
-		return playerDeaths[IndexOfPlayer(p)];
+		return playerDeaths[indexOfPlayer(p)];
 	}
 	
 }

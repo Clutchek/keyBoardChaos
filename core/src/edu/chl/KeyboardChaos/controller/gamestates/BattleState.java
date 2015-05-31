@@ -68,7 +68,7 @@ public class BattleState implements GameState {
 	}
 	
 	@Override
-	public synchronized void update() {
+	public void update() {
 		removeObjects();
 		handleInput();
 		for(PlayerController PC : playerControllerList){

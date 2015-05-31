@@ -30,13 +30,9 @@ public class SpellControllerManager {
 	 * @param player the player which will own this spell controller
 	 */
 	public void createSpellController(Spell spell, Player player){
-		if(spell instanceof Spell){
-			SpellController SC = spellControllerFactory.
-					createSpellController(spell, player);
-			spellControllerList.add(SC);
-		}else{
-			System.out.println("NONONONONO");
-		}
+		SpellController SC = spellControllerFactory.
+		createSpellController(spell, player);
+		spellControllerList.add(SC);
 	}
 	
 	private void removeInactiveSpellControllers(){
