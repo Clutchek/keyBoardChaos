@@ -50,8 +50,8 @@ public class SpellBox extends Component {
 		return new Texture(Gdx.files.internal(path));
 	}
 	
-	public Spell getSpell() {
-		return this.spell.getSpell();
+	public Spell getSpell(int playerNumber) {
+		return this.spell.getSpell(playerNumber);
 	}
 	
 	public boolean isSelected() {
