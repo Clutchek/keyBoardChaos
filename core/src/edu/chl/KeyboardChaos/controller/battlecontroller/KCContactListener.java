@@ -10,7 +10,9 @@ import edu.chl.KeyboardChaos.controller.MatchStats;
 import edu.chl.KeyboardChaos.controller.battlecontroller.body.FixtureManager;
 import edu.chl.KeyboardChaos.model.player.Player;
 import edu.chl.KeyboardChaos.model.spell.Fireball;
-import edu.chl.KeyboardChaos.model.spell.Spell;
+//import edu.chl.KeyboardChaos.model.spell.Spell;
+import edu.chl.KeyboardChaos.model.spell.OffensiveSpell;
+
 
 
 
@@ -49,7 +51,7 @@ public class KCContactListener implements ContactListener {
 				fixtureManager.addToDisposeList(fixB.getBody());
 			}
 		}else if(isPlayerInContact(contact) && isSpellInContact(contact)){
-			Spell spell = getSpellFromContact(contact);
+			OffensiveSpell spell = getSpellFromContact(contact);
 			fixtureManager.addToDisposeList(getSpellFixture(contact).getBody());
 						
 			Player player = getPlayerFromContact(contact);
@@ -94,14 +96,14 @@ public class KCContactListener implements ContactListener {
 	}
 	
 	
-	private Spell getSpellFromContact(Contact c){
+	private OffensiveSpell getSpellFromContact(Contact c){
 		Fixture fixA = c.getFixtureA();
 		Fixture fixB = c.getFixtureB();
 		
-		if(fixA.getUserData() instanceof Spell){
-			return (Spell)(fixA.getUserData());
-		}else if(fixB.getUserData() instanceof Spell){
-			return (Spell)(fixB.getUserData());
+		if(fixA.getUserData() instanceof OffensiveSpell){
+			return (OffensiveSpell)(fixA.getUserData());
+		}else if(fixB.getUserData() instanceof OffensiveSpell){
+			return (OffensiveSpell)(fixB.getUserData());
 		}else
 			return null; 	//Denna metod ropas aldrig pÂ om man inte redan vet att en fixture i en contact ‰r en spell
 							//sÂ null borde aldrig bli returnerat. Fortfarande inte snyggt med null... Exception?
@@ -111,10 +113,9 @@ public class KCContactListener implements ContactListener {
 	private boolean isLavaInContact(Contact c){
 		Fixture fixA = c.getFixtureA();
 		Fixture fixB = c.getFixtureB();
-		if (fixA.getUserData().equals("lava") || fixB.getUserData().equals("lava")){
-			return true;
-		}else
-			return false;
+		
+		return (fixA.getUserData().equals("lava") || fixB.getUserData().equals("lava"));
+
 	}
 	
 	private boolean isPlayerInContact(Contact c){
@@ -129,27 +130,24 @@ public class KCContactListener implements ContactListener {
 	private boolean isTwoSpellsInContact(Contact c){
 		Fixture fixA = c.getFixtureA();
 		Fixture fixB = c.getFixtureB();
-		if((fixA.getUserData() instanceof Spell) && (fixB.getUserData() instanceof Spell)){
-			return true;
-		}else
-			return false;
+		return ((fixA.getUserData() instanceof OffensiveSpell) && (fixB.getUserData() instanceof OffensiveSpell));
+		
+
 	}
 
 	private boolean isSpellInContact(Contact c){
 		Fixture fixA = c.getFixtureA();
 		Fixture fixB = c.getFixtureB();
-		if((fixA.getUserData() instanceof Spell) || (fixB.getUserData() instanceof Spell)){
-			return true;
-		}else
-			return false;
+		
+		return ((fixA.getUserData() instanceof OffensiveSpell) || (fixB.getUserData() instanceof OffensiveSpell));
 	}
 	
 	private Fixture getSpellFixture(Contact c){
 		Fixture fixA = c.getFixtureA();
 		Fixture fixB = c.getFixtureB();
-		if(fixA.getUserData() instanceof Spell){
+		if(fixA.getUserData() instanceof OffensiveSpell){
 			return fixA;
-		}else if(fixB.getUserData() instanceof Spell){
+		}else if(fixB.getUserData() instanceof OffensiveSpell){
 			return fixB;
 		}else
 			return null;

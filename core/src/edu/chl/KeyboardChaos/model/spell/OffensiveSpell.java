@@ -11,7 +11,7 @@ public abstract class OffensiveSpell implements Spell {
 	private static final long serialVersionUID = 4246452556975709909L;
 	private DirectionVector vector;
 	private float posX, posY;
-	protected float radius;
+	protected float radius, damage;
 	
 	public OffensiveSpell() {
 		this.vector = new DirectionVector(0, 0);
@@ -43,5 +43,9 @@ public abstract class OffensiveSpell implements Spell {
 	
 	public float getRadius(){
 		return this.radius;
+	}
+	
+	public float getDamage(){
+		return this.damage;
 	}
 }
