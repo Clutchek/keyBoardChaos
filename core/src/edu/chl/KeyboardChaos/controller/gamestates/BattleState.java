@@ -25,6 +25,7 @@ import edu.chl.KeyboardChaos.util.KCConstants;
 import edu.chl.KeyboardChaos.util.eventbus.BusEvent;
 import edu.chl.KeyboardChaos.util.eventbus.EventBusService;
 import edu.chl.KeyboardChaos.view.battleStateView.BattleView;
+import edu.chl.KeyboardChaos.view.uiview.component.MatchStatsView;
 
 /**
  * This class takes care of everything related to the game rounds where players fight.
@@ -45,6 +46,7 @@ public class BattleState implements GameState {
 	private final List<PlayerController> playerControllerList;
 	private SpellControllerManager spellControllerManager;
 	private MatchStats matchStats;
+	private MatchStatsView msv;
 	private boolean roundIsOver;
 	
 	public BattleState() {

@@ -21,10 +21,11 @@ import edu.chl.KeyboardChaos.model.player.Player;
 import edu.chl.KeyboardChaos.model.spell.Fireball;
 import edu.chl.KeyboardChaos.util.KCConstants;
 import edu.chl.KeyboardChaos.util.eventbus.BusEvent;
-import edu.chl.KeyboardChaos.util.eventbus.EventBusService;
 import edu.chl.KeyboardChaos.util.eventbus.BusEventHandler;
+import edu.chl.KeyboardChaos.util.eventbus.EventBusService;
 import edu.chl.KeyboardChaos.view.uiview.Font;
 import edu.chl.KeyboardChaos.view.uiview.FontUtil;
+import edu.chl.KeyboardChaos.view.uiview.component.MatchStatsView;
 
 
 /*
@@ -48,6 +49,7 @@ public class BattleView implements BusEventHandler {
 	private Array<Fixture> fixtures;
 	
 	private MatchStats matchStats;
+	private MatchStatsView msv;
 	
 	private boolean roundIsOver;
 	
@@ -85,7 +87,8 @@ public class BattleView implements BusEventHandler {
 		box2DCam = new OrthographicCamera();
 		box2DCam.setToOrtho(false, KCConstants.GAME_WIDTH, KCConstants.GAME_HEIGHT);
 		box2DCam.combined.scale(KCConstants.PPM, KCConstants.PPM, 0);
-
+		
+		msv = new MatchStatsView(shapeRenderer, matchStats, KCConstants.GAME_WIDTH - 200, KCConstants.GAME_HEIGHT);
 		EventBusService.getInstance().subscribe(this);
 	}
 	
@@ -110,6 +113,7 @@ public class BattleView implements BusEventHandler {
 		}
 		
 		spriteBatch.end();
+		msv.render(spriteBatch);
 		
 		if (roundIsOver) {
 			// Make screen darker
