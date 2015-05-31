@@ -68,15 +68,13 @@ public class GameStateContext implements EventHandler{
 
 	@Override
 	public void onEvent(BusEvent e) {
-		if (e != null) {
-			String command = e.getBusCommand();
-			if (command.equals("play")) {
-				this.switchToBattleState();
-			} else if (command.equals("exit")) {
-				Gdx.app.exit();
-			} else if (command.equals("menu")) {
-				this.switchToUIState();
-			}
+		String command = e.getBusCommand();
+		if (command.equals("play")) {
+			this.switchToBattleState();
+		} else if (command.equals("exit")) {
+			Gdx.app.exit();
+		} else if (command.equals("menu")) {
+			this.switchToUIState();
 		}
 	}
 }

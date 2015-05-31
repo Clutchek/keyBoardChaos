@@ -52,8 +52,8 @@ public class PlayerSettingsPanel extends Panel implements EventHandler {
 	 * @param playerNbr determines what player this panel belongs to
 	 */
 
-	public PlayerSettingsPanel (int posX, int posY, int playerNbr, BusEvent event){
-		super(posX, posY, event);
+	public PlayerSettingsPanel (int posX, int posY, int playerNbr){
+		super(posX, posY);
 
 		this.playerNbr = playerNbr;
 		
@@ -75,7 +75,7 @@ public class PlayerSettingsPanel extends Panel implements EventHandler {
 	 * @param posY determines the Y-position of the button inside the PlayerSettingsPanel
 	 */
 	private TextButton createControllerSettingsButton(int posX, int posY, String startText){
-		return new TextButton(startText, posX, posY, buttonSize, buttonSize, Color.valueOf("c76432"), null, true);
+		return new TextButton(startText, posX, posY, buttonSize, buttonSize, Color.valueOf("c76432"), new BusEvent(""), true);
 	}
 	
 	private void loadTextButtons(){

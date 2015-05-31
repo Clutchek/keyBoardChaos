@@ -97,11 +97,9 @@ public class KCInputProcessor extends InputAdapter implements EventHandler{
 	
 	@Override
 	public void onEvent(BusEvent e) {
-		if (e != null) {
-			if (e.getBusCommand().equals("round over"))
-				this.roundIsOver = true;
-			else if (e.getBusCommand().equals("play"))
-				this.roundIsOver = false;
-		}
+		if (e.getBusCommand().equals("round over"))
+			this.roundIsOver = true;
+		else if (e.getBusCommand().equals("play"))
+			this.roundIsOver = false;
 	}
 }

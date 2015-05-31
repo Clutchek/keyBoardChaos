@@ -13,12 +13,10 @@ import edu.chl.KeyboardChaos.view.uiview.FontUtil;
 public abstract class Component {
 	
 	private final int posX, posY;
-	private BusEvent event;
 	
-	public Component(int posX, int posY, BusEvent event) {
+	public Component(int posX, int posY) {
 		this.posX = posX;
 		this.posY = posY;
-		this.event = event;
 	}
 	
 	public int getPosX() {
@@ -30,11 +28,4 @@ public abstract class Component {
 	}
 	
 	public abstract void render(SpriteBatch batch, ShapeRenderer shapeRenderer, FontUtil fontUtil);
-	
-	/**
-	 * @return The BusEvent of this component.
-	 */
-	public BusEvent getEvent() {
-		return this.event;
-	}
 }

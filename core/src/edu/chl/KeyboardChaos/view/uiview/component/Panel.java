@@ -8,8 +8,8 @@ import edu.chl.KeyboardChaos.util.eventbus.BusEvent;
 public abstract class Panel extends Component {
 	private List<Component> components;
 	
-	public Panel(int posX, int posY, BusEvent event) {
-		super(posX, posY, event);
+	public Panel(int posX, int posY) {
+		super(posX, posY);
 		this.components = new ArrayList<Component>();
 	}
 	

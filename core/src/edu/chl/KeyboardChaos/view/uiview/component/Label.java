@@ -15,8 +15,8 @@ public class Label extends Component {
 
 	String text;
 	
-	public Label(String text, int posX, int posY, BusEvent event) {
-		super(posX, posY, event);
+	public Label(String text, int posX, int posY) {
+		super(posX, posY);
 		this.text = text;
 	}
 

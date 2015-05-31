@@ -18,7 +18,7 @@ import edu.chl.KeyboardChaos.view.uiview.FontUtil;
 /**
  * A clickable button with text on it
  */
-public class TextButton extends Component {
+public class TextButton extends EventComponent {
 
 	private String text;
 	private Color currentColor, backgroundColor, hoverColor, clickColor;

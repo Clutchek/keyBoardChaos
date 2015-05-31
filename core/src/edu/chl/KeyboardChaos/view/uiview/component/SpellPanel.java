@@ -33,8 +33,8 @@ public class SpellPanel extends Panel {
 	
 	private final List<Component> components;
 	
-	public SpellPanel(int posX, int posY, BusEvent event, int playerNumber) {
-		super(posX, posY, event);
+	public SpellPanel(int posX, int posY, int playerNumber) {
+		super(posX, posY);
 		
 		Options options = Options.getOptionsInstance();
 		
@@ -45,7 +45,7 @@ public class SpellPanel extends Panel {
 		this.components = new ArrayList<Component>();
 		this.spellBox1 = new SpellBox(posX + 10, posY + 300, options.getFirstSpell(playerNumber));
 		this.spellBox2 = new SpellBox(posX + WIDTH - SpellBox.SIZE - 10, posY + 300, options.getSecondSpell(playerNumber));
-		this.label = new Label(playerName, this.getPosX() + WIDTH/2, this.getPosY() + HEIGHT - 20, null);
+		this.label = new Label(playerName, this.getPosX() + WIDTH/2, this.getPosY() + HEIGHT - 20);
 		loadComponents();
 		
 

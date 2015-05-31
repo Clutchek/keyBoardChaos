@@ -31,7 +31,7 @@ public class SpellBox extends Component {
 	private final Map<SpellEnum, Texture> textureMap;
 	
 	public SpellBox(int posX, int posY, Spell spell) {
-		super(posX, posY, null);
+		super(posX, posY);
 		this.spell = SpellEnum.getSpellEnum(spell);
 		this.isSelected = false;
 		this.backgroundColor = Color.valueOf("282828");
