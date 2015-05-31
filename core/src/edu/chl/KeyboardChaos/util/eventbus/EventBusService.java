@@ -43,7 +43,12 @@ public class EventBusService {
 	 * 
 	 */
 	public void publish(BusEvent e){
-		for(EventHandler handler: handlers){
+		// Copy handlers to a temporary list
+		List<EventHandler> tmp = new ArrayList<EventHandler>();
+		tmp.addAll(handlers);
+		
+		// Go through the temporary handlers
+		for(EventHandler handler: tmp){
 			handler.onEvent(e);
 		}
 	}

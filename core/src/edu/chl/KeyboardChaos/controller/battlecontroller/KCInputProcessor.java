@@ -3,10 +3,14 @@ package edu.chl.KeyboardChaos.controller.battlecontroller;
 import java.util.List;
 import java.util.Timer;
 
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputAdapter;
 
 import edu.chl.KeyboardChaos.controller.battlecontroller.playercontroller.PlayerController;
 import edu.chl.KeyboardChaos.settingsservice.Options;
+import edu.chl.KeyboardChaos.util.eventbus.BusEvent;
+import edu.chl.KeyboardChaos.util.eventbus.EventBusService;
+import edu.chl.KeyboardChaos.util.eventbus.EventHandler;
 
 
 
@@ -22,15 +26,18 @@ import edu.chl.KeyboardChaos.settingsservice.Options;
  * 
  */
 
-public class KCInputProcessor extends InputAdapter{
+public class KCInputProcessor extends InputAdapter implements EventHandler{
 	Timer timer;
 	private List<PlayerController> playerControllerList;
 	private Options optionsService;
+	private boolean roundIsOver;
 	
 	public KCInputProcessor(List<PlayerController> pcList){
 		timer = new Timer();
 		playerControllerList = pcList;		
 		optionsService = Options.getOptionsInstance();
+		this.roundIsOver = false;
+		EventBusService.getInstance().subscribe(this);
 	}
 	
 	@Override
@@ -55,6 +62,10 @@ public class KCInputProcessor extends InputAdapter{
 			}
 			else if(keycode == optionsService.getSecondSpellButtonForPlayer(playerNumber)){
 				p.useSecondSpell();
+			}
+			
+			if (roundIsOver && keycode == Input.Keys.ENTER) {
+				EventBusService.getInstance().publish(new BusEvent("menu"));
 			}
 		}
 		return true;
@@ -81,5 +92,13 @@ public class KCInputProcessor extends InputAdapter{
 		}
 
 		return true;
+	}
+	
+	@Override
+	public void onEvent(BusEvent e) {
+		if (e.getBusCommand().equals("round over"))
+			this.roundIsOver = true;
+		else if (e.getBusCommand().equals("play"))
+			this.roundIsOver = false;
 	}
 }

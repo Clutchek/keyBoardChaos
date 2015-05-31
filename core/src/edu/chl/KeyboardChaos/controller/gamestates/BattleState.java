@@ -40,6 +40,7 @@ public class BattleState implements GameState {
 	private List<PlayerController> playerControllerList;
 	private SpellControllerManager spellControllerManager;
 	private MatchStats matchStats;
+	private boolean roundIsOver;
 	
 	public BattleState() {
 		//model stuff
@@ -47,6 +48,7 @@ public class BattleState implements GameState {
 		
 		//match stats
 		this.matchStats = new MatchStats();
+		this.roundIsOver = false;
 		
 		mapFixtures = new Array<Fixture>();
 		playerControllerList = new ArrayList<PlayerController>();
@@ -71,6 +73,9 @@ public class BattleState implements GameState {
 		
 		spellControllerManager.update();
 		
+		if (playerControllerList.size() <= 1) {
+			roundOver();
+		}
 		
 		world.step(KCConstants.TIME_STEP, 6, 2);
 		
@@ -171,6 +176,13 @@ public class BattleState implements GameState {
 		spellControllerManager = new SpellControllerManager(fixtureManager);
 		
 		loadPlayers();
+	}
+	
+	private void roundOver() {
+		if (roundIsOver == false) {
+			roundIsOver = true;
+			EventBusService.getInstance().publish(new BusEvent("round over"));
+		}
 	}
 
 	/*
