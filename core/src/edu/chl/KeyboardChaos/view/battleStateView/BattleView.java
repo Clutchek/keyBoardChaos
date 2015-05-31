@@ -16,17 +16,16 @@ import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.Array;
 
-import edu.chl.KeyboardChaos.controller.MatchStats;
 import edu.chl.KeyboardChaos.model.player.Player;
 import edu.chl.KeyboardChaos.model.spell.Fireball;
 import edu.chl.KeyboardChaos.model.spell.Iceball;
 import edu.chl.KeyboardChaos.util.KCConstants;
+import edu.chl.KeyboardChaos.util.MatchStats;
 import edu.chl.KeyboardChaos.util.eventbus.BusEvent;
 import edu.chl.KeyboardChaos.util.eventbus.BusEventHandler;
 import edu.chl.KeyboardChaos.util.eventbus.EventBusService;
 import edu.chl.KeyboardChaos.view.uiview.Font;
 import edu.chl.KeyboardChaos.view.uiview.FontUtil;
-import edu.chl.KeyboardChaos.view.uiview.component.MatchStatsView;
 
 
 /*

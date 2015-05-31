@@ -11,7 +11,6 @@ import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.Array;
 
-import edu.chl.KeyboardChaos.controller.MatchStats;
 import edu.chl.KeyboardChaos.controller.battlecontroller.KCContactListener;
 import edu.chl.KeyboardChaos.controller.battlecontroller.KCInputProcessor;
 import edu.chl.KeyboardChaos.controller.battlecontroller.body.FixtureManager;
@@ -24,10 +23,11 @@ import edu.chl.KeyboardChaos.model.KeyboardChaos;
 import edu.chl.KeyboardChaos.model.player.Player;
 import edu.chl.KeyboardChaos.model.spell.OffensiveSpell;
 import edu.chl.KeyboardChaos.util.KCConstants;
+import edu.chl.KeyboardChaos.util.MatchStats;
 import edu.chl.KeyboardChaos.util.eventbus.BusEvent;
 import edu.chl.KeyboardChaos.util.eventbus.EventBusService;
 import edu.chl.KeyboardChaos.view.battleStateView.BattleView;
-import edu.chl.KeyboardChaos.view.uiview.component.MatchStatsView;
+import edu.chl.KeyboardChaos.view.battleStateView.MatchStatsView;
 
 /**
  * This class takes care of everything related to the game rounds where players fight.
@@ -86,7 +86,7 @@ public class BattleState implements GameState {
 			PC.updateBody();
 			if(!PC.getPlayer().isAlive() && PC.getPlayer().isPlayerInLava()){
 				System.out.println("kollar bajs");
-					matchStats.playerKilled(PC.getPlayer());
+					matchStats.playerKilled(PC.getPlayer().getPlayerNumber() - 1);
 					matchStats.playerKills(PC.getPlayer().getEnemyAggrssor() - 1);
 				
 			}

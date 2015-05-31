@@ -1,4 +1,4 @@
-package edu.chl.KeyboardChaos.controller;
+package edu.chl.KeyboardChaos.util;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -116,7 +116,7 @@ public class MatchStats {
 	 * @param i the index of the player that got the kill
 	 */
 	
-public void playerKills(int i){
+	public void playerKills(int i){
 		
 		this.playerScores.set(i,this.playerScores.get(i) + this.killScore);
 		this.playerKills.set(i,this.playerKills.get(i) + 1);

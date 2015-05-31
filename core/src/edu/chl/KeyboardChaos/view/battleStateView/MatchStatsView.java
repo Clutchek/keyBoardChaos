@@ -1,4 +1,4 @@
-package edu.chl.KeyboardChaos.view.uiview.component;
+package edu.chl.KeyboardChaos.view.battleStateView;
 
 
 
@@ -9,7 +9,8 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
-import edu.chl.KeyboardChaos.controller.MatchStats;
+
+import edu.chl.KeyboardChaos.util.MatchStats;
 
 public class MatchStatsView {
 

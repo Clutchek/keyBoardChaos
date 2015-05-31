@@ -6,12 +6,12 @@ import com.badlogic.gdx.physics.box2d.ContactListener;
 import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.Manifold;
 
-import edu.chl.KeyboardChaos.controller.MatchStats;
 import edu.chl.KeyboardChaos.controller.battlecontroller.body.FixtureManager;
 import edu.chl.KeyboardChaos.model.player.Player;
 import edu.chl.KeyboardChaos.model.spell.Fireball;
 //import edu.chl.KeyboardChaos.model.spell.Spell;
 import edu.chl.KeyboardChaos.model.spell.OffensiveSpell;
+import edu.chl.KeyboardChaos.util.MatchStats;
 
 
 
@@ -42,11 +42,6 @@ public class KCContactListener implements ContactListener {
 			Player player = getPlayerFromContact(contact);
 
 			player.takeDamage(1f / 60f);
-			if(!player.isAlive()){
-				matchStats.playerKilled(player);
-				matchStats.playerKills(player.getEnemyAggrssor() - 1);
-			}
-
 			player.setPlayerInLava(true);
 
 		
@@ -68,8 +63,7 @@ public class KCContactListener implements ContactListener {
 				Fireball fb = (Fireball)spell;
 				player.takeDamage(fb.getDamage());
 
-				System.out.println(fb.getOriginPlayerNumber());
-				player.setEnemyAggressor(player.getPlayerNumber());
+				player.setEnemyAggressor(fb.getOriginPlayerNumber());
 				if (!player.isAlive()){
 					this.matchStats.playerKilled(player);
 					this.matchStats.playerKills(fb.getOriginPlayerNumber()-1);
