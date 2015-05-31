@@ -12,13 +12,11 @@ public class FixtureManager {
 	private FixtureFactory fixtureFactory;
 	private List<Body> bodiesToDelete;
 	//private List<Fixture> fixtureList;
-	private List<Object> objectToFixtureList;
 	private World world;
 	
 	public FixtureManager(World world){
 		fixtureFactory = new FixtureFactory(world);
 		bodiesToDelete = new ArrayList<Body>();
-		objectToFixtureList = new ArrayList<Object>();
 		//fixtureList = new ArrayList<Fixture>();
 		this.world = world;
 		

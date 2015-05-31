@@ -45,7 +45,7 @@ public class SpellPanel extends Panel {
 		this.components = new ArrayList<Component>();
 		this.spellBox1 = new SpellBox(posX + 10, posY + 300, options.getFirstSpell(playerNumber));
 		this.spellBox2 = new SpellBox(posX + WIDTH - SpellBox.SIZE - 10, posY + 300, options.getSecondSpell(playerNumber));
-		this.label = new Label(playerName, this.getPosX() + this.WIDTH/2, this.getPosY() + this.HEIGHT - 20, null);
+		this.label = new Label(playerName, this.getPosX() + WIDTH/2, this.getPosY() + HEIGHT - 20, null);
 		loadComponents();
 		
 
@@ -117,23 +117,18 @@ public class SpellPanel extends Panel {
 		shapeRenderer.begin();
 		shapeRenderer.setColor(this.panelColor);
 		shapeRenderer.set(ShapeType.Filled);
-		shapeRenderer.rect(this.getPosX(), this.getPosY(), this.WIDTH, this.HEIGHT);
+		shapeRenderer.rect(this.getPosX(), this.getPosY(), WIDTH, HEIGHT);
 		shapeRenderer.end();
 		
 		// Draw the text
 		batch.begin();
-		
-		// Player name
-		fontUtil.setFont(Font.SLABO_43);
-		int playerNamePosX = fontUtil.getCenteredTextPos(this.getPlayerName(), this.getPosX(), this.WIDTH);
-		//fontUtil.getFont().draw(batch, panel.getPlayerName(), playerNamePosX, panel.getHeight() + panel.getPosY() - 10);
 		
 		SpellBox spellBox1 = this.getSpellBox1();
 		SpellBox spellBox2 = this.getSpellBox2();
 		
 		// Spell name
 		fontUtil.setFont(Font.EUPHEMIA_21);
-		int spellTextPosY = spellBox1.getPosY() + spellBox1.SIZE + fontUtil.getTextHeight(this.getSpell1().getName()) + 10;
+		int spellTextPosY = spellBox1.getPosY() + SpellBox.SIZE + fontUtil.getTextHeight(this.getSpell1().getName()) + 10;
 		fontUtil.getFont().draw(batch, this.getSpell1().getName(), fontUtil.getCenteredTextPos(this.getSpell1().getName(), spellBox1.getPosX(), SpellBox.SIZE), spellTextPosY);
 		fontUtil.getFont().draw(batch, this.getSpell2().getName(), fontUtil.getCenteredTextPos(this.getSpell2().getName(), spellBox2.getPosX(), SpellBox.SIZE), spellTextPosY);
 		

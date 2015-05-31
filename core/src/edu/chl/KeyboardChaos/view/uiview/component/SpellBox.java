@@ -27,7 +27,6 @@ public class SpellBox extends Component {
 	private final Color backgroundColor, highlightColor;
 	private SpellEnum spell;
 	private boolean isSelected;
-	private Label spellLabel;
 
 	private final Map<SpellEnum, Texture> textureMap;
 	
@@ -87,12 +86,12 @@ public class SpellBox extends Component {
 		// TODO: Color coverter
 		shapeRenderer.setColor(this.backgroundColor);
 		shapeRenderer.set(ShapeType.Filled);
-		shapeRenderer.rect(this.getPosX(), this.getPosY(), this.SIZE, this.SIZE);
+		shapeRenderer.rect(this.getPosX(), this.getPosY(), SIZE, SIZE);
 		if (this.isSelected()) {
 			shapeRenderer.setColor(this.highlightColor);
 			Gdx.gl20.glLineWidth(2);
 			shapeRenderer.set(ShapeType.Line);
-			shapeRenderer.rect(this.getPosX() + 1, this.getPosY() - 1, this.SIZE - 1, this.SIZE + 1);
+			shapeRenderer.rect(this.getPosX() + 1, this.getPosY() - 1, SIZE - 1, SIZE + 1);
 		}
 		shapeRenderer.end();
 		Gdx.gl20.glLineWidth(1);
@@ -100,7 +99,7 @@ public class SpellBox extends Component {
 		// Draw the texture of selected spell
 		batch.begin();
 		Texture texture = this.textureMap.get(this.spell);
-		batch.draw(texture, this.getPosX(), this.getPosY(), this.SIZE, this.SIZE);
+		batch.draw(texture, this.getPosX(), this.getPosY(), SIZE, SIZE);
 		batch.end();
 	}
 }

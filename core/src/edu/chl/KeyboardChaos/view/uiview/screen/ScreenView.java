@@ -1,4 +1,4 @@
-package edu.chl.KeyboardChaos.view.uiview;
+package edu.chl.KeyboardChaos.view.uiview.screen;
 
 import java.util.List;
 
@@ -8,13 +8,13 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
+import edu.chl.KeyboardChaos.view.uiview.FontUtil;
 import edu.chl.KeyboardChaos.view.uiview.component.Component;
-import edu.chl.KeyboardChaos.view.uiview.screen.Screen;
 /*
  * This class renders all the visuals of
  * any screen in the GUI state of KeyboardChaos
  */
-public class UIView {
+public class ScreenView {
 	
 	SpriteBatch batch;
 	ShapeRenderer shapeRenderer;
@@ -23,7 +23,7 @@ public class UIView {
 	
 	List<Component> components;
 	
-	public UIView (Screen screen) {
+	public ScreenView (Screen screen) {
 		this.batch = new SpriteBatch();
 		this.shapeRenderer = new ShapeRenderer();
 		this.shapeRenderer.setAutoShapeType(true);

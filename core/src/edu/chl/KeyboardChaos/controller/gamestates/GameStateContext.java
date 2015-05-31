@@ -48,19 +48,22 @@ public class GameStateContext implements EventHandler{
 	}
 	
 	public void switchToUIState(){
-		currentState = uiState;
-		Gdx.input.setInputProcessor(((UIState)uiState).getInputProcessor());
+		switchToState(uiState);
 	}
 	
 	public void switchToRoundOverState(){
-		currentState = roundOverState;
+		switchToState(roundOverState);
 	}
 	
 	
 	public void switchToBattleState(){
-		currentState = battleState;
-		((BattleState)battleState).loadPlayers();
-		Gdx.input.setInputProcessor(((BattleState)battleState).getInputProcessor());
+		switchToState(battleState);
+	}
+	
+	private void switchToState(GameState state) {
+		this.currentState = state;
+		currentState.reset();
+		Gdx.input.setInputProcessor(state.getInputProcessor());
 	}
 
 	@Override
@@ -71,6 +74,8 @@ public class GameStateContext implements EventHandler{
 				this.switchToBattleState();
 			} else if (command.equals("exit")) {
 				Gdx.app.exit();
+			} else if (command.equals("menu")) {
+				this.switchToUIState();
 			}
 		}
 	}

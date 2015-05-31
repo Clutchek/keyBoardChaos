@@ -6,10 +6,10 @@ import edu.chl.KeyboardChaos.controller.UIInputProcessor;
 import edu.chl.KeyboardChaos.util.eventbus.BusEvent;
 import edu.chl.KeyboardChaos.util.eventbus.EventBusService;
 import edu.chl.KeyboardChaos.util.eventbus.EventHandler;
-import edu.chl.KeyboardChaos.view.uiview.UIView;
 import edu.chl.KeyboardChaos.view.uiview.screen.SettingsMenu;
 import edu.chl.KeyboardChaos.view.uiview.screen.SpellMenu;
 import edu.chl.KeyboardChaos.view.uiview.screen.StartMenu;
+import edu.chl.KeyboardChaos.view.uiview.screen.ScreenView;
 
 /*
  * Class that handles the UI state of the program, from the startup of the program until a battle is started
@@ -20,7 +20,7 @@ public class UIState implements GameState, EventHandler {
 
 	private StartMenu startMenu;
 	private SpellMenu spellMenu;
-	private UIView uiView;
+	private ScreenView uiView;
 	private UIInputProcessor inputProcessor;
 	private SettingsMenu settingsMenu;
 	
@@ -28,7 +28,7 @@ public class UIState implements GameState, EventHandler {
 		startMenu = new StartMenu();
 		settingsMenu = new SettingsMenu();
 		spellMenu = new SpellMenu();
-		uiView = new UIView(startMenu);
+		uiView = new ScreenView(startMenu);
 		this.inputProcessor = new UIInputProcessor(startMenu.getAllComponents());
 		EventBusService.getInstance().subscribe(this);
 	}
@@ -82,5 +82,11 @@ public class UIState implements GameState, EventHandler {
 				switchToSpellMenu();
 			}
 		}
+	}
+
+	@Override
+	public void reset() {
+		switchToStartMenu();
+		// Reset individual screens?
 	}
 }

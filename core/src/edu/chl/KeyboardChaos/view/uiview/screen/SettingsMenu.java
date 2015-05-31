@@ -44,12 +44,8 @@ public class SettingsMenu extends Screen implements EventHandler {
 		EventBusService.getInstance().subscribe(this);
 	}
 
-	private List<PlayerSettingsPanel> getPlayerSettingsPanels(){
-		return pspList;
-	}
-
 	private void loadPspList(){
-		pspList = new ArrayList();
+		pspList = new ArrayList<PlayerSettingsPanel>();
 		pspList.add(psp1);
 		pspList.add(psp2);
 		pspList.add(psp3);

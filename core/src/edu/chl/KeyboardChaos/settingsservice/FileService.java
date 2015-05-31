@@ -40,15 +40,8 @@ public class FileService {
 			objectOutputStream.close();
 		}catch(FileNotFoundException e){
 			File tmp = new File(settingsFileAddresses.get(playerNumber-1));
-			try{
-				tmp.getParentFile().mkdirs(); //H�r
-
-				boolean b = tmp.createNewFile();
-				//System.out.println(b);
-				writePlayerSettings(playerNumber, playerSettings);
-			}catch(IOException ex){
-				ex.printStackTrace();
-			}
+			tmp.getParentFile().mkdirs();
+			writePlayerSettings(playerNumber, playerSettings);
 		}catch(Exception e){
 			e.printStackTrace();
 		}
