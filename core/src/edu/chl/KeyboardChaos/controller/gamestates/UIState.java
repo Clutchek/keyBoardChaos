@@ -5,7 +5,7 @@ import com.badlogic.gdx.InputProcessor;
 import edu.chl.KeyboardChaos.controller.UIInputProcessor;
 import edu.chl.KeyboardChaos.util.eventbus.BusEvent;
 import edu.chl.KeyboardChaos.util.eventbus.EventBusService;
-import edu.chl.KeyboardChaos.util.eventbus.EventHandler;
+import edu.chl.KeyboardChaos.util.eventbus.BusEventHandler;
 import edu.chl.KeyboardChaos.view.uiview.screen.SettingsMenu;
 import edu.chl.KeyboardChaos.view.uiview.screen.SpellMenu;
 import edu.chl.KeyboardChaos.view.uiview.screen.StartMenu;
@@ -16,7 +16,7 @@ import edu.chl.KeyboardChaos.view.uiview.screen.ScreenView;
  * When the players switch from one UI menu to another this class switches to the correct one
  */
 
-public class UIState implements GameState, EventHandler {
+public class UIState implements GameState, BusEventHandler {
 
 	private StartMenu startMenu;
 	private SpellMenu spellMenu;

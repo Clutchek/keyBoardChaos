@@ -7,7 +7,7 @@ import edu.chl.KeyboardChaos.settingsservice.Options;
 import edu.chl.KeyboardChaos.util.KCConstants;
 import edu.chl.KeyboardChaos.util.eventbus.BusEvent;
 import edu.chl.KeyboardChaos.util.eventbus.EventBusService;
-import edu.chl.KeyboardChaos.util.eventbus.EventHandler;
+import edu.chl.KeyboardChaos.util.eventbus.BusEventHandler;
 import edu.chl.KeyboardChaos.view.uiview.component.Label;
 import edu.chl.KeyboardChaos.view.uiview.component.SpellPanel;
 import edu.chl.KeyboardChaos.view.uiview.component.TextButton;
@@ -16,7 +16,7 @@ import edu.chl.KeyboardChaos.view.uiview.component.TextButton;
  * This class represents the spell menu in the GUI of KeyboardChaos
  */
 
-public class SpellMenu extends Screen implements EventHandler {
+public class SpellMenu extends Screen implements BusEventHandler {
 	
 	private final SpellPanel spellPanel1, spellPanel2, spellPanel3, spellPanel4;
 	private final Label label;

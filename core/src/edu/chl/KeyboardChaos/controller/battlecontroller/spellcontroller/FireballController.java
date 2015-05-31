@@ -8,6 +8,8 @@ import edu.chl.KeyboardChaos.model.player.Player;
 import edu.chl.KeyboardChaos.model.spell.Fireball;
 import edu.chl.KeyboardChaos.util.DirectionVector;
 import edu.chl.KeyboardChaos.util.KCConstants;
+import edu.chl.KeyboardChaos.util.eventbus.BusEvent;
+import edu.chl.KeyboardChaos.util.eventbus.EventBusService;
 
 
 /*
@@ -17,6 +19,7 @@ import edu.chl.KeyboardChaos.util.KCConstants;
 public class FireballController extends OffensiveSpellController{
 	private Fireball fireball;
 	private FixtureManager fixtureManager;
+	private float ticksActivated;
 	
 	private Body body;
 	
@@ -26,6 +29,7 @@ public class FireballController extends OffensiveSpellController{
 		f.setVector(new DirectionVector(p.getVector()));
 		this.fixtureManager = fixtureManager;
 		createBody();
+		ticksActivated = 0;
 	}
 	
 	public void update() {
@@ -35,6 +39,12 @@ public class FireballController extends OffensiveSpellController{
 		}
 		//body.applyForceToCenter(getVector(), true);
 		updatePosition();
+		if(ticksActivated >= fireball.getDuration()*60){
+			fixtureManager.addToDisposeList(getBody());
+			EventBusService.getInstance().publish(new BusEvent("RemoveSpellController", this));
+		}else{
+			ticksActivated = ticksActivated + 1;
+		}
 	}
 	
 	

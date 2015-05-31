@@ -9,7 +9,7 @@ import edu.chl.KeyboardChaos.settingsservice.Options;
 import edu.chl.KeyboardChaos.util.KCConstants;
 import edu.chl.KeyboardChaos.util.eventbus.BusEvent;
 import edu.chl.KeyboardChaos.util.eventbus.EventBusService;
-import edu.chl.KeyboardChaos.util.eventbus.EventHandler;
+import edu.chl.KeyboardChaos.util.eventbus.BusEventHandler;
 import edu.chl.KeyboardChaos.view.uiview.component.Label;
 import edu.chl.KeyboardChaos.view.uiview.component.PlayerSettingsPanel;
 import edu.chl.KeyboardChaos.view.uiview.component.SpellPanel;
@@ -19,7 +19,7 @@ import edu.chl.KeyboardChaos.view.uiview.component.TextButton;
  * This class represents the settings menu in the GUI of KeyboardChaos
  */
 
-public class SettingsMenu extends Screen implements EventHandler {
+public class SettingsMenu extends Screen implements BusEventHandler {
 	private PlayerSettingsPanel psp1, psp2, psp3, psp4;
 	private TextButton backButton, nextButton;
 	private Label label;

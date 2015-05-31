@@ -15,7 +15,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import edu.chl.KeyboardChaos.settingsservice.Options;
 import edu.chl.KeyboardChaos.util.KCConstants;
 import edu.chl.KeyboardChaos.util.eventbus.BusEvent;
-import edu.chl.KeyboardChaos.util.eventbus.EventHandler;
+import edu.chl.KeyboardChaos.util.eventbus.BusEventHandler;
 import edu.chl.KeyboardChaos.view.uiview.Font;
 import edu.chl.KeyboardChaos.view.uiview.FontUtil;
 
@@ -23,7 +23,7 @@ import edu.chl.KeyboardChaos.view.uiview.FontUtil;
  * This class represents a panel in which a player
  *  can configure his keyboard controller settings
  */
-public class PlayerSettingsPanel extends Panel implements EventHandler {
+public class PlayerSettingsPanel extends Panel implements BusEventHandler {
 
 	private final int height;
 	private final int width;

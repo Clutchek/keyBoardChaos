@@ -9,7 +9,6 @@ import com.badlogic.gdx.physics.box2d.Body;
 import edu.chl.KeyboardChaos.controller.battlecontroller.body.FixtureManager;
 import edu.chl.KeyboardChaos.controller.battlecontroller.spellcontroller.SpellControllerManager;
 import edu.chl.KeyboardChaos.model.player.Player;
-import edu.chl.KeyboardChaos.settingsservice.PlayerSettings;
 import edu.chl.KeyboardChaos.util.DirectionVector;
 import edu.chl.KeyboardChaos.util.KCConstants;
 
@@ -24,7 +23,6 @@ public class PlayerController {
 	private boolean movingRight, movingLeft, movingUp, movingDown, isGettingInput;
 	private Vector2 direction;
 	private Body body;
-	private PlayerSettings settings;
 	private SpellControllerManager spellControllerManager;
 	private FixtureManager fixtureManager;
 	private Timer diagonalHelpTimer;
@@ -219,12 +217,6 @@ public class PlayerController {
 //		return settings;
 //	}
 	
-	public void setPlayerSettings(PlayerSettings settings){
-		this.settings = settings;
-		player.setFirstSpell(settings.getFirstSpell());
-		player.setSecondSpell(settings.getSecondSpell());
-		player.setPlayerName(settings.getPlayerName());
-	}
 	
 	/**
 	 * Sets the direction status of this player

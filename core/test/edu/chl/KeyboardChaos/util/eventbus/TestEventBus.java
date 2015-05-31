@@ -7,10 +7,10 @@ import org.junit.Test;
 
 import edu.chl.KeyboardChaos.util.eventbus.BusEvent;
 import edu.chl.KeyboardChaos.util.eventbus.EventBusService;
-import edu.chl.KeyboardChaos.util.eventbus.EventHandler;
+import edu.chl.KeyboardChaos.util.eventbus.BusEventHandler;
 
 
-public class TestEventBus implements EventHandler{
+public class TestEventBus implements BusEventHandler{
 	
 	private boolean test;
 	
