@@ -50,56 +50,56 @@ public class BattleState implements GameState {
 	private MatchStats matchStats;
 	private MatchStatsView msv;
 	private boolean roundIsOver;
-	
+
 	public BattleState() {
 		//model stuff
 		model = new KeyboardChaos();
-		
+
 		//match stats
 		this.matchStats = new MatchStats();
-		
+
 		//World
 		world = new World(KCConstants.GRAVITY, true);
 		fixtureManager = new FixtureManager(world);
 		world.setContactListener(new KCContactListener(fixtureManager, this.matchStats));
-		
+
 		//Map stuff
 		tileMap = new TmxMapLoader().load("assets/maps/squaremap.tmx");
 		MapBodyManager mbm = new MapBodyManager(world, KCConstants.PPM, null, 0);
 		mbm.createPhysics(tileMap, "lava");
-		
+
 		mapFixtures = new Array<Fixture>();
 		playerControllerList = new ArrayList<PlayerController>();
-		
+
 		//reset();
-		
+
 		this.inputProcessor = new KCInputProcessor(playerControllerList);
 	}
-	
+
 	@Override
 	public void update() {
-			// Removes fixtures and bodies from the world that has been marked for removal.
-							// Read SDD for info about safe removal.
-							// With the bodies destroyed, below makes sure that the last reference to the body
-							// is removed so it never can be called upon again - which would cause a crash.
+		// Removes fixtures and bodies from the world that has been marked for removal.
+		// Read SDD for info about safe removal.
+		// With the bodies destroyed, below makes sure that the last reference to the body
+		// is removed so it never can be called upon again - which would cause a crash.
 		for(PlayerController PC : playerControllerList){
 			PC.updateBody();
 			if(!PC.getPlayer().isAlive() && PC.getPlayer().isPlayerInLava()){
-				System.out.println("kollar bajs");
-					matchStats.playerKilled(PC.getPlayer().getPlayerNumber() - 1);
+				matchStats.playerKilled(PC.getPlayer().getPlayerNumber() - 1);
+				if(PC.getPlayer().getEnemyAggrssor() > 0){
 					matchStats.playerKills(PC.getPlayer().getEnemyAggrssor() - 1);
-				
+				}	
 			}
 		}
 		removeObjects();
-		
+
 		refreshFixtureList();
 		spellControllerManager.update();
-		
+
 		if (playerControllerList.size() <= 1) {
 			roundOver();
 		}
-		
+
 		world.step(KCConstants.TIME_STEP, 6, 2);
 
 		for(PlayerController PC : playerControllerList){
@@ -108,7 +108,7 @@ public class BattleState implements GameState {
 
 		// Destroy fixtures here?
 	}
-	
+
 	private void refreshFixtureList() {
 		mapFixtures.clear();
 		world.getFixtures(mapFixtures);
@@ -123,31 +123,31 @@ public class BattleState implements GameState {
 	public void render() {
 		battleView.render();
 	}
-	
+
 	public World getWorld(){
 		return this.world;
 	}
-	
+
 	public TiledMap getTiledMap(){ return this.tileMap;}
-	
+
 	public InputProcessor getInputProcessor() {
 		return this.inputProcessor;
 	}
-	
+
 	public void loadPlayers() {
 		model.createPlayers();
 		for(Player p : model.getPlayerList()){
 			playerControllerList.add(new PlayerController(p, fixtureManager, spellControllerManager));
 		}
 	}
-	
+
 	private void removeObjects() {
 		removePlayerControllers();
 		removeSpellControllers();
-		
+
 		fixtureManager.deleteSelectedBodies();
 	}
-	
+
 	private void removeSpellControllers() {
 		for (Body b : fixtureManager.getBodiesToDelete()) {
 			for (SpellController sc : spellControllerManager.getSpellControllers()) {
@@ -161,7 +161,7 @@ public class BattleState implements GameState {
 		}
 		spellControllerManager.removeControllers();
 	}
-	
+
 	private void removePlayerControllers() {
 		// Perhaps somehow directly add to controllersToRemove when isAlive = false
 		List<PlayerController> controllersToRemove = new ArrayList<PlayerController>();
@@ -183,25 +183,25 @@ public class BattleState implements GameState {
 		world = new World(KCConstants.GRAVITY, true);
 		fixtureManager = new FixtureManager(world);
 		world.setContactListener(new KCContactListener(fixtureManager, this.matchStats));
-		
+
 		//Map stuff
 		tileMap = new TmxMapLoader().load("assets/maps/squaremap.tmx");
 		MapBodyManager mbm = new MapBodyManager(world, KCConstants.PPM, null, 0);
 		mbm.createPhysics(tileMap, "lava");
-		
+
 		mapFixtures.clear();
 		battleView = new BattleView(mapFixtures, world, tileMap, this.matchStats);
 		refreshFixtureList();
-		
+
 		//Player stuff
 		playerControllerList.clear();
-		
+
 		//Spell stuff
 		spellControllerManager = new SpellControllerManager(fixtureManager);
-		
+
 		loadPlayers();
 	}
-	
+
 	private void roundOver() {
 		if (roundIsOver == false) {
 			roundIsOver = true;
