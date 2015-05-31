@@ -32,7 +32,7 @@ public class Iceball extends OffensiveSpell{
 	/**
 	 * @return The damage of the iceball
 	 */
-	public int getDamage(){
+	public float getDamage(){
 		return this.damage;
 	}
 	
