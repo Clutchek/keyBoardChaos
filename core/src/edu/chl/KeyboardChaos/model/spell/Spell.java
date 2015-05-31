@@ -4,7 +4,7 @@ import java.io.Serializable;
 /**
  * An interface for all spells
  */
-public interface Spell extends Serializable{	
+public interface Spell extends Serializable, Cloneable{	
 	public String getDescription();
 	public String getName();
 	public float getCooldown();

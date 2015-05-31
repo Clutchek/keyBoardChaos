@@ -11,14 +11,32 @@ public abstract class OffensiveSpell implements Spell {
 	private static final long serialVersionUID = 4246452556975709909L;
 	private DirectionVector vector;
 	private float posX, posY;
-	protected float radius, damage;
+	private float damage, radius, projectileSpeed, duration, cooldown;
 	
-	public OffensiveSpell() {
+	public OffensiveSpell(Float damage, Float projectileSpeed,Float radius , Float duration, Float cooldown) {
 		this.vector = new DirectionVector(0, 0);
-		radius = 3f;
+		this.radius = radius;
+		this.projectileSpeed = projectileSpeed;
+		this.damage = damage;
+		this.duration = duration;
+		this.cooldown = cooldown;
 	}
 	
-	public abstract float getProjectileSpeed();
+	@Override
+	public OffensiveSpell clone(){
+		try {
+			OffensiveSpell oSpell = (OffensiveSpell)super.clone();
+			DirectionVector copy = new DirectionVector(vector);
+			oSpell.vector = copy;
+			return oSpell;
+			
+		} catch (CloneNotSupportedException e) {
+			e.printStackTrace();
+			return null; //never invoked
+		}
+		
+		
+	}
 	
 	public DirectionVector getVector() {
 		return this.vector;
@@ -50,5 +68,19 @@ public abstract class OffensiveSpell implements Spell {
 	
 	public float getDamage(){
 		return this.damage;
+	}
+	
+	@Override
+	public float getCooldown(){
+		return cooldown;
+	}
+	
+	@Override
+	public float getDuration(){
+		return duration;
+	}
+	
+	public float getProjectileSpeed(){
+		return this.projectileSpeed;
 	}
 }

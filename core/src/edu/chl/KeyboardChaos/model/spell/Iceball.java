@@ -2,7 +2,7 @@ package edu.chl.KeyboardChaos.model.spell;
 /**
  * A class that represents an ice spell in the keyBoardChaos game.
 */
-public class Iceball extends OffensiveSpell{
+public class Iceball implements Spell{
 	
 	private static final long serialVersionUID = -7105427562354348157L;
 	private int damage, projectileSpeed;
@@ -12,7 +12,6 @@ public class Iceball extends OffensiveSpell{
 	public final static String NAME = "Iceball";
 
 	public Iceball(){
-		super();
 		this.damage = 2;
 		this.projectileSpeed = 3;
 		//this.originPlayer = originPlayer;

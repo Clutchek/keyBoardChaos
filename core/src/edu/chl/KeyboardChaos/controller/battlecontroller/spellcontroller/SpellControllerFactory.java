@@ -35,14 +35,15 @@ public class SpellControllerFactory {
 			
 			oSpell.setPosX(posX);
 			oSpell.setPosY(posY);
-			//return new OffensiveSpellController(oSpell, player, fixtureManager);
+			OffensiveSpell copySpell = oSpell.clone();
+			return new OffensiveSpellController(copySpell, player, fixtureManager);
 			
-			if(spell instanceof Fireball){
+			/*if(spell instanceof Fireball){
 				Fireball fireball = new Fireball();
 				fireball.setPosX(posX);
 				fireball.setPosY(posY);
 				return new OffensiveSpellController(fireball, player, fixtureManager);
-			}
+			}*/
 		}else if(spell instanceof Iceball){
 				//Stub
 				
