@@ -32,17 +32,20 @@ public class SpellControllerFactory {
 			}
 			float posX = player.getPosX() + spaceX;
 			float posY = player.getPosY() + spaceY;
-			//return new FireballController(fireball, player, fixtureManager);
 			
+			oSpell.setPosX(posX);
+			oSpell.setPosY(posY);
+			return new OffensiveSpellController(oSpell, player, fixtureManager);
+			/*
 			if(spell instanceof Fireball){
 				Fireball fireball = new Fireball();
 				fireball.setPosX(posX);
 				fireball.setPosY(posY);
-				return new FireballController(fireball, player, fixtureManager);
-			}else if(spell instanceof Iceball){
+				return new FireballController(fireball, player, fixtureManager);*/
+		}else if(spell instanceof Iceball){
 				//Stub
 				
-			}
+			
 		}
 		return null;
 	}

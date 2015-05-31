@@ -17,10 +17,12 @@ import edu.chl.KeyboardChaos.controller.battlecontroller.KCInputProcessor;
 import edu.chl.KeyboardChaos.controller.battlecontroller.body.FixtureManager;
 import edu.chl.KeyboardChaos.controller.battlecontroller.body.MapBodyManager;
 import edu.chl.KeyboardChaos.controller.battlecontroller.playercontroller.PlayerController;
+import edu.chl.KeyboardChaos.controller.battlecontroller.spellcontroller.OffensiveSpellController;
 import edu.chl.KeyboardChaos.controller.battlecontroller.spellcontroller.SpellController;
 import edu.chl.KeyboardChaos.controller.battlecontroller.spellcontroller.SpellControllerManager;
 import edu.chl.KeyboardChaos.model.KeyboardChaos;
 import edu.chl.KeyboardChaos.model.player.Player;
+import edu.chl.KeyboardChaos.model.spell.OffensiveSpell;
 import edu.chl.KeyboardChaos.util.KCConstants;
 import edu.chl.KeyboardChaos.util.eventbus.BusEvent;
 import edu.chl.KeyboardChaos.util.eventbus.EventBusService;
@@ -138,8 +140,11 @@ public class BattleState implements GameState {
 	private void removeSpellControllers() {
 		for (Body b : fixtureManager.getBodiesToDelete()) {
 			for (SpellController sc : spellControllerManager.getSpellControllers()) {
-				if (sc.getBody() == b) {
-					spellControllerManager.addControllerToRemove(sc);
+				if(sc instanceof OffensiveSpellController){
+					OffensiveSpellController offensiveSC = (OffensiveSpellController)sc;
+					if (offensiveSC.getBody() == b) {
+						spellControllerManager.addControllerToRemove(sc);
+					}
 				}
 			}
 		}

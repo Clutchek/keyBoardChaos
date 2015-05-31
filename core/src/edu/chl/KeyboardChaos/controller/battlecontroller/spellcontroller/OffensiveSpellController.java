@@ -1,23 +1,47 @@
 package edu.chl.KeyboardChaos.controller.battlecontroller.spellcontroller;
 
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.physics.box2d.Body;
 
+import edu.chl.KeyboardChaos.controller.battlecontroller.body.FixtureManager;
+import edu.chl.KeyboardChaos.model.player.Player;
 import edu.chl.KeyboardChaos.model.spell.OffensiveSpell;
 import edu.chl.KeyboardChaos.util.DirectionVector;
+import edu.chl.KeyboardChaos.util.KCConstants;
 
 
 /*
  * Abstract class for the handling of all attacking projectile spells 
  * It is used to keep a projectile spell on its correct position 
  */
-public abstract class OffensiveSpellController implements SpellController{
+public class OffensiveSpellController extends SpellController{
 
 	private OffensiveSpell offensiveSpell;
 	private Vector2 vector;
+	private FixtureManager fixtureManager;
+	private Body body;
 	
-	public OffensiveSpellController(OffensiveSpell s){
+	public OffensiveSpellController(OffensiveSpell s,Player p, FixtureManager fixtureManager){
+		super(s);
 		this.offensiveSpell = s;
+		offensiveSpell.setVector(new DirectionVector(p.getVector()));
 		vector = new Vector2();
+		this.fixtureManager = fixtureManager;
+		createBody();
+	}
+	
+	public void update(){
+		super.update();
+		if(super.ticksActivated >= offensiveSpell.getDuration()*60){
+			fixtureManager.addToDisposeList(getBody());
+		}
+		updatePosition();
+	}
+	
+	private void updatePosition() {
+		Vector2 position = body.getPosition();
+		offensiveSpell.setPosX(position.x * KCConstants.PPM);
+		offensiveSpell.setPosY(position.y * KCConstants.PPM);
 	}
 	
 	public Vector2 getVector(){
@@ -47,7 +71,11 @@ public abstract class OffensiveSpellController implements SpellController{
 		return offensiveSpell.getPosY();
 	}
 	
-	public abstract void update();
+	private void createBody(){
+		body = fixtureManager.createFixture(offensiveSpell).getBody();
+	}
 	
-	public abstract boolean isActive();
+	public Body getBody(){
+		return body;
+	}
 }

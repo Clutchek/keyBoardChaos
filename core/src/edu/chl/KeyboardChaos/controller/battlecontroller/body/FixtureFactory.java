@@ -10,6 +10,7 @@ import com.badlogic.gdx.physics.box2d.World;
 
 import edu.chl.KeyboardChaos.model.player.Player;
 import edu.chl.KeyboardChaos.model.spell.Fireball;
+import edu.chl.KeyboardChaos.model.spell.OffensiveSpell;
 import edu.chl.KeyboardChaos.util.KCConstants;
 
 /*
@@ -39,11 +40,11 @@ public class FixtureFactory {
 		FixtureDef fixtureDef = new FixtureDef();
 		float fixtureRadius = 0f;
 		//Nullpointervarning h�r
-		if(body.getUserData() instanceof Fireball){
+		if(body.getUserData() instanceof OffensiveSpell){
 			System.out.println("Im in fixturecreation fireball");
 			fixtureDef.filter.maskBits = KCConstants.MASK_SPELL;
 			fixtureDef.filter.categoryBits = KCConstants.BIT_SPELL;
-			Fireball fireball = (Fireball)body.getUserData();
+			OffensiveSpell fireball = (OffensiveSpell)body.getUserData();
 			fixtureRadius = fireball.getRadius() / PPM;
 			
 		}else if(body.getUserData() instanceof Player){
@@ -78,9 +79,9 @@ public class FixtureFactory {
 			bodyDef.position.set(player.getPosX() / PPM, player.getPosY() / PPM);
 			body = world.createBody(bodyDef);
 			body.setUserData(player);
-		}else if(o instanceof Fireball){
+		}else if(o instanceof OffensiveSpell){
 			System.out.println("Im in bodycreation for spell");
-			Fireball fireball = (Fireball)o;
+			OffensiveSpell fireball = (OffensiveSpell)o;
 			bodyDef.position.set(fireball.getPosX() / PPM, fireball.getPosY() / PPM);
 			System.out.println("Next is creating the body in the world, problematic step");
 			body = world.createBody(bodyDef);
