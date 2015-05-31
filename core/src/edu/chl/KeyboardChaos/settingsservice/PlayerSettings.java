@@ -153,5 +153,30 @@ public class PlayerSettings implements Serializable{
 		this.secondSpell = spell;
 	}
 	
+	@Override
+	public boolean equals(Object o){
+		if(this == o){
+			return true;
+		}
+		if(o == null){
+			return false;
+		}
+		if(o.getClass() != this.getClass()){
+			return false;
+		}
+		PlayerSettings other = (PlayerSettings)o;
+		return (moveUpKey == other.moveUpKey &&
+				moveUpKey == other.moveUpKey &&
+				moveDownKey == other.moveDownKey &&
+				moveLeftKey == other.moveLeftKey &&
+				moveRightKey == other.moveRightKey &&
+				firstSpellKey == other.firstSpellKey &&
+				secondSpellKey == other.secondSpellKey &&
+				firstSpell.equals(other.firstSpell)&&
+				secondSpell.equals(other.secondSpell)&&
+				playerName.equals(other.playerName));
+		
+	}
+	
 	
 }
