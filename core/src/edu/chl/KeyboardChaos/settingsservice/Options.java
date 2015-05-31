@@ -24,9 +24,9 @@ public class Options {
 	private PlayerSettings playerTwoSettings;
 	private PlayerSettings playerThreeSettings;
 	private PlayerSettings playerFourSettings;
-	private FileService fileService;
+	private final FileService fileService;
 	
-	private List<Integer> activePlayers;
+	private final List<Integer> activePlayers;
 	
 	private Options(){
 		fileService = new FileService();

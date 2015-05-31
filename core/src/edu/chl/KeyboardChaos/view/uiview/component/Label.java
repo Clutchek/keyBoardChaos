@@ -13,7 +13,7 @@ import edu.chl.KeyboardChaos.view.uiview.FontUtil;
  */
 public class Label extends Component {
 
-	String text;
+	private String text;
 	
 	public Label(String text, int posX, int posY) {
 		super(posX, posY);

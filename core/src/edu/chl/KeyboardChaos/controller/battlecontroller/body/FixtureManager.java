@@ -10,7 +10,7 @@ import com.badlogic.gdx.physics.box2d.World;
 public class FixtureManager {
 
 	private FixtureFactory fixtureFactory;
-	private List<Body> bodiesToDelete;
+	private final List<Body> bodiesToDelete;
 	//private List<Fixture> fixtureList;
 	private World world;
 	
@@ -32,7 +32,6 @@ public class FixtureManager {
 	 * in the fixtures method <b>getUserData()</b>
 	 */
 	public Fixture createFixture(Object o){
-		System.out.println("Im in create Fixture");
 		Body body = fixtureFactory.createBody(o);
 		Fixture fixture = fixtureFactory.createFixture(body);
 		
@@ -65,9 +64,7 @@ public class FixtureManager {
 	 */
 	public void deleteSelectedBodies(){
 		while(!bodiesToDelete.isEmpty()){
-			System.out.println(world.isLocked());
 			Body body = bodiesToDelete.get(0);
-			System.out.println("Removing: " + body);
 			world.destroyBody(body);
 			body.setUserData(null);
 			body = null;

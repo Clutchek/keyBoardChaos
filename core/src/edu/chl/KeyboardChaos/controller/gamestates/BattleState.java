@@ -26,18 +26,23 @@ import edu.chl.KeyboardChaos.util.eventbus.BusEvent;
 import edu.chl.KeyboardChaos.util.eventbus.EventBusService;
 import edu.chl.KeyboardChaos.view.battleStateView.BattleView;
 
-
+/**
+ * This class takes care of everything related to the game rounds where players fight.
+ * It creates a world and different managers creating bodies in the world and makes sure
+ * everything updates as it should (both models and the world). It also calls for render
+ * in BattleStateView so that everything is visible on screen.
+ */
 
 public class BattleState implements GameState {
 
-	private InputProcessor inputProcessor;
+	private final InputProcessor inputProcessor;
 	private World world;
 	private TiledMap tileMap;
 	private BattleView battleView;
 	private Array<Fixture> mapFixtures;
 	private FixtureManager fixtureManager;
-	private KeyboardChaos model;
-	private List<PlayerController> playerControllerList;
+	private final KeyboardChaos model;
+	private final List<PlayerController> playerControllerList;
 	private SpellControllerManager spellControllerManager;
 	private MatchStats matchStats;
 	private boolean roundIsOver;

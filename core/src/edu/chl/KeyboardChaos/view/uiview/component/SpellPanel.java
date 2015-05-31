@@ -26,7 +26,7 @@ public class SpellPanel extends Panel {
 	private final SpellBox spellBox1, spellBox2;
 	private final Label label;
 	private String playerName;
-	private int playerNumber;
+	private final int playerNumber;
 	
 	public final static int WIDTH = 300;
 	public final static int HEIGHT = 600;

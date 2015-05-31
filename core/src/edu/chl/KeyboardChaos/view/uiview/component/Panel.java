@@ -5,8 +5,11 @@ import java.util.List;
 
 import edu.chl.KeyboardChaos.util.eventbus.BusEvent;
 
+/**
+ * A component containing other components
+ */
 public abstract class Panel extends Component {
-	private List<Component> components;
+	private final List<Component> components;
 	
 	public Panel(int posX, int posY) {
 		super(posX, posY);

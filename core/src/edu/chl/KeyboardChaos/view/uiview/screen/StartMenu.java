@@ -14,8 +14,8 @@ import edu.chl.KeyboardChaos.view.uiview.component.TextButton;
 
 public class StartMenu extends Screen{
 
-	private TextButton playButton;
-	private TextButton exitButton;
+	private final TextButton playButton;
+	private final TextButton exitButton;
 
 	public StartMenu(){
 		super();

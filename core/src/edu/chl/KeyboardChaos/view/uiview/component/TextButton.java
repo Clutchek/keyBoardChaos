@@ -22,7 +22,7 @@ public class TextButton extends EventComponent {
 
 	private String text;
 	private Color currentColor, backgroundColor, hoverColor, clickColor;
-	private int width, height;
+	private final int width, height;
 	private final boolean selectableButton;
 	private boolean selected;
 	
@@ -160,12 +160,14 @@ public class TextButton extends EventComponent {
 	@Override
 	public void render(SpriteBatch batch, ShapeRenderer shapeRenderer,
 			FontUtil fontUtil) {
+		// Background
 		shapeRenderer.begin();
 		shapeRenderer.setColor(this.currentColor);
 		shapeRenderer.set(ShapeType.Filled);
 		shapeRenderer.rect(this.getPosX(), this.getPosY(), this.getWidth(), this.getHeight());
 		shapeRenderer.end();
 		batch.begin();
+		// Text
 		fontUtil.setFont(Font.LATO_20);
 		int fontPosX = fontUtil.getCenteredTextPos(this.getText(), this.getPosX(), this.width);
 		int fontPosY = this.getPosY() + (int)(this.getHeight() + fontUtil.getTextHeight(this.text))/2;

@@ -19,13 +19,13 @@ import edu.chl.KeyboardChaos.util.KCConstants;
  */
 public class PlayerController {
 
-	private Player player;
+	private final Player player;
 	private boolean movingRight, movingLeft, movingUp, movingDown, isGettingInput;
 	private Vector2 direction;
 	private Body body;
 	private SpellControllerManager spellControllerManager;
 	private FixtureManager fixtureManager;
-	private Timer diagonalHelpTimer;
+	private final Timer diagonalHelpTimer;
 	public final static int TIMER_DELAY = 50;
 	
 	public PlayerController(Player p, FixtureManager fixtureManager, SpellControllerManager spellControllerManager){
@@ -63,7 +63,6 @@ public class PlayerController {
 	private void startDiagonalHelpTask(Boolean b, Vector2 vector){
 		final Vector2 test = vector;
 		if(!b && isGettingInput()){
-			System.out.println(test);
 			TimerTask diagonalHelpTask = new TimerTask(){
 				public void run(){
 					if(!isGettingInput()){

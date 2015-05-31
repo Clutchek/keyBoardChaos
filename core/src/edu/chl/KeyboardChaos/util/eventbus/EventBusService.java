@@ -9,7 +9,7 @@ import java.util.List;
 public class EventBusService {
 	
 	private static EventBusService ebs;
-	private List<BusEventHandler> handlers;
+	private final List<BusEventHandler> handlers;
 	
 	private EventBusService(){
 		handlers = new ArrayList<BusEventHandler>();

@@ -26,7 +26,7 @@ import edu.chl.KeyboardChaos.model.spell.Spell;
 
 public class KCContactListener implements ContactListener {
 	
-	FixtureManager fixtureManager;
+	private FixtureManager fixtureManager;
 	private MatchStats matchStats;
 	
 	public KCContactListener(FixtureManager fixtureManager, MatchStats matchStats){

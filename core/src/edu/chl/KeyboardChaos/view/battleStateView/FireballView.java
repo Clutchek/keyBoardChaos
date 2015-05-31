@@ -10,9 +10,9 @@ import edu.chl.KeyboardChaos.model.spell.Fireball;
  */
 public class FireballView extends View{
 		
-	private SpriteBatch spriteBatch;
+	private final SpriteBatch spriteBatch;
 
-	private static String path = "assets/Spells/Fireball/";
+	private static final String path = "assets/Spells/Fireball/";
 
 
 	public FireballView (SpriteBatch spriteBatch){
@@ -24,7 +24,6 @@ public class FireballView extends View{
 	}
 	
 	private void paintFireball(Fireball f){
-		// TODO: May need adjustments when it's possible to draw things up
 		spriteBatch.draw(this.getTextureForVector(f.getVector()), f.getPosX() - f.getRadius(), f.getPosY() - f.getRadius(), f.getRadius()*2, f.getRadius()*2);
 	}
 	

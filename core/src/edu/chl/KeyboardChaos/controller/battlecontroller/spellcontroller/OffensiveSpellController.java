@@ -12,7 +12,7 @@ import edu.chl.KeyboardChaos.util.DirectionVector;
  */
 public abstract class OffensiveSpellController implements SpellController{
 
-	private OffensiveSpell offensiveSpell;
+	private final OffensiveSpell offensiveSpell;
 	private Vector2 vector;
 	
 	public OffensiveSpellController(OffensiveSpell s){

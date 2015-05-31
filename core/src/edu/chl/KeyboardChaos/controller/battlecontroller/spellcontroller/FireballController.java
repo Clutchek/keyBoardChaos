@@ -17,7 +17,7 @@ import edu.chl.KeyboardChaos.util.eventbus.EventBusService;
  * It keeps the positioning of an active fireball updated
  */
 public class FireballController extends OffensiveSpellController{
-	private Fireball fireball;
+	private final Fireball fireball;
 	private FixtureManager fixtureManager;
 	private float ticksActivated;
 	
@@ -57,7 +57,7 @@ public class FireballController extends OffensiveSpellController{
 	}
 	
 
-	//kanske kan refaktorera ut till offensiveSpellController
+	// TODO: kanske kan refaktorera ut till offensiveSpellController
 	private void updatePosition() {
 		Vector2 position = body.getPosition();
 		fireball.setPosX(position.x * KCConstants.PPM);

@@ -27,9 +27,9 @@ import edu.chl.KeyboardChaos.util.eventbus.BusEventHandler;
  */
 
 public class KCInputProcessor extends InputAdapter implements BusEventHandler{
-	Timer timer;
-	private List<PlayerController> playerControllerList;
-	private Options optionsService;
+	private final Timer timer;
+	private final List<PlayerController> playerControllerList;
+	private final Options optionsService;
 	private boolean roundIsOver;
 	
 	public KCInputProcessor(List<PlayerController> pcList){

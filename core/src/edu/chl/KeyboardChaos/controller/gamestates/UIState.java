@@ -18,11 +18,11 @@ import edu.chl.KeyboardChaos.view.uiview.screen.ScreenView;
 
 public class UIState implements GameState, BusEventHandler {
 
-	private StartMenu startMenu;
-	private SpellMenu spellMenu;
-	private ScreenView uiView;
-	private UIInputProcessor inputProcessor;
+	private final StartMenu startMenu;
 	private SettingsMenu settingsMenu;
+	private final SpellMenu spellMenu;
+	private final ScreenView uiView;
+	private final UIInputProcessor inputProcessor;
 	
 	public UIState() {
 		startMenu = new StartMenu();
@@ -71,16 +71,14 @@ public class UIState implements GameState, BusEventHandler {
 
 	@Override
 	public void onEvent(BusEvent e) {
-		if (e != null) {
-			if(e.getBusCommand().equals("StartMenu")){
-				switchToStartMenu();
-			}
-			else if(e.getBusCommand().equals("ControllerSettings")){
-				switchToSettingMenu();
-			}
-			else if(e.getBusCommand().equals("SpellSettings")){
-				switchToSpellMenu();
-			}
+		if(e.getBusCommand().equals("StartMenu")){
+			switchToStartMenu();
+		}
+		else if(e.getBusCommand().equals("ControllerSettings")){
+			switchToSettingMenu();
+		}
+		else if(e.getBusCommand().equals("SpellSettings")){
+			switchToSpellMenu();
 		}
 	}
 

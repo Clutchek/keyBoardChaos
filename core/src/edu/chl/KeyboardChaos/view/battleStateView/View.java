@@ -16,10 +16,10 @@ import edu.chl.KeyboardChaos.util.DirectionVector;
  */
 public abstract class View {
 	
-	private Map<DirectionVector, Texture> map;
-	private ArrayList<Texture> textureList;
+	private final Map<DirectionVector, Texture> map;
+	private final ArrayList<Texture> textureList;
 	
-	private File textureDirectory;
+	private final File textureDirectory;
 	
 	public View(String path){
 		map = new HashMap<DirectionVector, Texture>();

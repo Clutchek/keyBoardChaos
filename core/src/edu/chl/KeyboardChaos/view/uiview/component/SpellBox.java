@@ -83,7 +83,6 @@ public class SpellBox extends Component {
 			FontUtil fontUtil) {
 		// Draw background 
 		shapeRenderer.begin();
-		// TODO: Color coverter
 		shapeRenderer.setColor(this.backgroundColor);
 		shapeRenderer.set(ShapeType.Filled);
 		shapeRenderer.rect(this.getPosX(), this.getPosY(), SIZE, SIZE);

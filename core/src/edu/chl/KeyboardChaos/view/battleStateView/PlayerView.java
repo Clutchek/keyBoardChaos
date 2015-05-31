@@ -13,9 +13,9 @@ import edu.chl.KeyboardChaos.util.DirectionVector;
 public class PlayerView extends View{
 	
 	
-	private SpriteBatch spriteBatch;
+	private final SpriteBatch spriteBatch;
 	
-	private static String path = "assets/player1/";
+	private static final String path = "assets/player1/";
 	
 	public PlayerView(SpriteBatch spriteBatch){
 		super(path);
@@ -23,6 +23,7 @@ public class PlayerView extends View{
 	}
 	
 	private void paintPlayer(Player p){
+		// Give player a specific color based on the players' number
 		if(!p.getVector().equals(new DirectionVector(0, 0)))
 			switch (p.getPlayerNumber()) {
 				case 1: 
