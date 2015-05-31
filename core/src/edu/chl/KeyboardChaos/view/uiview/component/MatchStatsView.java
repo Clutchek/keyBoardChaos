@@ -60,12 +60,12 @@ public class MatchStatsView {
 
 		int tmp = 1;
 
-		for(int i = 0; i <= this.matchStats.getActivePlayers().size() - 1; i++){
+		for(int i = 0; i < this.matchStats.getActivePlayers().size(); i++){
 
 			System.out.println(i);
-			font.draw(sb, "Player" + this.matchStats.getActivePlayers().get(i) + "     " + this.matchStats.getPlayerKills(matchStats.getActivePlayers().get(i))
-					+ "       " + this.matchStats.getPlayerDeaths(matchStats.getActivePlayers().get(i))
-					+ "        " + this.matchStats.getPlayerScore(matchStats.getActivePlayers().get(i)),
+			font.draw(sb, "Player" + this.matchStats.getActivePlayers().get(i) + "     " + this.matchStats.getPlayerKills(matchStats.getActivePlayers().get(i)-1)
+					+ "       " + this.matchStats.getPlayerDeaths(matchStats.getActivePlayers().get(i)-1)
+					+ "        " + this.matchStats.getPlayerScore(matchStats.getActivePlayers().get(i)-1),
 					this.posX + 20, this.posY - 20 - (20 * tmp));
 			tmp++;
 		}
