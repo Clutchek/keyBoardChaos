@@ -23,6 +23,7 @@ public class PlayerController {
 	private Body body;
 	private SpellControllerManager spellControllerManager;
 	private FixtureManager fixtureManager;
+	private final float LAVA_DAMAGE_PER_TICK;
 	
 	public PlayerController(Player p, FixtureManager fixtureManager, SpellControllerManager spellControllerManager){
 		this.player = p;
@@ -31,6 +32,7 @@ public class PlayerController {
 		createBody();
 		direction = new Vector2(0,1);
 		setInputStatus();
+		LAVA_DAMAGE_PER_TICK = 1f / 6f;
 	}
 	
 	public void updateBody(){
@@ -41,7 +43,7 @@ public class PlayerController {
 	public void updatePlayer(){
 		updatePlayerPosition();
 		if(player.isPlayerInLava()){
-			player.takeDamage(1f / 6f);
+			player.takeDamage(LAVA_DAMAGE_PER_TICK);
 		}
 	}
 	
