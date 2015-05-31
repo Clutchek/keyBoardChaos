@@ -34,6 +34,8 @@ import com.badlogic.gdx.utils.ObjectMap;
 
 
 /**
+ * Gathered from: http://siondream.com/blog/games/populate-your-box2d-world-using-the-libgdx-maps-api/
+ * 
  * @author David Saltares Márquez david.saltares at gmail.com
  * @brief Populates box2D world with static bodies using data from a map object
  * 
