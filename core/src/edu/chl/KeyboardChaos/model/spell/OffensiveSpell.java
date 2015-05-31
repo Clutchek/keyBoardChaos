@@ -90,7 +90,6 @@ public abstract class OffensiveSpell implements Spell {
 	public float getProjectileSpeed(){
 		return this.projectileSpeed;
 	}
-	
 	@Override
 	public boolean equals(Object otherObject){
 		if(otherObject == this){
@@ -112,5 +111,9 @@ public abstract class OffensiveSpell implements Spell {
 				originPlayerNumber == originPlayerNumber &&
 				posX == otherSpell.posX && posY == otherSpell.posY
 				);
+	}
+	
+	public void setPlayerNumber(int playerNumber) {
+		this.originPlayerNumber = playerNumber;
 	}
 }

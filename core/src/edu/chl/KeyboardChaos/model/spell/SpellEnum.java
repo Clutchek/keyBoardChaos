@@ -28,9 +28,12 @@ public enum SpellEnum {
 		return this.name;
 	}
 	
-	// TODO: This could probably be done better, clone or something
-	public Spell getSpell() {
-		return spell.clone();
+	public Spell getSpell(int playerNumber) {
+		Spell copy = spell.clone();
+		if (copy instanceof OffensiveSpell) {
+			((OffensiveSpell) copy).setPlayerNumber(playerNumber);
+		}
+		return copy;
 	}
 	
 	public SpellEnum next() {
@@ -43,7 +46,7 @@ public enum SpellEnum {
 	
 	public static SpellEnum getSpellEnum(Spell spell) {
 		for (SpellEnum v : VALUES) {
-			if (v.getSpell().getName().equals(spell.getName())) {
+			if (v.getSpell(0).getName().equals(spell.getName())) {
 				return v;
 			}
 		}

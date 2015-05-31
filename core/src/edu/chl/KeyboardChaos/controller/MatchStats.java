@@ -111,12 +111,32 @@ public class MatchStats {
 		
 	}
 	/*
+	 * This method is called on when a player gets a kill
+	 * 
+	 * @param i the index of the player that got the kill
+	 */
+	
+public void playerKills(int i){
+		
+		this.playerScores.set(i,this.playerScores.get(i) + this.killScore);
+		this.playerKills.set(i,this.playerKills.get(i) + 1);
+		
+	}
+	/*
 	 * This method is called on when a player gets killed
 	 * 
 	 * @param p the player that got killed
 	 */
 	public void playerKilled(Player p){
 		this.playerDeaths.set(indexOfPlayer(p),this.playerDeaths.get(indexOfPlayer(p)) + 1);
+	}
+	/*
+	 * This method is called on when a player gets killed
+	 * 
+	 * @param i index of the player that got killed
+	 */
+	public void playerKilled(int i){
+		this.playerDeaths.set(i,this.playerDeaths.get(i) + 1);
 	}
 	/*
 	 * @param i gets the score for player with index i
