@@ -15,6 +15,7 @@ public class Player {
 	private final int radius;
 	private DirectionVector vector;
 	private final int playerNumber;
+	private boolean isInLava;
 	
 	private String playerName;
 	private Spell firstSpell, secondSpell;
@@ -179,6 +180,14 @@ public class Player {
 	 */
 	public void setPosY(float posY) {
 		this.posY = posY;
+	}
+	
+	public boolean isPlayerInLava(){
+		return isInLava;
+	}
+	
+	public void setPlayerInLava(boolean bool){
+		this.isInLava = bool;
 	}
 	
 }
