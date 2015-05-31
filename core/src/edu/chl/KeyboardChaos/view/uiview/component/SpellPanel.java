@@ -11,6 +11,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 
 import edu.chl.KeyboardChaos.model.spell.Spell;
 import edu.chl.KeyboardChaos.settingsservice.Options;
+import edu.chl.KeyboardChaos.util.KCConstants;
 import edu.chl.KeyboardChaos.util.eventbus.BusEvent;
 import edu.chl.KeyboardChaos.view.uiview.Font;
 import edu.chl.KeyboardChaos.view.uiview.FontUtil;
@@ -28,14 +29,16 @@ public class SpellPanel extends Panel {
 	private String playerName;
 	private final int playerNumber;
 	
-	public final static int WIDTH = 300;
-	public final static int HEIGHT = 600;
+	public final static int WIDTH = KCConstants.GAME_WIDTH / 6; //300
+	public final static int HEIGHT = (2*KCConstants.GAME_HEIGHT) / 3;//600
+	
+	private int space;
 	
 	private final List<Component> components;
 	
 	public SpellPanel(int posX, int posY, int playerNumber) {
 		super(posX, posY);
-		
+		space = KCConstants.GAME_HEIGHT/96;
 		Options options = Options.getOptionsInstance();
 		
 		this.playerNumber = playerNumber;
@@ -43,9 +46,9 @@ public class SpellPanel extends Panel {
 		
 		// Create components
 		this.components = new ArrayList<Component>();
-		this.spellBox1 = new SpellBox(posX + 10, posY + 300, options.getFirstSpell(playerNumber));
-		this.spellBox2 = new SpellBox(posX + WIDTH - SpellBox.SIZE - 10, posY + 300, options.getSecondSpell(playerNumber));
-		this.label = new Label(playerName, this.getPosX() + WIDTH/2, this.getPosY() + HEIGHT - 20);
+		this.spellBox1 = new SpellBox(posX + space, posY + space*30, options.getFirstSpell(playerNumber));
+		this.spellBox2 = new SpellBox(posX + WIDTH - SpellBox.SIZE - space, posY + space*30, options.getSecondSpell(playerNumber));
+		this.label = new Label(playerName, this.getPosX() + WIDTH/2, this.getPosY() + HEIGHT - (space*2));
 		loadComponents();
 		
 
@@ -128,14 +131,14 @@ public class SpellPanel extends Panel {
 		
 		// Spell name
 		fontUtil.setFont(Font.EUPHEMIA_21);
-		int spellTextPosY = spellBox1.getPosY() + SpellBox.SIZE + fontUtil.getTextHeight(this.getSpell1().getName()) + 10;
+		int spellTextPosY = spellBox1.getPosY() + SpellBox.SIZE + fontUtil.getTextHeight(this.getSpell1().getName()) + space;
 		fontUtil.getFont().draw(batch, this.getSpell1().getName(), fontUtil.getCenteredTextPos(this.getSpell1().getName(), spellBox1.getPosX(), SpellBox.SIZE), spellTextPosY);
 		fontUtil.getFont().draw(batch, this.getSpell2().getName(), fontUtil.getCenteredTextPos(this.getSpell2().getName(), spellBox2.getPosX(), SpellBox.SIZE), spellTextPosY);
 		
 		// Spell description
 		// TODO: Only wrap when new spell is selected
 		fontUtil.setFont(Font.LATO_20);
-		fontUtil.getFont().draw(batch, fontUtil.wrapText(this.getSelectedSpell().getDescription(), (spellBox2.getPosX() + SpellBox.SIZE) - spellBox1.getPosX()), spellBox1.getPosX(), spellBox1.getPosY() - 20);
+		fontUtil.getFont().draw(batch, fontUtil.wrapText(this.getSelectedSpell().getDescription(), (spellBox2.getPosX() + SpellBox.SIZE) - spellBox1.getPosX()), spellBox1.getPosX(), spellBox1.getPosY() - 2*space);
 		batch.end();
 		
 		for (Component c : components) {

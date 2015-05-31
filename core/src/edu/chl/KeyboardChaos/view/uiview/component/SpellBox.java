@@ -14,6 +14,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 
 import edu.chl.KeyboardChaos.model.spell.Spell;
 import edu.chl.KeyboardChaos.model.spell.SpellEnum;
+import edu.chl.KeyboardChaos.util.KCConstants;
 import edu.chl.KeyboardChaos.view.uiview.FontUtil;
 
 /*
@@ -23,7 +24,7 @@ import edu.chl.KeyboardChaos.view.uiview.FontUtil;
  */
 public class SpellBox extends Component {
 	
-	public final static int SIZE = 135;
+	public final static int SIZE = KCConstants.GAME_HEIGHT/7;// 135
 	private final Color backgroundColor, highlightColor;
 	private SpellEnum spell;
 	private boolean isSelected;

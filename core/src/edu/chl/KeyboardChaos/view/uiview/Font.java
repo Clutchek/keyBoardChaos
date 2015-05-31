@@ -5,13 +5,15 @@ import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator.FreeTypeFontParameter;
+
+import edu.chl.KeyboardChaos.util.KCConstants;
 /*
  * A font and a size for a text
  */
 public class Font {
-	public final static BitmapFont EUPHEMIA_21 = new Font("assets/Euphemia.ttf", 21).getFont();
-	public final static BitmapFont SLABO_43 = new Font("assets/Slabo.ttf", 43).getFont();
-	public final static BitmapFont LATO_20 = new Font("assets/Lato.ttf", 20).getFont();
+	public final static BitmapFont EUPHEMIA_21 = new Font("assets/Euphemia.ttf", KCConstants.GAME_HEIGHT/48).getFont();
+	public final static BitmapFont SLABO_43 = new Font("assets/Slabo.ttf", KCConstants.GAME_HEIGHT/24).getFont();
+	public final static BitmapFont LATO_20 = new Font("assets/Lato.ttf", KCConstants.GAME_HEIGHT/48).getFont();
 	
 	private final BitmapFont font;
 	

@@ -57,10 +57,10 @@ public class PlayerSettingsPanel extends Panel implements BusEventHandler {
 
 		this.playerNbr = playerNbr;
 		
-		height = 600;
-		width = 300;
-		buttonSize = 60;
-		buttonSpace = 10;
+		height = (2*KCConstants.GAME_HEIGHT) / 3; //600
+		width = KCConstants.GAME_WIDTH/5; //300
+		buttonSize = KCConstants.GAME_HEIGHT/16; //60
+		buttonSpace = KCConstants.GAME_HEIGHT/96;
 		components = new ArrayList<Component>();
 		this.color = Color.valueOf("989898");
 		this.options = Options.getOptionsInstance();
@@ -79,12 +79,12 @@ public class PlayerSettingsPanel extends Panel implements BusEventHandler {
 	}
 	
 	private void loadTextButtons(){
-		upButton = createControllerSettingsButton(super.getPosX() + this.width/2 - buttonSize/2, super.getPosY() + this.height/2 + 150, Input.Keys.toString(options.getUpButtonForPlayer(this.playerNbr)));
+		upButton = createControllerSettingsButton(super.getPosX() + this.width/2 - buttonSize/2, super.getPosY() + this.height/2 + (width/2), Input.Keys.toString(options.getUpButtonForPlayer(this.playerNbr)));
 		downButton = createControllerSettingsButton(this.upButton.getPosX(), this.upButton.getPosY() - (this.buttonSize + this.buttonSpace), Input.Keys.toString(options.getDownButtonForPlayer(this.playerNbr)));
 		rightButton = createControllerSettingsButton(this.downButton.getPosX() + this.downButton.getWidth() + this.buttonSpace, this.downButton.getPosY(), Input.Keys.toString(options.getRightButtonForPlayer(this.playerNbr)));
 		leftButton = createControllerSettingsButton(this.downButton.getPosX() - this.downButton.getWidth() - this.buttonSpace, this.downButton.getPosY(), Input.Keys.toString(options.getLeftButtonForPlayer(this.playerNbr)));
-		firstSpell = createControllerSettingsButton(this.leftButton.getPosX() + 35, this.leftButton.getPosY() - 200, Input.Keys.toString(options.getFirstSpellButtonForPlayer(this.playerNbr)));
-		secondSpell = createControllerSettingsButton(this.downButton.getPosX() + 35, this.downButton.getPosY() - 200, Input.Keys.toString(options.getSecondSpellButtonForPlayer(this.playerNbr)));
+		firstSpell = createControllerSettingsButton(this.leftButton.getPosX() + buttonSpace*3, this.leftButton.getPosY() - buttonSpace*20, Input.Keys.toString(options.getFirstSpellButtonForPlayer(this.playerNbr)));
+		secondSpell = createControllerSettingsButton(this.downButton.getPosX() + buttonSpace*3, this.downButton.getPosY() - buttonSpace*20, Input.Keys.toString(options.getSecondSpellButtonForPlayer(this.playerNbr)));
 	}
 	
 	public void createListOfComponents(){

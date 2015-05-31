@@ -26,13 +26,13 @@ public class SpellMenu extends Screen implements BusEventHandler {
 	public SpellMenu() {
 		super();
 		int halfOfScreen = KCConstants.GAME_WIDTH/2;
-		int space = 20;
+		int space = KCConstants.GAME_HEIGHT/48;
 		
-		label = new Label("Choose your spells", KCConstants.GAME_WIDTH/2, KCConstants.GAME_HEIGHT - 25);
-		spellPanel1 = new SpellPanel(halfOfScreen - space*3 - SpellPanel.WIDTH*2, KCConstants.GAME_HEIGHT - SpellPanel.HEIGHT - 100, 1);
-		spellPanel2 = new SpellPanel(halfOfScreen - space - SpellPanel.WIDTH, KCConstants.GAME_HEIGHT - SpellPanel.HEIGHT - 100, 2);
-		spellPanel3 = new SpellPanel(halfOfScreen + space, KCConstants.GAME_HEIGHT - SpellPanel.HEIGHT - 100, 3);
-		spellPanel4 = new SpellPanel(halfOfScreen + space*3 + SpellPanel.WIDTH, KCConstants.GAME_HEIGHT - SpellPanel.HEIGHT - 100, 4);
+		label = new Label("Choose your spells", KCConstants.GAME_WIDTH/2, KCConstants.GAME_HEIGHT - space*2);
+		spellPanel1 = new SpellPanel((halfOfScreen - space*3 - SpellPanel.WIDTH*2) / 2, (KCConstants.GAME_HEIGHT - SpellPanel.HEIGHT - space*5) / 2, 1);
+		spellPanel2 = new SpellPanel((halfOfScreen - space - SpellPanel.WIDTH) / 2, (KCConstants.GAME_HEIGHT - SpellPanel.HEIGHT - space*5) / 2, 2);
+		spellPanel3 = new SpellPanel((halfOfScreen + space) / 2, (KCConstants.GAME_HEIGHT - SpellPanel.HEIGHT - space*5) / 2, 3);
+		spellPanel4 = new SpellPanel((halfOfScreen + space*3 + SpellPanel.WIDTH) / 2, (KCConstants.GAME_HEIGHT - SpellPanel.HEIGHT - space*5) / 2, 4);
 		
 		
 		spellPanels = new ArrayList<SpellPanel>();
