@@ -200,6 +200,8 @@ public class BattleState implements GameState {
 		spellControllerManager = new SpellControllerManager(fixtureManager);
 
 		loadPlayers();
+		
+		matchStats.resetMatchStats();
 	}
 
 	private void roundOver() {

@@ -33,14 +33,12 @@ public class MatchStats {
 
 	public MatchStats(){
 		this.killScore = 10;
-		this.resetMatchStats();
-
-
 
 		playerScores = new ArrayList<Integer>();
 		playerKills = new ArrayList<Integer>();
 		playerDeaths = new ArrayList<Integer>();
 
+		this.resetMatchStats();
 		addPlayersToMatchStats();
 	}
 
@@ -60,6 +58,11 @@ public class MatchStats {
 		this.playerThreeDeaths = 0;
 		this.playerFourDeaths = 0;
 
+		this.playerDeaths.clear();
+		this.playerKills.clear();
+		this.playerScores.clear();
+		
+		addPlayersToMatchStats();
 	}
 
 
