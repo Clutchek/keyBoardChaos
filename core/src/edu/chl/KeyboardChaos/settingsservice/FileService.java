@@ -30,6 +30,9 @@ public class FileService {
 	}
 	
 	public void writePlayerSettings(int playerNumber, Object playerSettings){
+		if(playerNumber < 1 || playerNumber > 4){
+			throw new IllegalArgumentException("Player number must be 1-4!");
+		}
 		try{
 			fileOutputStream = new FileOutputStream(settingsFileAddresses.get(playerNumber-1), false);
 			objectOutputStream = new ObjectOutputStream(fileOutputStream);
@@ -52,6 +55,9 @@ public class FileService {
 	}
 	
 	public Object readPlayerSettings(int playerNumber){
+		if(playerNumber < 1 || playerNumber > 4){
+			throw new IllegalArgumentException("Player number must be 1-4!");
+		}
 		try{
 			fileInputStream = new FileInputStream(settingsFileAddresses.get(playerNumber-1));
 			objectInputStream = new ObjectInputStream(fileInputStream);
@@ -59,7 +65,7 @@ public class FileService {
 			objectInputStream.close();
 			return o;
 		}catch(Exception e){
-			//e.printStackTrace();
+			e.printStackTrace();
 			return null;
 		}
 		

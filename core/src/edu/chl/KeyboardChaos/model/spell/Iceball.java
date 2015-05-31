@@ -18,6 +18,16 @@ public class Iceball extends OffensiveSpell{
 		radius = 10f;
 	}
 	
+	@Override
+	public float getCooldown(){
+		return 7f;
+	}
+	
+	@Override
+	public float getDuration(){
+		return 1/60f;
+	}
+	
 	/**
 	 * @return The damage of the iceball
 	 */

@@ -30,14 +30,6 @@ public class FireballController extends OffensiveSpellController{
 		createBody();
 	}
 	
-	private void createBody(){
-		body = fixtureManager.createFixture(fireball).getBody();
-	}
-	
-	public Body getBody(){
-		return body;
-	}
-	
 	public void update() {
 		if(body != null){	
 			float speed = fireball.getProjectileSpeed();
@@ -47,6 +39,16 @@ public class FireballController extends OffensiveSpellController{
 		updatePosition();
 	}
 	
+	
+	private void createBody(){
+		body = fixtureManager.createFixture(fireball).getBody();
+	}
+	
+	public Body getBody(){
+		return body;
+	}
+	
+
 	//kanske kan refaktorera ut till offensiveSpellController
 	private void updatePosition() {
 		Vector2 position = body.getPosition();

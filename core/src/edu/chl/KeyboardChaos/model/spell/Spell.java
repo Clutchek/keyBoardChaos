@@ -7,4 +7,6 @@ import java.io.Serializable;
 public interface Spell extends Serializable{	
 	public String getDescription();
 	public String getName();
+	public float getCooldown();
+	public float getDuration();
 }

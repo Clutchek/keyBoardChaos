@@ -17,8 +17,17 @@ public class Fireball extends OffensiveSpell{
 		super();
 		this.damage = 10;
 		this.projectileSpeed = 3f;
-		//this.originPlayer = originPlayer;
 		fireballRadius = 3f;
+	}
+	
+	@Override
+	public float getCooldown(){
+		return 1.5f;
+	}
+	
+	@Override
+	public float getDuration(){
+		return 10f;
 	}
 	
 	/**
