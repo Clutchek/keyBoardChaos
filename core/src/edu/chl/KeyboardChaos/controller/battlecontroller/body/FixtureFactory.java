@@ -44,7 +44,7 @@ public class FixtureFactory {
 			fixtureDef.filter.maskBits = KCConstants.MASK_SPELL;
 			fixtureDef.filter.categoryBits = KCConstants.BIT_SPELL;
 			Fireball fireball = (Fireball)body.getUserData();
-			fixtureRadius = fireball.getFireballRadius() / PPM;
+			fixtureRadius = fireball.getRadius() / PPM;
 			
 		}else if(body.getUserData() instanceof Player){
 			fixtureDef.filter.maskBits = KCConstants.MASK_PLAYER;

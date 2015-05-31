@@ -9,6 +9,7 @@ import edu.chl.KeyboardChaos.util.DirectionVector;
 public abstract class OffensiveSpell implements Spell {
 	private DirectionVector vector;
 	private float posX, posY;
+	protected float radius;
 	
 	public OffensiveSpell() {
 		this.vector = new DirectionVector(0, 0);
@@ -36,5 +37,9 @@ public abstract class OffensiveSpell implements Spell {
 	
 	public void setPosY(float y) {
 		this.posY = y;
+	}
+	
+	public float getRadius(){
+		return this.radius;
 	}
 }
