@@ -63,11 +63,12 @@ public class KCInputProcessor extends InputAdapter implements EventHandler{
 			else if(keycode == optionsService.getSecondSpellButtonForPlayer(playerNumber)){
 				p.useSecondSpell();
 			}
-			
-			if (roundIsOver && keycode == Input.Keys.ENTER) {
-				EventBusService.getInstance().publish(new BusEvent("menu"));
-			}
 		}
+		
+		if (roundIsOver && keycode == Input.Keys.ENTER) {
+			EventBusService.getInstance().publish(new BusEvent("menu"));
+		}
+		
 		return true;
 
 	}
@@ -96,9 +97,11 @@ public class KCInputProcessor extends InputAdapter implements EventHandler{
 	
 	@Override
 	public void onEvent(BusEvent e) {
-		if (e.getBusCommand().equals("round over"))
-			this.roundIsOver = true;
-		else if (e.getBusCommand().equals("play"))
-			this.roundIsOver = false;
+		if (e != null) {
+			if (e.getBusCommand().equals("round over"))
+				this.roundIsOver = true;
+			else if (e.getBusCommand().equals("play"))
+				this.roundIsOver = false;
+		}
 	}
 }
