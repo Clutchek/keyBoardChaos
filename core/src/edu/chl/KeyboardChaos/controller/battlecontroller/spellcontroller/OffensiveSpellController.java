@@ -76,6 +76,7 @@ public class OffensiveSpellController extends SpellController{
 	
 	private void createBody(){
 		body = fixtureManager.createFixture(offensiveSpell).getBody();
+		System.out.println("Creating");
 	}
 	
 	public Body getBody(){

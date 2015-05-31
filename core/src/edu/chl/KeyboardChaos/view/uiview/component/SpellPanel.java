@@ -95,15 +95,15 @@ public class SpellPanel extends Panel {
 	}
 	
 	public Spell getSelectedSpell() {
-		return getSelectedSpellBox().getSpell();
+		return getSelectedSpellBox().getSpell(this.playerNumber);
 	}
 	
 	public Spell getSpell1() {
-		return this.spellBox1.getSpell();
+		return this.spellBox1.getSpell(this.playerNumber);
 	}
 	
 	public Spell getSpell2() {
-		return this.spellBox2.getSpell();
+		return this.spellBox2.getSpell(this.playerNumber);
 	}
 	
 	public int getPlayerNumber() {

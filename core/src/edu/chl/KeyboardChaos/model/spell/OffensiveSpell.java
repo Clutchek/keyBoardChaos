@@ -90,4 +90,8 @@ public abstract class OffensiveSpell implements Spell {
 	public float getProjectileSpeed(){
 		return this.projectileSpeed;
 	}
+	
+	public void setPlayerNumber(int playerNumber) {
+		this.originPlayerNumber = playerNumber;
+	}
 }
