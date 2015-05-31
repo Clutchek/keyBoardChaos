@@ -11,13 +11,11 @@ public class FixtureManager {
 
 	private FixtureFactory fixtureFactory;
 	private final List<Body> bodiesToDelete;
-	//private List<Fixture> fixtureList;
 	private World world;
 	
 	public FixtureManager(World world){
 		fixtureFactory = new FixtureFactory(world);
 		bodiesToDelete = new ArrayList<Body>();
-		//fixtureList = new ArrayList<Fixture>();
 		this.world = world;
 		
 	}
@@ -34,8 +32,6 @@ public class FixtureManager {
 	public Fixture createFixture(Object o){
 		Body body = fixtureFactory.createBody(o);
 		Fixture fixture = fixtureFactory.createFixture(body);
-		
-		//fixtureList.add(fixture);
 		return fixture;
 	}
 
@@ -50,11 +46,6 @@ public class FixtureManager {
 		if(body != null && !bodiesToDelete.contains(body)){	
 			bodiesToDelete.add(body);
 		}
-		for(Body b : bodiesToDelete){
-			System.out.println("add: " + b);
-			
-		}
-		System.out.println("end");
 	}
 	
 	/**
@@ -69,14 +60,7 @@ public class FixtureManager {
 			body.setUserData(null);
 			body = null;
 			bodiesToDelete.remove(0);
-//			for(Body b : bodiesToDelete){
-//				System.out.println("remove: " + b);
-//				
-//			}
-//			System.out.println("end");
 			}
-//		System.out.println(bodiesToDelete);
-//		System.out.println(world.getBodyCount());
 	}
 	
 	public List<Body> getBodiesToDelete() {

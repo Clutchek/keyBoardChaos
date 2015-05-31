@@ -29,8 +29,7 @@ public class TestFileService {
 		FileService fileService = new FileService();
 		fileService.writePlayerSettings(1, testObject);
 		Object o = fileService.readPlayerSettings(1);
-		PlayerSettings copyObject = (PlayerSettings)o;
-		assertTrue(copyObject.equals(testObject));
+		assertTrue(testObject.equals(o));
 	}
 
 }

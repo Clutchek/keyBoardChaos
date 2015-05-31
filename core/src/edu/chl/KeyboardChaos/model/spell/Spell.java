@@ -10,4 +10,5 @@ public interface Spell extends Serializable, Cloneable{
 	public float getCooldown();
 	public float getDuration();
 	public Spell clone();
+	public boolean equals(Object o);
 }

@@ -78,15 +78,15 @@ public class BattleState implements GameState {
 	
 	@Override
 	public void update() {
-		removeObjects();
-		handleInput();
+		removeObjects();	// Removes fixtures and bodies from the world that has been marked for removal.
+							// Read SDD for info about safe removal.
+							// With the bodies destroyed, below makes sure that the last reference to the body
+							// is removed so it never can be called upon again - which would cause a crash.
 		for(PlayerController PC : playerControllerList){
-
 			PC.updateBody();
 		}
 		
 		refreshFixtureList();
-		
 		spellControllerManager.update();
 		
 		if (playerControllerList.size() <= 1) {
@@ -94,11 +94,9 @@ public class BattleState implements GameState {
 		}
 		
 		world.step(KCConstants.TIME_STEP, 6, 2);
-		
+
 		for(PlayerController PC : playerControllerList){
-
 			PC.updatePlayer();
-
 		}
 
 		// Destroy fixtures here?
@@ -112,7 +110,6 @@ public class BattleState implements GameState {
 
 	@Override
 	public void handleInput() {
-		// Shit is handled in input processor. Might be other stuff to add here.
 	}
 
 	@Override
