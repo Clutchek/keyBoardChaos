@@ -41,6 +41,10 @@ public class KCContactListener implements ContactListener {
 		if(isLavaInContact(contact) && isPlayerInContact(contact)){
 			Player player = getPlayerFromContact(contact);
 			player.takeDamage(1f / 60f);
+			if(!player.isAlive()){
+				matchStats.playerKilled(player);
+				matchStats.playerKills(player.getEnemyAggrssor() - 1);
+			}
 		
 		}else if(isTwoSpellsInContact(contact)){
 			Fixture fixA = contact.getFixtureA();
@@ -60,6 +64,7 @@ public class KCContactListener implements ContactListener {
 				Fireball fb = (Fireball)spell;
 				player.takeDamage(fb.getDamage());
 				System.out.println(fb.getOriginPlayerNumber());
+				player.setEnemyAggressor(player.getPlayerNumber());
 				if (!player.isAlive()){
 					this.matchStats.playerKilled(player);
 					this.matchStats.playerKills(fb.getOriginPlayerNumber()-1);

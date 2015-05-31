@@ -16,6 +16,7 @@ public class Player {
 	private DirectionVector vector;
 	private final int playerNumber;
 	private boolean isInLava;
+	private int enemy;
 	
 	private String playerName;
 	private Spell firstSpell, secondSpell;
@@ -188,6 +189,20 @@ public class Player {
 	
 	public void setPlayerInLava(boolean bool){
 		this.isInLava = bool;
+	}
+	/*
+	 * Method is set to keep track of the previous aggressor
+	 * 
+	 * @param i the player index of the aggressor
+	 */
+	public void setEnemyAggressor(int i){
+		this.enemy = i;
+	}
+	/*
+	 * @return returns the index of the previous aggressor
+	 */
+	public int getEnemyAggrssor(){
+		return this.enemy;
 	}
 	
 }
