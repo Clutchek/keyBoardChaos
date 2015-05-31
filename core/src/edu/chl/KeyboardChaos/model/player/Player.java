@@ -195,13 +195,13 @@ public class Player {
 	 * 
 	 * @param i the player index of the aggressor
 	 */
-	public void setEnemyAggressor(int i){
+	public void setAggressor(int i){
 		this.enemy = i;
 	}
 	/*
 	 * @return returns the index of the previous aggressor
 	 */
-	public int getEnemyAggrssor(){
+	public int getLastAggressor(){
 		return this.enemy;
 	}
 	

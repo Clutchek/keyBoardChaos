@@ -10,7 +10,7 @@ import edu.chl.KeyboardChaos.util.DirectionVector;
 /*
  * This class renders the texture of an active player during a battle in KeyboardChaos
  */
-public class PlayerView extends View{
+public class PlayerView extends DynamicTextureView{
 	
 	
 	private final SpriteBatch spriteBatch;

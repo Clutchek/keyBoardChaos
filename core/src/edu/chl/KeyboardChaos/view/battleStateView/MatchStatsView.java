@@ -11,7 +11,9 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 
 import edu.chl.KeyboardChaos.util.MatchStats;
-
+/*
+ * This class renders the match stats in the top right corner during a battle in keyboardchaos
+ */
 public class MatchStatsView {
 
 	private int posX;

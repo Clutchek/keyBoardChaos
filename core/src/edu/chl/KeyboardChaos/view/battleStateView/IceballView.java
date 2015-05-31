@@ -6,9 +6,9 @@ import edu.chl.KeyboardChaos.model.spell.Iceball;
 
 
 /*
- * This class renders the texture of a fireball that is fired during a battle in KeyboardChaos
+ * This class renders the texture of a iceball that is fired during a battle in KeyboardChaos
  */
-public class IceballView extends View{
+public class IceballView extends DynamicTextureView{
 		
 	private final SpriteBatch spriteBatch;
 

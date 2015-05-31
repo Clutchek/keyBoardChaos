@@ -14,14 +14,14 @@ import edu.chl.KeyboardChaos.util.DirectionVector;
  * This abstract class is used to show the correct texture
  *  of an element depending on its direction, during a battle in KeyboardChaos
  */
-public abstract class View {
+public abstract class DynamicTextureView {
 	
 	private final Map<DirectionVector, Texture> map;
 	private final ArrayList<Texture> textureList;
 	
 	private final File textureDirectory;
 	
-	public View(String path){
+	public DynamicTextureView(String path){
 		map = new HashMap<DirectionVector, Texture>();
 		textureList = new ArrayList<Texture>();
 		this.textureDirectory = new File(path);

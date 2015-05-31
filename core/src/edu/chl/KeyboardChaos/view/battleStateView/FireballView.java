@@ -8,7 +8,7 @@ import edu.chl.KeyboardChaos.model.spell.Fireball;
 /*
  * This class renders the texture of a fireball that is fired during a battle in KeyboardChaos
  */
-public class FireballView extends View{
+public class FireballView extends DynamicTextureView{
 		
 	private final SpriteBatch spriteBatch;
 

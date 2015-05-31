@@ -38,14 +38,14 @@ public class KCContactListener implements ContactListener {
 	
 	@Override
 	public void beginContact(Contact contact) {
-		if(isLavaInContact(contact) && isPlayerInContact(contact)){
+		if(isLavaInContact(contact) && isPlayerInContact(contact)){ // if player is in contact with lave he reveives dmg
 			Player player = getPlayerFromContact(contact);
 
 			player.takeDamage(1f / 60f);
 			player.setPlayerInLava(true);
 
 		
-		}else if(isTwoSpellsInContact(contact)){
+		}else if(isTwoSpellsInContact(contact)){ // if two spells collide, both gets destroyed
 			Fixture fixA = contact.getFixtureA();
 			Fixture fixB = contact.getFixtureB();
 			
@@ -53,18 +53,18 @@ public class KCContactListener implements ContactListener {
 				fixtureManager.addToDisposeList(fixA.getBody());
 				fixtureManager.addToDisposeList(fixB.getBody());
 			}
-		}else if(isPlayerInContact(contact) && isSpellInContact(contact)){
+		}else if(isPlayerInContact(contact) && isSpellInContact(contact)){ 
 			OffensiveSpell spell = getSpellFromContact(contact);
 			fixtureManager.addToDisposeList(getSpellFixture(contact).getBody());
 						
 			Player player = getPlayerFromContact(contact);
 
-			if(spell instanceof Fireball){
+			if(spell instanceof Fireball){ //if player gets struck by a fireball he receives dmg
 				Fireball fb = (Fireball)spell;
 				player.takeDamage(fb.getDamage());
 
-				player.setEnemyAggressor(fb.getOriginPlayerNumber());
-				if (!player.isAlive()){
+				player.setAggressor(fb.getOriginPlayerNumber());
+				if (!player.isAlive()){ 	// if player dies gamestats will change
 					this.matchStats.playerKilled(player);
 					this.matchStats.playerKills(fb.getOriginPlayerNumber()-1);
 				}
@@ -76,7 +76,7 @@ public class KCContactListener implements ContactListener {
 
 	@Override
 	public void endContact(Contact contact) {
-		if(isLavaInContact(contact) && isPlayerInContact(contact)){
+		if(isLavaInContact(contact) && isPlayerInContact(contact)){ // when player is out of lava he stops receiving dmg
 			Player player = getPlayerFromContact(contact);
 			player.setPlayerInLava(false);
 		}
@@ -104,8 +104,7 @@ public class KCContactListener implements ContactListener {
 		}else if(fixB.getUserData() instanceof Player){
 			return (Player)(fixB.getUserData());
 		}else
-			return null; 	//Denna metod ropas aldrig pÂ om man inte redan vet att en fixture i en contact ‰r en player
-							//sÂ null borde aldrig bli returnerat. Fortfarande inte snyggt med null... Exception?
+			return null;
 			
 	}
 	
@@ -119,9 +118,7 @@ public class KCContactListener implements ContactListener {
 		}else if(fixB.getUserData() instanceof OffensiveSpell){
 			return (OffensiveSpell)(fixB.getUserData());
 		}else
-			return null; 	//Denna metod ropas aldrig pÂ om man inte redan vet att en fixture i en contact ‰r en spell
-							//sÂ null borde aldrig bli returnerat. Fortfarande inte snyggt med null... Exception?
-				
+			return null; 	
 	}
 	
 	private boolean isLavaInContact(Contact c){

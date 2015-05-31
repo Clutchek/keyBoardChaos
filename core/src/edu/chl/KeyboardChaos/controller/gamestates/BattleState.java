@@ -86,8 +86,8 @@ public class BattleState implements GameState {
 			PC.updateBody();
 			if(!PC.getPlayer().isAlive() && PC.getPlayer().isPlayerInLava()){
 				matchStats.playerKilled(PC.getPlayer().getPlayerNumber() - 1);
-				if(PC.getPlayer().getEnemyAggrssor() > 0){
-					matchStats.playerKills(PC.getPlayer().getEnemyAggrssor() - 1);
+				if(PC.getPlayer().getLastAggressor() > 0){
+					matchStats.playerKills(PC.getPlayer().getLastAggressor() - 1);
 				}	
 			}
 		}
