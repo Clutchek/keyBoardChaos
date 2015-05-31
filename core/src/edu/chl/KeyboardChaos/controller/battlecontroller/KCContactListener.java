@@ -38,7 +38,7 @@ public class KCContactListener implements ContactListener {
 	
 	@Override
 	public void beginContact(Contact contact) {
-		if(isLavaInContact(contact) && isPlayerInContact(contact)){ // if player is in contact with lave he reveives dmg
+		if(isLavaInContact(contact) && isPlayerInContact(contact)){ // if player is in contact with lava he reveives dmg
 			Player player = getPlayerFromContact(contact);
 
 			player.takeDamage(1f / 60f);
